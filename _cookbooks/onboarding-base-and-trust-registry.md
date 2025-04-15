@@ -53,6 +53,11 @@ Register the business partner [^1] by providing a name [^2] and primary contact 
 
 [![base registry enrollment](../../assets/images/base_registry_enrollment.png)](../../assets/images/base_registry_enrollment.png)
 
+### Edit business partner
+Click the edit button in the business partner overview to edit the name or contact email address of the business partner.
+[![edit business partner button](../../assets/images/edit_organization_pen.png)](../../assets/images/edit_organization_pen.png)
+[![edit business partner](../../assets/images/edit_organization.png)](../../assets/images/edit_organization.png)
+
 ## Get API keys to access swiyu APIs
 
 ---
