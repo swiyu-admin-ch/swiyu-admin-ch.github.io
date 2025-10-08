@@ -209,7 +209,8 @@ To run the DID Toolbox using the Quickstart option, use the following command st
 java -jar didtoolbox.jar create --identifier-registry-url $IDENTIFIER_REGISTRY_URL
 
 # Example
-java -jar didtoolbox.jar create --identifier-registry-url https://identifier-reg.trust-infra.swiyu-int.admin.ch/api/v1/did/18fa7c77-9dd1-4e20-a147-fb1bec146085
+java -jar didtoolbox.jar create --identifier-registry-url https://identifier-reg.trust-infra.swiyu-int.admin.ch/api/v1/did/18fa7c77-9dd1-4e20-a147-fb1bec146085 > didlog.jsonl
+
 ```
 
 - create: Command to create a new DID
