@@ -28,7 +28,7 @@ Please note: In an upcoming release we'll proceed the contract step for "wallet 
 - Feature: Added support for Key Pre-Rotation for did:webvh.
 - Feature: Added support for DID Web + Verifiable History (did:webvh:1.0).
   
-## Generic Issuer (Version 2.0.2 on new [swiyu-issuer](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/2.0.2))
+## Generic Issuer (Version 2.0.2 on new [swiyu-issuer](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/2.0.2) repository)
 - Upgraded to new DID Resolver Library version 2.0.1
 - Expand step to support correct and [incorrect "cryptographic_binding_methods_supported"](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/50)
 - Expand step for [Providing openid metadata also under correct "/.well-known/oauth-authorization-server"](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/47)
@@ -38,11 +38,11 @@ Please note: In an upcoming release we'll proceed the contract step for "wallet 
 
 We kindly ask you to migrate your components to the latest versions. In order to plan the contract step for "Token endpoint expected x-www-form-urlencoded" we created an [issue](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/112) to collect your feedback. 
 
-## Generic Verifier (Version 2.0.2 on new [swiyu verifier repository](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/2.0.2))
+## Generic Verifier (Version 2.0.2 on new [swiyu-verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/2.0.2) repository)
 - Expand step to [handle malformed and correct "cnf" claim ](https://github.com/swiyu-admin-ch/swiyu-verifier/issues/22)
 - Security Fix: [Unsecure serialization/deserialization](https://github.com/swiyu-admin-ch/eidch-verifier-agent-oid4vp/issues/15)
 
-We kindly ask you to migrate your components to the latest versions in order to prevent breakting changes in the future.
+We kindly ask you to migrate your components to the latest versions in order to prevent breaking changes in the future.
 
 ## Specifications
 
