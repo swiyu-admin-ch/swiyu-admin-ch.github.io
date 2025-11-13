@@ -49,18 +49,16 @@ The source code is divided in an authoring and a data service:
 ### swiyu Generic Issuer 
 Entities can issue, revoke, suspend, and reactivate Verifiable Credentials (VCs), using the generic reference issuer implementation provided by the federal government. 
 
-The source code is divided in a management and a signing service:
+The source code is available in the following repository:
 
-- [Generic issuer management service](https://github.com/swiyu-admin-ch/eidch-issuer-agent-management)
-- [Generic issuer signing service OID4VCI](https://github.com/swiyu-admin-ch/eidch-issuer-agent-oid4vci)
+- [swiyu Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer)
 
 ### swiyu Generic Verifier
 Entities can integrate the reference verifier implementation to verify VCs, ensuring cryptographic integrity and validity according to their specific needs.
 
-The source code is divided in a management and a verification service:
+The source code is available in the following repository:
 
-- [Generic verifier management service](https://github.com/swiyu-admin-ch/eidch-verifier-agent-management)
-- [Generic verification service OID4VP](https://github.com/swiyu-admin-ch/eidch-verifier-agent-oid4vp)
+- [swiyu Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier)
 
 ### swiyu Android & iOS App
 
