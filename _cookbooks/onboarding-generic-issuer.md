@@ -104,7 +104,7 @@ curl -X 'POST' \
 This results in a response like:
 
 <div class="notice--warning">
-  ⚙️ Please store the $STATUS_REGISTRY_URL from "statusRegistryUrl" it as is required in the Issue Credential call.
+  ⚙️ Please store the $STATUS_REGISTRY_URL from "statusRegistryUrl" as it is required later in the Issue Credential call.
 </div>
 
 ```json
@@ -156,7 +156,7 @@ With Response:
 ```json
 
   "management_id": "$MANAGEMENT_ID",
-  "offer_deeplink": "$SWIYU_OFFER_dEEPLINK"
+  "offer_deeplink": "$SWIYU_OFFER_DEEPLINK"
 }
 
 ```
