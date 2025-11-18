@@ -221,7 +221,7 @@ For advanced usage or detailed parameter descriptions, please refer to the [DID 
 #### What Happens Upon Execution
 
 - Key Pair Generation: Three key pairs are created and stored in the .didtoolbox directory (output directory, will be created automatically) in PEM format  
-  **Take good care of the generated key material. You will need it again later on (e.g. to configure it in your Issuers and/or Verifiers, see:** [Issuer-Management](https://github.com/swiyu-admin-ch/eidch-issuer-agent-management) & [Verifier-Management](https://github.com/swiyu-admin-ch/eidch-verifier-agent-management)
+  **Take good care of the generated key material. You will need it again later on (e.g. to configure it in your Issuers and/or Verifiers, see:** [swiyu Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) & [swiyu Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier)
   - DID Update Key Pair:
     - id_ed25519: Private key (not password protected)
     - id_ed25519.pem: Public key
@@ -449,3 +449,4 @@ In the swiyu wallet app, verifiable credentials (VC) are visually represented as
 # Your Feedback?
 
 We would be pleased if you spend about 3 additional minutes and give us feedback on the swiyu Public Beta Trust Infrastructure and your onboarding process! With Public Beta, we want to give ecosystem stakeholders the opportunity to gain initial experience and build their own use cases on the trust infrastructure of the future e-ID. Your [feedback](https://findmind.ch/c/feedback_publicbeta_infr_en) will help us to further develop and improve the touchpoints, and we greatly appreciate your support.
+*role="textbox", aria-multiline="true", aria-placeholder="Enter file contents here", aria-autocomplete="list"**aria-labelledby="codemirror-label focus-trap-help-panel"*
