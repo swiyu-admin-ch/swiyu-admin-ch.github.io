@@ -42,21 +42,21 @@ A sample compose file for an entire setup of both components and a database can 
 |---
 | Name | Description | Example
 | --- | --- |---
-|SPRING_APPLICATION_NAME|Name of your application|
-|ISSUER_ID|The DID you created in the [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)| did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124 |
-| EXTERNAL_URL | This will be used to build the correct deeplink (You must provide the /oid4vci and .well-known endpoints at this) -> must use https-protocol otherwise the wallet will refuse to connect. | |
-|DID_STATUS_LIST_VERIFICATION_METHOD|Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)|did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124#assert-key-01|
-|STATUS_LIST_KEY|EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the DID_STATUS_LIST_VERIFICATION_METHOD|
-|SWIYU_PARTNER_ID|The partner id you created in the[swiyu Trust Infrastructure business partner ID](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#business-partner-registration)|d33fab52-1657-4240-9189-97c33b949739|
-|SWIYU_STATUS_REGISTRY_CUSTOMER_KEY| Customer key from [Status Registry API Key](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)||
-|SWIYU_STATUS_REGISTRY_CUSTOMER_SECRET| Customer Secret from [Status Registry API Secret](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
-|SWIYU_STATUS_REGISTRY_ACCESS_TOKEN|Access token from [Status Registry API ACCESS Token](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
-|SWIYU_STATUS_REGISTRY_BOOTSTRAP_REFRESH_TOKEN| Refresh token from [Status Registry API Refresh Token](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
-|SWIYU_STATUS_REGISTRY_TOKEN_URL|[OAuth Refresh URL](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#authenticate-with-oauth2)|https://keymanager-prd.api.admin.ch/keycloak/realms/APIGW/protocol/openid-connect/token|
-|SWIYU_STATUS_REGISTRY_API_URL|[Status Registry Base URL](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#base-urls)|https://status-reg-api.trust-infra.swiyu-int.admin.ch|
-| EXTERNAL_URL | URL of the issuer-agent-oid4vci service | |
-| DID_SDJWT_VERIFICATION_METHOD | Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! | did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124#assert-key-02 |
-| SDJWT_KEY | EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the DID_SDJWT_VERIFICATION_METHOD | |
+|`SPRING_APPLICATION_NAME`|Name of your application|
+|`ISSUER_ID`|The DID you created in the [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)| did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124 |
+|`EXTERNAL_URL`| This will be used to build the correct deeplink (You must provide the /oid4vci and .well-known endpoints at this) -> must use https-protocol otherwise the wallet will refuse to connect. | |
+|`DID_STATUS_LIST_VERIFICATION_METHOD`|Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)|did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124#assert-key-01|
+|`STATUS_LIST_KEY`|EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_STATUS_LIST_VERIFICATION_METHOD`|
+|`SWIYU_PARTNER_ID`|The partner id you created in the[swiyu Trust Infrastructure business partner ID](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#business-partner-registration)|d33fab52-1657-4240-9189-97c33b949739|
+|`SWIYU_STATUS_REGISTRY_CUSTOMER_KEY`| Customer key from [Status Registry API Key](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)||
+|`SWIYU_STATUS_REGISTRY_CUSTOMER_SECRET`| Customer Secret from [Status Registry API Secret](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
+|`SWIYU_STATUS_REGISTRY_ACCESS_TOKEN`|Access token from [Status Registry API ACCESS Token](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
+|`SWIYU_STATUS_REGISTRY_BOOTSTRAP_REFRESH_TOKEN`| Refresh token from [Status Registry API Refresh Token](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
+|`SWIYU_STATUS_REGISTRY_TOKEN_URL`|[OAuth Refresh URL](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#authenticate-with-oauth2)|https://keymanager-prd.api.admin.ch/keycloak/realms/APIGW/protocol/openid-connect/token|
+|`SWIYU_STATUS_REGISTRY_API_URL`|[Status Registry Base URL](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#base-urls)|https://status-reg-api.trust-infra.swiyu-int.admin.ch|
+|`EXTERNAL_URL`| URL of the issuer-agent-oid4vci service | |
+|`DID_SDJWT_VERIFICATION_METHOD`| Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! | did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124#assert-key-02 |
+|`SDJWT_KEY`| EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_SDJWT_VERIFICATION_METHOD` | |
 
 <div class="notice--warning">
   ⚙️ The generated pem .didtoolbox/assert-key-01 fille will be referenced as "assert-key-01"
@@ -82,7 +82,7 @@ Once the swiyu-issuer is up and running you need to initialize the status list o
 
 **Request to create and initialize a status list slot**
 
-In order to create an offer first you have to initialize a status list. Please store the statusRegistryUrl as it is needed in later steps and will be referenced as $STATUS_REGISTRY_URL.
+In order to create an offer first you have to initialize a status list. Please, store the value of "statusRegistryUrl" response field, as it is needed in later steps and will be referenced as $STATUS_REGISTRY_URL.
 
 <div class="notice--warning">
   The maximum file size of the status list is currently 200kB. (Subject to evaluation and might change after public beta).
@@ -104,13 +104,13 @@ curl -X 'POST' \
 This results in a response like:
 
 <div class="notice--warning">
-  ⚙️ Please store the $STATUS_REGISTRY_URL from "statusRegistryUrl" as it is required later in the Issue Credential call.
+  ⚙️ Please, store the concrete value of "statusRegistryUrl" response field into shell variable STATUS_REGISTRY_URL, as it is required later in the Issue Credential call.
 </div>
 
 ```json
 {
-  "id": "$STATUS_LIST_ID",
-  "statusRegistryUrl": "your new $STATUS_REGISTRY_URL",
+  "id": "${STATUS_LIST_ID}",
+  "statusRegistryUrl": "${STATUS_REGISTRY_URL}",
   "type": "TOKEN_STATUS_LIST",
   "maxListEntries": 100000,
   "remainingListEntries": 100000,
@@ -126,12 +126,11 @@ This results in a response like:
 ## Issue credential
 
 <div class="notice--warning">
-  ⚙️ Please update the statusRegistryUrl with your newly created $STATUS_REGISTRY_URL from the response above.
+  ⚙️ ${STATUS_REGISTRY_URL} in the command below is just a placeholder for the value of "statusRegistryUrl" present in the response above. Please, update the "curl" command accordingly.
 </div>
 
 ```bash
-curl -X 'POST' \
-  'http://localhost:8080/management/api/credentials' \
+curl -X 'POST' 'http://localhost:8080/management/api/credentials' \
   -H 'Content-Type: application/json' \
   -d '{
   "metadata_credential_supported_id": [
@@ -146,26 +145,67 @@ curl -X 'POST' \
   "credential_valid_until": "2030-01-01T19:23:24Z",
   "credential_valid_from": "2025-01-01T18:23:24Z",
   "status_lists": [
-    $STATUS_REGISTRY_URL
+    "${STATUS_REGISTRY_URL}"
   ]
 }'
 ```
 
-With Response:
+The request above should produce the following response (the placeholders `${CREDENTIAL_ID}` and `${SWIYU_OFFER_DEEPLINK}` denote concrete values):
 
 ```json
-
-  "management_id": "$MANAGEMENT_ID",
-  "offer_deeplink": "$SWIYU_OFFER_DEEPLINK"
+{
+  "management_id": "${CREDENTIAL_ID}",
+  "offer_deeplink": "${SWIYU_OFFER_DEEPLINK}"
 }
+```
 
+💡On Linux/MacOS, the shell variables `CREDENTIAL_ID` and `SWIYU_OFFER_DEEPLINK` may also be set automatically by combining
+the `curl` command above with commands like [`jq`](https://jqlang.org/) und [`qrencode`](https://formulae.brew.sh/formula/qrencode)
+thus building an _one-liner_ like this:
+```bash
+source <(curl -s \
+  -X 'POST' 'http://localhost:8080/management/api/credentials' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "metadata_credential_supported_id": [
+    "my-test-vc"
+  ],
+  "credential_subject_data": {
+    "given_name": "Test FirstName",
+    "family_name": "Test LastName",
+    "birth_date": "01.01.2025"
+  },
+  "offer_validity_seconds": 86400,
+  "credential_valid_until": "2030-01-01T19:23:24Z",
+  "credential_valid_from": "2025-01-01T18:23:24Z",
+  "status_lists": [
+    "${STATUS_REGISTRY_URL}"
+  ]
+}' | jq -r '"CREDENTIAL_ID="+.management_id+"\nSWIYU_OFFER_DEEPLINK=\""+.offer_deeplink+"\"\necho\necho $SWIYU_OFFER_DEEPLINK | qrencode -t ANSIUTF8"')
+```
+Thanks to [`qrencode`](https://formulae.brew.sh/formula/qrencode) command, the _one-liner_ above would also render
+a deep-link QR code (for swiyu-Wallet app) directly in terminal, assuming a terminal supports image rendering
+(e.g. [iTerm2](https://iterm2.com/documentation-images.html)).
+
+Anyhow, once the shell variable `CREDENTIAL_ID` is set, querying status is straightforward:
+
+```bash
+curl -X 'GET' "http://localhost:8080/management/api/credentials/${CREDENTIAL_ID}/status"
+```
+
+which should produce the response:
+
+```json
+{
+  "status": "OFFERED"
+}
 ```
 
 <div class="notice--warning">
-  ⚙️ Please store the $MANAGEMENT_ID of the response as the value is required in the "Update Status" call.
+  ⚙️ Please, store the value of "management_id" response field into shell variable CREDENTIAL_ID, as the value is required in the "Update Status" call.
 </div>
 
-To check the result, create a qr code from the resulting offer_deeplink, which then can be scanned with the swiyu wallet.
+To check the result, create a deep-link QR code from the resulting `offer_deeplink`, which then can be scanned with the swiyu-Wallet app.
 
 ## Update status
 
@@ -173,20 +213,20 @@ You can set the following status: `CANCELLED`, `READY`, `ISSUED`, `SUSPENDED`, `
 Using the Issuer Management service the status can be updated
 
 <div class="notice--warning">
-  ⚙️ Please update the credentialID below with the correct id received from the issue credential call.
+  ⚙️ Please, ensure the shell variable CREDENTIAL_ID has already been set accordingly (see above).
 </div>
 
 ```bash
-curl -X 'PATCH' http://localhost:8080/management/api/credentials/{$CREDENTIAL_ID}/status?credentialStatus=CANCELLED
+curl -X 'PATCH' http://localhost:8080/management/api/credentials/${CREDENTIAL_ID}/status?credentialStatus=CANCELLED
 ```
 
 The response then looks like:
 
 ```json
 {
-  "id": "$CREDENTIAL_ID",
+  "id": "${CREDENTIAL_ID}",
   "status": "CANCELLED"
-
+}
 ```
 
 # Development instructions

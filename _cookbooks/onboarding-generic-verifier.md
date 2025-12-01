@@ -35,16 +35,16 @@ This software is a web server implementing the technical standards as specified 
 
 ## Set the environment variables
 
-A sample compose file can be found in [sample.compose.yml](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/sample.compose.yml) file. You also need to configure a list of environment variables in the `.env` file and adapt the
+A sample compose file can be found in [`sample.compose.yml`](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/sample.compose.yml) file. You also need to configure a list of environment variables in the `.env` file and adapt the
 [verifier metadata](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/sample.compose.yml#L40) to your use case.
 The metadata information will be provided to the holder on a dedicated endpoint (`/oid4vp/api/openid-client-metadata.json`) serving as metadata information of your verifier.
 
-| Name                    | Description                                                                                                                                                                                                                                                                                         | Example                                                                                                                                                          |
-| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| EXTERNAL_URL            | This will be used to build the correct verification_deeplink (You must provide the /oid4vp endpoints there) -> must use https-protocol otherwise the wallet will refuse to connect.                                                                                                                 |                                                                                                                                                                  |
-| VERIFIER_DID            | DID you created during the [onboarding](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)                                                                                                                     | did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124             |
-| DID_VERIFICATION_METHOD | Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) method | did:tdw:Qmd9bwsodZ1GAz4h8D7Vy6qRio78voXifDrnXokSTsMVQK:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:18fa7c77-9dd1-4e20-a147-fb1bec146085#auth-key-01 |
-| SIGNING_KEY             | EC Private key, which can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the DID_VERIFICATION_METHOD                    |
+| Name                      | Description                                                                                                                                                                                                                                                                                         | Example                                                                                                                                                          |
+|---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `EXTERNAL_URL`            | This will be used to build the correct verification_deeplink (You must provide the /oid4vp endpoints there) -> must use https-protocol otherwise the wallet will refuse to connect.                                                                                                                 |                                                                                                                                                                  |
+| `VERIFIER_DID`            | DID you created during the [onboarding](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)                                                                                                                     | did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124             |
+| `DID_VERIFICATION_METHOD` | Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) method | did:tdw:Qmd9bwsodZ1GAz4h8D7Vy6qRio78voXifDrnXokSTsMVQK:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:18fa7c77-9dd1-4e20-a147-fb1bec146085#auth-key-01 |
+| `SIGNING_KEY`             | EC Private key, which can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_VERIFICATION_METHOD`                  |
 
 Please note that by default configuration the verifier service is set up in a way to easily gain experience with the verification process, not as a productive deployment. For additional information how to securely deploy the swiyu-verifier check out the [Deployment considerations](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/README.md#deployment-considerations) in the readme.
 
@@ -72,12 +72,13 @@ The following request can be performed by using the [swagger endpoint](http://lo
 </div>
 
 ```bash
-curl -X POST \
+curl -X 'POST' 'http://localhost:8083/management/api/verifications' \
   -H "Content-Type: application/json" \
   -d '{
     "accepted_issuer_dids": [
-        "did:tdw:QmPEZPhDFR4nEYSFK5bMnvECqdpf1tPTPJuWs9QrMjCumw:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:9a5559f0-b81c-4368-a170-e7b4ae424527"
+        "${VERIFICATION_ID}"
     ],
+    "response_mode": "direct_post",
     "presentation_definition": {
         "id": "00000000-0000-0000-0000-000000000000",
         "input_descriptors": [
@@ -114,17 +115,16 @@ curl -X POST \
             }
         ]
     }
-}' \
-http://localhost:8083/management/api/verifications
+}'
 ```
 
 <div class="notice--warning">
-  ⚙️ Please store the id of the response as the value is required in the "Get the verification result" call referenced as "$VERIFICATION_ID".
+  ⚙️ Please, store the value of "id" field from the response above into shell variable VERIFICATION_ID, as the is required in the "Get the verification result" call.
 </div>
 
 **Response**
 
-The response contains a verification_deeplink which points to the verification request, that you have created. To use the link, create a qr code from the verification_deeplink and scan it with the swiyu app.
+The response contains a "verification_deeplink" field which points to the verification request, that you have created. To use the link, create a deep-link QR code from the "verification_deeplink" response field and scan it with the swiyu-Wallet app.
 
 ```json
 {
@@ -164,12 +164,66 @@ The response contains a verification_deeplink which points to the verification r
 }
 ```
 
+💡 On Linux/MacOS, the shell variables `VERIFICATION_ID`,`VERIFICATION_URL` and `VERIFICATION_DEEPLINK` may also be set automatically by combining
+the `curl` command above with commands like [`jq`](https://jqlang.org/) und [`qrencode`](https://formulae.brew.sh/formula/qrencode)
+thus building an _one-liner_ like this:
+```bash
+source <(curl -s \
+  -X 'POST' 'http://localhost:8083/management/api/verifications' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "accepted_issuer_dids": [
+    "${VERIFICATION_ID}"
+  ],
+  "response_mode": "direct_post",
+  "presentation_definition": {
+    "id": "00000000-0000-0000-0000-000000000000",
+    "input_descriptors": [
+        {
+            "id": "11111111-1111-1111-1111-111111111111",
+            "format": {
+                "vc+sd-jwt": {
+                    "sd-jwt_alg_values": [
+                        "ES256"
+                    ],
+                    "kb-jwt_alg_values": [
+                        "ES256"
+                    ]
+                }
+            },
+            "constraints": {
+                "fields": [
+                    {
+                        "path": [
+                            "$.vct"
+                        ],
+                        "filter": {
+                            "type": "string",
+                            "const": "betaid-sdjwt"
+                        }
+                    },{
+                        "path": [
+                            "$.age_over_18"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+  }
+}' | jq -r '"VERIFICATION_ID="+.id+"\nVERIFICATION_URL="+.verification_url+"\nVERIFICATION_DEEPLINK=\""+.verification_deeplink+"\"\necho\necho $VERIFICATION_DEEPLINK | qrencode -t ansiutf8"')
+```
+Thanks to [`qrencode`](https://formulae.brew.sh/formula/qrencode) command, the _one-liner_ above would also render
+a deep-link QR code (for swiyu-Wallet app) directly in terminal, assuming a terminal supports image rendering
+(e.g. [iTerm2](https://iterm2.com/documentation-images.html)).
+
 ## Get the verification result
 
 **Request**
 
 <div class="notice--warning">
-  ⚙️ This is an example for the sample environment. Please replace the $VERIFICATION_ID with the actual id of the verification.
+  ⚙️ This is an example for the sample environment. Please, replace the placeholder ${VERIFICATION_ID} with the actual ID of the verification, or just ensure the shell variable VERIFICATION_ID has already been set accordingly.
 </div>
 
 ```bash
