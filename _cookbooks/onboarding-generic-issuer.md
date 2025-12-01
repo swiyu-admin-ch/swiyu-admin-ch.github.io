@@ -27,8 +27,8 @@ This software is a web server implementing the technical standards as specified 
 > Please make sure that you did the following before starting the deployment:
 >
 > - Registered yourself on the swiyu Trust Infrastructure portal
-> - Registered yourself on the api self service portal
-> - Generated the signing keys file with the didtoolbox.jar
+> - Registered yourself on the API self-service portal
+> - Generated signing keys using the `didtoolbox.jar`
 > - Generated a DID which is registered on the identifier registry
 >
 > The required steps are explained in the [Base- and Trust Registry Cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/)
@@ -72,7 +72,7 @@ The latest images are available here:
 
 ## Create a verifiable credential schema
 
-In order to support your use case you need to adapt the issuer_metadata (see [sample.compose.yml](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/sample.compose.yml#L76)).
+In order to support your use case you need to adapt the issuer_metadata (see [`sample.compose.yml`](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/sample.compose.yml#L76)).
 Those metadata define the appearance of the credential in the wallet and defines what kind of credential formats are supported.
 For further information consult the [VC visual presentation cookbook](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation/).
 
@@ -82,7 +82,7 @@ Once the swiyu-issuer is up and running you need to initialize the status list o
 
 **Request to create and initialize a status list slot**
 
-In order to create an offer first you have to initialize a status list. Please, store the value of "statusRegistryUrl" response field, as it is needed in later steps and will be referenced as $STATUS_REGISTRY_URL.
+In order to create an offer first you have to initialize a status list. Please, store the value of `"statusRegistryUrl"` response field, as it is needed in later steps and will be referenced as `${STATUS_REGISTRY_URL}`.
 
 <div class="notice--warning">
   The maximum file size of the status list is currently 200kB. (Subject to evaluation and might change after public beta).
@@ -159,7 +159,7 @@ The request above should produce the following response (the placeholders `${CRE
 }
 ```
 
-💡On Linux/MacOS, the shell variables `CREDENTIAL_ID` and `SWIYU_OFFER_DEEPLINK` may also be set automatically by combining
+💡On Linux/macOS, the shell variables `CREDENTIAL_ID` and `SWIYU_OFFER_DEEPLINK` may also be set automatically by combining
 the `curl` command above with commands like [`jq`](https://jqlang.org/) und [`qrencode`](https://formulae.brew.sh/formula/qrencode)
 thus building an _one-liner_ like this:
 ```bash
@@ -205,7 +205,7 @@ which should produce the response:
   ⚙️ Please, store the value of <code>"management_id"</code> response field into shell variable <code>CREDENTIAL_ID</code>, as the value is required in the "Update Status" call.
 </div>
 
-To check the result, create a deep-link QR code from the resulting `offer_deeplink` field, which then can be scanned with the swiyu-Wallet app.
+To check the result, create a deep-link QR code from the resulting `"offer_deeplink"` field, which then can be scanned with the swiyu-Wallet app.
 
 ## Update status
 
