@@ -35,7 +35,7 @@ This software is a web server implementing the technical standards as specified 
 
 ## Set the environment variables
 
-A sample compose file for an entire setup of both components and a database can be found in [sample.compose.yml](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/sample.compose.yml) file. You will need to configure a list of environment variables in the `.env` file.
+A sample compose file for an entire setup of both components and a database can be found in [`sample.compose.yml`](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/sample.compose.yml) file. You will need to configure a list of environment variables in the `.env` file.
 
 ### Issuer Agent Management
 
@@ -59,7 +59,7 @@ A sample compose file for an entire setup of both components and a database can 
 |`SDJWT_KEY`| EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_SDJWT_VERIFICATION_METHOD` | |
 
 <div class="notice--warning">
-  ⚙️ The generated pem .didtoolbox/assert-key-01 fille will be referenced as "assert-key-01"
+  ⚙️ The generated PEM file <code>.didtoolbox/assert-key-01</code> will be referenced as <code>"assert-key-01"</code>
 </div>
 
 Please note that by default configuration the issuer service is set up in a way to easily gain experience with the issuance process, not as a productive deployment. For additional information how to securely deploy the swiyu-issuer check out the [Deployment considerations](https://github.com/swiyu-admin-ch/swiyu-issuer?tab=readme-ov-file#deployment-considerations) in the readme.
@@ -104,7 +104,7 @@ curl -X 'POST' \
 This results in a response like:
 
 <div class="notice--warning">
-  ⚙️ Please, store the concrete value of "statusRegistryUrl" response field into shell variable STATUS_REGISTRY_URL, as it is required later in the Issue Credential call.
+  ⚙️ Please, store the concrete value of <code>"statusRegistryUrl"</code> response field into shell variable <code>STATUS_REGISTRY_URL</code>, as it is required later in the Issue Credential call.
 </div>
 
 ```json
@@ -126,7 +126,7 @@ This results in a response like:
 ## Issue credential
 
 <div class="notice--warning">
-  ⚙️ ${STATUS_REGISTRY_URL} in the command below is just a placeholder for the value of "statusRegistryUrl" present in the response above. Please, update the "curl" command accordingly.
+  ⚙️ <code>${STATUS_REGISTRY_URL}</code> in the command below is just a placeholder for the value of <code>"statusRegistryUrl"</code> present in the response above. Please, update the <code>curl</code> command accordingly.
 </div>
 
 ```bash
@@ -202,10 +202,10 @@ which should produce the response:
 ```
 
 <div class="notice--warning">
-  ⚙️ Please, store the value of "management_id" response field into shell variable CREDENTIAL_ID, as the value is required in the "Update Status" call.
+  ⚙️ Please, store the value of <code>"management_id"</code> response field into shell variable <code>CREDENTIAL_ID</code>, as the value is required in the "Update Status" call.
 </div>
 
-To check the result, create a deep-link QR code from the resulting `offer_deeplink`, which then can be scanned with the swiyu-Wallet app.
+To check the result, create a deep-link QR code from the resulting `offer_deeplink` field, which then can be scanned with the swiyu-Wallet app.
 
 ## Update status
 
@@ -213,7 +213,7 @@ You can set the following status: `CANCELLED`, `READY`, `ISSUED`, `SUSPENDED`, `
 Using the Issuer Management service the status can be updated
 
 <div class="notice--warning">
-  ⚙️ Please, ensure the shell variable CREDENTIAL_ID has already been set accordingly (see above).
+  ⚙️ Please, ensure the shell variable <code>CREDENTIAL_ID</code> has already been set accordingly (see above).
 </div>
 
 ```bash

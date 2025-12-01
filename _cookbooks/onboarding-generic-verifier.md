@@ -119,7 +119,7 @@ curl -X 'POST' 'http://localhost:8083/management/api/verifications' \
 ```
 
 <div class="notice--warning">
-  ⚙️ Please, store the value of "id" field from the response above into shell variable VERIFICATION_ID, as the is required in the "Get the verification result" call.
+  ⚙️ Please, store the value of <code>"id"</code> field from the response above into shell variable <code>VERIFICATION_ID</code>, as the is required in the "Get the verification result" call.
 </div>
 
 **Response**
@@ -223,7 +223,7 @@ a deep-link QR code (for swiyu-Wallet app) directly in terminal, assuming a term
 **Request**
 
 <div class="notice--warning">
-  ⚙️ This is an example for the sample environment. Please, replace the placeholder ${VERIFICATION_ID} with the actual ID of the verification, or just ensure the shell variable VERIFICATION_ID has already been set accordingly.
+      ⚙️ This is an example for the sample environment. Please, replace the placeholder <code>${VERIFICATION_ID}</code> with the actual ID of the verification, or just ensure the shell variable <code>VERIFICATION_ID</code> has already been set accordingly.
 </div>
 
 ```bash
