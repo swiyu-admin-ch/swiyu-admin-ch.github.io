@@ -27,8 +27,8 @@ This software is a web server implementing the technical standards as specified 
 > Please make sure that you did the following before starting the deployment:
 >
 > - Registered yourself on the swiyu Trust Infrastructure portal
-> - Registered yourself on the api self service portal
-> - Generated the signing keys with the didtoolbox.jar
+> - Registered yourself on the API self-service portal
+> - Generated signing keys using `didtoolbox.jar`
 > - Generated a DID which is registered on the identifier registry
 >
 > The required steps are explained in the [Base- and Trust Registry Cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/)
@@ -56,7 +56,7 @@ The latest image is available here:
 
 ## Creating a verification
 
-> For a detailed understanding of the verfication process and the data structure of verification please consult the [Verification Documentation](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/documentation/verification_process.md)
+> For a detailed understanding of the verification process and the data structure of verification please consult the [Verification Documentation](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/documentation/verification_process.md)
 > More details about the DIF presentation exchange can be found [here](https://identity.foundation/presentation-exchange/#presentation-definition).
 
 Once the service is deployed you can create your first verification request. For this you first need to define a presentation
@@ -124,7 +124,7 @@ curl -X 'POST' 'http://localhost:8083/management/api/verifications' \
 
 **Response**
 
-The response contains a "verification_deeplink" field which points to the verification request, that you have created. To use the link, create a deep-link QR code from the "verification_deeplink" response field and scan it with the swiyu-Wallet app.
+The response contains a `"verification_deeplink"` field which points to the verification request, that you have created. To use the link, create a deep-link QR code from the `"verification_deeplink"` response field and scan it with the swiyu-Wallet app.
 
 ```json
 {
@@ -164,9 +164,9 @@ The response contains a "verification_deeplink" field which points to the verifi
 }
 ```
 
-💡 On Linux/MacOS, the shell variables `VERIFICATION_ID`,`VERIFICATION_URL` and `VERIFICATION_DEEPLINK` may also be set automatically by combining
+💡 On Linux/macOS, the shell variables `VERIFICATION_ID`,`VERIFICATION_URL` and `VERIFICATION_DEEPLINK` may also be set automatically by combining
 the `curl` command above with commands like [`jq`](https://jqlang.org/) und [`qrencode`](https://formulae.brew.sh/formula/qrencode)
-thus building an _one-liner_ like this:
+thus building a _one-liner_ like this:
 ```bash
 source <(curl -s \
   -X 'POST' 'http://localhost:8083/management/api/verifications' \
