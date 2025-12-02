@@ -1,5 +1,7 @@
 ---
 title: Release Announcements swiyu Public Beta October 2025
+categories:
+  - PublicBeta
 ---
 
 We would like to give an update about the latest releases in the different repositories. Since our first announcement we fixed some issues raised by the community as well as security findings from internal pentests. We also took further steps related to the [Expand-Migrate-Contract](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) pattern to avoid breaking changes. For a more detailed view please refer to the CHANGELOG in each repository.
