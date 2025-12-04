@@ -6,7 +6,7 @@ categories:
 
 Some components of the swiyu Public Beta Trust Infrastructure got new releases or will get a new version in the next days we would like you to inform about.
 
-## Upcoming: New versions for [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) and [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) wallets: 
+## Upcoming: New versions for [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) and [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) wallets
 - Expand step for Android wallet to [allow "jwk" in "cryptographic_binding_methods_supported"](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/50)
 - Contract step for iOS wallet to [remove support for malformed "cnf" claim](https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/8)
 - Feature: [Activity List in swiyu wallets](https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/15)
@@ -28,8 +28,10 @@ Please note: New versions marked as "pre-release" may be not in-sync with the Pu
   
 ## Generic Issuer [swiyu-issuer version 2.2.0](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/2.2.0) 
 - Fixed: [Possibly invalid credentials on bad usage](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/52)
-- Expand: Credential endpoint.....
-- Other minor fixes and improvements as mentioned in the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md)
+- Fixed offers in status DEFERRED or READY expire when the offer_expiration_timestamp has passed
+- The SWIYU_STATUS_REGISTRY_AUTH_ENABLE_REFRESH_TOKEN_FLOW is now in the application.yaml set to true, as advertised as default behaviour in the readme.
+- Updated ApiErrorDto and reused it for every error response to allow for a more consistent error response structure.
+- For the complete overview, please refer to the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md)
 
 Please note: This version is not yet pentested and thus not marked as "latest". The [contract step for "Token endpoint expected x-www-form-urlencoded"](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/112) is in our backlog and will be planned for an upcoming sprint. 
 
@@ -50,6 +52,6 @@ Please note: This version is not yet pentested and thus not marked as "latest".
 - [Getting started with the swiyu Generic Issuer](https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/) has been updated to match the new swiyu-issuer repository
 - [Getting started with the swiyu Generic Verifier](https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/) has been updated to match the new swiyu-verifier repository
 
-Thanky you all for your patience during the migration phase of the Generic Issuer- and Verifier-repositories and your constructive feedback how we might [improve the developer experience](https://github.com/swiyu-admin-ch/swiyu-verifier/issues/79). It's also great to see how the community engages and how you help each other. 
+Thank you all for your patience during the migration phase of the Generic Issuer- and Verifier-repositories and your constructive feedback how we might [improve the developer experience](https://github.com/swiyu-admin-ch/swiyu-verifier/issues/79). It's also great to see how the community engages and how you help each other. 
 
 
