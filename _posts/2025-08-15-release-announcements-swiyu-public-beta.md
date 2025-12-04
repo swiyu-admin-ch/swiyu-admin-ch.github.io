@@ -1,3 +1,7 @@
+---
+title: Release announcements swiyu Public Beta August 2025
+---
+
 With the upcoming releases in the different repositories we will fix some issues raised by the community and deliver also features from the initial gaps of the swiyu Public Beta Trust Infrastructure.  We also announce first steps related to the [Expand-Migrate-Contract](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) pattern to avoid breaking changes. For a more detailled view please refer to the CHANGELOG.md in each repository.
 
 ## swiyu wallet: [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) Version 1.7.3; [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) Version 1.8.1 

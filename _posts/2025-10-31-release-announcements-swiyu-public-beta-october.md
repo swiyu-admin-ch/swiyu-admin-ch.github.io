@@ -1,7 +1,12 @@
+---
+title: Release Announcements swiyu Public Beta October 2025
+categories:
+  - PublicBeta
+---
 
 We would like to give an update about the latest releases in the different repositories. Since our first announcement we fixed some issues raised by the community as well as security findings from internal pentests. We also took further steps related to the [Expand-Migrate-Contract](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) pattern to avoid breaking changes. For a more detailed view please refer to the CHANGELOG in each repository.
 
-## swiyu wallet: [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) Version 1.10.0; [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) Version 1.21.1
+## swiyu wallet: [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) Version 1.10.0; [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) Version 1.12.1
 
 - Expand step for ["vct" property in credential request](https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/10) (iOS)  
 - Fix: [Credential offer URL decoded twice](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/17)
