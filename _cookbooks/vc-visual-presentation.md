@@ -39,7 +39,7 @@ In the swiyu wallet app, verifiable credentials (VC) are visually represented as
 - the displayed complementary info of the credential
 - attributes of the credential
 
-All these visible or readible features are set and configured by the issuer/verifier in his metadata. 
+All these visibility or readability features are set and configured by the issuer/verifier in their metadata. 
 
 Below is an example of how various credentials are displayed in different situations in the swiyu app.
 
@@ -103,7 +103,7 @@ verifier_client_metadata.json: |
 "locale": "de"
 ```
 
-All following definitions can be localed. The swiyu app supports the following languages: DE, FR, IT, EN, RM.
+All following definitions can be localised. The swiyu app supports the following languages: DE, FR, IT, EN, RM.
 
 If none of these languages are given in the credential, the first definition of metadata is taken.
 
@@ -182,7 +182,7 @@ The VC supports multilingual settings. This means the logo can be defined per la
 
 ### Issuer Logo
 
-The issuer's logo is part of the OID-Metadata and will be used for the credential offer screen and in the detailview of the credential.
+The issuer's logo is part of the OID-Metadata and will be used for the credential offer screen and in the detail view of the credential.
 
 [![issuer logo](../../assets/images/vc_issuer_logo.png)](../../assets/images/vc_issuer_logo.png)
 
@@ -285,7 +285,7 @@ To manage the display-order in the credential, use the order array in the metada
 
 ## Useful hints
 
-- Currently, the data sets or attributes are displayed in the credential detail view exactly as defined at the VC schema level. The ability to customise the ordering or grouping of these data sets will be available once the OCA layer is implemented.
+- Currently, the datasets or attributes are displayed in the credential detail view exactly as defined at the VC schema level. The ability to customise the ordering or grouping of these datasets will be available once the OCA layer is implemented.
 - The OCA (information overlay) is planned to be deployed at a later date in 2025.
 - Multilingualism: swiyu app currently supports 5 languages (German, French, Italian, Rumantsch, English)
 
@@ -303,11 +303,10 @@ For the swiyu app, no. The maximum supported size for logos/icons is 512×512 pi
 **Can I use different background and logo colors for different languages?**
 Yes. The system supports localization. You can define a background color and a logo/icon for each language.
 
-**Can I use a image instead of a background color?**
+**Can I use an image instead of a background color?**
 No. To ensure contrast and legibility, images are not supported.
 
 ## Further assistance
 
-Thank you for following these guidelines. By doing so, you help to ensure that your credentials are displaied correctly in the swiyu app and are easily recognisable to users. If you have any questions or require further assistance, please feel free to open an issue in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io).
-
+Thank you for following these guidelines. By doing so, you help to ensure that your credentials are displayed correctly in the swiyu app and are easily recognisable to users. If you have any questions or require further assistance, please feel free to open an issue in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io).
 
