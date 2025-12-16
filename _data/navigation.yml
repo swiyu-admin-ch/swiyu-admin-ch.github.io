@@ -40,7 +40,7 @@ specifications_sidebarmenu:
         url: /specifications/oca/
       
 threat-model_sidebarmenu:
-  - title: "Komponenten"
+  - title: "Components"
     url: /threat-model/
     children:
       - title: "Verifiable Credentials"
