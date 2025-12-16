@@ -400,8 +400,8 @@ curl -X PUT "https://status-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/status
 
 <pre>OK</pre>
 
-> **&#9432;** The maximum file size of the status list is currently 250kB. (Subject to evaluation and might change after public beta). <br>
-> This means one status list can hold 125.000 entries for revocation & suspension or 250.000 entries for revocation only.
+> **&#9432;** The maximum file size of the status list is currently 200kB. (Subject to evaluation and might change after public beta). <br>
+> This means one status list can hold 100.000 entries for revocation & suspension or 200.000 entries for revocation only.
 
 # <a name="become-a-trusted-participant"></a> 4. Become a trusted participant
 
