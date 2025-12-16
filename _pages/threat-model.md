@@ -1,9 +1,11 @@
 ---
 title: Threat Model
-permalink: /thread-model/
-toc: true
-toc_sticky: true
+permalink: /threat-model/
+collection: threat-model
+entries_layout: grid
+classes: wide
 ---
+
 
 # Introduction
 
@@ -42,5 +44,4 @@ STRIDE is a widely used framework for categorizing different types of security t
 - *D*enial of Service: Disrupting system availability to legitimate users.
 - *E*levation of Privilege: Gaining higher access rights than allowed.
 
-# Overview per Component
--> Hier Link auf Unterseiten
+# See Threats by Component
