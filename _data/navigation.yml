@@ -39,4 +39,17 @@ specifications_sidebarmenu:
       - title: "Overlays Capture Architecture"
         url: /specifications/oca/
       
-
+threat-model_sidebarmenu:
+  - title: "Komponenten"
+    url: /threat-model/
+    children:
+      - title: "Verifiable Credentials"
+        url: /threat-model/credentials/
+      - title: "Wallets"
+        url: /threat-model/wallets/
+      - title: "Issuer"
+        url: /threat-model/issuer/
+      - title: "Verifier"
+        url: /threat-model/verifier/
+      - title: "Regisitries"
+        url: /threat-model/registries/
