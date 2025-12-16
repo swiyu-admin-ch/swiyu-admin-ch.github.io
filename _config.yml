@@ -112,6 +112,7 @@ include:
   - _pages
   - _cookbooks
   - _specifications
+  - _threat-model
 exclude:
   - "*.sublime-project"
   - "*.sublime-workspace"
@@ -199,7 +200,7 @@ pagination:
     before: 2
     after: 2
 
-# Collection as an overview for the Cookbooks and Specifications
+# Collection as an overview for the Cookbooks, Specifications and Components of Threat Model
 collections:
   cookbooks:
     output: true
@@ -217,6 +218,15 @@ collections:
       - interoperability-profile.md
       - trust-protocol.md
       - oca.md
+  threat-model:
+    output: true
+    permalink: /:collection/:path/
+    order:
+      - vc.md
+      - wallet.md
+      - issuer.md
+      - verifier.md
+      - registries.md
            
 # Plugins (previously gems:)
 plugins:
@@ -314,3 +324,13 @@ defaults:
       sidebar:
         nav: "specifications_sidebarmenu"
       
+    #  _threat-model
+  - scope:
+      path: ""
+      type: threat-model
+    values:
+      layout: single
+      author_profile: false
+      share: false  
+      sidebar:
+        nav: "threat-model_sidebarmenu"
