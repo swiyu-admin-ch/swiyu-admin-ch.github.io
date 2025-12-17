@@ -225,7 +225,7 @@ collections:
       - wallet.md
       - issuer.md
       - verifier.md
-      - registrys.md
+      - registry.md
            
 # Plugins (previously gems:)
 plugins:
