@@ -43,13 +43,11 @@ threat-model_sidebarmenu:
   - title: "Components"
     url: /threat-model/
     children:
-      - title: "Verifiable Credentials"
-        url: /threat-model/credentials/
-      - title: "Wallets"
-        url: /threat-model/wallets/
+      - title: "Wallet"
+        url: /threat-model/wallet/
       - title: "Issuer"
         url: /threat-model/issuer/
       - title: "Verifier"
         url: /threat-model/verifier/
-      - title: "Regisitries"
-        url: /threat-model/registries/
+      - title: "Regisitry"
+        url: /threat-model/registry/
