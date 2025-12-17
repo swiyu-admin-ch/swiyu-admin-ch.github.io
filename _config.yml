@@ -222,11 +222,10 @@ collections:
     output: true
     permalink: /:collection/:path/
     order:
-      - vc.md
       - wallet.md
       - issuer.md
       - verifier.md
-      - registries.md
+      - registrys.md
            
 # Plugins (previously gems:)
 plugins:
