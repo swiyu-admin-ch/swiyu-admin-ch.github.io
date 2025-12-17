@@ -1,3 +1,11 @@
+---
+title: Identified Threats for the swiyu Registry
+header:
+  teaser: ../assets/images/cookbook_generic_issuer.jpg
+---
+
+todo: update image
+
 ### Registry
 | Summary | Description | STRIDE category | 
 |-----------|-------------|-------------|
