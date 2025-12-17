@@ -12,6 +12,8 @@ main:
     url: /specifications/
   - title: "Roadmap"
     url: /roadmap
+  - title: "Threat Model"
+    url: /threat-model
 
 cookbooks_sidebarmenu:
   - title: "Cookbooks"
