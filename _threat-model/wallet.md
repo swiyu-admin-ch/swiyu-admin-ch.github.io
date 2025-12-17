@@ -1,3 +1,11 @@
+---
+title: Identified Threats for the swiyu Wallet
+header:
+  teaser: ../assets/images/cookbook_generic_issuer.jpg
+---
+
+todo: update image
+
 ### Wallet
 | Summary | Description | STRIDE category | 
 |-----------|-------------|-------------|
