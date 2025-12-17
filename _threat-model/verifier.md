@@ -6,6 +6,7 @@ header:
 
 
 ### swiyu Generic Verifier
+
 | Summary | Description | STRIDE category | 
 |-----------|-------------|-------------|
 | Impersonated malicious / privileged actions | An attacker can impersonate an actor and get this issuer listed on the non-compliant list or revoked from the trust registry. | Spoofing (S), Denial of Service (D), Elevation of Privilege (E) |
