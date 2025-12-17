@@ -16,7 +16,7 @@
 | Holder denies leaking bound private key | A holder can deny leaking the private key. | Non-Repudiation (R) |
 | Holder (deliberately) looses / destroys device | A holder can deny having (deliberately) lost / destroyed the device. | Non-Repudiation (R) |
 | Supply Chain attack | We rely on libraries in our code. We thus also rely on their security. A malicious library can gain information, make our system unavailable, or execute code on our systems. | Information Disclosure (I), Denial of Service (D), Elevation of Privilege (E) |
-| Management endpoint is unprotected or publicly acessible | An attacker can reach the management endpoint without protection (e.g., mTLS) or is even publicly accessible.     Source: [https://github.com/swiyu-admin-ch/swiyu-issuer?tab=readme-ov-file#deployment-considerations]  !image-2025-12-05-16-13-23-112.png\|width=725,height=104! | Information Disclosure (I), Elevation of Privilege (E) |
+| Management endpoint is unprotected or publicly acessible | An attacker can reach the management endpoint without protection (e.g., mTLS) or is even publicly accessible.     ([Source](https://github.com/swiyu-admin-ch/swiyu-issuer?tab=readme-ov-file#deployment-considerations)) | Information Disclosure (I), Elevation of Privilege (E) |
 | An actor discloses the private key | An attacker can disclose the private key from an issuer. | Information Disclosure (I) |
 | Disclose access token | An attacker can disclose the access token / refresh token from an issuer. | Information Disclosure (I) |
 | Track issuer through side channel | An issuer can disclose information about the issuance through side channels (e.g., index in status list = number of VCs issued). | Information Disclosure (I) |
