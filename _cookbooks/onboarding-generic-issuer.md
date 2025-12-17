@@ -28,7 +28,7 @@ This software is a web server implementing the technical standards as specified 
 >
 > - Registered yourself on the swiyu Trust Infrastructure portal
 > - Registered yourself on the API self-service portal
-> - Generated signing keys using the `didtoolbox.jar`
+> - Generated signing keys e.g. using the `didtoolbox.jar`
 > - Generated a DID which is registered on the identifier registry
 >
 > The required steps are explained in the [Base- and Trust Registry Cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/)
@@ -47,14 +47,13 @@ A sample compose file for an entire setup of both components and a database can 
 |`EXTERNAL_URL`| This will be used to build the correct deeplink (You must provide the /oid4vci and .well-known endpoints at this) -> must use https-protocol otherwise the wallet will refuse to connect. | |
 |`DID_STATUS_LIST_VERIFICATION_METHOD`|Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue)|did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124#assert-key-01|
 |`STATUS_LIST_KEY`|EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_STATUS_LIST_VERIFICATION_METHOD`|
-|`SWIYU_PARTNER_ID`|The partner id you created in the[swiyu Trust Infrastructure business partner ID](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#business-partner-registration)|d33fab52-1657-4240-9189-97c33b949739|
+|`SWIYU_PARTNER_ID`|The partner id you created in the [swiyu Trust Infrastructure business partner ID](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#business-partner-registration)|d33fab52-1657-4240-9189-97c33b949739|
 |`SWIYU_STATUS_REGISTRY_CUSTOMER_KEY`| Customer key from [Status Registry API Key](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)||
 |`SWIYU_STATUS_REGISTRY_CUSTOMER_SECRET`| Customer Secret from [Status Registry API Secret](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
 |`SWIYU_STATUS_REGISTRY_ACCESS_TOKEN`|Access token from [Status Registry API ACCESS Token](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
 |`SWIYU_STATUS_REGISTRY_BOOTSTRAP_REFRESH_TOKEN`| Refresh token from [Status Registry API Refresh Token](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#get-api-keys-to-access-swiyu-apis)|
 |`SWIYU_STATUS_REGISTRY_TOKEN_URL`|[OAuth Refresh URL](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#authenticate-with-oauth2)|https://keymanager-prd.api.admin.ch/keycloak/realms/APIGW/protocol/openid-connect/token|
 |`SWIYU_STATUS_REGISTRY_API_URL`|[Status Registry Base URL](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#base-urls)|https://status-reg-api.trust-infra.swiyu-int.admin.ch|
-|`EXTERNAL_URL`| URL of the issuer-agent-oid4vci service | |
 |`DID_SDJWT_VERIFICATION_METHOD`| Verification method, which can be taken from the did log response. The Verification Method must match the selected SIGNING_KEY! | did:tdw:QmejrSkusQgeM6FfA23L6NPoLy3N8aaiV6X5Ysvb47WSj8:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:ff8eb859-6996-4e51-a976-be1ca584c124#assert-key-02 |
 |`SDJWT_KEY`| EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_SDJWT_VERIFICATION_METHOD` | |
 
@@ -64,7 +63,7 @@ A sample compose file for an entire setup of both components and a database can 
 
 Please note that by default configuration the issuer service is set up in a way to easily gain experience with the issuance process, not as a productive deployment. For additional information how to securely deploy the swiyu-issuer check out the [Deployment considerations](https://github.com/swiyu-admin-ch/swiyu-issuer?tab=readme-ov-file#deployment-considerations) in the readme.
 
-The provided images can be used with arm based processors, but they are not optimized. For further information, please consult the [Development instructions section](#development-instructions).
+The provided images can be used with arm based processors, but they are not optimized. For further information, consult the [Development instructions section](#development-instructions).
 
 The latest images are available here:
 
@@ -82,7 +81,7 @@ Once the swiyu-issuer is up and running you need to initialize the status list o
 
 **Request to create and initialize a status list slot**
 
-In order to create an offer first you have to initialize a status list. Please, store the value of `"statusRegistryUrl"` response field, as it is needed in later steps and will be referenced as `${STATUS_REGISTRY_URL}`.
+It's recommended to store the value of `"statusRegistryUrl"` response field, as it is needed in later steps and will be referenced as `${STATUS_REGISTRY_URL}`.
 
 <div class="notice--warning">
   The maximum file size of the status list is currently 200kB. (Subject to evaluation and might change after public beta).
@@ -160,8 +159,8 @@ The request above should produce the following response (the placeholders `${CRE
 ```
 
 💡On Linux/macOS, the shell variables `CREDENTIAL_ID` and `SWIYU_OFFER_DEEPLINK` may also be set automatically by combining
-the `curl` command above with commands like [`jq`](https://jqlang.org/) und [`qrencode`](https://formulae.brew.sh/formula/qrencode)
-thus building an _one-liner_ like this:
+the `curl` command above with commands like [`jq`](https://jqlang.org/) and [`qrencode`](https://formulae.brew.sh/formula/qrencode)
+thus building a _one-liner_ like this:
 ```bash
 source <(curl -s \
   -X 'POST' 'http://localhost:8080/management/api/credentials' \
@@ -183,11 +182,9 @@ source <(curl -s \
   ]
 }' | jq -r '"CREDENTIAL_ID="+.management_id+"\nSWIYU_OFFER_DEEPLINK=\""+.offer_deeplink+"\"\necho\necho $SWIYU_OFFER_DEEPLINK | qrencode -t ANSIUTF8"')
 ```
-Thanks to [`qrencode`](https://formulae.brew.sh/formula/qrencode) command, the _one-liner_ above would also render
-a deep-link QR code (for swiyu-Wallet app) directly in terminal, assuming a terminal supports image rendering
-(e.g. [iTerm2](https://iterm2.com/documentation-images.html)).
+Thanks to [`qrencode`](https://formulae.brew.sh/formula/qrencode) command, the _one-liner_ above would also render a deep-link QR code (for swiyu-Wallet app) directly in terminal.
 
-Anyhow, once the shell variable `CREDENTIAL_ID` is set, querying status is straightforward:
+Once the shell variable `CREDENTIAL_ID` is set, querying status is straightforward:
 
 ```bash
 curl -X 'GET' "http://localhost:8080/management/api/credentials/${CREDENTIAL_ID}/status"
@@ -231,13 +228,13 @@ The response then looks like:
 
 # Development instructions
 
-Instructions for the development of the swiyu Generic Issuer can be found in the [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-issuer?tab=readme-ov-file#configuration).
+Instructions for the development of the swiyu Generic Issuer can be found in the [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-issuer?tab=readme-ov-file#development).
 
 ## Create Images for ARM based processors
 
 In order to optimize the image for arm based systems, you first have to check out the [repository](https://github.com/swiyu-admin-ch/swiyu-issuer).
 
-To create an image you to run the following command in both repositories to create local images of the services:
+To create an image you to run the following command in the repository to create a local images of the service:
 
 ```bash
 ./mvnw install:install-file -Dfile=lib/primusX-java11-2.4.4.jar -DgroupId=com.securosys.primus -DartifactId=jce -Dversion=2.4.4 -Dpackaging=jar spring-boot:build-image

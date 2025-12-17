@@ -28,7 +28,7 @@ This software is a web server implementing the technical standards as specified 
 >
 > - Registered yourself on the swiyu Trust Infrastructure portal
 > - Registered yourself on the API self-service portal
-> - Generated signing keys using `didtoolbox.jar`
+> - Generated signing keys e.g. using the `didtoolbox.jar`
 > - Generated a DID which is registered on the identifier registry
 >
 > The required steps are explained in the [Base- and Trust Registry Cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/)
@@ -68,7 +68,7 @@ The following request can be performed by using the [swagger endpoint](http://lo
 **Request**
 
 <div class="notice--warning">
-  The example above is only a bare minimum working example.
+  The example below is only a bare minimum working example.
 </div>
 
 ```bash
@@ -165,7 +165,7 @@ The response contains a `"verification_deeplink"` field which points to the veri
 ```
 
 💡 On Linux/macOS, the shell variables `VERIFICATION_ID`,`VERIFICATION_URL` and `VERIFICATION_DEEPLINK` may also be set automatically by combining
-the `curl` command above with commands like [`jq`](https://jqlang.org/) und [`qrencode`](https://formulae.brew.sh/formula/qrencode)
+the `curl` command above with commands like [`jq`](https://jqlang.org/) and [`qrencode`](https://formulae.brew.sh/formula/qrencode)
 thus building a _one-liner_ like this:
 ```bash
 source <(curl -s \
@@ -214,9 +214,8 @@ source <(curl -s \
   }
 }' | jq -r '"VERIFICATION_ID="+.id+"\nVERIFICATION_URL="+.verification_url+"\nVERIFICATION_DEEPLINK=\""+.verification_deeplink+"\"\necho\necho $VERIFICATION_DEEPLINK | qrencode -t ansiutf8"')
 ```
-Thanks to [`qrencode`](https://formulae.brew.sh/formula/qrencode) command, the _one-liner_ above would also render
-a deep-link QR code (for swiyu-Wallet app) directly in terminal, assuming a terminal supports image rendering
-(e.g. [iTerm2](https://iterm2.com/documentation-images.html)).
+
+💡Thanks to [`qrencode`](https://formulae.brew.sh/formula/qrencode) command, the _one-liner_ above would also render a deep-link QR code (for swiyu-Wallet app) directly in terminal.
 
 ## Get the verification result
 
@@ -234,13 +233,13 @@ curl -X GET \
 
 # Development instructions
 
-Instructions for the development of the swiyu Generic Verifier can be found in the [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/README.md).
+Instructions for the development of the swiyu Generic Verifier can be found in the [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-verifier?tab=readme-ov-file#development).
 
 ## Create Images for ARM based processors
 
-In order to optimize the image for arm based systems, you first have to check out the repository.
+In order to optimize the image for arm based systems, you first have to check out the [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-verifier).
 
-To create an image you to run the following command in both repositories to create local images of the services:
+To create an image you to run the following command in the repository to create a local images of the service:
 
 ```bash
 ./mvnw spring-boot:build-image

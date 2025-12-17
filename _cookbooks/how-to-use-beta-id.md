@@ -35,7 +35,7 @@ The service for obtaining a Beta-ID is open to anyone who is interested.
 **How to obtain a Beta-ID?**
 
 Anyone can create a Beta-ID on the [Beta Credential Service](https://www.bcs.admin.ch/bcs-web).
-It can also get verified and revocated directly from the platform. 
+It can also get verified and revoked directly from the platform. 
 
 **What information can be stored in the Beta-ID?**
 
@@ -216,7 +216,7 @@ That's it? With the Beta-ID yes, but the [swiyu Trust Infrastructure](https://sw
 
 Well,
 
-- don't take it as a official and valid identity credential for your productive business cases.
-- don't rely on the document_number. Also with the e-ID the document number is not a persistent identifier for the person and the value will change with each new Beta-ID for that person. The Beta-ID as the e-ID does not contain a persistend identifier for usage in private sectore use cases. Who ever needs such a persistent identifier: become an issuer and issue a credential with such an identifier yourself!
+- don't take it as an official and valid identity credential for your productive business cases.
+- don't rely on the document_number. Also with the e-ID the document number is not a persistent identifier for the person and the value will change with each new Beta-ID for that person. The Beta-ID as the e-ID does not contain a persistent identifier for usage in private sector use cases. Who ever needs such a persistent identifier: become an issuer and issue a credential with such an identifier yourself!
 - no need to reinvent the wheel: there are several open source components and libraries for issuers, verifiers and wallets available.
 - don't upload illegal picture materials and avoid using your personal data and picture if not necessarily needed. Please be aware that the verifier solutions where you share your data may not be as secure as productive environments, as they are often test or development systems.
