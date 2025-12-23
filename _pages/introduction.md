@@ -168,7 +168,7 @@ A credential lifecycle refers to the series of stages that a digital credential 
     </tbody>
 </table>
 
-# Trust
+## Trust by different means
 
 The swiyu Trust Infrastructure supports the development of trust between interacting parties by different means (e.g., by ensuring each issuer and verifier can be correctly identified and authorized within the registries). The following means are provided. 
 
