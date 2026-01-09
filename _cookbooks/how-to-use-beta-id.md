@@ -50,7 +50,7 @@ The rest of the Beta-ID data will solely be found in the wallet on which it has 
 
 The Beta-ID is a blueprint of the coming e-ID credential. All attribute definitions are equal to the e-ID credential.
 
-The complete credential schema and the precise concepts behind the attributes are published in Q2/2025 on the [interoperability platform I14Y](https://www.i14y.admin.ch/de/catalog/all) of the Confederation).
+The complete credential schema and the precise concepts behind the attributes will be published on the [interoperability platform I14Y](https://www.i14y.admin.ch/de/catalog/all) of the Confederation.
 
 Example of the issued SD-JWT credential
 
@@ -190,7 +190,7 @@ Example of the issued SD-JWT credential
 
 ## Use cases for the Beta-ID
 
-Every verifier having a system following the [standards of the swiyu ecosystem](https://swiyu-admin-ch.github.io/swiss-profile/) is able to verify Beta-IDs.
+Every verifier having a system following the [standards of the swiyu ecosystem](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/) is able to verify Beta-IDs.
 As the data in Beta-ID is only self-declared, the Beta-ID is an easy-to-create credential to test diverse use cases which need some kind of identity or person information.
 
 The Beta-ID can be used to build and test use cases that will in the future rely upon the verification of the official e-ID. Here are some examples:
