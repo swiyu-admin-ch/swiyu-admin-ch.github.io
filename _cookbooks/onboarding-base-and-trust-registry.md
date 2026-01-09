@@ -127,15 +127,15 @@ If you want to create a new access token without manual UI interaction you can u
 
 ### Base URLs
 
-<div class="notice--warning">
-  ⚙️ The status authoring URL will be referenced as SWIYU_STATUS_REGISTRY_API_URL, the identifier authoring URL as SWIYU_IDENTIFIER_REGISTRY_URL and the key manager as KEY_MANAGER.
-</div>
-
 Use the [Swagger Editor](https://editor.swagger.io/) for convenience.
 
 | Environment       | Identifier Authoring                                                                                            | Status Authoring                                                                                        | Key Manager                                                        |
 | ----------------- | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
 | swiyu Public Beta | [https://identifier-reg-api.trust-infra.swiyu-int.admin.ch](https://identifier-reg-api.trust-infra.swiyu-int.admin.ch/) | [https://status-reg-api.trust-infra.swiyu-int.admin.ch](https://status-reg-api.trust-infra.swiyu-int.admin.ch/) | [https://keymanager-prd.api.admin.ch](https://keymanager-prd.api.admin.ch) |
+
+<div class="notice--warning">
+  ⚙️ The identifier authoring URL will be referenced as SWIYU_IDENTIFIER_REGISTRY_URL, the status authoring URL as SWIYU_STATUS_REGISTRY_API_URL and the key manager as KEY_MANAGER.
+</div>
 
 In the next step you will need your business partner ID. You can find it in the **swiyu Trust Infrastructure** dashboard.
 
