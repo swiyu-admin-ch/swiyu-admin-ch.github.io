@@ -52,7 +52,8 @@ The Beta-ID is a blueprint of the coming e-ID credential. All attribute definiti
 
 The complete credential schema and the precise concepts behind the attributes will be published on the [interoperability platform I14Y](https://www.i14y.admin.ch/de/catalog/all) of the Confederation.
 
-Example of the issued SD-JWT credential
+<details markdown="1">
+<summary markdown="span">Example of the issued SD-JWT credential</summary>
 
 ```
 {
@@ -187,6 +188,7 @@ Example of the issued SD-JWT credential
   }
 }
 ```
+</details>
 
 ## Use cases for the Beta-ID
 
