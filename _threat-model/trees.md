@@ -1,3 +1,10 @@
+---
+title: Attack Trees
+header:
+  teaser: ../assets/images/cookbook_base_trust-registry.jpg
+---
+
+
 # 1 Ecosystem unavailable
 **Description**:  
 Nobody can use the swiyu Ecosystem including the e-ID if it is unavailable.  
