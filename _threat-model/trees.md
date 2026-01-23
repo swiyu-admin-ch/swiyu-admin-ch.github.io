@@ -13,7 +13,8 @@ header:
 |**Components** | Issuer, Registry, Verifier, Wallet  |
 
 ## 1.1 Unavailable Mobile Backend
-|**Description** | If the mobile backend is unavailable, high security credentials (that is required for hardware holder binding) cannot be issued anymore and new app versions can't longer be enforced. |  
+|**Description** | If the mobile backend is unavailable, high security credentials (that is required for hardware holder binding) cannot be issued anymore and new app versions can't longer be enforced. |
+|--------------|----------|
 | **Stride** | Denial of Service (D) | 
 | **Components** | Issuer, Wallet  |
 
