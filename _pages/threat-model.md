@@ -15,12 +15,12 @@ In the context of security, a threat is anything that has the potential to cause
 
 STRIDE is a widely used framework for categorizing different types of security threats. It helps teams systematically identify potential threats during the threat modeling process. The acronym STRIDE stands for six key threat categories:
 
-- *S*poofing: Pretending to be someone or something else to gain unauthorized access.
-- *T*ampering: Altering data or code to cause harm.
-- *R*epudiation: Denying an action or transaction, making it hard to prove accountability.
-- *I*nformation Disclosure: Exposing sensitive information to unauthorized parties.
-- *D*enial of Service: Disrupting system availability to legitimate users.
-- *E*levation of Privilege: Gaining higher access rights than allowed.
+- **S**poofing: Pretending to be someone or something else to gain unauthorized access.
+- **T**ampering: Altering data or code to cause harm.
+- **R**epudiation: Denying an action or transaction, making it hard to prove accountability.
+- **I**nformation Disclosure: Exposing sensitive information to unauthorized parties.
+- **D**enial of Service: Disrupting system availability to legitimate users.
+- **E**levation of Privilege: Gaining higher access rights than allowed.
 
 # Attack Trees
 
