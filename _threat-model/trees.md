@@ -8,6 +8,7 @@ header:
 # 1 Ecosystem unavailable
 
 |**Description** | Nobody can use the swiyu Ecosystem including the e-ID if it is unavailable.  |
+|--------------|----------|
 |**Stride** | Denial of Service (D)  |
 |**Components** | Issuer, Registry, Verifier, Wallet  |
 
