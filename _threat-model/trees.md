@@ -6,20 +6,15 @@ header:
 
 
 # 1 Ecosystem unavailable
-**Description**:  
-Nobody can use the swiyu Ecosystem including the e-ID if it is unavailable.  
-**Stride**:  
-Denial of Service (D)  
-**Components**:  
-Issuer, Registry, Verifier, Wallet  
+
+|**Description** | Nobody can use the swiyu Ecosystem including the e-ID if it is unavailable.  |
+|**Stride** | Denial of Service (D)  |
+|**Components** | Issuer, Registry, Verifier, Wallet  |
 
 ## 1.1 Unavailable Mobile Backend
-**Description**:  
-If the mobile backend is unavailable, high security credentials (that is required for hardware holder binding) cannot be issued anymore and new app versions can't longer be enforced.  
-**Stride**:  
-Denial of Service (D)  
-**Components**:  
-Issuer, Wallet  
+|**Description** | If the mobile backend is unavailable, high security credentials (that is required for hardware holder binding) cannot be issued anymore and new app versions can't longer be enforced. |  
+| **Stride** | Denial of Service (D) | 
+| **Components** | Issuer, Wallet  |
 
 ## 1.2 External services unavailable
 **Description**:  
