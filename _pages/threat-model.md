@@ -11,6 +11,14 @@ Threat modeling is a systematic approach used to identify, understand, and mitig
 
 In the context of security, a threat is anything that has the potential to cause harm to a system, asset, or organization. Threats can come from many sources — such as hackers, malware, natural disasters, or even human error — and they exploit vulnerabilities to compromise confidentiality, integrity, or availability. In our threat model we focus on human threat sources, and threat actors who for one reason or another seek to harm the trust infrastructure. The threat model concerns all components inside the swiyu Trust Infrastructure. 
 
+## Assumptions
+
+- We assume all attackers have bounded computation and bounded time. Therefore they don't have the capability to break cryptographic primitives. 
+- TLSv1.3 not breakable
+- TEE Strong enough to prevent remote key extraction
+- Operating System is trustworthy
+- Device is trustworthy
+
 # STRIDE Framework
 
 STRIDE is a widely used framework for categorizing different types of security threats. It helps teams systematically identify potential threats during the threat modeling process. The acronym STRIDE stands for six key threat categories:
