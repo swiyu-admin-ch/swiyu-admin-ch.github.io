@@ -23,7 +23,11 @@ Please note: This version is not yet pentested and thus not marked as "latest". 
 - Breaking! Either accepted_issuer_dids or trust_anchors must contain a value. The list itself cannot be empty, as this would implicate that nothing is trusted. This is to improve security by avoiding misconfigurations that would lead to accepting any issuer.
 - Status list resolving does no longer accept http urls for status lists. Only https urls are allowed now.
 
+- https://github.com/swiyu-admin-ch/swiyu-verifier/issues/90 ??
+
 - Other minor fixes and improvements, as you can read in the [changelog](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/CHANGELOG.md)
+
+?? 
 
 Please note: This version is not yet pentested and thus not marked as "latest".
 
