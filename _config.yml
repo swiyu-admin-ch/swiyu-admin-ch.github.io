@@ -200,6 +200,7 @@ pagination:
     after: 2
 
 # Collection as an overview for the Cookbooks and Specifications
+
 collections:
   cookbooks:
     output: true
