@@ -462,6 +462,7 @@ We use attack trees to visualize and structure the threat model. Attack trees gi
 | **Components** | Issuer, Registry, Verifier, Wallet |
 
 ### 5.3 Deny sending message
+
 | **Description** | A participant can deny ever sending a message to some communication partner |
 |:--------------|:----------|
 | **Stride** | Non-Repudiation (R) |
