@@ -44,6 +44,12 @@ feature_row:
     url: "/roadmap/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
+  - image_path: /assets/images/docs_threat-model.jpg
+    #title: "Threat Model"
+    excerpt: "Learn about our threat model and the identified attack trees for the swiyu Trust Infrastructure"
+    url: "/threat-model/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"
 ---
 
 This website refers to the swiyu Public Beta Trust Infrastructure. The listed specifications and documentation are subject to change.
