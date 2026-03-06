@@ -35,30 +35,35 @@ STRIDE is a widely used framework for categorizing different types of security t
 We use attack trees to visualize and structure the threat model. Attack trees give us a way to arrange the threats into a tree instead of a flat list. Each attack tree starts with a critical security goal for an attacker. 
 
 ## 1 Ecosystem unavailable
+
 | **Description** | Nobody can use the swiyu Ecosystem including the e-ID if it is unavailable. |
 |:--------------|:----------|
 | **Stride** | Denial of Service (D) |
 | **Components** | Issuer, Registry, Verifier, Wallet |
 
 ### 1.1 Unavailable Mobile Backend
+
 | **Description** | If the mobile backend is unavailable, high security credentials (that is required for hardware holder binding) cannot be issued anymore and new app versions can't longer be enforced. |
 |:--------------|:----------|
 | **Stride** | Denial of Service (D) |
 | **Components** | Issuer, Wallet |
 
 ### 1.2 External services unavailable
+
 | **Description** | The services we rely on in our systems are not available (e.g., attestation service by Apple and Google, routers, DNS, etc.). |
 |:--------------|:----------|
 | **Stride** | Denial of Service (D) |
 | **Components** | Wallet |
 
 ### 1.3 Wallet unavailable
+
 | **Description** | If the wallet is not available the user cannot use the credentials inside it. |
 |:--------------|:----------|
 | **Stride** | Denial of Service (D) |
 | **Components** | Wallet |
 
 ### 1.4 Support not available
+
 | **Description** | Holders cannot contact support or create non-compliance reports. |
 |:--------------|:----------|
 | **Stride** | Denial of Service (D) |
