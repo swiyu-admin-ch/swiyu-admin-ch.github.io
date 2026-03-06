@@ -37,7 +37,7 @@ We use attack trees to visualize and structure the threat model. Attack trees gi
 ## 1 Ecosystem unavailable
 
 | **Description** | Nobody can use the swiyu Ecosystem including the e-ID if it is unavailable. |
-|:--------------|:----------|
+|:-------------- |:---------- |
 | **Stride** | Denial of Service (D) |
 | **Components** | Issuer, Registry, Verifier, Wallet |
 
@@ -71,13 +71,13 @@ We use attack trees to visualize and structure the threat model. Attack trees gi
 
 ### 1.5 Registries unavailable
 | **Description** | Since the registries are a single point of failure, if they are unavailable the whole ecosystem is unusable. |
-|:--------------|:----------|
+|:-------------- |:---------- |
 | **Stride** | Denial of Service (D) |
 | **Components** | Registry |
 
 ### 1.6 Credential not accessible
 | **Description** | A credential that is not accessible prevents the holder from using the swiyu ecosystem. |
-|:--------------|:----------|
+|--------------|----------|
 | **Stride** | Denial of Service (D) |
 | **Components** | Wallet |
 
