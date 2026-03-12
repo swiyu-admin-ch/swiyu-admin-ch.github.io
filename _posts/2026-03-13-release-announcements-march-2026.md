@@ -4,32 +4,15 @@ categories:
   - PublicBeta
 ---
 
-Some components of the swiyu Public Beta Trust Infrastructure got new releases we would like you to inform about. If you are running older versions of the generic issuer or verifier, you have to update these components immediatly. 
-
-In addition, we've published new repositories for testing against generic components and verifiable credentials.
+Some components of the swiyu Public Beta Trust Infrastructure got new releases we would like you to inform about. If you are running older versions of the generic issuer or verifier, you have to update these components immediatly. In addition, we've published new repositories for testing your deployments and credential issuance and verification flows.
 
 ## New Versions for [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) and [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) Wallets
 
+With the latest versions Android v1.13.1 and iOS v1.14.0 we've fixed some issues that have been raised by the community:
+- Android: [Do not overwrite claims when parsing jwt](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/24)
+- iOS: [Enforce "isBetaIssuer" check](https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/28)
 
-Android v1.13.1
-- Feature: Payload encription feature toggle
-- Fix: do not overwrite claims when parsing jwt https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/24
-- Update to OID4VCI 1.0
-- Fix: Harden JsonPath validator regex https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/29
-
-
-iOS v1.14.0
-- Feature Flag for Payload encryption
-- Feature: Signed Metadata
-- Fix: Avoid decompression bomb https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/22
-- Fix: Enforce "isBetaIssuer" check https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/28
-
-feature: deferred credential for OIDVCI 1.0 (EIDNUCLEUS-574) (#773) by Sven-Bjarne Seiffert
-feature: request and response for OID4VCI 1.0 (EIDNUCLEUS-572) (#769) by Sven-Bjarne Seiffert
-feature: nonce and token endpoint according to OID4VCI 1.0 (EIDNUCLEUS-571) (#767) by Sven-Bjarne Seiffert
-
-
-Contract-step from the wallet with the next release! https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/12 and https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/9 
+With the next wallet releases, we'll proceed the contract-step for the issues [Access-Token-Request uses wrong Content-Type](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/12) respectively [Wallet sends token endpoint params as query params](https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/9).  
 
 ## DID Toolbox 
 
@@ -43,13 +26,8 @@ Contract-step from the wallet with the next release! https://github.com/swiyu-ad
 
 - Fixed: [Issue, when content length not set](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/97)
 - Fixed: [Possibly invalid credentials on bad usage](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/52)
-- For the complete overview, please refer to the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md)
-
-- Signed Issuer Metadata: https://github.com/swiyu-admin-ch/swiyu-issuer/issues/3
-- 
-
-https://confluence.bit.admin.ch/spaces/EIDTEAM/pages/1324352409/7.2.+Generic+Components+Releases
-
+- Feature: [Signed Issuer Metadata](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/3)
+- For the complete overview, please refer to the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md) 
 
 Please note upcoming breaking changes:
 - Remove old nonce endpoint
@@ -62,17 +40,14 @@ Please note upcoming breaking changes:
 
 https://github.com/swiyu-admin-ch/swiyu-verifier/issues/89 ??
 - https://github.com/swiyu-admin-ch/swiyu-verifier/issues/90 ??
-- Fix: "Split" function removes empty strings https://github.com/swiyu-admin-ch/swiyu-verifier/issues/90
+- Fix: ["Split" function removes empty strings](https://github.com/swiyu-admin-ch/swiyu-verifier/issues/90)
+- Fix: [Bad error handling if vp_formats is missing in verifier_metadata]()
 
-- Other minor fixes and improvements, as you can read in the [changelog](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/CHANGELOG.md)
-
-?? 
-
-Please note: This version is not yet pentested and thus not marked as "latest".
+- For the complete overview, please refer to the [changelog](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/CHANGELOG.md)
 
 ## New Repositories for a better test coverage 
 
-Getting the generic components up and running 
+To better support the implementation of our generic components and the validation of your own deployments we've released two new repositories. We hope these are helpful to our community and we look forward to hearing your feedback.
 
 ### Generic Application Test
 The [Generic Application Test](https://github.com/swiyu-admin-ch/swiyu-generic-application-test) is a test system designed to run end-to-end (E2E) tests against the generic swiyu Issuer and Verifier components. Its primary goal is to validate the generic behavior of these components in isolation, without relying on a full trust infrastructure or real wallets. The system focuses on testing the issuance and verification flows, independently of any specific ecosystem or deployment.
