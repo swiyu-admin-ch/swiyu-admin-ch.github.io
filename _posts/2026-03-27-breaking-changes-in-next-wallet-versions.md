@@ -4,7 +4,8 @@ categories:
   - PublicBeta
 ---
 
-With the latest version of the swiyu-issuer, we updated the credential metadata structure and corrected claims paths to align with the latest specification. With the release of the next versions of the swiyu wallets, only the new structure will be accepted. We apologize that this change was not proceeded within the earlier announced EMC-Pattern due to changes of plans at short notice.
+With the latest version of the swiyu-issuer, we updated the credential metadata structure and corrected claims paths to align with the latest specification. The "expand" step (as defined in the [EMC-Pattern](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) has been released with the latest wallet versions. All users of the swiyu Generic Issuer must migrate to the latest release (see below) as a matter of urgency to avoid a breaking change. With the release of the next versions of the swiyu wallets - scheduled for early April, only the new structure will be accepted. We apologise for the short notice.
+
 
 ## New Versions for [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) and [iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) Wallets
 
