@@ -20,4 +20,19 @@ Changes in the upcoming versions for Android v1.14.0 and iOS v1.15.0
 - Fixed null tenantId handling in issuer metadata retrieval to prevent NullPointerExceptions and formatting issues
 - For more details, please refer to the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md) 
 
- 
+## DID Toolbox [Version 2.0.0](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/tag/2.0.0)
+
+New Major-Version due to potential breaking changes: 
+- Feature: Added controller to verification methods in DID Document
+- Breaking change: Removed ``@context`` from DID Document
+- Dependency: Requires DID Resolver Version 2.7.0 or newer for DID Log resolving
+
+Please note: This is a "pre-release" and not yet compatible with the swiyu Public Beta Trust Infrastructure
+
+## DID Resolver [Version 2.7.0](https://github.com/swiyu-admin-ch/didresolver/releases/tag/2.7.0)
+- Feature: Added support for controller in did document and verification method
+- Feature: Loosened schema validation for DID logs
+- Field ``@context`` in DID document is now optional
+- Added function ``get_did_from_absolute_kid``
+
+
