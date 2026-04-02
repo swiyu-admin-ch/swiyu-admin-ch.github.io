@@ -36,11 +36,11 @@ The specification is fully supported by this profile (and components adhering to
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-5. Authorization Request
-Verifiers MUST send Verification Requests as a JWT-Secured Authorization Request (JAR).
+5. Authorization Request<br>
+Verifiers MUST send Verification Requests as a JWT-Secured Authorization Request (JAR).<br>
 - client_id MUST be the issuer (iss) of the JAR
 - client_id MUST be the verifier's identifier as defined in swiss anchor profile
-The client ID values in the client_id request parameter and in the Request Object client_id claim MUST be identical, as defined in RFC 9101
+The client ID values in the client_id request parameter and in the Request Object client_id claim MUST be identical, as defined in [RFC 9101](todo)<br>
 
 For Online Verification only passing a request object by reference is supported.
 
@@ -73,35 +73,35 @@ Swiss Profile version indication with new parameter profile_version is REQUIRED.
 5.2. Existing Parameters
 - response_mode MUST be direct_post.jwt
   
-5.5 Using scope Parameter to Request Presentations
-scope parameter MUST be supported.
-When scope parameter is set, an object in the verifier_info MUST contain the scope with the DCQL query.
+5.5 Using scope Parameter to Request Presentations<br>
+scope parameter MUST be supported.<br>
+When scope parameter is set, an object in the verifier_info MUST contain the scope with the DCQL query.<br>
 
-5.8. aud of a Request Object
-As the verifier cannot identify the wallet any further before preparing the Request Object, only Static Discovery metadata is used.
-The aud claim of the signed Request Object MUST be "https://self-issued.me/v2", 
+5.8. aud of a Request Object<br>
+As the verifier cannot identify the wallet any further before preparing the Request Object, only Static Discovery metadata is used.<br>
+The aud claim of the signed Request Object MUST be "https://self-issued.me/v2", <br>
 
-5.9. Client Identifier Prefix and Verifier Metadata Management
-5.9.2. Fallback
-Fallback when no / an unknown Client Identifier Prefix is present MUST be intepreted as decentralized_identifier
+5.9. Client Identifier Prefix and Verifier Metadata Management<br>
+5.9.2. Fallback<br>
+Fallback when no / an unknown Client Identifier Prefix is present MUST be intepreted as decentralized_identifier<br>
 
-5.9.3. Defined Client Identifier Prefixes
-Client Identifier Prefix decentralized_identifier MUST be supported and SHOULD be used.
-Example: ``decentralized_identifier:did:webvh:.....??
-Client Identifier Prefix verifier_attestation MUST be supported and SHOULD be used for proximity use cases.
+5.9.3. Defined Client Identifier Prefixes<br>
+Client Identifier Prefix decentralized_identifier MUST be supported and SHOULD be used.<br>
+Example: ``decentralized_identifier:did:webvh:.....??<br>
+Client Identifier Prefix verifier_attestation MUST be supported and SHOULD be used for proximity use cases.<br>
 
-5.10. Request URI Method post
-Request URI method post is NOT SUPPORTED 
+5.10. Request URI Method post<br>
+Request URI method post is NOT SUPPORTED<br> 
 
-5.11. Verifier Info
-Verifier Info is NOT SUPPORTED.
+5.11. Verifier Info<br>
+Verifier Info is NOT SUPPORTED.<br>
 
-6. Digital Credentials Query Language (DCQL)
-6.1. Credential Query
-6.1.1. Trusted Authorities Query
-None of the trusted_authorities defined in the spec apply for the swiss trust infrastructure, instead a new did based authorities query is used
-Type: "did"
-Value: A list of VC issuer DIDs that the Verifier will accept
+6. Digital Credentials Query Language (DCQL)<br>
+6.1. Credential Query<br>
+6.1.1. Trusted Authorities Query<br>
+None of the trusted_authorities defined in the spec apply for the swiss trust infrastructure, instead a new did based authorities query is used<br>
+Type: "did"<br>
+Value: A list of VC issuer DIDs that the Verifier will accept<br>
 
 ``
 {
@@ -110,17 +110,17 @@ Value: A list of VC issuer DIDs that the Verifier will accept
 }
 ``
 
-7 Claims Path Pointer
-7.2. Semantics for ISO mdoc-based credentials
-ISO mdoc-based credentials are NOT SUPPORTED
+7 Claims Path Pointer<br>
+7.2. Semantics for ISO mdoc-based credentials<br>
+ISO mdoc-based credentials are NOT SUPPORTED<br>
 
-8. Response
-Response type MUST be vp_token
-Response mode MUST be direct_post.jwt.
-The usage of encryption MUST be enforced.
+8. Response<br>
+Response type MUST be vp_token<br>
+Response mode MUST be direct_post.jwt.<br>
+The usage of encryption MUST be enforced.<br>
 
-8.4 Transaction Data
-Transaction Data is NOT SUPPORTED and SHOULD NOT be used in this swiss-profile version.
+8.4 Transaction Data<br>
+Transaction Data is NOT SUPPORTED and SHOULD NOT be used in this swiss-profile version.<br>
 
 8.5 Error Response
 - invalid_scope is NOT SUPPORTED
@@ -129,22 +129,22 @@ Transaction Data is NOT SUPPORTED and SHOULD NOT be used in this swiss-profile v
 - vp_formats_not_supported is NOT SUPPORTED
 - wallet_unavailable is NOT SUPPORTED
   
-9. Wallet Invocation
-URL scheme ``openid4vp:// and swiyu-verify://`` MUST be supported.
+9. Wallet Invocation<br>
+URL scheme ``openid4vp:// and swiyu-verify://`` MUST be supported.<br>
 
-10 Wallet Metadata
-10.2 Obtaining Wallet's Metadata
-Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.
+10 Wallet Metadata<br>
+10.2 Obtaining Wallet's Metadata<br>
+Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.<br>
 
-12 Verifier Attestation JWT
-Verifier Attestation JWT SHOULD be used  by the Wallet to validate authenticity of the Verifier in proximity use cases.
-Otherwise, the Wallet SHOULD use Trust Protocol mechanisms instead to validate authenticity of the Verifier.
+12 Verifier Attestation JWT<br>
+Verifier Attestation JWT SHOULD be used  by the Wallet to validate authenticity of the Verifier in proximity use cases.<br>
+Otherwise, the Wallet SHOULD use Trust Protocol mechanisms instead to validate authenticity of the Verifier.<br>
 
 # RFC 9101 The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)
 
-6. Validating JWT-Based Requests
-6.1. JWE Encrypted Request Object
-JWE Encrypted Request Objects are NOT SUPPORTED.
+6. Validating JWT-Based Requests<br>
+6.1. JWE Encrypted Request Object<br>
+JWE Encrypted Request Objects are NOT SUPPORTED.<br>
 
 
 
