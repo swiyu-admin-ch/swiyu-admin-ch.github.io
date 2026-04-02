@@ -34,10 +34,24 @@ specifications_sidebarmenu:
   - title: "Specifications"
     url: /specifications/
     children:
-      - title: "Interoperability Profile"
-        url: /specifications/interoperability-profile/
-      - title: "Trust Protocol based on VCs"
-        url: /specifications/trust-protocol/
-      - title: "Overlays Capture Architecture"
-        url: /specifications/oca/
+      - title: "Introduction"
+        url: /specifications/introduction/
+      - title: "Anchor Profile"
+        url: /specifications/swiss-profile-anchor/
+      - title: "VC Profile"
+        url: /specifications/swiss-profile-vc/
+      - title: "Trust Profile"
+        url: /specifications/swiss-profile-trust/
+      - title: "Issuance Profile"
+        url: /specifications/swiss-profile-issuance/
+      - title: "Verification Profile"
+        url: /specifications/swiss-profile-verification/
+      - title: "Proximity Profile"
+        url: /specifications/swiss-profile-proximity/
+
+
+
+
+
+
       
