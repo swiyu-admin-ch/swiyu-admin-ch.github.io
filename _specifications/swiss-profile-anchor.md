@@ -48,10 +48,10 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 
 3.2.1 DID Parameters <br>
-DID Parameters MUST NOT be used.
+DID Parameters MUST NOT be used. <br>
 
 3.2.2 Relative DID URLs <br>
-Relative DID URLs is NOT SUPPORTED.
+Relative DID URLs is NOT SUPPORTED.<br>
 
 5 Core Properties <br>
 DID Document properties <br>
@@ -72,7 +72,8 @@ Field controller MUST point to the DID itself. <br>
 <div class="notice--warning">
 (Warnung) Implementation Note: This controller property and the one from 5.1.2 are not the same but we define them implicitly to be equal.
 </div>
-<br>
+
+
 5.2.1 Verification Material<br>
 publicKeyMultibase MUST NOT be used<br>
 publicKeyJwk is REQUIRED<br>
@@ -108,7 +109,8 @@ The specification is fully supported by this profile (and components adhering to
 <div class="notice--warning">
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
-<br>
+
+
 2.1 The /whois Use Case<br>
 The /whois Use Case is not supportet in the Base Register.<br>
 
