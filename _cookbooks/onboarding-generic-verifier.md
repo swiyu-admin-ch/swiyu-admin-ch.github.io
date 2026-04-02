@@ -76,7 +76,7 @@ curl -X 'POST' 'http://localhost:8083/management/api/verifications' \
   -H "Content-Type: application/json" \
   -d '{
     "accepted_issuer_dids": [
-        "${VERIFICATION_ID}"
+        "${ISSUER_DID}"
     ],
     "response_mode": "direct_post",
     "presentation_definition": {
@@ -120,6 +120,10 @@ curl -X 'POST' 'http://localhost:8083/management/api/verifications' \
 
 <div class="notice--warning">
   ⚙️ Please, store the value of <code>"id"</code> field from the response above into shell variable <code>VERIFICATION_ID</code>, as the is required in the "Get the verification result" call.
+</div>
+
+<div class="notice--info">
+  <strong>About <code>accepted_issuer_dids</code>:</strong> This field contains a list of DIDs from credential issuers whose credentials your verifier will accept. Replace the <code>${ISSUER_DID}</code> placeholder with the actual DID of your issuer. For quick testing with the Beta Credential Service (BCS) Public Beta, you can use: <code>did:tdw:QmPEZPhDFR4nEYSFK5bMnvECqdpf1tPTPJuWs9QrMjCumw:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:9a5559f0-b81c-4368-a170-e7b4ae424527</code>. Then issue a credential using <a href="https://www.bcs.admin.ch/bcs-web/#/">BCS Public Beta-ID</a> and verify it with your own verifier.
 </div>
 
 **Response**
@@ -174,7 +178,7 @@ source <(curl -s \
   -H 'Content-Type: application/json' \
   -d '{
   "accepted_issuer_dids": [
-    "${VERIFICATION_ID}"
+    "${ISSUER_DID}"
   ],
   "response_mode": "direct_post",
   "presentation_definition": {
