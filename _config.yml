@@ -215,9 +215,13 @@ collections:
     output: true
     permalink: /:collection/:path/
     order:
-      - interoperability-profile.md
-      - trust-protocol.md
-      - oca.md
+      - introduction.md
+      - swiss-profile-anchor.md
+      - swiss-profile-vc.md
+      - swiss-profile-trust.md
+      - swiss-profile-issuance.md
+      - swiss-profile-verification.md
+      - swiss-profile-proximity.md
            
 # Plugins (previously gems:)
 plugins:
