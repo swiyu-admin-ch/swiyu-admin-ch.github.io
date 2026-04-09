@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://swiyu-core-business-service-d.apps.p-szb-ros-shrd-npr-01.cloud.admin.ch",
+      "url": "https://status-reg-api.trust-infra.swiyu-int.admin.ch",
       "description": "Generated server url"
     }
   ],
