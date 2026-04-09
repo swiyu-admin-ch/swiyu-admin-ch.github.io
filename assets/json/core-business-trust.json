@@ -1,0 +1,815 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Business Identifier API",
+    "description": "IF-014 - B2B Trust API.",
+    "version": "3.22.5-20260401075750-5b29ca61"
+  },
+  "servers": [
+    {
+      "url": "https://trust-reg-api.trust-infra.swiyu-int.admin.ch",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "OIDC": [],
+      "bearer-jwt": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "TrustAddDidsSubmission B2B",
+      "description": "TrustAddDidsSubmission B2B API"
+    },
+    {
+      "name": "VcSchemaSubmission B2B",
+      "description": "VcSchemaSubmission B2B API"
+    },
+    {
+      "name": "TrustOnboardingSubmission B2B",
+      "description": "TrustOnboardingSubmission B2B API"
+    }
+  ],
+  "paths": {
+    "/api/v1/trust/vc-schema-submissions": {
+      "get": {
+        "tags": [
+          "VcSchemaSubmission B2B"
+        ],
+        "summary": "Get all VcSchemaSubmissions for partner.",
+        "operationId": "getVcSchemaSubmissions",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageVcSchemaSubmission"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "VcSchemaSubmission B2B"
+        ],
+        "operationId": "createVcSchemaSubmission",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateVcMetadata"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VcSchemaSubmission"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trust/trust-onboarding-submission/proof-of-possessions": {
+      "get": {
+        "tags": [
+          "TrustOnboardingSubmission B2B"
+        ],
+        "summary": "Get all proof of possessions for the current pending trust onboarding submission of the partner.",
+        "operationId": "getProofOfPossessions",
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ProofOfPossession"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TrustOnboardingSubmission B2B"
+        ],
+        "summary": "Upload ALL proof of possessions for a pending trust onboarding submission of the partner. The proofs are generated with the didtoolbox",
+        "operationId": "submitProofOfPossessions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProofOfPossessionSubmission"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustOnboardingSubmission"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trust/trust-add-dids-submissions": {
+      "post": {
+        "tags": [
+          "TrustAddDidsSubmission B2B"
+        ],
+        "summary": "Create a new submission to add additional DIDs to a trusted partner",
+        "operationId": "createSubmission",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrustAdditionalDidsSubmissionCreateRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustAdditionalDidsSubmissionResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trust/trust-add-dids-submissions/{trustAddDidsSubmissionId}": {
+      "get": {
+        "tags": [
+          "TrustAddDidsSubmission B2B"
+        ],
+        "summary": "Get a trust add-DIDs submission by ID",
+        "operationId": "getSubmission",
+        "parameters": [
+          {
+            "name": "trustAddDidsSubmissionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustAdditionalDidsSubmissionResponseDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TrustAddDidsSubmission B2B"
+        ],
+        "summary": "Submit proofs of possession for the submission",
+        "operationId": "submitWithProofsOfPossession",
+        "parameters": [
+          {
+            "name": "trustAddDidsSubmissionId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TrustAdditionalDidsSubmissionUpdateRequestDto"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TrustAdditionalDidsSubmissionResponseDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/trust/vc-schema-submissions/{id}": {
+      "get": {
+        "tags": [
+          "VcSchemaSubmission B2B"
+        ],
+        "operationId": "getVcSchemaSubmission",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VcSchemaSubmission"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CreateVcMetadata": {
+        "type": "object",
+        "properties": {
+          "vcTypeMetadata": {
+            "type": "string",
+            "description": "JSON of VcMetadataType in String format.",
+            "example": "{\n    \"vct\": \"https://registry-url.ch/eid-v1\",\n    \"name\": \"XYZ Credential\",\n    \"description\": \"\",\n    \"extends\": \"\",\n    \"extends#integrity\": \"\",\n    \"schema_uri\": \"https://url-to-json-schema-which-defines-type\"\n}",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "vcTypeMetadata"
+        ]
+      },
+      "VcSchemaSubmission": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "partnerId": {
+            "type": "string",
+            "format": "uuid",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "$ref": "#/components/schemas/VcSchemaSubmissionStatus"
+          },
+          "file": {
+            "type": "string",
+            "minLength": 1
+          },
+          "failureReason": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          }
+        },
+        "required": [
+          "createdAt",
+          "file",
+          "id",
+          "partnerId",
+          "status",
+          "updatedAt",
+          "version"
+        ]
+      },
+      "VcSchemaSubmissionStatus": {
+        "type": "string",
+        "enum": [
+          "ACCEPTED",
+          "SUCCEEDED",
+          "FAILED"
+        ]
+      },
+      "ProofOfPossessionSubmission": {
+        "type": "object",
+        "properties": {
+          "proofOfPossessions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "proofOfPossessions"
+        ]
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "street": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "postalCode": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "region": {
+            "type": "string"
+          }
+        }
+      },
+      "BusinessPartnerType": {
+        "type": "string",
+        "description": "| Value                        | Description                                                   |\n| ---------------------------- | ------------------------------------------------------------- |\n| GOVERNMENTAL_INSTITUTION     | Governmental institutions like JPD or ASTRA                   |\n| BUSINESS                     | Business entities and corporations                            |\n| INDIVIDUAL                   | Individual persons                                            |\n| UNKNOWN                      | Unknown type (legacy partners, will be classified)            |\n",
+        "enum": [
+          "GOVERNMENTAL_INSTITUTION",
+          "BUSINESS",
+          "INDIVIDUAL",
+          "UNKNOWN"
+        ]
+      },
+      "Contact": {
+        "type": "object",
+        "properties": {
+          "firstName": {
+            "type": "string"
+          },
+          "lastName": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          }
+        }
+      },
+      "Language": {
+        "type": "string",
+        "enum": [
+          "EN",
+          "DE",
+          "FR",
+          "IT",
+          "RM"
+        ]
+      },
+      "MultiLanguageText": {
+        "type": "object",
+        "properties": {
+          "de": {
+            "type": "string"
+          },
+          "fr": {
+            "type": "string"
+          },
+          "it": {
+            "type": "string"
+          },
+          "en": {
+            "type": "string"
+          },
+          "rm": {
+            "type": "string"
+          }
+        }
+      },
+      "ProofOfPossession": {
+        "type": "object",
+        "properties": {
+          "did": {
+            "type": "string",
+            "minLength": 1
+          },
+          "nonce": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "$ref": "#/components/schemas/ProofOfPossessionStatus"
+          },
+          "verifiedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "did",
+          "nonce",
+          "status"
+        ]
+      },
+      "ProofOfPossessionStatus": {
+        "type": "string",
+        "enum": [
+          "VALID",
+          "NOT_SUPPLIED"
+        ]
+      },
+      "TrustOnboardingSubmission": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "partnerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "entityName": {
+            "$ref": "#/components/schemas/MultiLanguageText"
+          },
+          "entityEmail": {
+            "type": "string"
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          },
+          "contactPerson": {
+            "$ref": "#/components/schemas/Contact"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "status": {
+            "$ref": "#/components/schemas/TrustOnboardingSubmissionStatus"
+          },
+          "proofOfPossessions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProofOfPossession"
+            }
+          },
+          "isGovActor": {
+            "type": "boolean",
+            "deprecated": true,
+            "description": "Deprecated: use businessPartnerType instead. Will be removed with EID-5292"
+          },
+          "businessPartnerType": {
+            "$ref": "#/components/schemas/BusinessPartnerType",
+            "description": "Type of business partner"
+          },
+          "registryIds": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "isRegisteredInCommercialRegister": {
+            "type": "boolean",
+            "description": "Whether or not the entity is registered in the commercial register"
+          },
+          "rejectionReason": {
+            "type": "string"
+          },
+          "declineReason": {
+            "type": "string"
+          },
+          "partnerNote": {
+            "type": "string"
+          },
+          "correspondingLanguage": {
+            "$ref": "#/components/schemas/Language"
+          },
+          "submittedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          },
+          "initiatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          }
+        },
+        "required": [
+          "address",
+          "contactPerson",
+          "createdAt",
+          "entityEmail",
+          "entityName",
+          "id",
+          "isGovActor",
+          "partnerId",
+          "proofOfPossessions",
+          "registryIds",
+          "status",
+          "updatedAt",
+          "version"
+        ]
+      },
+      "TrustOnboardingSubmissionStatus": {
+        "type": "string",
+        "enum": [
+          "UNSUBMITTED",
+          "SUBMITTED",
+          "SUCCEEDED",
+          "REJECTED",
+          "INFORMATION_REQUESTED"
+        ]
+      },
+      "TrustAdditionalDidsSubmissionCreateRequestDto": {
+        "type": "object",
+        "properties": {
+          "permissionDid": {
+            "type": "string",
+            "minLength": 1
+          },
+          "didsToAdd": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "didsToAdd",
+          "permissionDid"
+        ]
+      },
+      "TrustAdditionalDidsSubmissionResponseDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nonce": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "permissionDid": {
+            "type": "string"
+          },
+          "didsToAdd": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "UNSUBMITTED",
+              "UNSUBMITTED_TIMEOUT",
+              "SUBMITTED",
+              "SUCCEEDED",
+              "REJECTED"
+            ]
+          }
+        },
+        "required": [
+          "didsToAdd",
+          "id",
+          "nonce",
+          "permissionDid",
+          "status"
+        ]
+      },
+      "TrustAdditionalDidsSubmissionUpdateRequestDto": {
+        "type": "object",
+        "properties": {
+          "proofOfPossessions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "proofOfPossessions"
+        ]
+      },
+      "PageVcSchemaSubmission": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/VcSchemaSubmission"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "sorted": {
+            "type": "boolean"
+          },
+          "unsorted": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearer-jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "jwt"
+      },
+      "prometheus": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "OIDC": {
+        "type": "openIdConnect",
+        "description": "OAuth2-Authentication",
+        "openIdConnectUrl": "https://swiyu-oauth-mock-server-d.apps.p-szb-ros-shrd-npr-01.cloud.admin.ch/.well-known/openid-configuration"
+      }
+    }
+  }
+}
