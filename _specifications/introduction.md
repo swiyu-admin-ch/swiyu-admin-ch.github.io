@@ -22,22 +22,22 @@ This structure lets us define what a client or service must support in a single 
 
 As of now there are 7 Swiss Profiles with the following specifications contained in them.
 
-| Swiss Profile | Specifications |
-|---- |---- |
-| swiss-profile-trust | Trust Protocol |
-|^                    | Non-compliance Protocol |
-| swiss-profile-anchor | DID Core |
-|^                     | DID:webvh |
-| swiss-profile-vc | Token Status List |
-|^                 | SD-JWT |
-|^                 | SD-JWT-VC |
-|^                 | OCA |
-| swiss-profile-issuance | OAuth 2.0 DPoP |
-|^                       | OpenID4VCI |
-| swiss-profile-verification | OpenID4VP |
-|^                           | JAR |
-| swiss-profile-proximity | mDL ISO-18013-5 BLE |
-| swiss-profile-portability | Wallet Backup Container |
+| Swiss Profile              | Specifications          |
+|----------------------------|-------------------------|
+| swiss-profile-trust        | Trust Protocol          |
+|^                           | Non-compliance Protocol |
+| swiss-profile-anchor       | DID Core                |
+|^                           | DID:webvh               |
+| swiss-profile-vc           | Token Status List       |
+|^                           | SD-JWT                  |
+|^                           | SD-JWT-VC               |
+|^                           | OCA                     |
+| swiss-profile-issuance     | OAuth 2.0 DPoP          |
+|^                           | OpenID4VCI              |
+| swiss-profile-verification | OpenID4VP               |
+|^                           | JAR                     |
+| swiss-profile-proximity    | mDL ISO-18013-5 BLE     |
+| swiss-profile-portability  | Wallet Backup Container |
 
 # Dependencies between Swiss Profiles
 
