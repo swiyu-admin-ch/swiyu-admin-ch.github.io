@@ -76,6 +76,15 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 - [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java)
 - [DID Resolver](https://github.com/swiyu-admin-ch/didresolver)
 
+### swiyu Generic Application Test & Wallet Test
+
+During development and integration phases, we provide testing tools to validate the generic behavior of the swiyu Issuer and Verifier components. The Generic Application Test runs end-to-end tests using a mocked wallet, while the Generic Test Wallet simulates a wallet for testing issuance and verification flows with your own deployment.
+
+The source code is available in the following repositories:
+
+- [swiyu Generic Application Test](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
+- [swiyu Generic Test Wallet](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
+
 ## How to use the swiyu Public Beta Trust Infrastructure
 
 The onboarding process for the swiyu Base- and Trust Registry and other use cases are documented in the [Cookbook](https://swiyu-admin-ch.github.io/cookbooks/) section. Advanced users will find more technical details in the different repositories. We integrate various technologies in the Swiss Trust Infrastructure. You can view the supported specifications and the integrated versions in the ["Interoperability Profile"](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/).
