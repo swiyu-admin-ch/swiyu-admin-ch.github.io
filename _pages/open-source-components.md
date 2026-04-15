@@ -17,7 +17,7 @@ This participatory process is also helpful for testing and refining the infrastr
 
 [![Component Overview](../assets/images/trust-infrastructure.png)](../assets/images/trust-infrastructure.png)
 
-The source code of the swiyu Trust Infrastructure is publicly available under the **MIT-License**. This allows the [Open Source community](https://github.com/swiyu-admin-ch/community) to integrate our components under permissive conditions. We welcome contributions and feedback in various forms. The options are described in the respective repositories and depend on the current development process:
+The source code of the swiyu Trust Infrastructure is publicly available under the **MIT-License**. This allows the [Open Source community](https://github.com/swiyu-admin-ch/community) to integrate our components under permissive conditions. We welcome contributions and feedback in various forms. The options are described in the CONTRIBUTING.md file in the respective repositories and depend on the current development process:
 
 - **Community Development**: Core libraries and shared components are developed openly with the community, with ongoing updates.
 
@@ -31,20 +31,18 @@ Entities can onboard, update, or offboard as issuers and verifiers within the ec
 
 The source code is divided in different services:
 
-- [Base Registry Authoring Service](https://github.com/swiyu-admin-ch/eidch-registry-base-authoring)
-- [Base Registry Data Service](https://github.com/swiyu-admin-ch/eidch-registry-base-data)
-- [Status Registry Authoring Service](https://github.com/swiyu-admin-ch/eidch-registry-status-authoring)
-- [Status Registry Data Service](https://github.com/swiyu-admin-ch/eidch-registry-status-data)
- 
+- [swiyu Core Bore Business Service](https://github.com/swiyu-admin-ch/swiyu-core-business-service)
+- [swiyu Registry Identifier Data Service](https://github.com/swiyu-admin-ch/swiyu-registry-identifier-data-service)
+- [swiyu Registry Status Data Service](https://github.com/swiyu-admin-ch/swiyu-registry-status-data-service)
 
 ### swiyu Trust Registry
 
 Entities can prove and maintain their status as verified issuers or verifiers, ensuring additional trust within the ecosystem. Users will be able to see the verification status of issuers and verifiers in their wallets and verifiers are able to validate the trust-status of the issuers.
 
-The source code is divided in an authoring and a data service:
+The source code is divided in different services:
 
-- [Authoring Service](https://github.com/swiyu-admin-ch/eidch-registry-trust-authoring)
-- [Data Service](https://github.com/swiyu-admin-ch/eidch-registry-trust-data)
+- [swiyu Registry Trust Data Service](https://github.com/swiyu-admin-ch/swiyu-registry-trust-data-service)
+- swiyu Trust Management Service (not yet published)
 
 ### swiyu Generic Issuer 
 Entities can issue, revoke, suspend, and reactivate Verifiable Credentials (VCs), using the generic reference issuer implementation provided by the federal government. 
@@ -76,7 +74,14 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 - [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java)
 - [DID Resolver](https://github.com/swiyu-admin-ch/didresolver)
 
-### swiyu Generic Application Test & Wallet Test
+
+## How to use the swiyu Public Beta Trust Infrastructure
+
+### Onboarding
+
+The onboarding process for the swiyu Base- and Trust Registry and other use cases are documented in the [Cookbook](https://swiyu-admin-ch.github.io/cookbooks/) section. Advanced users will find more technical details in the different repositories. We integrate various technologies in the Swiss Trust Infrastructure. You can view the supported specifications and the integrated versions in the ["Interoperability Profile"](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/).
+
+### Testing Tools
 
 During development and integration phases, we provide testing tools to validate the generic behavior of the swiyu Issuer and Verifier components. The Generic Application Test runs end-to-end tests using a mocked wallet, while the Generic Test Wallet simulates a wallet for testing issuance and verification flows with your own deployment.
 
@@ -84,9 +89,3 @@ The source code is available in the following repositories:
 
 - [swiyu Generic Application Test](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
 - [swiyu Generic Test Wallet](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
-
-## How to use the swiyu Public Beta Trust Infrastructure
-
-The onboarding process for the swiyu Base- and Trust Registry and other use cases are documented in the [Cookbook](https://swiyu-admin-ch.github.io/cookbooks/) section. Advanced users will find more technical details in the different repositories. We integrate various technologies in the Swiss Trust Infrastructure. You can view the supported specifications and the integrated versions in the ["Interoperability Profile"](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/).
-
-
