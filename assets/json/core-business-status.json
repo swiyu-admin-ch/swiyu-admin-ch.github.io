@@ -1,0 +1,327 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Business Status API",
+    "description": "IF-011 - B2B Status API.",
+    "version": "3.22.5-20260401075750-5b29ca61"
+  },
+  "servers": [
+    {
+      "url": "https://status-reg-api.trust-infra.swiyu-int.admin.ch",
+      "description": "Generated server url"
+    }
+  ],
+  "security": [
+    {
+      "OIDC": [],
+      "bearer-jwt": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "Status B2B",
+      "description": "Status B2B API"
+    }
+  ],
+  "paths": {
+    "/api/v1/status/business-entities/{businessEntityId}/status-list-entries/{statusRegistryEntryId}": {
+      "put": {
+        "tags": [
+          "Status B2B"
+        ],
+        "summary": "Get a new entry on the status registry to store a status list.",
+        "operationId": "updateStatusListEntry",
+        "parameters": [
+          {
+            "name": "businessEntityId",
+            "in": "path",
+            "description": "The business partner id provided by the self service api.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": "8432e1f3-8119-4fb9-a879-190ab2cb9deb"
+          },
+          {
+            "name": "statusRegistryEntryId",
+            "in": "path",
+            "description": "The status registry entry ID provided by /api/v1/status-list-entries/",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": "18fa7c77-9dd1-4e20-a147-fb1bec146085"
+          }
+        ],
+        "requestBody": {
+          "description": "Token status list VC according to spec:\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-status-list-02.html#name-status-list-request\n",
+          "content": {
+            "application/statuslist+jwt": {
+              "schema": {
+                "type": "string"
+              },
+              "example": "eyJraWQiOiJkaWQ6dGR3OmhidGRveWp0bW15d2duanhtdTJkaW56eGdleWRremRjbWkzZGNtYnJnanNkaXl6emdxNHRlb2RjZ3l5ZG16ZGRtcXp0Z29qcmdpNGdleWp0bXkyZ2duanRndnJ3Z3l0Y2hleXdrenE9OmlkZW50aWZpZXItZGF0YS1zZXJ2aWNlLWQuYml0LmFkbWluLmNoOmFwaTp2MTpkaWQ6OWRjOWJiYTQtNWRiYS00ZjYwLWFkOWUtMjI2MDM4MzQzZjg5I2tleS0wMSIsInR5cCI6InN0YXR1c2xpc3Qrand0IiwiYWxnIjoiRVMyNTYifQ.eyJpc3MiOiJkaWQ6dGR3OmhidGRveWp0bW15d2duanhtdTJkaW56eGdleWRremRjbWkzZGNtYnJnanNkaXl6emdxNHRlb2RjZ3l5ZG16ZGRtcXp0Z29qcmdpNGdleWp0bXkyZ2duanRndnJ3Z3l0Y2hleXdrenE9OmlkZW50aWZpZXItZGF0YS1zZXJ2aWNlLWQuYml0LmFkbWluLmNoOmFwaTp2MTpkaWQ6OWRjOWJiYTQtNWRiYS00ZjYwLWFkOWUtMjI2MDM4MzQzZjg5Iiwic3ViIjoiaHR0cHM6Ly9zdGF0dXMtZGF0YS1zZXJ2aWNlLWQuYXBwcy5wLXN6Yi1yb3Mtc2hyZC1ucHItMDEuY2xvdWQuYWRtaW4uY2gvYXBpL3YxL3N0YXR1c2xpc3QvMDVkMmUwOWYtMjFkYy00Njk5LTg3OGYtODlhOGEyMjIyYzY3Lmp3dCIsImlhdCI6MTcyOTU4NzcwNiwic3RhdHVzX2xpc3QiOnsiYml0cyI6MiwibHN0IjoiZU5wallCalJBQUFBX3dBQiJ9fQ.1G_3ue2EGVXTwculW2RHe_9K3q3NWfOfkerCPu0cs7O4jHcd_2LGi83GscLZ3w9iGyYpZvnQYlr1PJ0AQoEz0w"
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/status/business-entities/{businessEntityId}/status-list-entries/": {
+      "get": {
+        "tags": [
+          "Status B2B"
+        ],
+        "summary": "Get all entries for the status registry.",
+        "operationId": "getAllStatusListEntries",
+        "parameters": [
+          {
+            "name": "businessEntityId",
+            "in": "path",
+            "description": "The business partner id provided by the self service api.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": "8432e1f3-8119-4fb9-a879-190ab2cb9deb"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index (0..N)",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "The size of the page to be returned",
+            "schema": {
+              "type": "integer",
+              "default": 20
+            }
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "description": "Sorting criteria in the format: property,(asc|desc). Default sort order is ascending. Multiple sort criteria are supported.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PageStatusListEntryDto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Status B2B"
+        ],
+        "summary": "Create a new entry on the status registry to store a status list.",
+        "operationId": "createStatusListEntry",
+        "parameters": [
+          {
+            "name": "businessEntityId",
+            "in": "path",
+            "description": "The business partner id provided by the self service api.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "example": "8432e1f3-8119-4fb9-a879-190ab2cb9deb"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StatusListEntryCreationDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "StatusListEntryCreationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "18fa7c77-9dd1-4e20-a147-fb1bec146085"
+          },
+          "statusRegistryUrl": {
+            "type": "string",
+            "example": "https://status-registry.admin.ch/api/v1/statuslist/18fa7c77-9dd1-4e20-a147-fb1bec146085.jwt"
+          }
+        }
+      },
+      "PageStatusListEntryDto": {
+        "type": "object",
+        "properties": {
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "content": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StatusListEntryDto"
+            }
+          },
+          "number": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "empty": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PageableObject": {
+        "type": "object",
+        "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "paged": {
+            "type": "boolean"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "unpaged": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SortObject": {
+        "type": "object",
+        "properties": {
+          "empty": {
+            "type": "boolean"
+          },
+          "sorted": {
+            "type": "boolean"
+          },
+          "unsorted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "StatusListEntryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "18fa7c77-9dd1-4e20-a147-fb1bec146085"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2024-10-29T09:35:16.809924Z"
+          }
+        },
+        "required": [
+          "createdAt",
+          "id",
+          "updatedAt"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "bearer-jwt": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "jwt"
+      },
+      "prometheus": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "OIDC": {
+        "type": "openIdConnect",
+        "description": "OAuth2-Authentication",
+        "openIdConnectUrl": "https://swiyu-oauth-mock-server-d.apps.p-szb-ros-shrd-npr-01.cloud.admin.ch/.well-known/openid-configuration"
+      }
+    }
+  }
+}
