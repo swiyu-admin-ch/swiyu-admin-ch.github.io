@@ -20,16 +20,16 @@ This structure lets us define what a client or service must support in a single 
 
 # Overview
 
-As of now there are 7 Swiss Profiles with the following specifications contained in them. These profiles replace the previously published [Interoperability Profile](../archive/interoperability-profile) for the swiyu Public Beta Trust Infrastructure.
+As of now there are 7 Swiss Profiles with the following specifications contained in them. These profiles replace the previously published [Interoperability Profile](/archive/interoperability-profile) for the swiyu Public Beta Trust Infrastructure.
 
 | Swiss Profile              | Specifications          |
 |----------------------------|-------------------------|
-| swiss-profile-trust        | Trust Protocol    <br> Non-compliance Protocol      |
-| swiss-profile-anchor       | DID Core <br> DID:webvh               |
-| swiss-profile-vc           | Token Status List  <br> SD-JWT <br>  SD-JWT-VC <br>  OCA                     |
-| swiss-profile-issuance     | OAuth 2.0 DPoP  <br> OpenID4VCI              |
-| swiss-profile-verification | OpenID4VP      <br> JAR                 |
-| swiss-profile-proximity    | mDL ISO-18013-5 BLE     |
+| [swiss-profile-trust](/swiss-profile-trust/)        | Trust Protocol    <br> Non-compliance Protocol      |
+| [swiss-profile-anchor](/swiss-profile-anchor/)       | DID Core <br> DID:webvh               |
+| [swiss-profile-vc](/swiss-profile-vc/)           | Token Status List  <br> SD-JWT <br>  SD-JWT-VC <br>  OCA                     |
+| [swiss-profile-issuance](/swiss-profile-issuance/)     | OAuth 2.0 DPoP  <br> OpenID4VCI              |
+| [swiss-profile-verification](/swiss-profile-verification/) | OpenID4VP      <br> JAR                 |
+| [swiss-profile-proximity](/swiss-profile-proximity/)    | mDL ISO-18013-5 BLE     |
 | swiss-profile-portability  | Wallet Backup Container |
 
 # Dependencies between Swiss Profiles
