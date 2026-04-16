@@ -20,7 +20,7 @@ This structure lets us define what a client or service must support in a single 
 
 # Overview
 
-As of now there are 7 Swiss Profiles with the following specifications contained in them.
+As of now there are 7 Swiss Profiles with the following specifications contained in them. These profiles replace the previously published [Interoperability Profile](../archive/interoperability-profile) for the swiyu Public Beta Trust Infrastructure.
 
 | Swiss Profile              | Specifications          |
 |----------------------------|-------------------------|
