@@ -16,7 +16,7 @@ Each Swiss Profile contains:
 - For every specification, one or more allowed versions
 - Implementation notes and identified gaps where behaviour deviates from the underlying specs
 
-This structure lets us define what a client or service must support in a single place, while absorbing the complexity of evolving specifications underneath. Swiss Profiles make compatibility expectations explicit, reduce integration friction, and ensure we can evolve the ecosystem without breaking dependent systems.
+This structure defines what a client or service must support in a single place, while absorbing the complexity of evolving specifications underneath. Swiss Profiles make compatibility expectations explicit, reduce integration friction, and ensure we can evolve the ecosystem without breaking dependent systems.
 
 # Overview
 
@@ -24,13 +24,27 @@ As of now there are 7 Swiss Profiles with the following specifications contained
 
 | Swiss Profile              | Specifications          |
 |----------------------------|-------------------------|
-| [swiss-profile-trust](/swiss-profile-trust/)        | Trust Protocol    <br> Non-compliance Protocol      |
-| [swiss-profile-anchor](/swiss-profile-anchor/)       | DID Core <br> DID:webvh               |
-| [swiss-profile-vc](/swiss-profile-vc/)           | Token Status List  <br> SD-JWT <br>  SD-JWT-VC <br>  OCA                     |
-| [swiss-profile-issuance](/swiss-profile-issuance/)     | OAuth 2.0 DPoP  <br> OpenID4VCI              |
-| [swiss-profile-verification](/swiss-profile-verification/) | OpenID4VP      <br> JAR                 |
-| [swiss-profile-proximity](/swiss-profile-proximity/)    | mDL ISO-18013-5 BLE     |
+| [swiss-profile-trust](../swiss-profile-trust/)        | Trust Protocol    <br> Non-compliance Protocol      |
+| [swiss-profile-anchor](../swiss-profile-anchor/)       | DID Core <br> DID:webvh               |
+| [swiss-profile-vc](../swiss-profile-vc/)           | Token Status List  <br> SD-JWT <br>  SD-JWT-VC <br>  OCA                     |
+| [swiss-profile-issuance](../swiss-profile-issuance/)     | OAuth 2.0 DPoP  <br> OpenID4VCI              |
+| [swiss-profile-verification](../swiss-profile-verification/) | OpenID4VP      <br> JAR                 |
+| [swiss-profile-proximity](../swiss-profile-proximity/)    | mDL ISO-18013-5 BLE     |
 | swiss-profile-portability  | Wallet Backup Container |
+
+# Scope
+
+| Component |	Description |swiss-profile-trust |swiss-profile-anchor |	swiss-profile-vc	| swiss-profile-issuance |	swiss-profile-verification |	swiss-profile-verification-proximity |	swiss-profile-portability |
+|---|---|---|---|---|---|---|---|---|
+|Base Registry	| The central base registry provided in the swiyu trust infrastructure.           	                          |   | X |   |   |   |   |   |  
+| DID Toolbox / Resolver	| The published DID helper libraries or resolving and working with DIDs.	                          |   | X |   |   |   |   |   |
+| Status Registry |	The central status registry as provided in the swiyu trust infrastructure.	                              |   | X | X |   |   |   |   |
+| Trust Registry <br> (w/o Trust Issuer, onboarding) | The central trust registry as provided in the swiyu trust infrastructure. <br> Excludes the trust issuer and trust management systems, as well as the onboarding of participants. | X |   | X |   |   |   |   |
+|Issuer / Generic Issuer |	A custom issuer implementation, or the generic issuer component, or a custom issuer based on the generic issuer component. |   | X | X | X |   |   |   |
+|Verifier / Generic Verifier |	A custom verifier implementation, or the generic verifier component, or a custom verifier based on the generic issuer component. | X | X | X |   | X |   |   |
+|Wallet	| The swiyu wallet app                                                                                                | X | X | X | X | X | X | X |
+| Proximity Verifier /Check App |	A proximity verifier, i.e. a mobile app verifier relying on device engagement via Bluetooth. | X | X | X |   | X | X |    |
+|VC |	A verifiable credential issued in the swiyu ecosystem.	                                                                 |   | X | X |   |   |   |    |
 
 # Dependencies between Swiss Profiles
 
@@ -42,8 +56,11 @@ It builds upon the regular swiss-profile-verification, which covers the more gen
 
 The following diagram shows how the Swiss Profiles build upon each other:
 
-[![swiss-profiles-dependencies](../assets/images/swiss-profiles-dependencies.png)](../assets/images/swiss-profiles-dependencies.png)
+[![swiss-profiles-dependencies](/assets/images/swiss-profiles-dependencies.png)](/assets/images/swiss-profiles-dependencies.png)
 
+# Versioning
+
+todo
 
 # Key Words
 
