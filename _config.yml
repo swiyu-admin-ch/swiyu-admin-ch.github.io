@@ -112,9 +112,8 @@ include:
   - _pages
   - _cookbooks
   - _specifications
+  - _archive
 exclude:
-  - "*.sublime-project"
-  - "*.sublime-workspace"
   - vendor
   - .asset-cache
   - .bundle
@@ -222,6 +221,7 @@ collections:
       - swiss-profile-issuance.md
       - swiss-profile-verification.md
       - swiss-profile-proximity.md
+      - oca.md
            
 # Plugins (previously gems:)
 plugins:
