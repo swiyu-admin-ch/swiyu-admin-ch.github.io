@@ -5,11 +5,6 @@ toc_sticky: true
 excerpt: Swiss Profile Anchor with specifications for DID Core and DID:webvh
 ---
 
-<div class="notice--warning">
-  ⚙️ The generated PEM file <code>.didtoolbox/assert-key-01</code> will be referenced as <code>"assert-key-01"</code>
-</div>
-
-
 <div class="notice--info">
   Version 1.0
   Status: draft - technically complete, but might to be reformulated
@@ -47,59 +42,59 @@ The below sub-sections rely on the numbering from the original reference specifi
 </div>
 
 
-3.2.1 DID Parameters <br>
+**3.2.1 DID Parameters** <br>
 DID Parameters MUST NOT be used. <br>
 
-3.2.2 Relative DID URLs <br>
+**3.2.2 Relative DID URLs** <br>
 Relative DID URLs is NOT SUPPORTED.<br>
 
-5 Core Properties <br>
+**5 Core Properties** <br>
 DID Document properties <br>
 The following properties MUST NOT be used:
 - alsoKnownAs
 - service
+  
 The property controller SHOULD NOT be used, if it is it MUST point to the DID itself.<br>
 
-5.1.2 DID Controller <br>
+**5.1.2 DID Controller** <br>
 While the Base Register supports setting the controller property, it always needs to point to the DID itself. <br>
 
-5.1.3 Also Known As <br>
+**5.1.3 Also Known As** <br>
 The Base Register does not support alsoKnownAs in the DIDDoc. <br>
 
-5.2 Verification Methods <br>
+**5.2 Verification Methods** <br>
 Field controller MUST point to the DID itself. <br>
 
 <div class="notice--warning">
-(Warnung) Implementation Note: This controller property and the one from 5.1.2 are not the same but we define them implicitly to be equal.
+⚙️ Implementation Note: This controller property and the one from 5.1.2 are not the same but we define them implicitly to be equal.
 </div>
 
-
-5.2.1 Verification Material<br>
+**5.2.1 Verification Material**<br>
 publicKeyMultibase MUST NOT be used<br>
 publicKeyJwk is REQUIRED<br>
 
-5.3.3 Key Agreement<br>
+**5.3.3 Key Agreement** <br>
 The verification relationship keyAgreement MUST NOT be used.<br>
 
-5.3.4 Capability Invocation<br>
+**5.3.4 Capability Invocation**<br>
 The verification relationship capabilityInvocation MUST NOT be used.<br>
 
-5.3.5 Capability Delegation<br>
+**5.3.5 Capability Delegation**<br>
 The verification relationship capabilityDelegation  MUST NOT be used.<br>
 
-5.4 Services<br>
+**5.4 Services**<br>
 The property service MUST NOT be used.<br>
 
-6.2 JSON<br>
+**6.2 JSON** <br>
 The JSON Representation MUST be used.<br>
 
-6.3 JSON-LD<br>
+**6.3 JSON-LD**<br>
 The JSON-LD Representation MUST NOT be used.<br>
 
-7.1 DID Resolution<br>
+**7.1 DID Resolution**<br>
 DID Resolution MUST be used.<br>
 
-7.2 DID URL Dereferencing<br>
+**7.2 DID URL Dereferencing**<br>
 DID URL Dereferencing is not supported by the swiyu DIDResolver.<br>
 
 # DID Method did:webvh
@@ -111,12 +106,12 @@ The below sub-sections rely on the numbering from the original reference specifi
 </div>
 
 
-2.1 The /whois Use Case<br>
+**2.1 The /whois Use Case**<br>
 The /whois Use Case is not supportet in the Base Register.<br>
 
-Instead use the Trust Protocol mechanisms to validate trustworthiness of the DID.<br>
+Instead use the [Trust Protocol] mechanisms to validate trustworthiness of the DID.<br>
 
-3.7.1 did:webvh DID Method Parameters<br>
+**3.7.1 did:webvh DID Method Parameters**<br>
 The Base Register does not support DID Portability.<br>
 The parameter portable MUST be set to false.<br>
 The Base Register does not support Witnesses.<br>
@@ -125,7 +120,8 @@ The Base Register does not support Watchers.<br>
 The parameter watchers MUST be set to []<br>
 Swiss Profile version indication with property profile_version in first DID Log entry body is REQUIRED.<br>
 
-``
+```
+DID Log Entry Version
 {
   "portable": true,
   "updateKeys": ["z82LkqR25TU88tztBEiFye"],
@@ -134,30 +130,30 @@ Swiss Profile version indication with property profile_version in first DID Log 
   "profile_version": "swiss-profile-anchor:1.0.0",
   "scid": "{SCID}"
 }
-``
+```
 <br>
-3.7.5 Authorized Keys<br>
+**3.7.5 Authorized Keys**<br>
 We do recommend to utilize Pre-rotation of keys.<br>
 
-3.7.6 DID Portability<br>
+**3.7.6 DID Portability**<br>
 The Base Register does not support DID Portability.<br>
 
-3.7.8 DID Witnesses<br>
+**3.7.8 DID Witnesses**<br>
 The Base Register does not support Witnesses.<br>
 
-3.7.9 DID Watchers<br>
+**3.7.9 DID Watchers**<br>
 The Base Register does not support Watchers.<br>
 
-3.7.10 Publishing a Parallel did:web DID<br>
+**3.7.10 Publishing a Parallel did:web DID**<br>
 The Base Register does not support publishing a parallel did:web.<br>
 
-3.8 DID URL Resolution<br>
+**3.8 DID URL Resolution**<br>
 The DIDResolver and Base Registry does not support the did:web fallback<br>
 We do recommend to NOT utilize a did:web fallback.<br>
 
-3.9 DID URL Path Resolution<br>
+**3.9 DID URL Path Resolution**<br>
 DID URL Path Resolution is not supported<br>
 
-3.10 WHOIS Resolution<br>
+**3.10 WHOIS Resolution**<br>
 The Base Register and Wallets do not support WHOIS resolution.<br>
 Instead use the mechanisms defined in the swiss-profile-trust to validate trustworthiness of the DID.
