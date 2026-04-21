@@ -8,7 +8,7 @@ excerpt: Specifications for OAuth 2.0 DPoP and OpenID4VCI
 
 
 <div class="notice--info">
-  Version 1.0
+  Version: 1.0 <br>
   Status: draft - technically complete, but might to be reformulated
 </div>
 
@@ -127,20 +127,20 @@ Client Metadata is NOT SUPPORTED.<br>
 12.2.2. Credential Issuer Metadata Retrieval<br>
 Issuers and Wallets MUST support well-known URIs as described in OID Connect Discovery (OIDC) with appended .well-known path.<br>
 
-For example ``https://example.com/issuer1`` will lead to an HTTP call: 
+For example `https://example.com/issuer1` will lead to an HTTP call: 
 
-``
+```Example for OIDC style .well-known URI
 GET https://example.com/issuer1/.well-known/openid-configuration 
-``
+```
 
 Wallets MUST support well-known URIs as described in IETF [RFC 5785](https://datatracker.ietf.org/doc/html/rfc5785) where the well-known URI is inserted at the beginning of the path component of an URI.<br>
 Issuers SHOULD support these well-known URIs.<br>
 
-For example ``https://example.com/issuer1`` will lead to an HTTP call: 
+For example `https://example.com/issuer1` will lead to an HTTP call: 
 
-``
+```Example for RFC 5785 style .well-known URI
 GET https://example.com/.well-known/openid-configuration/issuer1
-``
+```
 
 12.2.3. Signed Metadata<br>
 Issuers MUST also provide Signed Metadata.<br>
@@ -149,9 +149,9 @@ Signed Metadata MUST be used.<br>
 The signed metadata MUST be verified according swiss trust system. <br>
 The kid header claim is REQUIRED and must be a absolute fragment containing a DID as described in swiss-profile-anchor.<br>
 
-Swiss Profile version indication with parameter ``profile_version`` in Credential Issuer Metadata JWT header is REQUIRED.
+Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JWT header is REQUIRED.
 
-``
+```Credential Issuer Metadata JWT version
 {
   // header
   "typ":"openidvci-issuer-metadata+jwt",
@@ -162,7 +162,8 @@ Swiss Profile version indication with parameter ``profile_version`` in Credentia
 {
   // payload
 }
-``
+```
+
 12.2.4. Credential Issuer Metadata Parameters
 - authorization_servers is NOT SUPPORTED.
 - notification_endpoint is NOT SUPPORTED.
@@ -193,13 +194,13 @@ Swiss Profile version indication with parameter ``profile_version`` in Credentia
 
 Swiss Profile version indication with parameter profile_version in Credential Issuer Metadata JSON body is REQUIRED.
 
-``
+```Credential Issuer Metadata version
 {
   "profile_version": "swiss-profile-issuance:1.0.0"
   ...
 }
 
-``
+```
 
 12.3. OAuth 2.0 Authorization Server Metadata<br>
 The OAuth 2.0 Authorization Server Metadata are provided signed the same way as defined in 12.2.3. Signed Metadata for credential issuer metadata as application/jwt.<br>
@@ -246,7 +247,7 @@ D.1. Key Attestation in JWT format<br>
 
 Swiss Profile version indication with parameter profile_version in the key attestation JWT header is REQUIRED.
 
-``
+```Key Attestation JWT version
 {
   // header
   "typ":"key-attestation+jwt",
@@ -257,7 +258,7 @@ Swiss Profile version indication with parameter profile_version in the key attes
 {
   // payload
 }
-``
+```
 
 # OAuth 2.0 Demonstrating Proof of Possession (DPoP) - RFC 9449
 
@@ -267,7 +268,7 @@ todo: intro<br>
 4.2. DPoP Proof JWT Syntax<br>
 Swiss Profile version indication with parameter profile_version in DPoP JWT header is REQUIRED.<br>
 
-``
+```DPoP JWT version
 {
   // header
   "typ":"dpop+jwt",
@@ -278,7 +279,7 @@ Swiss Profile version indication with parameter profile_version in DPoP JWT head
 {
   // payload
 }
-``
+```
 
 5. DPoP Access Token Request<br>
 5.1. Authorization Server Metadata<br>
@@ -306,7 +307,7 @@ When the one of the credentials offered by the issuer require a key attestation 
 In further requests using the same key, the wallet SHOULD NOT include the key attestation in the DPoP. The issuer MUST treat these additional key attestations as unknown parameters.<br>
 The key attestation is included in the JWT-Header of the DPoP as the claim key_attestation.<br>
 
-``
+```Example DPoP with key attestation
 {
   "typ": "dpop+jwt",
   "alg": "ES256",
@@ -324,13 +325,13 @@ The key attestation is included in the JWT-Header of the DPoP as the claim key_a
   "htu": "https://server.example.com/token",
   "iat": 1562262616
 }
-``
+```
 
-``
+```Example DPoP Access Token Request with key attestation
 POST /token HTTP/1.1
 Host: server.example.com
 Content-Type: application/x-www-form-urlencoded
 DPoP: eyJ0eXAiOiJkcG9wK2p3dCIsImFsZyI6IkVTMjU2IiwiandrIjp7Imt0eSI6IkVDIiwiY3J2IjoiUC0yNTYiLCJ4IjoiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkNlR2VtYyIsInkiOiJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn0sImtleV9hdHRlc3RhdGlvbiI6ImV5SjBlWEFpT2lKclpYa3RZWFIwWlhOMFlYUnBiMjRyYW5kMElpd2lZV3huSWpvaVJWTXlOVFlpTENKcmFXUWlPaUprYVdRNmQyVmlkbWc2WlhoaGJYQnNaUzVqYjIwamEyVjVMVEVpTENKd2NtOW1hV3hsWDNabGNuTnBiMjRpT2lKemQybHpjeTF3Y205bWFXeGxMV2x6YzNWaGJtTmxPakV1TUM0d0luMC5leUpwYzNNaU9pSmthV1E2ZDJWaWRtZzZaWGhoYlhCc1pTNWpiMjBpTENKcFlYUWlPakUxTVRZeU5EY3dNaklzSW1WNGNDSTZNVFUwTVRRNU16Y3lOQ3dpYTJWNVgzTjBiM0poWjJVaU9sc2lhWE52WHpFNE1EUTFYMmhwWjJnaVhTd2lZWFIwWlhOMFpXUmZhMlY1Y3lJNlczc2lhM1I1SWpvaVJVTWlMQ0pqY25ZaU9pSlFMVEkxTmlJc0luZ2lPaUpVUTBGRlVqRTVXbloxTTA5SVJqUnFORmMwZG1aVFZtOUlTVkF4U1V4cGJFUnNjemQyUTJWSFpXMWpJaXdpZVNJNklscDRhbWxYVjJKYVRWRkhTRlpYUzFaUk5HaGlVMGxwY25OV1puVmxZME5GTm5RMGFsUTVSakpJV2xFaWZWMTkuc2o0dWxLVms4WG0tTmQtOWFPREVYSV9ZcFZxUHY3bGxNMmZKcVp6OVIyNzlRTi0yZzA4Unc2VS1EeTN1ODRCVlhQWWk5QjFXa2k3bWN1Yk8yMVJyWHciLCJwcm9maWxlX3ZlcnNpb24iOiJzd2lzcy1wcm9maWxlLWlzc3VhbmNlOjEuMC4wIn0.eyJqdGkiOiItQndDM0VTYzZhY2MybFRjIiwiaHRtIjoiUE9TVCIsImh0dSI6Imh0dHBzOi8vc2VydmVyLmV4YW1wbGUuY29tL3Rva2VuIiwiaWF0IjoxNTYyMjYyNjE2fQ.wWQJzvfLCFqsEWN2UoiavFf_taZv33sRFFc5WuPYKn4WsJ2HKE3bppWXtkPHh20WIZiYkjH4GRW_VQAJQF9huQ
 
-``
+```
 
