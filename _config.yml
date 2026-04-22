@@ -211,8 +211,6 @@ collections:
       - how-to-use-beta-id.md
       - vc-visual-presentation.md
   specifications:
-    output: true
-    permalink: /:collection/:path/
     order:
       - introduction.md
       - swiss-profile-anchor.md
@@ -222,6 +220,8 @@ collections:
       - swiss-profile-verification.md
       - swiss-profile-proximity.md
       - oca.md
+    output: true
+    permalink: /:collection/:path/
            
 # Plugins (previously gems:)
 plugins:
