@@ -264,7 +264,6 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
             </tr>
         </table> </tr>
-  <tr>
     <td>/api/v2/identity-trust-statement/{identifier}</td>
     <td>GET</td> 
     <td>MUST return a serialized Identity Trust Statement. <br>
@@ -286,6 +285,7 @@ A trust registry MUST provide the following HTTP REST endpoints:
 </table> 
 
 #### Retrieving Verification Query Public Statements
+
  <table>
   <tr>
     <th>Path</th>
