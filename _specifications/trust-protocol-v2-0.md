@@ -30,8 +30,7 @@ In the context of the trust protocol, those JWTs are referred to as statements, 
 -> Conventions and Terminology
 -> Roles/Actors
 
-
-## Trust markers
+# Trust markers
 
 Each issuer and verifier in the swiyu ecosystem can be provided with various Statements by the governing actor, identified in the [active swiss-profile-trust].
 Those statements can be resolved to trust markers to assess the trust relationship between the different actors in an ongoing interaction
@@ -45,20 +44,20 @@ The [active swiss-profile-trust] does further define which trust markers are req
 
 The following trust markers are described in this protocol:
 
-### Verified Identity Trust Marker (viTM)
+## Verified Identity Trust Marker (viTM)
 The presence of this marker indicates that the identity of the actor is validated by the governing actor.
 
-### Compliant Actor Trust Marker (caTM)
+## Compliant Actor Trust Marker (caTM)
 The presence of this marker indicates that the actor was not identified as a bad actor in the ecosystem.
 
-###Transparent Verification Trust Marker (tvTM)
+## Transparent Verification Trust Marker (tvTM)
 The presence of this marker indicates that the ongoing verification request is publicly transparent and can be reviewed by 3rd party actors.
 This does not mean the individual verification - neither what data is requested, nor what data is exposed to the verifier - is publicly available, only that the verifier made the type of verifications they are performing public for review.
 
-### Governed use case Trust Marker (gucTM)
+## Governed use case Trust Marker (gucTM)
 The presence of this marker indicates that the issuance or verification is identified to be protected by an governing actor. A valid authorization needs to be presented to continue processing such use cases.
 
-#### Protected issuance 
+### Protected issuance 
 
 The swiyu ecosystem defines certain VC Types as protected and requires special authorization by issuers to be able to issue VCs of those types.
 
@@ -66,7 +65,7 @@ A VC Type is protected if and only if its "vct" claim is listed in the "vct_valu
 
 Issuers who issue such a VC MUST have a Protected Issuance Authorization Trust Statement.
 
-#### Protected verification 
+### Protected verification 
 
 The swiyu ecosystem defines certain fields in any VC as protected and requires special authorization for verifiers to be able to request those fields during verifications.
 
@@ -74,18 +73,17 @@ Those fields are defined in the currently [active swiss-profile-trust] and are s
 
 For example, the protected field personal_administrative_number (containing the "AHV Nummer") as shown in the [examples](todo) requires a Protected Verification Authorization Trust Statement for verifiers to be able to request it during verification.
 
-### Governed use case authorization Trust Marker (gucaTM)
+## Governed use case authorization Trust Marker (gucaTM)
 
 The presence of this marker indicates that the issuer or verifier does have authorization by the governing actor to process this use case.
 
-## Trust Flows
+# Trust Flows
 Each trust flow is bound to an interaction between two actors. The flow indicates how an actor to resolve the trust markers to establish trust relationship. Adherence to the trust protocol enhances the privacy for the holder.
 
 All actors MUST validate the received Statements, see Statement provisioning, before they act upon the data provided by those statements.
 If a statement is not valid the trust marker evaluated CANNOT be set for the trust relationship.
 
-### Issuance
-#### Issuer View
+## Issuance
 
 To allow the wallet to mark the trust relationship to the issuer with the Verified Identity Trust Mark trust marker the following needs to be provided by the issuer:
 
@@ -94,7 +92,7 @@ To allow the wallet to mark the trust relationship to the issuer with the Verifi
 An additonal trust statement must be provided if the Issuer offers credentials which are part of the Protected Issuance Trust List Statement. To allow the wallet to mark the trust relationship to the issuer with the Governed use case authorization Trust Marker trust marker the following needs to be provided by the issuer:
 - The issuer MUST provide, for each protected VC Type to be issued, the Protected Issuance Authorization Trust Statement in the issuer metadata, as described in Statement provisioning>Issuer>Issuer Metadata.
 
-#### Wallet view
+### Wallet view
 The wallet SHOULD read the Identity Trust Statement and Protected Issuance Authorization Trust Statement from the issuers metadata.
 
 To process this flow the wallet needs a Protected Issuance Trust List Statement, the currently active Protected Issuance Trust List Statement SHOULD be fetched via Retrieving Protected Issuance Trust List Statements.
@@ -106,19 +104,19 @@ The wallet SHOULD mark the trust relationship to the issuer with the following t
 When performing the necessary validations the wallet MUST perform all steps as in the table below.
 
 
-| Trust Mark              | Necessary Validations   |
+| Trust Mark           | Necessary Validations   |
 |--------------------- |------------------- |
-| Verified Identity Trust Mark	| 1. Make sure the issuer provides a valid Identity Trust Statement in his issuer metadata. 2. Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, matches the "sub" claim of the Identity Trust Statement. |
-| Governed use case Trust Mark	| 1. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. 2. Make sure that the "vct" claim of the offered VC is listed in the "vct_values" of the Protected Issuance Trust List Statement. |
-| Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. 2. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. 3. Make sure the issuer provides a valid Protected Issuance Authorization Trust Statement in his issuer metadata. 4. Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is equal to the "sub" claim of the Protected Issuance Authorization Trust Statement. 5. Make sure that the "can_issue.vct" claim of the Protected Issuance Authorization Trust Statement is equal to the VC Type of the offered credential. |
-| Compliant actor Trust Mark	| 1. Act upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. 2. validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.|
+| Verified Identity Trust Mark	| - Make sure the issuer provides a valid Identity Trust Statement in his issuer metadata. <br> - Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, matches the "sub" claim of the Identity Trust Statement. |
+| Governed use case Trust Mark	| - Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. <br> - Make sure that the "vct" claim of the offered VC is listed in the "vct_values" of the Protected Issuance Trust List Statement. |
+| Governed use case authorization Trust Mark	| - Validate that the trust relationship is already marked with the Governed use case Trust Mark. <br> - Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. <br> - Make sure the issuer provides a valid Protected Issuance Authorization Trust Statement in his issuer metadata. <br> - Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is equal to the "sub" claim of the Protected Issuance Authorization Trust Statement. <br> - Make sure that the "can_issue.vct" claim of the Protected Issuance Authorization Trust Statement is equal to the VC Type of the offered credential. |
+| Compliant actor Trust Mark	| - Act upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. <br> - Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.|
 
 
 The following diagram shows how the wallet could resolve trust markers:
 
 -> image holder-issuer
 
-### Verification
+## Verification
 
 To allow the wallet to mark the trust relationship to the verifier with the Verified Identity Trust Mark trust marker the following needs to be provided by the verifier:
 - The verifier MUST provide his Identity Trust Statement to the wallet as described in Statement provisioning>Verifier>JWT-Secured Authorization Request (Request Object).
@@ -131,7 +129,7 @@ To allow the wallet to mark the trust relationship to the verifier with the Gove
 - The verifier MUST provide for each protected VC Type to be verified a matching Protected Verification Authorization Trust Statements as described in Statement provisioning>Verifier>JWT-Secured Authorization Request (Request Object).
 
 
-#### Wallet view
+### Wallet view
 
 The wallet MUST NOT send any data which is not explicitly requested by the verifier or data technically required to perform the verification, to the verifier.
 
@@ -161,7 +159,7 @@ The following diagram shows how the wallet could resolve trust markers:
 
 -> image trust holder-verifier
 
-#### Verifier view
+### Verifier view
 
 The verifier MUST NOT make any requests, or notify by any other means, the issuer about the individual verification.
 
@@ -182,15 +180,15 @@ The following diagram shows how the wallet could resolve trust markers:
 -> image verifier-issuer
 
 
-## Statement provisioning
+# Statement provisioning
 Issuer and verifier MUST provide identification and permission statements via their respective provisioning channels to the wallet.
 
 Issuer and verifier MUST provide identification as soon as possible in their respective flows.
 
 Issuer and verifier SHOULD make sure the provided data is up to date.
 
-### Issuer
-#### Issuer Metadata 
+## Issuer
+### Issuer Metadata 
 
 The issuer metadata are provided as signed metadata as defined in the [swiss-profile-issuance 1.0]. The trust statements are included in the signed metadata. The trust statements included in the signed metadata provide a cryptographic chain of trust, with which proves that the metadata was created by the issuer without outside call beyond the trust statement revocation status list.
 
@@ -201,9 +199,10 @@ The issuer MUST provide, for each protected VC Type to be issued, a "protected_i
 -> Example: Credential Issuer Metadata with Trust Statements
 
 
-### Verifier
+## Verifier
 
-JWT-Secured Authorization Request (Request Object)
+### JWT-Secured Authorization Request (Request Object)
+
 The verifier MUST add his Identity Trust Statement, the relevant Verification Query Public Statement for this verification and if needed the relevant Protected Verification Authorization Trust Statement as attestations to the "verifier_info" claim in the JWT-Secured Authorization Request as defined in [OpenID4VP].
 
 Each of those attestations MUST have the "format" claim "jwt".
@@ -212,7 +211,7 @@ Each of those attestations MUST NOT utilize the "credential_ids" claim.
 
 -> Example: Request Object with Trust Statements
 
-### Trust Registry
+## Trust Registry
 
 A trust registry, identified in a [swiss-profile-trust], provides statements to the public.
 
@@ -220,7 +219,8 @@ For examples please use the following OpenAPI Specification: Trust Protocol 2.0 
 
 A trust registry MUST provide the following HTTP REST endpoints:
 
-#### Retrieving Identity Trust Statements
+### Retrieving Identity Trust Statements
+
 <table>
   <tr>
     <th>Path</th>
@@ -265,7 +265,7 @@ A trust registry MUST provide the following HTTP REST endpoints:
             </tr>
         </table> </tr>
   <tr>
-    <td>/api/v2/identity-trust-statement/{identifier}</td> |  | GET |  <br>
+    <td>/api/v2/identity-trust-statement/{identifier}</td>
     <td>GET</td> 
     <td>MUST return a serialized Identity Trust Statement. <br>
         MUST support the following parameters: <br>
@@ -350,7 +350,7 @@ A trust registry MUST provide the following HTTP REST endpoints:
            </table> </tr>
 </table> 
 
-#### Retrieving Protected Verification Authorization Trust Statements
+### Retrieving Protected Verification Authorization Trust Statements
 
 <table>
   <tr>
@@ -417,7 +417,7 @@ Implementation Note: The client still needs to validate the statements and canno
            </table> </tr>
 </table> 
 
-#### Retrieving Protected Issuance Authorization Trust Statements  
+### Retrieving Protected Issuance Authorization Trust Statements  
 
 
 <table>
@@ -485,7 +485,7 @@ Implementation Note: The client still needs to validate the statements and canno
            </table> </tr>
 </table> 
 
-#### Retrieving Protected Issuance Trust List Statements
+### Retrieving Protected Issuance Trust List Statements
 
 <table>
   <tr>
@@ -551,13 +551,13 @@ Implementation Note: The client still needs to validate the statements and canno
   </tr>  
 </table> 
 
-#### Retrieving Non-Compliance Trust List Statements
+### Retrieving Non-Compliance Trust List Statements
 
 | Path | Method | Description |
 |--- |--- |--- |
 | /api/v2/non-compliance-trust-list |	GET | MUST return are serialized Non-Compliance Trust List Statement. |
 
-#### Shared object definitions
+### Shared object definitions
 
 List Response Object 
 
@@ -572,11 +572,11 @@ List Response Object
 
 -> Example
 
-## Statements
-### Representations
+# Statements
+## Representations
 Statements MUST utilize the JWT format detailed below.
 
-#### JWT Format
+### JWT Format
 Statements MUST be valid in accordance to [RFC 7519].
 
 If a statement needs to be serialized the JWS Compact Serialization MUST be used.
@@ -593,7 +593,7 @@ If a statement needs to be serialized the JWS Compact Serialization MUST be used
 To identify to which trust protocol a given statement belongs and how to process it the claims "profile_version" and "typ" MUST be evaluated.
 The "profile_version" claim identifies the Trust Protocol version to utilize and the "typ" claim identifies the relevant statement of that trust protocol version.
 
-#### Localization  
+### Localization  
 
 Certain claims of the statements need localization support.
 To provide the localizated version of a string the following format is used:
@@ -607,8 +607,8 @@ If a claim is provided in a localized version it SHOULD also provide the locale 
 
 -> Example
 
-### Statement types
-#### Identity Trust Statement (idTS)
+## Statement types
+### Identity Trust Statement (idTS)
 
 This trust statement is provided by issuers and verifiers to link real-world identities to their cryptographic counterparts.
 
@@ -636,7 +636,7 @@ Registry ID Object
 | type | required | MUST be a string defining the type of the registry identifier. We provide a non exhaustive list of well known types and corresponding information blow. |
 | value | required | MUST be a string. Further requirements of the identifier might apply depending on the type of identifier. |
 
-#### Well known registry IDs 
+### Well known registry IDs 
 
 | Type Identifier | Example Value | Name | Owner | Spec ]
 |--- |--- |--- |--- |--- |
@@ -644,7 +644,7 @@ Registry ID Object
 
 -> Example Identity Trust Statement
 
-#### Verification Query Public Statement (vqPS)
+### Verification Query Public Statement (vqPS)
 
 This statement is provided by verifiers to provide public transparency on their intended verification scope.
 
@@ -674,7 +674,7 @@ A query of type "DCQL" must comply with [OpenID4VP] and MUST contain for each Cr
 
 -> Example Verification Query Public Statement
 
-#### Protected Verification Authorization Trust Statement (pvaTS)
+### Protected Verification Authorization Trust Statement (pvaTS)
 
 This statement is provided by verifiers to provide authorization to request protected claims in a presentation from the holder
 
@@ -693,7 +693,7 @@ A Protected Verification Authorization Trust Statement provides authorization to
 
 -> Example Protected Verification Authorization Trust Statement
 
-#### Protected Issuance Authorization Trust Statement (piaTS)
+### Protected Issuance Authorization Trust Statement (piaTS)
 
 This statement is provided by issuers as proof of state authorization to issue protected VCs .
 
@@ -725,7 +725,7 @@ Defines the scope and descriptive details of the authorization.
 
 -> Example Protected Issuance Authorization Trust Statement
 
-#### Protected Issuance Trust List Statement (piTLS)
+### Protected Issuance Trust List Statement (piTLS)
 
 Information for actors which VCTs can be issued only by authorized issuers.
 
@@ -741,7 +741,7 @@ Implementation Note: A different key to the one used for the VC from the issuer'
 
 -> Example Protected Issuance Trust List Statement
 
-#### Non-Compliance Trust List Statement (ncTLS)
+### Non-Compliance Trust List Statement (ncTLS)
 
 This statement is provided by a trust registry, identified in a [swiss-profile-trust], as a means to warn actors of known bad actors in the ecosystem.
 
