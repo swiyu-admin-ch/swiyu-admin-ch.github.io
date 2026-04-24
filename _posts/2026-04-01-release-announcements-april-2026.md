@@ -4,6 +4,8 @@ categories:
   - PublicBeta
 ---
 
+**_Update 24 April 2026: The planned updates will not go ahead as announced. Instead, a major transition to the new Swiss Profiles will take place in May. We will announce this on this channel as soon as possible._**
+
 
 A new version of the [Beta Credential Service](https://bcs.admin.ch/bcs-web/#/) (BCS) will be installed mid April. This new version includes the next steps in the development of ‘Swiss Profile 1.0’.
 This release requires the upcoming swiyu Wallet versions iOS 1.15.0 and Android 1.14.0 and is not backwards compatible with older versions of the swiyu Wallet.
