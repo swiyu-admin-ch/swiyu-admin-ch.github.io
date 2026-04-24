@@ -221,246 +221,380 @@ For examples please use the following OpenAPI Specification: Trust Protocol 2.0 
 A trust registry MUST provide the following HTTP REST endpoints:
 
 #### Retrieving Identity Trust Statements
-
-| Path                       | Method                  | Description             |
-|----------------------------|-------------------------|-------------------------|
-| /api/v2/identity-trust-statement/	 | GET | MUST return a List Response Object, The content objects are serialized Identity Trust Statements. MUST support the following parameters:
 <table>
-    <tr>
-        <td>Name</td>
-        <td>Type</td>
-        <td>Default</td>
-        <td>Description</td>
-    </tr>
-    <tr>
-        <td>filterActive</td>
-        <td>Query</td>
-        <td>true</td>
-        <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
-    </tr>
-    <tr>
-        <td>page</td>
-        <td>Query</td>
-        <td>0</td>
-        <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
-    </tr>
-    <tr>
-        <td>size</td>
-        <td>Query</td>
-        <td>20</td>
-        <td>MUST be an integer. The requested size of the page to be returned. actual returned size may differ.</td>
-    </tr>
-    <tr>
-        <td>sub</td>
-        <td>Query</td>
-        <td>No default</td>
-        <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
-    </tr>
-</table> |
+  <tr>
+    <th>Path</th>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td> /api/v2/identity-trust-statement/	</td>
+    <td>GET</td> 
+    <td>MUST return a List Response Object, The content objects are serialized Identity Trust Statements. <br>
+        MUST support the following parameters: <br>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>filterActive</td>
+                <td>Query</td>
+                <td>true</td>
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+            </tr>
+            <tr>
+                <td>page</td>
+                <td>Query</td>
+                <td>0</td>
+                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+            </tr>
+            <tr>
+                <td>size</td>
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The requested size of the page to be returned. actual returned size may differ.</td>
+            </tr>
+            <tr>
+                <td>sub</td>
+                <td>Query</td>
+                <td>No default</td>
+                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+            </tr>
+        </table> </tr>
+  <tr>
+    <td>/api/v2/identity-trust-statement/{identifier}</td> |  | GET |  <br>
+    <td>GET</td> 
+    <td>MUST return a serialized Identity Trust Statement. <br>
+        MUST support the following parameters: <br>
+         <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>identifier</td>
+                <td>Path</td>
+                <td>No default</td>
+                <td>URL encoded identifier of the actor in a format defined in the [swiss-profile-anchor 1.0]</td>
+            </tr>
+           </table> </tr>
+</table> 
+
+#### Retrieving Verification Query Public Statements
+ <table>
+  <tr>
+    <th>Path</th>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td> /api/v2/verification-query-public-statement/	</td> 	
+    <td>GET</td> 
+    <td> MUST return a List Response Object, The content objects are serialized Verification Query Public Statements. <br>
+         MUST support the following parameters:       <br>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>sub</td> 
+                <td>Query</td>
+                <td>No default</td>
+                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+            </tr>
+            <tr>
+                <td>filterActive</td> 
+                <td>Query</td>
+                <td>true</td>
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+            </tr>
+            <tr> page	Query	0	MUST be an integer. 
+                <td>page</td>
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+            </tr>
+            <tr>
+                <td>size</td> 
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+            </tr>
+        </table> </tr>
+  <tr>
+    <td>/api/v2/verification-query-public-statement/{jti}</td> 
+    <td>GET</td> 
+    <td>MUST return a serialized Verification Query Public Statement. <br>
+        MUST support the following parameters: <br>
+         <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>jti</td>
+                <td>Path</td>
+                <td>No default</td>
+                <td>MUST be a UUIDv4, see [RFC 9562], of the Verification Query Public Statement to return.</td>
+            </tr>
+           </table> </tr>
+</table> 
+
+#### Retrieving Protected Verification Authorization Trust Statements
+
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td> /api/v2/protected-verification-authorization-trust-statement/	</td> 	
+    <td>GET</td> 
+    <td> MUST return a List Response Object, The content objects are serialized Protected Verification Authorization Trust Statements.  <br>
+         MUST support the following parameters:       <br>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>sub</td> 
+                <td>Query</td>
+                <td>No default</td>
+                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+            </tr>
+            <tr>
+                <td>filterActive</td> 
+                <td>Query</td>
+                <td>true</td>
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
+Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+            </tr>
+            <tr> page	Query	0	MUST be an integer. 
+                <td>page</td>
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+            </tr>
+            <tr>
+                <td>size</td> 
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+            </tr>
+        </table> </tr>
+  <tr>
+    <td>/api/v2/protected-verification-authorization-trust-statement/{jti}</td> 
+    <td>GET</td> 
+    <td>MUST return a serialized Protected Verification Authorization Trust Statement. <br>
+        MUST support the following parameters: <br>
+         <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>jti</td>
+                <td>Path</td>
+                <td>No default</td>
+                <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Verification Authorization Trust Statement to return.</td>
+            </tr>
+           </table> </tr>
+</table> 
+
+#### Retrieving Protected Issuance Authorization Trust Statements  
 
 
-| /api/v2/identity-trust-statement/{identifier} | GET | MUST return a serialized Identity Trust Statement. <br>
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td> /api/v2/protected-issuance-trust-list-statement/	</td> 	
+    <td>GET</td> 
+    <td>MUST return a List Response Object, The content objects are serialized Protected Issuance Trust List Statements.  <br>
+         MUST support the following parameters:       <br>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>sub</td> 
+                <td>Query</td>
+                <td>No default</td>
+                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+            </tr>
+            <tr>
+                <td>filterActive</td> 
+                <td>Query</td>
+                <td>true</td>
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
+Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+            </tr>
+            <tr> page	Query	0	MUST be an integer. 
+                <td>page</td>
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+            </tr>
+            <tr>
+                <td>size</td> 
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+            </tr>
+        </table> </tr>
+  <tr>
+    <td>/api/v2/protected-issuance-authorization-trust-statement/{jti}</td> 
+    <td>GET</td> 
+    <td>MUST return a serialized Protected Issuance Authorization Trust Statement.  <br>
+        MUST support the following parameters: <br>
+         <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>jti</td>
+                <td>Path</td>
+                <td>No default</td>
+                <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Authorization Trust Statement to return.</td>
+            </tr>
+           </table> </tr>
+</table> 
 
-MUST support the following parameters:
+#### Retrieving Protected Issuance Trust List Statements
 
-
-| Name                       | Type         | Default          | Description             |
-|----------------------------|--------------|------------------|-------------------------|
-| identifier |	Path	| No default |	URL encoded identifier of the actor in a format defined in the [swiss-profile-anchor 1.0] |
-
-
-Retrieving Verification Query Public Statements
-/api/v2/verification-query-public-statement/	GET	
-MUST return a List Response Object, The content objects are serialized Verification Query Public Statements.
-
-MUST support the following parameters:
-
-sub	Query	No default	If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.
-filterActive	Query	true	MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
-Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.
-page	Query	0	MUST be an integer. The zero-based page index (0..N) to retrive.
-size	Query	20	MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.
-/api/v2/verification-query-public-statement/{jti}
-
-GET	
-MUST return a serialized Verification Query Public Statement.
-
-MUST support the following parameters:
-
-jti	Path	No default	MUST be a UUIDv4, see [RFC 9562], of the Verification Query Public Statement to return.
-Retrieving Protected Verification Authorization Trust Statements
-/api/v2/protected-verification-authorization-trust-statement/	GET	
-MUST return a List Response Object, The content objects are serialized Protected Verification Authorization Trust Statements.
-
-MUST support the following parameters:
-
-sub	Query	No default	If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.
-filterActive	Query	true	MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
-Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.
-page	Query	0	MUST be an integer. The zero-based page index (0..N) to retrive.
-size	Query	20	MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.
-/api/v2/protected-verification-authorization-trust-statement/{jti}
-
-GET	
-MUST return a serialized Protected Verification Authorization Trust Statement.
-
-MUST support the following parameters:
-
-jti	Path	No default	MUST be a UUIDv4, see [RFC 9562], of the Protected Verification Authorization Trust Statement to return.
-Retrieving Protected Issuance Authorization Trust Statements  
-/api/v2/protected-issuance-authorization-trust-statement/	GET	
-MUST return a List Response Object, The content objects are serialized Protected Issuance Authorization Trust Statements.
-
-MUST support the following parameters:
-
-sub	Query	No default	If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.
-filterActive	Query	true	MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
-Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.
-page	Query	0	MUST be an integer. The zero-based page index (0..N) to retrive.
-size	Query	20	MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.
-/api/v2/protected-issuance-authorization-trust-statement/{jti}
-
-GET	
-MUST return a serialized Protected Issuance Authorization Trust Statement.
-
-MUST support the following parameters:
-
-jti	Path	No default	MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Authorization Trust Statement to return.
-Retrieving Protected Issuance Trust List Statements
-/api/v2/protected-issuance-trust-list-statement/	GET	
-MUST return a List Response Object, The content objects are serialized Protected Issuance Trust List Statements.
-
-MUST support the following parameters:
-
-filterActive	Query	true	MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
-Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.
-page	Query	0	MUST be an integer. The zero-based page index (0..N) to retrive.
-size	Query	20	MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.
-/api/v2/protected-issuance-trust-list-statement/{jti}
-
-GET	
-MUST return are serialized Protected Issuance Trust List Statement
-
-MUST support the following parameters:
-
-jti	Path	No default	MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Trust List Statement to return.
-/api/v2/protected-issuance-trust-list
-
-GET	
-MUST return are serialized Protected Issuance Trust List Statement
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td> /api/v2/protected-issuance-authorization-trust-statement/	</td> 	
+    <td>GET</td> 
+    <td>MUST return a List Response Object, The content objects are serialized Protected Issuance Authorization Trust Statements.  <br>
+         MUST support the following parameters:       <br>
+        <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>filterActive</td> 
+                <td>Query</td>
+                <td>true</td>
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
+Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+            </tr>
+            <tr> 
+                <td>page</td>
+                <td>Query</td>
+                <td>0</td>
+                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+            </tr>
+            <tr>
+                <td>size</td> 
+                <td>Query</td>
+                <td>20</td>
+                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+            </tr>
+        </table> </tr>
+  <tr>
+    <td>/api/v2/protected-issuance-trust-list-statement/{jti}</td> 
+    <td>GET</td> 
+    <td>MUST return are serialized Protected Issuance Trust List Statement  <br>
+        MUST support the following parameters: <br>
+         <table>
+            <tr>
+                <td>Name</td>
+                <td>Type</td>
+                <td>Default</td>
+                <td>Description</td>
+            </tr>
+            <tr>
+                <td>jti</td>
+                <td>Path</td>
+                <td>No default</td>
+                <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Trust List Statement to return.</td>
+            </tr>
+           </table> </tr>
+  <tr>
+          <td>/api/v2/protected-issuance-trust-list	</td> 	
+          <td>GET</td> 
+          <td>MUST return are serialized Protected Issuance Trust List Statement</td>
+  </tr>  
+</table> 
 
 #### Retrieving Non-Compliance Trust List Statements
 
-/api/v2/non-compliance-trust-list	GET	
-MUST return are serialized Non-Compliance Trust List Statement.
+| Path | Method | Description |
+|--- |--- |--- |
+| /api/v2/non-compliance-trust-list |	GET | MUST return are serialized Non-Compliance Trust List Statement. |
 
-Shared object definitions
+#### Shared object definitions
+
 List Response Object 
 
+| Field Name | Usage is | Value Description |
+|--- |--- |--- |
+| content | required |MUST be an array of objects. Objects are defined by the context of the endpoint utilizing the List Response Object. |
+| page | required | MUST be an object. Fields detailed below |
+| page.size | required | MUST be an integer depicting the size of the current page |
+| page.number | required | MUST be an integer depicting the page number. |
+| page.totalPages | required | MUST be an integer depicting the total count of pages |
+| page.totalElements | required | MUST be an integer depicting the total count of elements over all pages |
 
+-> Example
 
-
-content
-
-required
-
-MUST be an array of objects. Objects are defined by the context of the endpoint utilizing the List Response Object.
-
-page
-
-required
-
-MUST be an object. Fields detailed below
-
-page.size
-
-required
-
-MUST be an integer depicting the size of the current page
-
-page.number
-
-required
-
-MUST be an integer depicting the page number.
-
-page.totalPages
-
-required
-
-MUST be an integer depicting the total count of pages
-
-page.totalElements
-
-required
-
-MUST be an integer depicting the total count of elements over all pages
-
-
-
-Example
-Statements
-Representations
+## Statements
+### Representations
 Statements MUST utilize the JWT format detailed below.
 
-JWT Format
+#### JWT Format
 Statements MUST be valid in accordance to [RFC 7519].
 
 If a statement needs to be serialized the JWS Compact Serialization MUST be used.
 
-
-
-
-
-typ	
-Header
-
-required
-
-MUST be a string.
-Implementation Note: The specific statements define the typ string.
-
-alg	
-Header
-
-required
-
-MUST be a cryptographic identifier string defined in the [swiss-profile-trust 1.0]
-
-kid	
-Header
-
-required
-
-MUST be an identifier which can be resolved to a specific cryptographic key as defined in the [swiss-profile-anchor 1.0].
-Implementation Note: The specific statements define the type of the issuer, which are further defined in a [swiss-profile-trust].
-
-profile_version	
-Header
-
-required
-
-MUST be a string identifying the trust protocol version to process the statement.
-MUST start with "swiss-profile-trust:" and afterward MUST contain a version string following the [Semantic Versioning] standard.
-
-iat	
-Payload
-
-required
-
-Issuance time, MUST be in accordance to [RFC 7519]
-
-exp	
-Payload
-
-required
-
-Expiry of validity time, MUST be in accordance to [RFC 7519]
+| Field Name | JWT location | Usage is | Claim Value Description |
+|--- |--- |--- |--- |
+| typ | Header | required | MUST be a string. Implementation Note: The specific statements define the typ string. |
+| alg | Header | required | MUST be a cryptographic identifier string defined in the [swiss-profile-trust 1.0] |
+| kid | Header | required | MUST be an identifier which can be resolved to a specific cryptographic key as defined in the [swiss-profile-anchor 1.0]. Implementation Note: The specific statements define the type of the issuer, which are further defined in a [swiss-profile-trust]. |
+| profile_version | Header | required | MUST be a string identifying the trust protocol version to process the statement. MUST start with "swiss-profile-trust:" and afterward MUST contain a version string following the [Semantic Versioning] standard. |
+| iat | Payload | required | Issuance time, MUST be in accordance to [RFC 7519] |
+| exp | Payload | required | Expiry of validity time, MUST be in accordance to [RFC 7519] |
 
 To identify to which trust protocol a given statement belongs and how to process it the claims "profile_version" and "typ" MUST be evaluated.
 The "profile_version" claim identifies the Trust Protocol version to utilize and the "typ" claim identifies the relevant statement of that trust protocol version.
 
-Localization  
+#### Localization  
+
 Certain claims of the statements need localization support.
 To provide the localizated version of a string the following format is used:
 
@@ -471,505 +605,163 @@ language_tag MUST be a string in accordance to [BCP 47]
 An application displaying a localized claim SHOULD display the localized value instead of the non localized value in accordance with the users preferences.
 If a claim is provided in a localized version it SHOULD also provide the locale of the default value.
 
-Example
-Statement types
-Identity Trust Statement (idTS)
+-> Example
+
+### Statement types
+#### Identity Trust Statement (idTS)
+
 This trust statement is provided by issuers and verifiers to link real-world identities to their cryptographic counterparts.
 
 The trust statements contains the following fields:
 
-
-
-
-
-typ
-
-Header
-
-required
-
-MUST be "swiyu-identity-trust-statement+jwt"
-
-kid
-
-Header
-
-required
-
-This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].
-
-status
-
-Payload
-
-required
-
-MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]
-
- A statement MUST further be considered invalid when:
-
-status cannot be resolved
-status resolves does not resolve to valid
-
-the resolved status list is issued by a different identifier than the statement;
-Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable.
-
-sub
-
-Payload
-
-required
-
-MUST be an identifier of the actor in a format defined in the [swiss-profile-anchor 1.0]
-
-entity_name
-
-Payload
-
-required
-
-MUST be a human readable string identifying the actor in the real world
-MAY be localized
-
-is_state_actor
-
-Payload
-
-required
-
-MUST be a boolean (true/false) value. Indicates that the subject is considered a government approved state actor.
-
-registry_ids
-
-Payload
-
-optional
-
-MUST be an array of Registry ID Objects.
+| Field Name | JWT location | Usage is | Claim Value Description |
+|--- |--- |--- |--- |
+| typ | Header | required | MUST be "swiyu-identity-trust-statement+jwt" |
+| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
+| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]. 
+                                A statement MUST further be considered invalid when:
+- status cannot be resolved
+- status resolves does not resolve to valid
+- the resolved status list is issued by a different identifier than the statement;
+Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
+| sub | Payload | required | MUST be an identifier of the actor in a format defined in the [swiss-profile-anchor 1.0] |
+| entity_name | Payload | required | MUST be a human readable string identifying the actor in the real world. MAY be [localized]. |
+| is_state_actor | Payload | required | MUST be a boolean (true/false) value. Indicates that the subject is considered a government approved state actor. |
+| registry_ids | Payload | optional | MUST be an array of Registry ID Objects. |
 
 Registry ID Object
 
+| Field Name | Usage is | Claim Value Description |
+|--- |--- |--- |
+| type | required | MUST be a string defining the type of the registry identifier. We provide a non exhaustive list of well known types and corresponding information blow. |
+| value | required | MUST be a string. Further requirements of the identifier might apply depending on the type of identifier. |
 
+#### Well known registry IDs 
 
+| Type Identifier | Example Value | Name | Owner | Spec ]
+|--- |--- |--- |--- |--- |
+| UID | 123456789| Unternehmens-Identifikationsnummer | [Federal Statistical Office] | [FAQ] | 
 
-type
+-> Example Identity Trust Statement
 
-required
+#### Verification Query Public Statement (vqPS)
 
-MUST be a string defining the type of the registry identifier.
-We provide a non exhaustive list of well known types and corresponding information blow.
-
-value 
-
-required
-
-MUST be a string. Further requirements of the identifier might apply depending on the type of identifier.
-
-Well known registry IDs 
-
-
-
-
-
-
-UID
-
-123456789
-
-Unternehmens-Identifikationsnummer
-
-Federal Statistical Office
-
-FAQ
-
-Example Identity Trust Statement
-Verification Query Public Statement (vqPS)
 This statement is provided by verifiers to provide public transparency on their intended verification scope.
 
-
-
-
-
-typ
-
-Header
-
-required
-
-MUST be "swiyu-verification-query-public-statement+jwt"
-
-kid
-
-Header
-
-required
-
-This statement MUST be issued by a public transparency statement issuer identified in a [swiss-profile-trust].
-
-sub
-
-Payload
-
-required
-
-MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0]
-
-jti
-
-Payload
-
-required
-
-MUST be a UUIDv4, see [RFC 9562], provided by the statement issuer to facilitate easier matching in cross reference documents like the verifiers metadata.
-
-purpose_name
-
-Payload
-
-required
-
-MUST be a human readable string defining the purpose of this verification
-MUST not contain more than 40 characters.
-MAY be localized
-
-purpose_description
-
-Payload
-
-required
-
-MUST be a human readable string defining the purpose of this verification
-MUST not contain more than 1000 characters.
-MAY be localized
-
-request
-
-Payload
-
-required
-
-MUST be an Verification Request Object.
+| Field Name | JWT Location | Usage is | Claim Value Description | 
+|--- |--- |--- |--- |
+| typ | Header | required |  MUST be "swiyu-verification-query-public-statement+jwt" | 
+| kid | Header | required | This statement MUST be issued by a public transparency statement issuer identified in a [swiss-profile-trust].| 
+| sub |  Payload | required | MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0] | 
+| jti | Payload | required | MUST be a UUIDv4, see [RFC 9562], provided by the statement issuer to facilitate easier matching in cross reference documents like the verifiers metadata.| 
+| purpose_name | Payload |  required | MUST be a human readable string defining the purpose of this verification. MUST not contain more than 40 characters. MAY be localized | 
+| purpose_description | Payload |  required |  MUST be a human readable string defining the purpose of this verification. MUST not contain more than 1000 characters. MAY be localized. | 
+| request |  Payload |  required | MUST be an Verification Request Object. | 
 
 Verification Request Object 
 
-
-
-
-type
-
-required
-
-MUST be the string "DCQL"
-
-scope
-
-required
-
-MUST be a string in accordance to the "scope" parameter defined in [OpenID4VP].
-
-query
-
-required
-
-If the type "DCQL" is chosen MUST be complying to restrictions of Verification Type: DCQL
-
-
+| Field Name | Usage is| Claim Value Description | 
+|--- |--- |--- |
+| type | required | MUST be the string "DCQL"|
+| scope | required | MUST be a string in accordance to the "scope" parameter defined in [OpenID4VP]. |
+| query | required | If the type "DCQL" is chosen MUST be complying to restrictions of Verification Type: DCQL |
 
 Verification Type: DCQL
 
 A query of type "DCQL" must comply with [OpenID4VP] and MUST contain for each Credential Query a "meta" field with an object containing at least the field "vct_values" with an non empty array.
 
-Example DCQL Query
+-> Example DCQL Query
 
-Example Verification Query Public Statement
-Protected Verification Authorization Trust Statement (pvaTS)
+-> Example Verification Query Public Statement
+
+#### Protected Verification Authorization Trust Statement (pvaTS)
+
 This statement is provided by verifiers to provide authorization to request protected claims in a presentation from the holder
 
-
-
-
-
-typ
-
-Header
-
-required
-
-MUST be "swiyu-protected-verification-authorization-trust-statement+jwt"
-
-kid
-
-Header
-
-required
-
-This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].
-
-status
-
-Payload
-
-required
-
-MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]
-
- A statement MUST further be considered invalid when:
-
-status cannot be resolved
-status resolves does not resolve to valid
-
+| Field Name | JWT Location | Usage is | Claim Value Description | 
+|--- |--- |--- |--- |
+| typ | Header | required | MUST be "swiyu-protected-verification-authorization-trust-statement+jwt" | 
+| kid | Header|  required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. | 
+| status | Payload |  required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0].  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid
 the resolved status list is issued by a different identifier than the statement;
-Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable.
-
-sub
-
-Payload
-
-required
-
-MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0]
-
-jti
-
-Payload
-
-required
-
-MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement
-
-authorized_fields
-
-Payload
-
-required
-
-MUST be a non-empty array of strings that specify the name of a field which is authorized to be verified.
+Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. | 
+| sub | Payload | required | MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0] | 
+| jti | Payload | required | MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement | 
+| authorized_fields | Payload | required | MUST be a non-empty array of strings that specify the name of a field which is authorized to be verified. | 
 
 A Protected Verification Authorization Trust Statement provides authorization to the verifier identified in the "sub" claim if the protected field is listed in the "authorized_fields" claim.
 
-Example Protected Verification Authorization Trust Statement
+-> Example Protected Verification Authorization Trust Statement
 
+#### Protected Issuance Authorization Trust Statement (piaTS)
 
-Protected Issuance Authorization Trust Statement (piaTS)
 This statement is provided by issuers as proof of state authorization to issue protected VCs .
 
-
-
-
-typ
-
-Header
-
-required
-
-MUST be "swiyu-protected-issuance-authorization-trust-statement+jwt"
-
-kid
-
-Header
-
-required
-
-This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].
-
-status
-
-Payload
-
-required
-
-MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]
-
+| Field Name | JWT Location | Usage is | Claim Value Description | 
+|--- |--- |--- |--- |
+| typ | Header | required | MUST be "swiyu-protected-issuance-authorization-trust-statement+jwt" |
+| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].|
+| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]. 
  A statement MUST further be considered invalid when:
 
 status cannot be resolved
 status resolves does not resolve to valid
 
 the resolved status list is issued by a different identifier than the statement;
-Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable.
-
-sub
-
-Payload
-
-required
-
-MUST be an identifier of the issuer in a format defined in the [swiss-profile-anchor 1.0]
-
-jti
-
-Payload
-
-required
-
-MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement
-
-can_issue
-
-Payload
-
-required
-
-MUST be a Protected Issuance Authorization Object
+Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
+| sub | Payload | required | MUST be an identifier of the issuer in a format defined in the [swiss-profile-anchor 1.0] |
+| jti | Payload | required | MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
+| can_issue | Payload | required | MUST be a Protected Issuance Authorization Object |
 
 Protected Issuance Authorization Object
 
 Defines the scope and descriptive details of the authorization.
 
+| Field Name | Usage is | Claim Value Description | 
+|--- |--- |--- |
+| vct | required | MUST be a String designating the type of the Credential, as defined for claim `vct` in [SD-JWT VC] |
+| vct_name | required | MUST be a human readable string defining the name of the credential to be issued. MUST not contain more than 40 characters. MAY be localized. |
+| reason | optional | MUST be a human readable string defining reason of why the subject is permitted to issue this credential. MUST not contain more than 1000 characters. MAY be localized. |
 
+-> Example Protected Issuance Authorization Trust Statement
 
+#### Protected Issuance Trust List Statement (piTLS)
 
-vct
-
-required
-
-MUST be a String designating the type of the Credential, as defined for claim `vct` in [SD-JWT VC]
-
-vct_name
-
-required
-
-MUST be a human readable string defining the name of the credential to be issued.
-MUST not contain more than 40 characters.
-MAY be localized
-
-reason
-
-optional
-
-MUST be a human readable string defining reason of why the subject is permitted to issue this credential.
-MUST not contain more than 1000 characters.
-MAY be localized
-
-Example Protected Issuance Authorization Trust Statement
-Protected Issuance Trust List Statement (piTLS)
 Information for actors which VCTs can be issued only by authorized issuers.
 
-
-
-
-
-typ
-
-Header
-
-required
-
-MUST be "swiyu-protected-issuance-trust-list-statement+jwt"
-
-kid
-
-Header
-
-required
-
-This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].
-
-status
-
-Payload
-
-required
-
-MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]
-
- A statement MUST further be considered invalid when:
-
-status cannot be resolved
-status resolves does not resolve to valid
-
+| Field Name | JWT Location | Usage is | Claim Value Description | 
+|--- |--- |--- |--- |
+| typ | Header | required | MUST be "swiyu-protected-issuance-trust-list-statement+jwt" |
+| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
+| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0].  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid 
 the resolved status list is issued by a different identifier than the statement;
-Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable.
+Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
+| jti | Payload | required |MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
+| vct_values | Payload | required | MUST be an array of strings that MUST be valid type identifiers as defined in [SD-JWT VC] |
 
-jti
+-> Example Protected Issuance Trust List Statement
 
-Payload
+#### Non-Compliance Trust List Statement (ncTLS)
 
-required
-
-MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement
-
-vct_values
-
-Payload
-
-required
-
-MUST be an array of strings that MUST be valid type identifiers as defined in [SD-JWT VC]
-
-Example Protected Issuance Trust List Statement
-Non-Compliance Trust List Statement (ncTLS)
 This statement is provided by a trust registry, identified in a [swiss-profile-trust], as a means to warn actors of known bad actors in the ecosystem.
 
-
-
-
-
-
-typ
-
-Header
-
-required
-
-MUST be "swiyu-non-compliance-trust-list-statement+jwt"
-
-kid
-
-Header
-
-required
-
-This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].
-
-status
-
-Payload
-
-required
-
-MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]
-
- A statement MUST further be considered invalid when:
-
-status cannot be resolved
-status resolves does not resolve to valid
-
+| Field Name | JWT Location | Usage is | Claim Value Description | 
+|--- |--- |--- |--- |
+| typ | Header | required | MUST be "swiyu-non-compliance-trust-list-statement+jwt" |
+| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
+| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid
 the resolved status list is issued by a different identifier than the statement;
-Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable.
-
-non_compliant_actors
-
-Payload
-
-required
-
-MUST be an array of Non-Compliant Actor Objects
+Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
+| non_compliant_actors | Payload | required | MUST be an array of Non-Compliant Actor Objects |
 
 Non-Compliant Actor Object
 
 Defines the scope of the state authorization.
 
+| Field Name | Usage is | Claim Value Description | 
+|--- |--- |--- |
+| actor | required | MUST be an identifier of the bad actor in a format defined in the [swiss-profile-anchor 1.0] |
+| flagged_at | required | MUST be a [RFC 3339] compliant String |
+| reason | required | MUST be a human readable String with a description of why this actor was deemed a bad actor. MAY be localized (Frage) |  
 
-
-
-actor
-
-required
-
-MUST be an identifier of the bad actor in a format defined in the [swiss-profile-anchor 1.0]
-
-flagged_at
-
-required
-
-MUST be a [RFC 3339] compliant String
-
-reason
-
-required
-
-MUST be a human readable String with a description of why this actor was deemed a bad actor.
-MAY be localized (Frage)  
-
-Example Non-Compliance Trust List Statement
+-> Example Non-Compliance Trust List Statement
