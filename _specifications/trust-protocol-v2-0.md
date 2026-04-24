@@ -107,18 +107,11 @@ When performing the necessary validations the wallet MUST perform all steps as i
 
 
 | Trust Mark              | Necessary Validations   |
-|-------------------------|-------------------------|
-| Verified Identity Trust Mark	| 1. Make sure the issuer provides a valid Identity Trust Statement in his issuer metadata. <br>
-2. Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, matches the "sub" claim of the Identity Trust Statement. |
-| Governed use case Trust Mark	| 1. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. <br>
-2. Make sure that the "vct" claim of the offered VC is listed in the "vct_values" of the Protected Issuance Trust List Statement. |
-| Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. <br>
-2. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. <br>
-3. Make sure the issuer provides a valid Protected Issuance Authorization Trust Statement in his issuer metadata. <br>
-4. Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is equal to the "sub" claim of the Protected Issuance Authorization Trust Statement. <br>
-5. Make sure that the "can_issue.vct" claim of the Protected Issuance Authorization Trust Statement is equal to the VC Type of the offered credential. |
-| Compliant actor Trust Mark	| 1. Act upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. <br>
-2. validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.|
+|--------------------- |------------------- |
+| Verified Identity Trust Mark	| 1. Make sure the issuer provides a valid Identity Trust Statement in his issuer metadata. 2. Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, matches the "sub" claim of the Identity Trust Statement. |
+| Governed use case Trust Mark	| 1. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. 2. Make sure that the "vct" claim of the offered VC is listed in the "vct_values" of the Protected Issuance Trust List Statement. |
+| Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. 2. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. 3. Make sure the issuer provides a valid Protected Issuance Authorization Trust Statement in his issuer metadata. 4. Validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is equal to the "sub" claim of the Protected Issuance Authorization Trust Statement. 5. Make sure that the "can_issue.vct" claim of the Protected Issuance Authorization Trust Statement is equal to the VC Type of the offered credential. |
+| Compliant actor Trust Mark	| 1. Act upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. 2. validate that the DID, resolved from the "kid" header claim of the issuers signed issuer metadata, is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.|
 
 
 The following diagram shows how the wallet could resolve trust markers:
@@ -157,24 +150,12 @@ The wallet SHOULD mark the trust relationship to the verifier with the following
 When performing the necessary validations the wallet MUST perform all steps as in the table below.
 
 | Trust Mark              | Necessary Validations          |
-|----------------------------|-------------------------|
-| Verified Identity Trust Mark	| 1. Validate that the provided attestations do contain exactly one Identity Trust Statement. <br>
-2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Identity Trust Statement. <br>
-  If the "client_id" contains the prefix "decentralized_identifier:" it MUST be removed before the comparison. |
-| Transparent verification Trust Mark	| 1. Validate that the provided attestations contain exactly one Verification Query Public Statement. <br>
-2. Validate that the presentation request contains a "scope" parameter, as defined in section 5.5 of [OpenID4VP]. <br>
-3. Validate that the "scope" claim of the Verification Query Public Statement is contained in the presentation request "scope" claim. |
+|---------------------------- |------------------------- |
+| Verified Identity Trust Mark	| 1. Validate that the provided attestations do contain exactly one Identity Trust Statement. 2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Identity Trust Statement. If the "client_id" contains the prefix "decentralized_identifier:" it MUST be removed before the comparison. |
+| Transparent verification Trust Mark	| 1. Validate that the provided attestations contain exactly one Verification Query Public Statement. 2. Validate that the presentation request contains a "scope" parameter, as defined in section 5.5 of [OpenID4VP]. 3. Validate that the "scope" claim of the Verification Query Public Statement is contained in the presentation request "scope" claim. |
 | Governed use case Trust Mark | 1. Identify at least one protected field in the presentation, as defined in Protected verification. |
-| Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. <br>
-2. Identify each protected field in the presentation, as defined in Protected verification. <br>
-3. Protected fields MUST be matched against all claims which are send from the wallet to the verifier. <br>
-4. For each protected field the wallet MUST adhere to the following process: <br>
-  a. Make sure the protected field is listed in the "authorized_fields" claim of a Protected Verification Authorization Trust Statement. <br>
-  b. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Protected Verification Authorization Trust Statement. <br>
-  If the "client_id" contains the prefix "decentralized_identifier:" it MUST be removed before the comparison. |
-| Compliant actor Trust Mark | 1. Aact upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. <br>
-2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim. <br>
-  If the "client_id" contains the prefix "decentralized_identifier:" it MUST be removed before the comparison. |
+| Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. 2. Identify each protected field in the presentation, as defined in Protected verification. 3. Protected fields MUST be matched against all claims which are send from the wallet to the verifier. 4. For each protected field the wallet MUST adhere to the following process:  a. Make sure the protected field is listed in the "authorized_fields" claim of a Protected Verification Authorization Trust Statement.   b. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Protected Verification Authorization Trust Statement. If the "client_id" contains the prefix "decentralized_identifier:" it MUST be removed before the comparison. |
+| Compliant actor Trust Mark | 1. Aact upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. 2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.  If the "client_id" contains the prefix "decentralized_identifier:" it MUST be removed before the comparison. |
 
 The following diagram shows how the wallet could resolve trust markers:
 
@@ -192,15 +173,9 @@ When performing the necessary validations the verifier MUST process trust marks 
 
 | Trust Mark                 | Necessary Validations   |
 |----------------------------|-------------------------|
-| Verified Identity Trust Mark	| 1. Validate that a trust registry provides, through the process described in Retrieving Identity Trust Statements, an Identity Trust Statement for the issuers identifier of the VC. <br>
-Note: The process to resolve the VC issuers identifier is defined in the [swiss-profile-vc 1.0]. |
-| Governed use case Trust Mark	| 1. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. <br>
-2. Make sure that the "vct" claim of the VC is listed in the "vct_values" of the Protected Issuance Trust List Statement |
-|Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Verified Identity Trust Mark. <br>
-2. Validate that the trust relationship is already marked with the Governed use case Trust Mark. <br>
-3. Fetch the issuers Protected Issuance Authorization Trust Statement from the currently [active trust registry] via Retrieving Protected Issuance Authorization Trust Statements. <br>
-4. Validate that the "sub" claim of the issuers Protected Issuance Authorization Trust Statement matches the "sub" claim of the Identity Trust Statement. <br>
-5. Mmake sure that the "can_issue.vct" claim of the Protected Issuance Authorization Trust Statement is equal to the VC Type of the VC.|
+| Verified Identity Trust Mark	| 1. Validate that a trust registry provides, through the process described in Retrieving Identity Trust Statements, an Identity Trust Statement for the issuers identifier of the VC. Note: The process to resolve the VC issuers identifier is defined in the [swiss-profile-vc 1.0]. |
+| Governed use case Trust Mark	| 1. Act upon a Protected Issuance Trust List Statement which is valid at the time of the trust process. 2. Make sure that the "vct" claim of the VC is listed in the "vct_values" of the Protected Issuance Trust List Statement |
+| Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Verified Identity Trust Mark. 2. Validate that the trust relationship is already marked with the Governed use case Trust Mark. 3. Fetch the issuers Protected Issuance Authorization Trust Statement from the currently [active trust registry] via Retrieving Protected Issuance Authorization Trust Statements. 4. Validate that the "sub" claim of the issuers Protected Issuance Authorization Trust Statement matches the "sub" claim of the Identity Trust Statement. 5. Mmake sure that the "can_issue.vct" claim of the Protected Issuance Authorization Trust Statement is equal to the VC Type of the VC. |
 
 The following diagram shows how the wallet could resolve trust markers:
 
@@ -249,8 +224,7 @@ A trust registry MUST provide the following HTTP REST endpoints:
 
 | Path                       | Method                  | Description             |
 |----------------------------|-------------------------|-------------------------|
-| /api/v2/identity-trust-statement/	 | GET | MUST return a List Response Object, The content objects are serialized Identity Trust Statements.
-MUST support the following parameters: 
+| /api/v2/identity-trust-statement/	 | GET | MUST return a List Response Object, The content objects are serialized Identity Trust Statements. MUST support the following parameters:
 <table>
     <tr>
         <td>Name</td>
