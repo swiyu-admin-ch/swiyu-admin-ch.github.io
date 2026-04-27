@@ -203,11 +203,11 @@ The issuer MUST provide, for each protected VC Type to be issued, a "protected_i
 
 ### JWT-Secured Authorization Request (Request Object)
 
-The verifier MUST add his Identity Trust Statement, the relevant Verification Query Public Statement for this verification and if needed the relevant Protected Verification Authorization Trust Statement as attestations to the "verifier_info" claim in the JWT-Secured Authorization Request as defined in [OpenID4VP].
+The verifier MUST add his Identity Trust Statement, the relevant Verification Query Public Statement for this verification and if needed the relevant Protected Verification Authorization Trust Statement as attestations to the `verifier_info` claim in the JWT-Secured Authorization Request as defined in [OpenID4VP].
 
-Each of those attestations MUST have the "format" claim "jwt".
+Each of those attestations MUST have the `format` claim `jwt`.
 
-Each of those attestations MUST NOT utilize the "credential_ids" claim.
+Each of those attestations MUST NOT utilize the `credential_ids` claim.
 
 -> Example: Request Object with Trust Statements
 
@@ -594,7 +594,7 @@ Statements MUST be valid in accordance to [RFC 7519].
 If a statement needs to be serialized the JWS Compact Serialization MUST be used.
 
 | Field Name | JWT location | Usage is | Claim Value Description |
-|--- |--- |--- |--- |
+|----------- |------------- |--------- |------------------------ |
 | `typ` | Header | required | MUST be a string. Implementation Note: The specific statements define the typ string. |
 | `alg` | Header | required | MUST be a cryptographic identifier string defined in the [swiss-profile-trust 1.0] |
 | `kid` | Header | required | MUST be an identifier which can be resolved to a specific cryptographic key as defined in the [swiss-profile-anchor 1.0]. Implementation Note: The specific statements define the type of the issuer, which are further defined in a [swiss-profile-trust]. |
@@ -610,7 +610,7 @@ The "profile_version" claim identifies the Trust Protocol version to utilize and
 Certain claims of the statements need localization support.
 To provide the localizated version of a string the following format is used:
 
-"<claim name>#<language_tag>": "<localized value>"
+`<claim name>#<language_tag>": "<localized value>`
 
 language_tag MUST be a string in accordance to [BCP 47]
 
@@ -628,31 +628,31 @@ The trust statements contains the following fields:
 
 | Field Name | JWT location | Usage is | Claim Value Description |
 |--- |--- |--- |--- |
-| typ | Header | required | MUST be "swiyu-identity-trust-statement+jwt" |
-| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
-| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]. 
+| `typ` | Header | required | MUST be "swiyu-identity-trust-statement+jwt" |
+| `kid` | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
+| `status` | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]. 
                                 A statement MUST further be considered invalid when:
 - status cannot be resolved
 - status resolves does not resolve to valid
 - the resolved status list is issued by a different identifier than the statement;
 Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
-| sub | Payload | required | MUST be an identifier of the actor in a format defined in the [swiss-profile-anchor 1.0] |
-| entity_name | Payload | required | MUST be a human readable string identifying the actor in the real world. MAY be [localized]. |
-| is_state_actor | Payload | required | MUST be a boolean (true/false) value. Indicates that the subject is considered a government approved state actor. |
-| registry_ids | Payload | optional | MUST be an array of Registry ID Objects. |
+| `sub` | Payload | required | MUST be an identifier of the actor in a format defined in the [swiss-profile-anchor 1.0] |
+| `entity_name` | Payload | required | MUST be a human readable string identifying the actor in the real world. MAY be [localized]. |
+| `is_state_actor` | Payload | required | MUST be a boolean (true/false) value. Indicates that the subject is considered a government approved state actor. |
+| `registry_ids` | Payload | optional | MUST be an array of Registry ID Objects. |
 
 Registry ID Object
 
 | Field Name | Usage is | Claim Value Description |
 |--- |--- |--- |
-| type | required | MUST be a string defining the type of the registry identifier. We provide a non exhaustive list of well known types and corresponding information blow. |
-| value | required | MUST be a string. Further requirements of the identifier might apply depending on the type of identifier. |
+| `type` | required | MUST be a string defining the type of the registry identifier. We provide a non exhaustive list of well known types and corresponding information blow. |
+| `value` | required | MUST be a string. Further requirements of the identifier might apply depending on the type of identifier. |
 
 ### Well known registry IDs 
 
 | Type Identifier | Example Value | Name | Owner | Spec ]
 |--- |--- |--- |--- |--- |
-| UID | 123456789| Unternehmens-Identifikationsnummer | [Federal Statistical Office] | [FAQ] | 
+| `UID` | 123456789| Unternehmens-Identifikationsnummer | [Federal Statistical Office] | [FAQ] | 
 
 -> Example Identity Trust Statement
 
@@ -662,21 +662,21 @@ This statement is provided by verifiers to provide public transparency on their 
 
 | Field Name | JWT Location | Usage is | Claim Value Description | 
 |--- |--- |--- |--- |
-| typ | Header | required |  MUST be "swiyu-verification-query-public-statement+jwt" | 
-| kid | Header | required | This statement MUST be issued by a public transparency statement issuer identified in a [swiss-profile-trust].| 
-| sub |  Payload | required | MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0] | 
-| jti | Payload | required | MUST be a UUIDv4, see [RFC 9562], provided by the statement issuer to facilitate easier matching in cross reference documents like the verifiers metadata.| 
-| purpose_name | Payload |  required | MUST be a human readable string defining the purpose of this verification. MUST not contain more than 40 characters. MAY be localized | 
-| purpose_description | Payload |  required |  MUST be a human readable string defining the purpose of this verification. MUST not contain more than 1000 characters. MAY be localized. | 
-| request |  Payload |  required | MUST be an Verification Request Object. | 
+| `typ` | Header | required |  MUST be "swiyu-verification-query-public-statement+jwt" | 
+| `kid` | Header | required | This statement MUST be issued by a public transparency statement issuer identified in a [swiss-profile-trust].| 
+| `sub` |  Payload | required | MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0] | 
+| `jti` | Payload | required | MUST be a UUIDv4, see [RFC 9562], provided by the statement issuer to facilitate easier matching in cross reference documents like the verifiers metadata.| 
+| `purpose_name` | Payload |  required | MUST be a human readable string defining the purpose of this verification. MUST not contain more than 40 characters. MAY be localized | 
+| `purpose_description` | Payload |  required |  MUST be a human readable string defining the purpose of this verification. MUST not contain more than 1000 characters. MAY be localized. | 
+| `request` |  Payload |  required | MUST be an Verification Request Object. | 
 
 Verification Request Object 
 
 | Field Name | Usage is| Claim Value Description | 
 |--- |--- |--- |
-| type | required | MUST be the string "DCQL"|
-| scope | required | MUST be a string in accordance to the "scope" parameter defined in [OpenID4VP]. |
-| query | required | If the type "DCQL" is chosen MUST be complying to restrictions of Verification Type: DCQL |
+| `type` | required | MUST be the string "DCQL"|
+| `scope` | required | MUST be a string in accordance to the "scope" parameter defined in [OpenID4VP]. |
+| `query` | required | If the type "DCQL" is chosen MUST be complying to restrictions of Verification Type: DCQL |
 
 Verification Type: DCQL
 
@@ -692,14 +692,14 @@ This statement is provided by verifiers to provide authorization to request prot
 
 | Field Name | JWT Location | Usage is | Claim Value Description | 
 |--- |--- |--- |--- |
-| typ | Header | required | MUST be "swiyu-protected-verification-authorization-trust-statement+jwt" | 
-| kid | Header|  required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. | 
-| status | Payload |  required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0].  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid
+| `typ` | Header | required | MUST be "swiyu-protected-verification-authorization-trust-statement+jwt" | 
+| `kid` | Header|  required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. | 
+| `status` | Payload |  required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0].  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid
 the resolved status list is issued by a different identifier than the statement;
 Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. | 
-| sub | Payload | required | MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0] | 
-| jti | Payload | required | MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement | 
-| authorized_fields | Payload | required | MUST be a non-empty array of strings that specify the name of a field which is authorized to be verified. | 
+| `sub` | Payload | required | MUST be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0] | 
+| `jti` | Payload | required | MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement | 
+| `authorized_fields` | Payload | required | MUST be a non-empty array of strings that specify the name of a field which is authorized to be verified. | 
 
 A Protected Verification Authorization Trust Statement provides authorization to the verifier identified in the "sub" claim if the protected field is listed in the "authorized_fields" claim.
 
@@ -711,19 +711,18 @@ This statement is provided by issuers as proof of state authorization to issue p
 
 | Field Name | JWT Location | Usage is | Claim Value Description | 
 |--- |--- |--- |--- |
-| typ | Header | required | MUST be "swiyu-protected-issuance-authorization-trust-statement+jwt" |
-| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].|
-| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]. 
+| `typ` | Header | required | MUST be "swiyu-protected-issuance-authorization-trust-statement+jwt" |
+| `kid` | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust].|
+| `status` | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]. 
  A statement MUST further be considered invalid when:
 
 status cannot be resolved
 status resolves does not resolve to valid
-
 the resolved status list is issued by a different identifier than the statement;
 Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
-| sub | Payload | required | MUST be an identifier of the issuer in a format defined in the [swiss-profile-anchor 1.0] |
-| jti | Payload | required | MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
-| can_issue | Payload | required | MUST be a Protected Issuance Authorization Object |
+| `sub` | Payload | required | MUST be an identifier of the issuer in a format defined in the [swiss-profile-anchor 1.0] |
+| `jti` | Payload | required | MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
+| `can_issue` | Payload | required | MUST be a Protected Issuance Authorization Object |
 
 Protected Issuance Authorization Object
 
@@ -731,9 +730,9 @@ Defines the scope and descriptive details of the authorization.
 
 | Field Name | Usage is | Claim Value Description | 
 |--- |--- |--- |
-| vct | required | MUST be a String designating the type of the Credential, as defined for claim `vct` in [SD-JWT VC] |
-| vct_name | required | MUST be a human readable string defining the name of the credential to be issued. MUST not contain more than 40 characters. MAY be localized. |
-| reason | optional | MUST be a human readable string defining reason of why the subject is permitted to issue this credential. MUST not contain more than 1000 characters. MAY be localized. |
+| `vct` | required | MUST be a String designating the type of the Credential, as defined for claim `vct` in [SD-JWT VC] |
+| `vct_name` | required | MUST be a human readable string defining the name of the credential to be issued. MUST not contain more than 40 characters. MAY be localized. |
+| `reason` | optional | MUST be a human readable string defining reason of why the subject is permitted to issue this credential. MUST not contain more than 1000 characters. MAY be localized. |
 
 -> Example Protected Issuance Authorization Trust Statement
 
@@ -743,13 +742,13 @@ Information for actors which VCTs can be issued only by authorized issuers.
 
 | Field Name | JWT Location | Usage is | Claim Value Description | 
 |--- |--- |--- |--- |
-| typ | Header | required | MUST be "swiyu-protected-issuance-trust-list-statement+jwt" |
-| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
-| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0].  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid 
+| `typ` | Header | required | MUST be "swiyu-protected-issuance-trust-list-statement+jwt" |
+| `kid` | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
+| `status` | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0].  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid 
 the resolved status list is issued by a different identifier than the statement;
 Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
-| jti | Payload | required |MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
-| vct_values | Payload | required | MUST be an array of strings that MUST be valid type identifiers as defined in [SD-JWT VC] |
+| `jti` | Payload | required |MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
+| `vct_values` | Payload | required | MUST be an array of strings that MUST be valid type identifiers as defined in [SD-JWT VC] |
 
 -> Example Protected Issuance Trust List Statement
 
@@ -759,12 +758,12 @@ This statement is provided by a trust registry, identified in a [swiss-profile-t
 
 | Field Name | JWT Location | Usage is | Claim Value Description | 
 |--- |--- |--- |--- |
-| typ | Header | required | MUST be "swiyu-non-compliance-trust-list-statement+jwt" |
-| kid | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
-| status | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid
+| `typ` | Header | required | MUST be "swiyu-non-compliance-trust-list-statement+jwt" |
+| `kid` | Header | required | This statement MUST be issued by an trust statement issuer identified in a [swiss-profile-trust]. |
+| `status` | Payload | required | MUST adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0]  A statement MUST further be considered invalid when: status cannot be resolved status resolves does not resolve to valid
 the resolved status list is issued by a different identifier than the statement;
 Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
-| non_compliant_actors | Payload | required | MUST be an array of Non-Compliant Actor Objects |
+| `non_compliant_actors` | Payload | required | MUST be an array of Non-Compliant Actor Objects |
 
 Non-Compliant Actor Object
 
@@ -772,8 +771,8 @@ Defines the scope of the state authorization.
 
 | Field Name | Usage is | Claim Value Description | 
 |--- |--- |--- |
-| actor | required | MUST be an identifier of the bad actor in a format defined in the [swiss-profile-anchor 1.0] |
-| flagged_at | required | MUST be a [RFC 3339] compliant String |
-| reason | required | MUST be a human readable String with a description of why this actor was deemed a bad actor. MAY be localized (Frage) |  
+| `actor` | required | MUST be an identifier of the bad actor in a format defined in the [swiss-profile-anchor 1.0] |
+| `flagged_at` | required | MUST be a [RFC 3339] compliant String |
+| `reason` | required | MUST be a human readable String with a description of why this actor was deemed a bad actor. MAY be localized (Frage) |  
 
 -> Example Non-Compliance Trust List Statement
