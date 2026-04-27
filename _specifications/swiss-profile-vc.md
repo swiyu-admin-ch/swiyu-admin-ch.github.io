@@ -43,17 +43,19 @@ The specification is fully supported by this profile (and components adhering to
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-1. Introduction
+## 1. Introduction
 In the swiyu Trust Infrastructure the roles of Issuer and Status Issuer are fulfilled by the same entity. The Base Registry, provided by FOITT, acts as the Status Provider.
 
-4. Status List<br>
+## 4. Status List
+
 4.2. Status List in JSON Format<br>
 `aggreation_uri` is NOT supported<br>
 
 4.3. Status List in CBOR Format<br>
 Status List in CBOR Format is NOT supported<br>
 
-5. Status List Token<br>
+## 5. Status List Token
+
 5.1. Status List Token in JWT Format<br>
 In addition to the already specified claims the JWT Claims Set MUST contain:
 - `exp`: REQUIRED. As generally defined in [RFC7519]. The `exp` (expiration time) MUST be set and can be any time in the future.
@@ -63,9 +65,9 @@ The JWT header of the Status List Token MUST contain:
 
 The Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC but CAN use a different key.<br>
 
-Swiss Profile version indication with parameter profile_version in Status List Token JWT header is REQUIRED.<br>
+Swiss Profile version indication with parameter `profile_version` in Status List Token JWT header is REQUIRED.<br>
 
-`
+```
 {
   // header
   "typ": "statuslist+jwt",
@@ -76,36 +78,44 @@ Swiss Profile version indication with parameter profile_version in Status List T
 {
   // payload
 }
-`
+```
+
 5.2. Status List Token in CWT Format<br>
 Status List Token in CWT Format is NOT SUPPORTED.<br>
 
-6. Referenced Token<br>
+## 6. Referenced Token
+
 6.3. Referenced Token in COSE<br>
 References Token in COSE is NOT SUPPORTED.<br>
 
-7. Status Types<br>
+## 7. Status Types
+
 7.1. Status Types Values<br>
 Accepted Status Types include only 0x00 - "VALID", 0x01 - "INVALID", and 0x02 - "SUSPENDED".<br>
 All other Status Types are technically valid and shown as "UNKNOWN" in the swiyu Wallet.<br>
 
-8. Verification and Processing<br>
+## 8. Verification and Processing
+
 Only "application/statuslist+jwt" for Status List Token in JWT format is supported.<br>
 
 8.4. Historical resolution<br>
 Historical resolution is NOT SUPPORTED.<br>
 
-9. Status List Aggregation<br>
+## 9. Status List Aggregation
+
 Status List Aggregation is NOT SUPPORTED.<br>
 
-10. X.509 Certificate Extended Key Usage Extension<br>
+## 10. X.509 Certificate Extended Key Usage Extension
+
 X.509 Certificate Extended Key Usage Extension is NOT SUPPORTED.<br>
 
-11. Security Considerations<br>
+## 11. Security Considerations
+
 11.3. Key Resolution and Trust Management<br>
 As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers CAN use a different key for the signature. See [swiss-profile-anchor](JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
 
-12. Privacy Considerations<br>
+## 12. Privacy Considerations
+
 12.1. Observability of Issuers<br>
 To prevent observability of Issuers, the Status Provider MUST be the registry provided by FOITT. Participants MAY reject resolution if the URI inside the Reference Token points to another endpoint.  <br>
 
@@ -118,7 +128,8 @@ Status Issuer and Status Provider are forced to be different entities as the Sta
 12.8. Status Types<br>
 The decision whether use of the supported Status Type "SUSPENDED" is at the discretion of the Issuer. Information published to the Status List is considered to be public.<br>
 
-13. Implementation Considerations<br>
+## 13. Implementation Considerations
+
 In addition to conformity checks documented in the standard, the registry performs additional checks on upload of a Status List:<br>
 
 **Size Limits**: The Status List Token size MUST be greater than **200 bytes** and MUST NOT exceed **200 KB*. The decompressed Byte Array also MUST NOT exceed 200KB (~100'000 entries when using 2 bits per status). This ensures the registry remains performant while preventing the upload of empty or malformed headers.<br>
@@ -128,10 +139,10 @@ Additional checks to the content of the Status List Token are performed:
 
 | Claim |	Requirement Type |	Validation Logic |
 |-----|-----|-----|
-|iss (Issuer) |	Initial Upload |	MUST match a Decentralized Identifier (DID) currently authorized and assigned to the submitting swiyu business partner. |
-| iss (Issuer) | Subsequent Updates |	MUST be identical to the iss value of the previously recorded version of the Status List. |
-| iat (Issued At) |	Freshness Check |	MUST be greater than T - 24 hours (where T represents the current system time). Documents older than 24 hours cannot be uploaded. |
-| exp (Expiration) |	Validity Window |	MUST be present and MUST be greater than the current system time (T). |
+| `kid` (Key Identifier) |	Initial Upload |	MUST match a Decentralized Identifier (DID) currently authorized and assigned to the submitting swiyu business partner. |
+| `kid` (Key Identifier) | Subsequent Updates |	MUST be identical to the iss value of the previously recorded version of the Status List. |
+| `iat` (Issued At) |	Freshness Check |	MUST be greater than T - 24 hours (where T represents the current system time). Documents older than 24 hours cannot be uploaded. |
+| `exp` (Expiration) |	Validity Window |	MUST be present and MUST be greater than the current system time (T). |
 
 # RFC 9901: Selective Disclosure for JSON Web Tokens
 
@@ -141,7 +152,8 @@ The specification is fully supported by this profile (and components adhering to
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-4. SD-JWT and SD-JWT+KB Data Formats<br>
+## 4. SD-JWT and SD-JWT+KB Data Formats
+
 4.1. Issuer-Signed JWT<br>
 The payload MUST NOT contain one or more permanently disclosed claims.<br>
 
@@ -166,7 +178,8 @@ Recursive Disclosures MUST be supported and SHOULD be used when dealing with nes
 JWT payload:
 - aud: REQUIRED. The aud claim MUST be client_id that was sent in the JAR of the verifier (see swiss-profile-verification 1.0). Please respect the security considerations in the implementation: ValidationofaudclaiminKeyBindingJWT.
   
-6 Considerations on Nested Data in SD-JWTs<br>
+## 6 Considerations on Nested Data in SD-JWTs
+
 6.1 Example: Flat SD-JWT<br>
 Flat SD-JWT MUST be supported.<br>
 
@@ -176,10 +189,12 @@ Structured SD-JWT is NOT SUPPORTED.<br>
 6.3 Example: SD-JWT with Recursive Disclosures<br>
 Recursive SD-JWT disclosures MUST be supported and SHOULD be preferred.<br>
 
-8. JWS JSON Serialization<br>
+## 8. JWS JSON Serialization
+
 JWS JSON Serialization is NOT SUPPORTED.<br>
 
-9. Security Considerations<br>
+## 9. Security Considerations
+
 9.11. Explicit Typing<br>
 As specified in chapter 3.1 of the SD-JWT-VC standard, the media type MUST be `application/dc+sd-jwt`.<br>
 
@@ -195,13 +210,14 @@ The verifier MUST ensure that the Key Binding JWT received during a presentation
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-3. Verifiable Digital Credentials based on SD-JWT<br>
+## 3. Verifiable Digital Credentials based on SD-JWT
+
 3.2. Data Format<br>
 3.2.1. JOSE Header<br>
 
 Swiss Profile version indication with parameter `profile_version` in SD-JWT-VC header is REQUIRED.<br>
 
-`
+```
 {
   // header
   "typ": "dc+sd-jwt",
@@ -212,7 +228,7 @@ Swiss Profile version indication with parameter `profile_version` in SD-JWT-VC h
 {
   // payload
 }
-`
+```
 
 3.2.2. JWT Claims Set<br>
 3.2.2.2  Registered JWT Claims<br>
@@ -244,15 +260,17 @@ An SD-JWT VC MUST NOT have no selectively disclosable claims. Any claim without 
 3.5. Issuer Signature Mechanisms<br>
 The Issuer Signature mechanism is described in [swiss-profile-anchor].<br>
 
-4. JWT VC Issuer Metadata<br>
+## 4. JWT VC Issuer Metadata
+
 JWT VC Issuer Metadata is NOT SUPPORTED.<br>
 
-5. SD-JWT VC Type Metadata<br>
+## 5. SD-JWT VC Type Metadata
+
 Usage of SD-JWT VC Type Metadata is RECOMMENDED.<br>
 
 Swiss Profile version indication with parameter `profile_version` in VCT body is REQUIRED.
 
-`
+```
 {
   "vct": "https://betelgeuse.example.com/education_credential/v1",
   "name": "Betelgeuse Education Credential - First Version",
@@ -272,7 +290,7 @@ Swiss Profile version indication with parameter `profile_version` in VCT body is
   ],
   "profile_version": "swiss-profile-vc:1.0.0"
 }
-`
+```
 
 5.2. Type Metadata Format<br>
 Property extends and extends#integrity are NOT SUPPORTED.<br>
@@ -297,7 +315,8 @@ The decision whether to cache the Type Metadata or not is left to the Wallet imp
 5.4. Extending Type Metadata<br>
 Extending types is NOT SUPPORTED.<br>
 
-7. Display Metadata<br>
+## 7. Display Metadata
+
 7.1. Rendering Metadata<br>
 The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA]). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
 
@@ -306,7 +325,8 @@ The `oca` rendering method object contains the following properties:
 - `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6].
 
 Below is a non-normative example of a OCA rendering method declaration inside the Type Metadata `display` property.
-`
+
+```
 {
 	"display": [
 		{
@@ -321,7 +341,7 @@ Below is a non-normative example of a OCA rendering method declaration inside th
     	}
   	]
 }
-`
+```
 
 7.1.1. Rendering Method “simple”<br>
 "Simple" rendering Is NOT SUPPORTED.<br>
@@ -332,10 +352,12 @@ SVG rendering is NOT SUPPORTED.<br>
 7.2. Extending Display Metadata<br>
 Display Metadata extension is NOT SUPPORTED.<br>
 
-8. Claim Metadata<br>
+## 8. Claim Metadata
+
 Claim metadata is NOT SUPORTED.<br>
 
-9. Security Considerations<br>
+## 9. Security Considerations
+
 9.6. Credential Type Extension and Issuer Authorization<br>
 Issuer authorization and the challenge of credential type extension (trust chain) is specified in detail in [swiss-profile-trust].<br>
 
