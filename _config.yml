@@ -219,7 +219,8 @@ collections:
       - swiss-profile-issuance.md
       - swiss-profile-verification.md
       - swiss-profile-proximity.md
-      - oca.md
+      - oca-v1-0.md
+      - trust-protocol-v2.0.md
     output: true
     permalink: /:collection/:path/
            
