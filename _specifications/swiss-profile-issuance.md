@@ -42,88 +42,88 @@ The specifications are fully supported by this profile (and components adhering 
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-3. Overview <br>
-3.3. Core Concepts <br>
-**3.3.1. Credential Formats and Credential Format Profiles** <br>
+## 3. Overview
+### 3.3. Core Concepts
+#### 3.3.1. Credential Formats and Credential Format Profiles
 Swiss Profile Issuance only supports IETF SD-JWT VC (see [Swiss Profile VC](todo)) <br>
 Credential Format Profiles "ISO mdoc" and "W3C VCDM" are not supported. <br>
 
-**3.3.3 Issuance Flow Variations** <br>
+#### 3.3.3 Issuance Flow Variations**
 Pre-Authorized Code Flow MUST be supported.<br>
 Authorization Code Flow and Wallet initiated communication are not supported.<br>
 
-**3.3.4. Identifying Credentials Being Issued Throughout the Issuance Flow** <br>
+#### 3.3.4. Identifying Credentials Being Issued Throughout the Issuance Flow
 authorization_details is not used. It is expected that the credential issuer links the credential to be issued to the wallet through the pre-authorized_code.<br>
 scope is NOT used.<br>
 
-**3.4. Authorization Code Flow** <br>
+### 3.4. Authorization Code Flow
 Authorization Code Flow is NOT SUPPORTED.<br>
 
-**3.5. Pre-Authorized Code Flow** <br>
+### 3.5. Pre-Authorized Code Flow
 (4) Token Request requires use of Demonstrating Proof of Possession (DPoP)<br>
 Registering a DPoP key MUST come with a key attestation (with the same [security level](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-attack-potential-resistance) as allowed by the issuer for the holder binding key) in case where a hardware-bound credential is requested. <br>
-Transaction Code tx_code MUST be supported. The use of Transaction Code is optional, but recommended.<br>
+Transaction Code `tx_code` MUST be supported. The use of Transaction Code is optional, but recommended.<br>
 Wallets MUST support 6 digit tx_codes. Issuers SHOULD invalidate a credential offer after 5 failed retries.<br>
 
-4. Credential<br>
-**4.1. Credential Offer** <br>
+## Credential
+### 4.1. Credential Offer
 `credential_offer` MUST be supported.<br>
 `credential_offer_uri` is NOT SUPPORTED (Warnung) Must be evaluated if part of Swiss Profile 1.0; candidate Swiss Profile 1.1<br>
 
-**4.1.1.Credential Offer Parameters** <br>
+#### 4.1.1.Credential Offer Parameters
 Grant Type `authorization_code` is NOT SUPPORTED<br>
 `authorization_server` is NOT SUPPORTED. It is expected that the Credential Issuer Server is also the authorization server.<br>
 The array `credential_configuration_ids` SHOULD have only one (1) entry. If there are more than one entries the wallet SHOULD only use the first.<br>
 
-**4.1.2. Sending Credential Offer by Value Using credential_offer Parameter** <br>
+#### 4.1.2. Sending Credential Offer by Value Using credential_offer Parameter
 Both URL schemes `openid-credential-offer://` and `swiyu://` MUST be supported by wallets.<br>
 
-**5. Authorization Endpoint** <br>
+## 5. Authorization Endpoint
 Authorization Endpoint is NOT SUPPORTED.<br>
 
-**6. Token Endpoint**<br>
+## 6. Token Endpoint
 Issuers and Wallets MUST support pre-authorized_code.<br>
 For Verifiable Credential Lifecycle such as renewal, Wallets MUST support refresh_token. Issuers MAY support refresh_tokens.<br>
 Requests to the token endpoint MUST be sent with a DPoP Header.<br>
 
-**6.1.1 Request Credential Issuance using authorization_details Parameter** <br>
+### 6.1.1 Request Credential Issuance using authorization_details Parameter
 authorization_details are NOT supported<br>
 
-**6.2. Successful Token Response** <br>
+### 6.2. Successful Token Response
 Authorization server MUST NOT return authorization_details<br>
 
-**7. Nonce Endpoint** <br>
+## 7. Nonce Endpoint
 It is RECOMMENDED that the nonce is a a self contained nonce, which the issuer can decern to be not valid without registering every nonce which has been requested from this public endpoint.<br>
-A self-contained nonce refers to a single-use string or number that carries all necessary information for its validation within itself, eliminating the need for storing possible valid nonces which have not been used. <br>
+A self-contained nonce refers to a single-use string or number that carries all necessary information for its validation within itself, eliminating the need for storing possible valid nonces which have not been used.
 
-**7.2. Nonce Response** <br>
+### 7.2. Nonce Response
 Issuers MUST provide a DPoP nonce.<br>
 
-**8. Credential Endpoint** <br>
+## 8. Credential Endpoint
 Wallets MUST support key attestation.<br>
 
-**8.2. Credential Request** <br>
+### 8.2. Credential Request
 Requests MUST be sent with a DPoP Header.<br>
 `credential_identifier` is NOT supported.<br>
 `credential_configuration_id` MUST be set to credential_configuration_id from the credential offer.<br>
 `credential_response_encryption` MUST be used.<br>
 
-**8.3. Credential Response** <br>
+### 8.3. Credential Response
 The number of elements in the credentials array MUST match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request. 
 `notification_id` is NOT supported.<br>
 
-**9. Deferred Credential Endpoint** <br>
+## 9. Deferred Credential Endpoint
 Requests MUST be sent with a DPoP Header.<br>
 
-**11. Notification Endpoint** <br>
+## 11. Notification Endpoint
 Notification Endpoint MUST NOT be supported by the wallet for privacy reasons.<br>
 
-**12. Metadata**<br>
-12.1. Client Metadata<br>
+## 12. Metadata
+### 12.1. Client Metadata
 Client Metadata is NOT SUPPORTED.<br>
 
-12.2. Credential Issuer Metadata<br>
-**12.2.2. Credential Issuer Metadata Retrieval** <br>
+### 12.2. Credential Issuer Metadata
+#### 12.2.2. Credential Issuer Metadata Retrieval
 Issuers and Wallets MUST support well-known URIs as described in [OID Connect Discovery](https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfigurationRequest) (OIDC) with appended .well-known path.<br>
 
 Example for OIDC style .well-known URI: `https://example.com/issuer1` will lead to an HTTP call: 
@@ -141,7 +141,7 @@ Example for RFC 5785 style .well-known URI: `https://example.com/issuer1` will l
 GET https://example.com/.well-known/openid-configuration/issuer1
 ```
 
-**12.2.3. Signed Metadata** <br>
+#### 12.2.3. Signed Metadata
 Issuers MUST also provide Signed Metadata.<br>
 The wallet MUST request signed metadata.<br>
 Signed Metadata MUST be used.<br>
@@ -163,7 +163,7 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 }
 ```
 
-**12.2.4. Credential Issuer Metadata Parameters**
+#### 12.2.4. Credential Issuer Metadata Parameters
 - `authorization_servers` is NOT SUPPORTED.
 - `notification_endpoint` is NOT SUPPORTED.
 - `nonce_endpoint` is REQUIRED
@@ -200,49 +200,49 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 }
 ```
 
-**12.3. OAuth 2.0 Authorization Server Metadata** <br>
+### 12.3. OAuth 2.0 Authorization Server Metadata
 The OAuth 2.0 Authorization Server Metadata are provided signed the same way as defined in 12.2.3. Signed Metadata for credential issuer metadata as `application/jwt.`<br>
 
-13. Security Considerations<br>
-**13.6. Pre-Authorized Code Flow** <br>
+## 13. Security Considerations
+### 13.6. Pre-Authorized Code Flow
 Issuer SHOULD accept pre-authorized codes only once.<br>
 When providing the Pre-Authorized Code as QR code, issuers SHOULD use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
 
-**13.11. Application-Layer Encryption** <br>
+### 13.11. Application-Layer Encryption
 Application-Layer encryption MUST be used for request and response.<br>
 Encryption JWK MUST include the `alg` claim. The `alg` claim MUST be `ECDH-ES`.<br>
 
-14. Implementation Considerations<br>
-**14.5. Refreshing Issued Credentials** <br>
+## 14. Implementation Considerations
+### 14.5. Refreshing Issued Credentials
 Wallets can refresh Credentials by re-requesting them at the Credential Endpoint with a valid Access Token and DPoP.<br>
 Issuers can always refuse the refresh.<br>
 If refused because a refresh is already in progress, Issuer MUST respond with error code 429 (Too Many Requests).<br>
 
-**14.6. Batch Issuing Credentials** <br>
+### 14.6. Batch Issuing Credentials
 The Wallet MUST send at maximums the amount of proofs defined in the issuer metadata `batch_size`.<br>
 The Issuer MUST send exactly as many credentials as proofs received.<br>
 The Issuer should only use Batch Issuing if unlinkability of Verifiers is desired.<br>
 Batch Issuance should not be used for credentials that rely on use cases where the data itself can be used to link different presentations.<br>
 There is no guarantee that any wallet uses a credential of a batch only once. Issuers and Verifiers should not rely on the fact that a credential in a batch is only shown once in the wallet. Batch issuing is therefore not suited for a batch of credentials like e.g., day passes, multi ride tickets or loyalty cards as the content of a credential in a batch is required to be equal. <br>
 
-**14.A Batch Issuance - Batch Size** <br>
+### 14.A Batch Issuance - Batch Size
 The batch size MUST be at least 10, to ensure holder privacy. If holder were to refresh credentials often due to a small batch size, issuers could easily gather telemetry data.<br>
 Wallets SHOULD define a limit how many credentials can be issued in one batch, to prevent being overloaded by exceedingly large batch sizes. This can be done by limiting the amount of proof of possessions being created.<br>
 
-**Appendix A. Credential Format Profiles** <br>
+## Appendix A. Credential Format Profiles
 Only Supported Credential Format Profile is IETF SD-JWT VC<br>
 
-A.3. IETF SD-JWT VC<br>
-**A.3.2. Credential Issuer Metadata**<br>
+### A.3. IETF SD-JWT VC
+#### A.3.2. Credential Issuer Metadata**
 The following additional Credential Issuer metadata parameters are defined for this Credential Format for use in the `credential_configurations_supported` parameter, in addition to those defined in Section 12.2.4.
 - `vct` REQUIRED
 - vct_extends OPTIONAL - If used in the Credential being issued RECOMMENDED  todo!
 - `vct_metadata_uri` OPTIONAL - If used in the Credential being issued RECOMMENDED
 
-**Appendix D. Key Attestations** <br>
+## Appendix D. Key Attestations
 Wallets MUST support key attestations.<br>
 
-**D.1. Key Attestation in JWT format**<br>
+### D.1. Key Attestation in JWT format
 
 Swiss Profile version indication with parameter `profile_version` in the key attestation JWT header is REQUIRED.
 
@@ -267,8 +267,8 @@ The specifications are fully supported by this profile (and components adhering 
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-4. DPoP Proof JWTs<br>
-**4.2. DPoP Proof JWT Syntax** <br>
+## 4. DPoP Proof JWTs
+### 4.2. DPoP Proof JWT Syntax**
 Swiss Profile version indication with parameter `profile_version` in DPoP JWT header is REQUIRED.<br>
 
 ```
@@ -284,28 +284,28 @@ Swiss Profile version indication with parameter `profile_version` in DPoP JWT he
 }
 ```
 
-5. DPoP Access Token Request<br>
-**5.1. Authorization Server Metadata** <br>
+## 5. DPoP Access Token Request
+### 5.1. Authorization Server Metadata
 If `dpop_signing_alg_values_supported` is missing it MUST be assumed that the list of supported JWS alg values are the ones listed in this profile under Cryptography.<br>
 
-**5.2. Client Registration Metadata** <br>
+### 5.2. Client Registration Metadata
 Client Registration Metadata is NOT SUPPORTED. dpop_bound_access_tokens are always presumed to be true.<br>
 
-**6. Public Key Confirmation** <br>
+## 6. Public Key Confirmation
 NOT SUPPORTED. It is assumed that both roles of resource server and authorization server will be fulfilled by the credential issuer.<br>
 
-**8.  Authorization Server-Provided Nonce** <br>
+## 8.  Authorization Server-Provided Nonce
 Credential Issuers MUST provide DPoP-Nonces.<br>
 Fresh DPoP Nonces MUST be provided in the response of the OID4VCI Nonce Endpoint.<br>
 
-**10. Authorization Code Binding to a DPoP Key** <br>
+### 10. Authorization Code Binding to a DPoP Key
 Credential Issuer MUST bind Authorization Code to the Holder's DPoP key.<br>
 
 
-**Appendix** <br>
+## Appendix
 DPoP is expanded with the additional features<br>
 
-**Key Attestation** <br>
+### Key Attestation
 When the one of the credentials offered by the issuer require a key attestation for a hardware bound key (`iso_18045_high`) , the key used for DPoP has the same requirement. In this case, the wallet MUST provide a Key Attestation JWT as described in OID4VCI Appendix D as part of the DPoP used when registering the public key with the first DPoP Access Token Request. The Issuer MUST validate this first key attestation. If the key attestation is not valid, the Issuer MUST reject the whole DPoP.</br>
 In further requests using the same key, the wallet SHOULD NOT include the key attestation in the DPoP. The issuer MUST treat these additional key attestations as unknown parameters.<br>
 The key attestation is included in the JWT-Header of the DPoP as the claim `key_attestation`.<br>
