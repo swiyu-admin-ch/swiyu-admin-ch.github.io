@@ -20,8 +20,9 @@ All underlying specifications referenced by the included standards are considere
 
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
-| Trust Protocol | 2.0 |  |
+| Trust Protocol | 2.0 | /trust-protocol-v2-0.md/  |
 
+<div class="notice--primary">
 
 What is the difference between the Trust Protocol and the Swiss Profile Trust?
 
@@ -29,6 +30,7 @@ The Trust Protocol provides a foundational framework for establishing and propag
 
 The Swiss Profile Trust, in contrast, specifies how the Trust Protocol is applied within the swiyu ecosystem. It defines the expected behavior of actors – issuers, holders, and verifiers – based on the presence or absence of defined trust markers.
 
+</div>
 
 # Trust Protocol 2.0
 
