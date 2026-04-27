@@ -7,7 +7,7 @@ header:
   teaser: ../assets/images/specifications_interoperability-profile.jpg
 ---
 
-# Abstract
+# Abstract 
 
 This document defines the publicly consumable technical specification of the trust protocol, is based on JWTs and was created for the Swiss trust infrastructure. The aim is to provide a straight-forward solution allowing a governing body (trust issuer) to confirm the identity of issuers and verifiers, as well as propagating further claims about the legitimacy of the actors actions (e.g., issuance and verification of a specific credential type).
 
@@ -240,10 +240,16 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>Description</td>
             </tr>
             <tr>
+                <td>sub</td>
+                <td>Query</td>
+                <td>No default</td>
+                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+            </tr>
+            <tr>
                 <td>filterActive</td>
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br> Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
             <tr>
                 <td>page</td>
@@ -257,13 +263,9 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>20</td>
                 <td>MUST be an integer. The requested size of the page to be returned. actual returned size may differ.</td>
             </tr>
-            <tr>
-                <td>sub</td>
-                <td>Query</td>
-                <td>No default</td>
-                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
-            </tr>
-        </table> </tr>
+        </table> </td>
+  </tr>
+  <tr>    
     <td>/api/v2/identity-trust-statement/{identifier}</td>
     <td>GET</td> 
     <td>MUST return a serialized Identity Trust Statement. <br>
@@ -281,8 +283,10 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>No default</td>
                 <td>URL encoded identifier of the actor in a format defined in the [swiss-profile-anchor 1.0]</td>
             </tr>
-           </table> </tr>
+           </table> </td>
+  </tr>         
 </table> 
+
 
 #### Retrieving Verification Query Public Statements
 
@@ -316,10 +320,10 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>true</td>
                 <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
-            <tr> page	Query	0	MUST be an integer. 
+            <tr> 
                 <td>page</td>
                 <td>Query</td>
-                <td>20</td>
+                <td>0</td>
                 <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
@@ -328,7 +332,8 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>20</td>
                 <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
-        </table> </tr>
+        </table> </td>
+  </tr>      
   <tr>
     <td>/api/v2/verification-query-public-statement/{jti}</td> 
     <td>GET</td> 
@@ -347,7 +352,8 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>No default</td>
                 <td>MUST be a UUIDv4, see [RFC 9562], of the Verification Query Public Statement to return.</td>
             </tr>
-           </table> </tr>
+           </table> </td>
+   </tr>        
 </table> 
 
 ### Retrieving Protected Verification Authorization Trust Statements
@@ -380,13 +386,13 @@ A trust registry MUST provide the following HTTP REST endpoints:
                 <td>filterActive</td> 
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br>
 Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
-            <tr> page	Query	0	MUST be an integer. 
+            <tr> 
                 <td>page</td>
                 <td>Query</td>
-                <td>20</td>
+                <td>0</td>
                 <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
@@ -395,7 +401,8 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>20</td>
                 <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
-        </table> </tr>
+        </table> </td>
+  </tr>      
   <tr>
     <td>/api/v2/protected-verification-authorization-trust-statement/{jti}</td> 
     <td>GET</td> 
@@ -414,7 +421,8 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>No default</td>
                 <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Verification Authorization Trust Statement to return.</td>
             </tr>
-           </table> </tr>
+           </table> </td>
+   </tr>        
 </table> 
 
 ### Retrieving Protected Issuance Authorization Trust Statements  
@@ -448,13 +456,13 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>filterActive</td> 
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
+                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br>
 Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
-            <tr> page	Query	0	MUST be an integer. 
+            <tr>  
                 <td>page</td>
                 <td>Query</td>
-                <td>20</td>
+                <td>0</td>
                 <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
@@ -463,7 +471,8 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>20</td>
                 <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
-        </table> </tr>
+        </table> </td>
+  </tr>    
   <tr>
     <td>/api/v2/protected-issuance-authorization-trust-statement/{jti}</td> 
     <td>GET</td> 
@@ -482,7 +491,8 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>No default</td>
                 <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Authorization Trust Statement to return.</td>
             </tr>
-           </table> </tr>
+           </table> </td>
+   </tr>        
 </table> 
 
 ### Retrieving Protected Issuance Trust List Statements
@@ -524,7 +534,8 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>20</td>
                 <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
-        </table> </tr>
+        </table> </td>
+  </tr>      
   <tr>
     <td>/api/v2/protected-issuance-trust-list-statement/{jti}</td> 
     <td>GET</td> 
@@ -543,7 +554,8 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>No default</td>
                 <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Trust List Statement to return.</td>
             </tr>
-           </table> </tr>
+           </table> </td>
+  </tr>         
   <tr>
           <td>/api/v2/protected-issuance-trust-list	</td> 	
           <td>GET</td> 
@@ -563,12 +575,12 @@ List Response Object
 
 | Field Name | Usage is | Value Description |
 |--- |--- |--- |
-| content | required |MUST be an array of objects. Objects are defined by the context of the endpoint utilizing the List Response Object. |
-| page | required | MUST be an object. Fields detailed below |
-| page.size | required | MUST be an integer depicting the size of the current page |
-| page.number | required | MUST be an integer depicting the page number. |
-| page.totalPages | required | MUST be an integer depicting the total count of pages |
-| page.totalElements | required | MUST be an integer depicting the total count of elements over all pages |
+| `content` | required |MUST be an array of objects. Objects are defined by the context of the endpoint utilizing the List Response Object. |
+| `page` | required | MUST be an object. Fields detailed below |
+| `page.size` | required | MUST be an integer depicting the size of the current page |
+| `page.number` | required | MUST be an integer depicting the page number. |
+| `page.totalPages` | required | MUST be an integer depicting the total count of pages |
+| `page.totalElements` | required | MUST be an integer depicting the total count of elements over all pages |
 
 -> Example
 
@@ -583,12 +595,12 @@ If a statement needs to be serialized the JWS Compact Serialization MUST be used
 
 | Field Name | JWT location | Usage is | Claim Value Description |
 |--- |--- |--- |--- |
-| typ | Header | required | MUST be a string. Implementation Note: The specific statements define the typ string. |
-| alg | Header | required | MUST be a cryptographic identifier string defined in the [swiss-profile-trust 1.0] |
-| kid | Header | required | MUST be an identifier which can be resolved to a specific cryptographic key as defined in the [swiss-profile-anchor 1.0]. Implementation Note: The specific statements define the type of the issuer, which are further defined in a [swiss-profile-trust]. |
-| profile_version | Header | required | MUST be a string identifying the trust protocol version to process the statement. MUST start with "swiss-profile-trust:" and afterward MUST contain a version string following the [Semantic Versioning] standard. |
-| iat | Payload | required | Issuance time, MUST be in accordance to [RFC 7519] |
-| exp | Payload | required | Expiry of validity time, MUST be in accordance to [RFC 7519] |
+| `typ` | Header | required | MUST be a string. Implementation Note: The specific statements define the typ string. |
+| `alg` | Header | required | MUST be a cryptographic identifier string defined in the [swiss-profile-trust 1.0] |
+| `kid` | Header | required | MUST be an identifier which can be resolved to a specific cryptographic key as defined in the [swiss-profile-anchor 1.0]. Implementation Note: The specific statements define the type of the issuer, which are further defined in a [swiss-profile-trust]. |
+| `profile_version | Header | required | MUST be a string identifying the trust protocol version to process the statement. MUST start with "swiss-profile-trust:" and afterward MUST contain a version string following the [Semantic Versioning] standard. |
+| `iat` | Payload | required | Issuance time, MUST be in accordance to [RFC 7519] |
+| `exp` | Payload | required | Expiry of validity time, MUST be in accordance to [RFC 7519] |
 
 To identify to which trust protocol a given statement belongs and how to process it the claims "profile_version" and "typ" MUST be evaluated.
 The "profile_version" claim identifies the Trust Protocol version to utilize and the "typ" claim identifies the relevant statement of that trust protocol version.
