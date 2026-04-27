@@ -48,10 +48,10 @@ specifications_sidebarmenu:
         url: /specifications/swiss-profile-verification/
       - title: "Proximity Profile"
         url: /specifications/swiss-profile-proximity/
-      - title: "trust-protocol"
-        url: /specifications/trust-protocol-v1-0/
+      - title: "Trust Protocol"
+        url: /specifications/trust-protocol-v2-0/
       - title: "OCA"
-        url: /specifications/oca/
+        url: /specifications/oca-v1-0/
 
 
 
