@@ -7,7 +7,7 @@ excerpt: Specifications for Token Status List, SD-JWT, SD-JWT-VC, and OCA
 ---
 
 <div class="notice--info">
-  Version 1.0
+  Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated
 </div>
 
@@ -48,15 +48,15 @@ In the swiyu Trust Infrastructure the roles of Issuer and Status Issuer are fulf
 
 ## 4. Status List
 
-4.2. Status List in JSON Format<br>
-`aggreation_uri` is NOT supported<br>
+### 4.2. Status List in JSON Format
+`aggreation_uri` is NOT supported
 
-4.3. Status List in CBOR Format<br>
-Status List in CBOR Format is NOT supported<br>
+### 4.3. Status List in CBOR Format
+Status List in CBOR Format is NOT supported
 
 ## 5. Status List Token
 
-5.1. Status List Token in JWT Format<br>
+### 5.1. Status List Token in JWT Format
 In addition to the already specified claims the JWT Claims Set MUST contain:
 - `exp`: REQUIRED. As generally defined in [RFC7519]. The `exp` (expiration time) MUST be set and can be any time in the future.
 
@@ -80,17 +80,17 @@ Swiss Profile version indication with parameter `profile_version` in Status List
 }
 ```
 
-5.2. Status List Token in CWT Format<br>
+### 5.2. Status List Token in CWT Format
 Status List Token in CWT Format is NOT SUPPORTED.<br>
 
 ## 6. Referenced Token
 
-6.3. Referenced Token in COSE<br>
-References Token in COSE is NOT SUPPORTED.<br>
+### 6.3. Referenced Token in COSE
+References Token in COSE is NOT SUPPORTED.
 
 ## 7. Status Types
 
-7.1. Status Types Values<br>
+### 7.1. Status Types Values
 Accepted Status Types include only 0x00 - "VALID", 0x01 - "INVALID", and 0x02 - "SUSPENDED".<br>
 All other Status Types are technically valid and shown as "UNKNOWN" in the swiyu Wallet.<br>
 
@@ -98,16 +98,16 @@ All other Status Types are technically valid and shown as "UNKNOWN" in the swiyu
 
 Only "application/statuslist+jwt" for Status List Token in JWT format is supported.<br>
 
-8.4. Historical resolution<br>
-Historical resolution is NOT SUPPORTED.<br>
+### 8.4. Historical resolution
+Historical resolution is NOT SUPPORTED.
 
 ## 9. Status List Aggregation
 
-Status List Aggregation is NOT SUPPORTED.<br>
+Status List Aggregation is NOT SUPPORTED.
 
 ## 10. X.509 Certificate Extended Key Usage Extension
 
-X.509 Certificate Extended Key Usage Extension is NOT SUPPORTED.<br>
+X.509 Certificate Extended Key Usage Extension is NOT SUPPORTED.
 
 ## 11. Security Considerations
 
@@ -116,17 +116,17 @@ As specified above, the Status List Token MUST be signed by the same entity as t
 
 ## 12. Privacy Considerations
 
-12.1. Observability of Issuers<br>
-To prevent observability of Issuers, the Status Provider MUST be the registry provided by FOITT. Participants MAY reject resolution if the URI inside the Reference Token points to another endpoint.  <br>
+### 12.1. Observability of Issuers
+To prevent observability of Issuers, the Status Provider MUST be the registry provided by FOITT. Participants MAY reject resolution if the URI inside the Reference Token points to another endpoint. 
 
-12.2. Issuer Tracking of Reference Tokens<br>
-This risk is completely eliminated by forcing the Status Provider to be the registry and therefore different from the Issuer. <br>
+### 12.2. Issuer Tracking of Reference Tokens
+This risk is completely eliminated by forcing the Status Provider to be the registry and therefore different from the Issuer. 
 
-12.6. External Status Provider for Privacy<br>
-Status Issuer and Status Provider are forced to be different entities as the Status Provider MUST be the registry provided by FOITT. <br>
+### 12.6. External Status Provider for Privacy
+Status Issuer and Status Provider are forced to be different entities as the Status Provider MUST be the registry provided by FOITT.
 
-12.8. Status Types<br>
-The decision whether use of the supported Status Type "SUSPENDED" is at the discretion of the Issuer. Information published to the Status List is considered to be public.<br>
+### 12.8. Status Types
+The decision whether use of the supported Status Type "SUSPENDED" is at the discretion of the Issuer. Information published to the Status List is considered to be public.
 
 ## 13. Implementation Considerations
 
@@ -154,51 +154,51 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 ## 4. SD-JWT and SD-JWT+KB Data Formats
 
-4.1. Issuer-Signed JWT<br>
+### 4.1. Issuer-Signed JWT
 The payload MUST NOT contain one or more permanently disclosed claims.<br>
 
-4.1.1. Hash Function Claim<br>
-When used, the _sd_alg claim MUST be sha-256. Any other hash algorithm is NOT SUPPORTED.<br>
+#### 4.1.1. Hash Function Claim
+When used, the _sd_alg claim MUST be sha-256. Any other hash algorithm is NOT SUPPORTED.
 
-4.1.2. Key Binding<br>
+#### 4.1.2. Key Binding
 The cnf claim with the jwk confirmation method MUST be used if the Issuer wants to enable Key Binding in the SD-JWT.<br>
 Multiple bound keys in the same SD-JWT are NOT SUPPORTED.<br>
 
-4.2. Disclosures<br>
-4.2.2 Disclosures for Array Elements<br>
-Disclosures for array elements MUST be supported and SHOULD be used when dealing with selectively disclosable arrays.<br>
+### 4.2. Disclosures
+#### 4.2.2 Disclosures for Array Elements
+Disclosures for array elements MUST be supported and SHOULD be used when dealing with selectively disclosable arrays.
 
-4.2.5. Decoy Digests<br>
-Decoy Digests are NOT SUPPORTED <br>
+#### 4.2.5. Decoy Digests
+Decoy Digests are NOT SUPPORTED
 
-4.2.6. Recursive Disclosures<br>
-Recursive Disclosures MUST be supported and SHOULD be used when dealing with nested selectively disclosable objects.<br>
+#### 4.2.6. Recursive Disclosures
+Recursive Disclosures MUST be supported and SHOULD be used when dealing with nested selectively disclosable objects.
 
-4.3. Key Binding JWT<br>
+### 4.3. Key Binding JWT
 JWT payload:
 - aud: REQUIRED. The aud claim MUST be client_id that was sent in the JAR of the verifier (see swiss-profile-verification 1.0). Please respect the security considerations in the implementation: ValidationofaudclaiminKeyBindingJWT.
   
 ## 6 Considerations on Nested Data in SD-JWTs
 
-6.1 Example: Flat SD-JWT<br>
-Flat SD-JWT MUST be supported.<br>
+### 6.1 Example: Flat SD-JWT
+Flat SD-JWT MUST be supported.
 
-6.3 Example: Structured SD-JWT<br>
-Structured SD-JWT is NOT SUPPORTED.<br>
+### 6.3 Example: Structured SD-JWT
+Structured SD-JWT is NOT SUPPORTED.
 
-6.3 Example: SD-JWT with Recursive Disclosures<br>
-Recursive SD-JWT disclosures MUST be supported and SHOULD be preferred.<br>
+### 6.3 Example: SD-JWT with Recursive Disclosures
+Recursive SD-JWT disclosures MUST be supported and SHOULD be preferred.
 
 ## 8. JWS JSON Serialization
 
-JWS JSON Serialization is NOT SUPPORTED.<br>
+JWS JSON Serialization is NOT SUPPORTED.
 
 ## 9. Security Considerations
 
-9.11. Explicit Typing<br>
-As specified in chapter 3.1 of the SD-JWT-VC standard, the media type MUST be `application/dc+sd-jwt`.<br>
+### 9.11. Explicit Typing
+As specified in chapter 3.1 of the SD-JWT-VC standard, the media type MUST be `application/dc+sd-jwt`.
 
-Validation of aud claim in Key Binding JWT<br>
+### Validation of aud claim in Key Binding JWT
 The wallet MUST verify that the client_id belongs to the verifier to prevent identity fraud attacks. This SHOULD done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](#JWTValidationwithcryptographickeysfromDIDs).<br> 
 Only after a successful verification SHOULD the wallet include this client_id into the aud claim of the Key Binding JWT. <br>
 
@@ -212,8 +212,8 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 ## 3. Verifiable Digital Credentials based on SD-JWT
 
-3.2. Data Format<br>
-3.2.1. JOSE Header<br>
+### 3.2. Data Format
+#### 3.2.1. JOSE Header
 
 Swiss Profile version indication with parameter `profile_version` in SD-JWT-VC header is REQUIRED.<br>
 
@@ -230,8 +230,8 @@ Swiss Profile version indication with parameter `profile_version` in SD-JWT-VC h
 }
 ```
 
-3.2.2. JWT Claims Set<br>
-3.2.2.2  Registered JWT Claims<br>
+#### 3.2.2. JWT Claims Set
+##### 3.2.2.2  Registered JWT Claims
 The following additional JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in Disclosures, i.e., cannot be selectively disclosed:
 - `vct_metadata_uri`: OPTIONAL. URI pointing towards where the VC Type Metadata can be fetched. Takes precedence over vct claim Type Metadata resolution.
 - `vct_metadata_uri#integrity`: OPTIONAL. SRI integrity hash for the resources loaded from the `vct_metadata_uri`.
@@ -249,20 +249,20 @@ Additionally, if present for some use-cases, the following (business) claims MUS
 - `vct_subtype_version`: OPTIONAL. value is version (semver) of the `vct_subtype`.
 - `expiry_date`: OPTIONAL. a date according to [RFC 8943] full-date. The validity of the business expiry is up to and including the entire day.
   
-3.2.2.3 Public and Private JWT claims<br>
+##### 3.2.2.3 Public and Private JWT claims
 The only binary data claims supported are: 
 - `data:image/png;base64,`
 - `data:image/jpeg;base64,`
 
-3.2.2.4. SD-JWT VC without Selectively Disclosable Claims<br>
-An SD-JWT VC MUST NOT have no selectively disclosable claims. Any claim without Disclosure except listed in [3.2.2.2 Registered JWT Claims] MUST NOT be supported and MUST be rejected.<br>
+##### 3.2.2.4. SD-JWT VC without Selectively Disclosable Claims
+An SD-JWT VC MUST NOT have no selectively disclosable claims. Any claim without Disclosure except listed in [3.2.2.2 Registered JWT Claims] MUST NOT be supported and MUST be rejected.
 
-3.5. Issuer Signature Mechanisms<br>
-The Issuer Signature mechanism is described in [swiss-profile-anchor].<br>
+### 3.5. Issuer Signature Mechanisms
+The Issuer Signature mechanism is described in [swiss-profile-anchor].
 
 ## 4. JWT VC Issuer Metadata
 
-JWT VC Issuer Metadata is NOT SUPPORTED.<br>
+JWT VC Issuer Metadata is NOT SUPPORTED.
 
 ## 5. SD-JWT VC Type Metadata
 
@@ -292,32 +292,32 @@ Swiss Profile version indication with parameter `profile_version` in VCT body is
 }
 ```
 
-5.2. Type Metadata Format<br>
-Property extends and extends#integrity are NOT SUPPORTED.<br>
+### 5.2. Type Metadata Format
+Property extends and extends#integrity are NOT SUPPORTED.
 
 The additional new properties are defined:
 - `schema_uri`: OPTIONAL. a URI pointing to a JSON Schema describing the vct and its claims. If provided, Wallet MAY perform JSON Schema validation against the issued verifiable credential.
   
 Additionally, `schema_uri#integrity` MAY be present as defined in [Section 6].<br>
 
-5.3. Retrieving Type Metadata<br>
-5.3.2. From a Registry<br>
-Registry retrieval is NOT SUPPORTED.<br>
+### 5.3. Retrieving Type Metadata
+#### 5.3.2. From a Registry
+Registry retrieval is NOT SUPPORTED.
 
-5.3.3. Using a Defined Retrieval Method<br>
+#### 5.3.3. Using a Defined Retrieval Method
 A Consumer MAY use claim `vct_metadata_uri` to retrieve Type Metadata for a SD-JWT VC type. If `vct_metadata_uri` is present in the SD-JWT VC on root level (same level like claim vct), this method takes precedence over any other defined method to retrieve Type Metadata. If the type is a URL using the HTTPS scheme, Type Metadata MUST be retrieved using the HTTP GET method. A successful response MUST use an HTTP 200 status code and return a JSON object as defined in [Section 5.2] using the `application/json` content type. An error response MUST use the applicable HTTP status code value.<br>
 
 If the claim `vct_metadata_uri#integrity` is present in the SD-JWT VC, its value `vct_metadata_uri#integrity` MUST be an "integrity metadata" string as defined in [Section 6].<br>
 
-5.3.4. From a Local Cache<br>
-The decision whether to cache the Type Metadata or not is left to the Wallet implementation. The absence of a hash for integrity protection does not require the Wallet to re-fetch the Type Metadata according to the Cache-Control header.<br>
+#### 5.3.4. From a Local Cache
+The decision whether to cache the Type Metadata or not is left to the Wallet implementation. The absence of a hash for integrity protection does not require the Wallet to re-fetch the Type Metadata according to the Cache-Control header.
 
-5.4. Extending Type Metadata<br>
-Extending types is NOT SUPPORTED.<br>
+### 5.4. Extending Type Metadata
+Extending types is NOT SUPPORTED.
 
 ## 7. Display Metadata
 
-7.1. Rendering Metadata<br>
+### 7.1. Rendering Metadata
 The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA]). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
 
 The `oca` rendering method object contains the following properties:
@@ -343,35 +343,36 @@ Below is a non-normative example of a OCA rendering method declaration inside th
 }
 ```
 
-7.1.1. Rendering Method “simple”<br>
-"Simple" rendering Is NOT SUPPORTED.<br>
+#### 7.1.1. Rendering Method “simple”
+"Simple" rendering Is NOT SUPPORTED.
 
-7.1.2. Rendering Method “svg_templates”<br>
-SVG rendering is NOT SUPPORTED.<br>
+#### 7.1.2. Rendering Method “svg_templates”
+SVG rendering is NOT SUPPORTED.
 
-7.2. Extending Display Metadata<br>
-Display Metadata extension is NOT SUPPORTED.<br>
+### 7.2. Extending Display Metadata
+Display Metadata extension is NOT SUPPORTED.
 
 ## 8. Claim Metadata
 
-Claim metadata is NOT SUPORTED.<br>
+Claim metadata is NOT SUPORTED.
 
 ## 9. Security Considerations
 
-9.6. Credential Type Extension and Issuer Authorization<br>
-Issuer authorization and the challenge of credential type extension (trust chain) is specified in detail in [swiss-profile-trust].<br>
+### 9.6. Credential Type Extension and Issuer Authorization
+Issuer authorization and the challenge of credential type extension (trust chain) is specified in detail in [swiss-profile-trust].
 
-9.7. Trust in Type Metadata<br>
-(???) How is trust established in Type Metadata <br>
+### 9.7. Trust in Type Metadata
+(???) How is trust established in Type Metadata 
 
-10.4 Privacy-Preserving Retrieval of Type Metadata<br>
+## 10 Title
+### 10.4 Privacy-Preserving Retrieval of Type Metadata
 (???) <br>
 
 
-??? in cookbook?? Implementation Considerations<br>
+## ??? in cookbook?? Implementation Considerations
 
-Business Expiry Claim<br>
-The swiyu Wallet implementation supports a business expiry claim to be set in the verifiable credential.<br>
+### Business Expiry Claim
+The swiyu Wallet implementation supports a business expiry claim to be set in the verifiable credential.
 
 expiry_date: OPTIONAL, a date according to RFC 8943 full-date. The validity of the business expiry is up to and including the entire day. If present, it MUST be part of a disclosure.<br>
 
