@@ -13,7 +13,7 @@ excerpt: Specifications for Token Status List, SD-JWT, SD-JWT-VC, and OCA
 
 # Summary
 
-This profile concerns itself with how a **Verifiable Credential" (VC) in the swiyu Trust Infrastructure is structured. Components of the swiyu Trust Infrastructure can use verifiable credentials only if they satisfy the following specifications.
+This profile concerns itself with how a **Verifiable Credential** (VC) in the swiyu Trust Infrastructure is structured. Components of the swiyu Trust Infrastructure can use verifiable credentials only if they satisfy the following specifications.
 
 All underlying specifications referenced by the included standards are considered fully supported / needed unless explicitly noted otherwise.
 
@@ -22,7 +22,7 @@ All underlying specifications referenced by the included standards are considere
 | Token Status List (TSL) | Standards Track (Draft 15) | [Token Status List (TSL) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-15.html)) |
 | SD-JWT | RFC-9901 | [RFC 9901: Selective Disclosure for JSON Web Tokens](https://www.rfc-editor.org/rfc/rfc9901.html) |
 | SD-JWT-VC | Standards Track (Draft 15) | [SD-JWT-based Verifiable Digital Credentials (SD-JWT VC) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html) |
-| Visualisation of Verifiable Credentials with OCA | 1.0 | Visualization of Verifiable Credentials with OCA |
+| Visualisation of Verifiable Credentials with OCA | 1.0 | [Visualization of Verifiable Credentials with OCA](../oca-v1-0/) |
 
 
 # Cryptography
@@ -47,7 +47,6 @@ The below sub-sections rely on the numbering from the original reference specifi
 In the swiyu Trust Infrastructure the roles of Issuer and Status Issuer are fulfilled by the same entity. The Base Registry, provided by FOITT, acts as the Status Provider.
 
 ## 4. Status List
-
 ### 4.2. Status List in JSON Format
 `aggreation_uri` is NOT supported
 
@@ -55,7 +54,6 @@ In the swiyu Trust Infrastructure the roles of Issuer and Status Issuer are fulf
 Status List in CBOR Format is NOT supported
 
 ## 5. Status List Token
-
 ### 5.1. Status List Token in JWT Format
 In addition to the already specified claims the JWT Claims Set MUST contain:
 - `exp`: REQUIRED. As generally defined in [RFC7519]. The `exp` (expiration time) MUST be set and can be any time in the future.
@@ -112,7 +110,7 @@ X.509 Certificate Extended Key Usage Extension is NOT SUPPORTED.
 ## 11. Security Considerations
 
 11.3. Key Resolution and Trust Management<br>
-As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers CAN use a different key for the signature. See [swiss-profile-anchor](JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
+As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers CAN use a different key for the signature. See [swiss-profile-anchor](../swiss-profile-anchor/JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
 
 ## 12. Privacy Considerations
 
@@ -130,10 +128,10 @@ The decision whether use of the supported Status Type "SUSPENDED" is at the disc
 
 ## 13. Implementation Considerations
 
-In addition to conformity checks documented in the standard, the registry performs additional checks on upload of a Status List:<br>
+In addition to conformity checks documented in the standard, the registry performs additional checks on upload of a Status List:
 
-**Size Limits**: The Status List Token size MUST be greater than **200 bytes** and MUST NOT exceed **200 KB*. The decompressed Byte Array also MUST NOT exceed 200KB (~100'000 entries when using 2 bits per status). This ensures the registry remains performant while preventing the upload of empty or malformed headers.<br>
-**Cryptographic Integrity**: The document MUST include a **valid digital signature**. Submissions with invalid, expired, or unsupported signature formats MUST be rejected.<br>
+- **Size Limits**: The Status List Token size MUST be greater than **200 bytes** and MUST NOT exceed **200 KB**. The decompressed Byte Array also MUST NOT exceed **200KB** (~100'000 entries when using 2 bits per status). This ensures the registry remains performant while preventing the upload of empty or malformed headers.
+- **Cryptographic Integrity**: The document MUST include a **valid digital signature**. Submissions with invalid, expired, or unsupported signature formats MUST be rejected.<br>
 
 Additional checks to the content of the Status List Token are performed:
 
@@ -176,7 +174,7 @@ Recursive Disclosures MUST be supported and SHOULD be used when dealing with nes
 
 ### 4.3. Key Binding JWT
 JWT payload:
-- aud: REQUIRED. The aud claim MUST be client_id that was sent in the JAR of the verifier (see swiss-profile-verification 1.0). Please respect the security considerations in the implementation: ValidationofaudclaiminKeyBindingJWT.
+- aud: REQUIRED. The aud claim MUST be client_id that was sent in the JAR of the verifier (see [swiss-profile-verification 1.0](../swiss-profile-verification/). Please respect the security considerations in the implementation: [Validation of aud claim in Key Binding JWT](#validation-of-aud-claim-in-key-binding-jwt).
   
 ## 6 Considerations on Nested Data in SD-JWTs
 
@@ -211,7 +209,6 @@ The below sub-sections rely on the numbering from the original reference specifi
 </div>
 
 ## 3. Verifiable Digital Credentials based on SD-JWT
-
 ### 3.2. Data Format
 #### 3.2.1. JOSE Header
 
@@ -318,11 +315,11 @@ Extending types is NOT SUPPORTED.
 ## 7. Display Metadata
 
 ### 7.1. Rendering Metadata
-The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA]). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
+The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA](../oca-v1-0.md/). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
 
 The `oca` rendering method object contains the following properties:
 - `uri`: REQUIRED. a URI which is either a URL that points to an OCA Bundle file with an associated application/json media type or a Data URL.
-- `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6].
+- `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6](#referenced-token).
 
 Below is a non-normative example of a OCA rendering method declaration inside the Type Metadata `display` property.
 
@@ -364,26 +361,27 @@ Issuer authorization and the challenge of credential type extension (trust chain
 ### 9.7. Trust in Type Metadata
 (???) How is trust established in Type Metadata 
 
-## 10 Title
+## 10 Privacy Considerations
 ### 10.4 Privacy-Preserving Retrieval of Type Metadata
 (???) <br>
 
+# Implementation Considerations
 
-## ??? in cookbook?? Implementation Considerations
-
-### Business Expiry Claim
+## Business Expiry Claim
 The swiyu Wallet implementation supports a business expiry claim to be set in the verifiable credential.
 
-expiry_date: OPTIONAL, a date according to RFC 8943 full-date. The validity of the business expiry is up to and including the entire day. If present, it MUST be part of a disclosure.<br>
+`expiry_date`: OPTIONAL, a date according to RFC 8943 full-date. The validity of the business expiry is up to and including the entire day. If present, it MUST be part of a disclosure.<br>
 
 It differs from the exp claim of the SD-JWT VC the following way:
 
-The expiry_date claim MUST be a Disclosure but the exp claim MUST NOT be part of a Disclosure. 
-The holder of the swiyu wallet can still use and present the credential if the business expiry time is reached. There is only a warning shown to the holder when trying to present the digital credential. It is then up to the verifier to decide whether to accept this credential or not (e.g., Accepting a "over 18" proof for a expired e-ID). 
-The digital credential cannot be shared once the exp time is reached. It is considered invalid for all participants of the trust infrastructure. 
-Once the business expiry time is reached it will be displayed to the Holder as Expired / Abgelaufen / Expiré / Scaduto / Spirà in the swiyu App
+- The `expiry_date` claim MUST be a Disclosure but the exp claim MUST NOT be part of a Disclosure. 
+- The holder of the swiyu wallet can still use and present the credential if the business expiry time is reached. There is only a warning shown to the holder when trying to present the digital credential. It is then up to the verifier to decide whether to accept this credential or not (e.g., Accepting a "over 18" proof for a expired e-ID). 
+- The digital credential cannot be shared once the exp time is reached. It is considered invalid for all participants of the trust infrastructure. 
+- Once the business expiry time is reached it will be displayed to the Holder as Expired / Abgelaufen / Expiré / Scaduto / Spirà in the swiyu App
 
+## Privacy-Preserving Retrieval of VCT Metadata
 
+Consumers SHOULD prefer methods for retrieving VCT Metadata that do not leak information about the usage of a credential to third parties. Wallet and Verifier SHOULD retrieve VCT Metadata (Type Metadata, JSON Schema or OCA Bundle) only at the time of VC issuance and store the necessary metadata in a local cache.
 
 
 
