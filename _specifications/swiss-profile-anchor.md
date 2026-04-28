@@ -3,10 +3,12 @@ title: "Swiss Profile Anchor "
 toc: true
 toc_sticky: true
 excerpt: Swiss Profile Anchor with specifications for DID Core and DID:webvh
+header:
+  teaser: ../assets/images/swiss-profile-anchor.jpg
 ---
 
 <div class="notice--info">
-  Version 1.0
+  Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated
 </div>
 
@@ -41,15 +43,15 @@ The specification is fully supported by this profile (and components adhering to
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-## 3 title
-### 3,2 tutke
+## 3 Identifier
+### 3.2 DID Syntax
 #### 3.2.1 DID Parameters
 DID Parameters MUST NOT be used. 
 
 #### 3.2.2 Relative DID URLs
 Relative DID URLs is NOT SUPPORTED.
 
-## Core Properties**
+## 5. Core Properties
 DID Document properties <br>
 The following properties MUST NOT be used:
 - alsoKnownAs
@@ -57,7 +59,7 @@ The following properties MUST NOT be used:
   
 The property controller SHOULD NOT be used, if it is it MUST point to the DID itself.<br>
 
-### 5.1 
+### 5.1 Identifiers
 #### 5.1.2 DID Controller
 While the Base Register supports setting the controller property, it always needs to point to the DID itself.
 
@@ -75,7 +77,7 @@ Field controller MUST point to the DID itself.
 publicKeyMultibase MUST NOT be used<br>
 publicKeyJwk is REQUIRED<br>
 
-### 5.3 Title
+### 5.3 Verification Relationships
 #### 5.3.3 Key Agreement
 The verification relationship keyAgreement MUST NOT be used.
 
@@ -88,14 +90,14 @@ The verification relationship capabilityDelegation  MUST NOT be used.
 ### 5.4 Services
 The property service MUST NOT be used.
 
-## 6 Title
+## 6 Representations
 ### 6.2 JSON
 The JSON Representation MUST be used.
 
-### 6.3 JSON-LD**
+### 6.3 JSON-LD
 The JSON-LD Representation MUST NOT be used.
 
-## 7 Title
+## 7 Resolution
 ### 7.1 DID Resolution
 DID Resolution MUST be used.
 
@@ -110,25 +112,25 @@ The specification is fully supported by this profile (and components adhering to
 The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
-## 2 Title
-### 2.1 The /whois Use Case**
+## 2 Overview
+### 2.1 The /whois Use Case
 The /whois Use Case is not supportet in the Base Register.
 
-Instead use the [Trust Protocol] mechanisms to validate trustworthiness of the DID.<br>
+Instead use the [Trust Protocol](../trust-protocol-v2-0/) mechanisms to validate trustworthiness of the DID.<br>
 
-## 3 Title
-### 3.7 title
-#### 3.7.1 did:webvh DID Method Parameters**
+## 3 DID Method Specification
+### 3.7 DID Method Processes
+#### 3.7.1 did:webvh DID Method Parameters
 The Base Register does not support DID Portability.<br>
-The parameter portable MUST be set to false.<br>
+- The parameter `portable` MUST be set to false.<br>
 The Base Register does not support Witnesses.<br>
-The parameter witness MUST be set to {}.<br>
+- The parameter `witness` MUST be set to {}.<br>
 The Base Register does not support Watchers.<br>
-The parameter watchers MUST be set to []<br>
-Swiss Profile version indication with property profile_version in first DID Log entry body is REQUIRED.<br>
+- The parameter `watchers` MUST be set to []<br>
+Swiss Profile version indication with property `profile_version` in first DID Log entry
+**body** is REQUIRED.<br>
 
 ```
-DID Log Entry Version
 {
   "portable": true,
   "updateKeys": ["z82LkqR25TU88tztBEiFye"],
@@ -146,7 +148,7 @@ We do recommend to utilize Pre-rotation of keys.
 The Base Register does not support DID Portability.
 
 #### 3.7.8 DID Witnesses
-The Base Register does not support Witnesses.<br>
+The Base Register does not support Witnesses.
 
 #### 3.7.9 DID Watchers
 The Base Register does not support Watchers.
@@ -155,12 +157,12 @@ The Base Register does not support Watchers.
 The Base Register does not support publishing a parallel did:web.
 
 ### 3.8 DID URL Resolution
-The DIDResolver and Base Registry does not support the did:web fallback<br>
-We do recommend to NOT utilize a did:web fallback.<br>
+The DIDResolver and Base Registry does not support the did:web fallback.<br>
+We do recommend to NOT utilize a did:web fallback.
 
 ### 3.9 DID URL Path Resolution
-DID URL Path Resolution is not supported<br>
+DID URL Path Resolution is not supported
 
-### 3.10 WHOIS Resolution**
+### 3.10 WHOIS Resolution
 The Base Register and Wallets do not support WHOIS resolution.<br>
 Instead use the mechanisms defined in the swiss-profile-trust to validate trustworthiness of the DID.
