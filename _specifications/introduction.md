@@ -4,7 +4,7 @@ toc: true
 toc_sticky: true
 excerpt: Introduction and Overview of the Swiss Profiles")
 header:
-  teaser: ../assets/images/specifications_interoperability-profile.jpg
+  teaser: ../assets/images/swiss-profile-overview.jpg
 ---
 
 
@@ -56,15 +56,15 @@ It builds upon the regular swiss-profile-verification, which covers the more gen
 
 The following diagram shows how the Swiss Profiles build upon each other:
 
-[![swiss-profiles-dependencies](/assets/images/swiss-profiles-dependencies.png)](/assets/images/swiss-profiles-dependencies.png)
+[![swiss-profiles-dependencies](../assets/images/swiss-profiles-dependencies.png)](../assets/images/swiss-profiles-dependencies.png)
 
 # Versioning
 
-todo
+to be announced soon
 
 # Key Words
 
-Key words for thie swiss profiles expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels"
+Key words for thie swiss profiles expand on [RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels](https://datatracker.ietf.org/doc/html/rfc2119)"
 
 | MUST |   This word, or the terms "REQUIRED" or "SHALL", mean that the definition is an absolute requirement of the specification. |
 |MUST NOT |  This phrase, or the phrase "SHALL NOT", mean that the definition is an absolute prohibition of the specification. |
