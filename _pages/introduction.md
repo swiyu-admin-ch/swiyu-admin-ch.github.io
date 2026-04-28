@@ -77,7 +77,7 @@ The e-ID issuing component is a specialized issuer system operated and used by f
 
 The swiyu Generic Issuer is a reference implementation that bundles core functionalities required for issuing and managing the lifecycle of digital credentials. It is provided [Open Source]( https://swiyu-admin-ch.github.io/open-source-components/#swiyu-generic-issuer) by the FOITT but needs to be operated individually. Any issuer can make use of and tailor this reference implementation to specific needs for issuing digital credentials. By default, it will be interoperable with the swiyu wallet, the swiyu Base Registry and the swiyu Trust Registry. Interoperability with third-party components will be possible, if these are conformant to the [specifications](https://swiyu-admin-ch.github.io/specifications/) of the swiyu Trust Infrastructure and/or specifically integrated by the issuers themselves.  
 
-## swiyu Check
+### swiyu Check
 
 The swiyu Check app is the official mobile verifier application that will be provided by the FOITT. The app can be used to verify Swiss e-IDs in a face-to-face situation. The app can be used for verifying credentials that are stored in the swiyu wallet as well as  third-party wallets that are interoperable with the swiyu Trust Infrastructure. In the future, swiyu Check may also be able to verify credentials other than the e-ID. 
 
@@ -191,11 +191,12 @@ The following types of statements exist:
 ### Trust Statements
 
 #### Identity Trust Statements (idTS)
+
 <table>
     <tr>
        <th>Purpose</th>
        <td>Expresses trust in the identity of the trust subject. The subjects can hereby prove that their identity was verified by the Federal Office of Justice.</td>
-       <td>[![trust-idTS](../assets/images/trust-idTS.png)](../assets/images/trust-idTS.png)</td> 
+       <td><img src="../assets/images/trust-idTS.png" alt="idTS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -203,23 +204,24 @@ The following types of statements exist:
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
-       <th>Available via API from</td>
+       <th>Available via API from</th>
        <td>Trust Registry</td> 
     </tr>
     <tr>
-         <th>Side channel</td>
+         <th>Side channel</th>
        <td>- Verification: verifier_info in [JWT-Secured Authorization Request] <br>
            - Issuance: tbd</td> 
     </tr>
 </table>
 
 #### Protected Verification Authorization Trust Statement (pvaTS)
+
 <table>
     <tr>
        <th>Purpose</th>
        <td>Expresses that a verifier is allowed to verify certain protected claims. <br>
-           _Example: verification of the SVN ("AHV Nummer")_.</td>
-       <td>[![trust-pvaTS](../assets/images/trust-pvaTS.png)](../assets/images/trust-pvaTS.png)</td> 
+           <i>Example: verification of the SVN ("AHV Nummer")</i>.</td>
+       <td><img src="../assets/images/trust-pvaTS.png" alt="pvaTS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -227,22 +229,23 @@ The following types of statements exist:
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
-       <th>Available via API from</td>
+       <th>Available via API from</th>
        <td>Trust Registry</td> 
     </tr>
     <tr>
-         <th>Side channel</td>
+         <th>Side channel</th>
        <td>- Verification: verifier_info in [JWT-Secured Authorization Request] </td> 
     </tr>
 </table>
 
 #### Protected Issuance Authorization Trust Statement (piaTS)
+
 <table>
     <tr>
        <th>Purpose</th>
        <td>Expresses that a given issuer is allowed to issue VCs of a certain protected VCTs.
-           _Example: only Fedpol is allowed to issue e-ID_</td>
-       <td>[![trust-piaTS](../assets/images/trust-piaTS.png)](../assets/images/trust-piaTS.png)</td> 
+           <i>Example: only Fedpol is allowed to issue e-ID</i></td>
+       <td><img src="../assets/images/trust-piaTS.png" alt="piaTS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -250,11 +253,11 @@ The following types of statements exist:
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
-       <th>Available via API from</td>
+       <th>Available via API from</th>
        <td>Trust Registry</td> 
     </tr>
     <tr>
-         <th>Side channel</td>
+         <th>Side channel</th>
        <td>- Issuance: via Issuer Metadata <br>
            - Verification: via Trust Registry
        </td> 
@@ -263,11 +266,12 @@ The following types of statements exist:
 
 ### Public Statements
 #### Verification Query Public Statement (vqPS)
+
 <table>
     <tr>
        <th>Purpose</th>
-       <td>Expresses that the verification query used by a verifier was registered in the Trust Registry for public record. Note that there is **no verification of the content**, only that there was a registration of it.</td>
-       <td>[![trust-vqPS](../assets/images/trust-vqPS.png)](../assets/images/trust-vqPS.png)</td> 
+       <td>Expresses that the verification query used by a verifier was registered in the Trust Registry for public record. Note that there is <b>no verification of the content</b>, only that there was a registration of it.</td>
+       <td><img src="../assets/images/trust-vqPS.png" alt="vqPS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -275,22 +279,23 @@ The following types of statements exist:
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
-       <th>Available via API from</td>
+       <th>Available via API from</th>
        <td>Trust Registry</td> 
     </tr>
     <tr>
-       <th>Side channel</td>
+       <th>Side channel</th>
        <td>Verification: verifier_info in JWT-Secured Authorization Request (Request Object) </td> 
     </tr>
 </table>
 
 ### Trust List Statements
 #### Protected Issuance Trust List Statement (piTLS)
+
 <table>
     <tr>
        <th>Purpose</th>
        <td>Contains an exhaustive list of all VC types whose issuance is protected. Absence from the list means the VCT is not protected.</td>
-       <td>[![trust-piTLS](../assets/images/trust-piTLS.png)](../assets/images/trust-piTLS.png)</td> 
+       <td><img src="../assets/images/trust-ipiTLS.png" alt="piTLS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -298,21 +303,22 @@ The following types of statements exist:
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
-       <th>Available via API from</td>
+       <th>Available via API from</th>
        <td>Trust Registry</td> 
     </tr>
     <tr>
-       <th>Side channel</td>
+       <th>Side channel</th>
        <td>- </td> 
     </tr>
 </table>
 
 #### Non-Compliance Trust List Statement (ncTLS)
+
 <table>
     <tr>
        <th>Purpose</th>
        <td>Contains an exhaustive list of all actors which were declared as in violation of compliance by FOJ. Absence from the list means an actor is compliant.</td>
-       <td>[![trust-piTLS](../assets/images/trust-piTLS.png)](../assets/images/trust-piTLS.png)</td> 
+       <td><img src="../assets/images/trust-ncTLS.png" alt="ncTLS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -320,11 +326,11 @@ The following types of statements exist:
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
-       <th>Available via API from</td>
+       <th>Available via API from</th>
        <td>Trust Registry</td> 
     </tr>
     <tr>
-       <th>Side channel</td>
+       <th>Side channel</th>
        <td>- </td> 
     </tr>
 </table>
