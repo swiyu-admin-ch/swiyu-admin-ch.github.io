@@ -3,7 +3,8 @@ title: "Swiss Profile Issuance"
 toc: true
 toc_sticky: true
 excerpt: Specifications for OAuth 2.0 DPoP and OpenID4VCI
-
+header:
+  teaser: ../assets/images/swiss-profile-issuance.jpg
 ---
 
 
@@ -48,7 +49,7 @@ The below sub-sections rely on the numbering from the original reference specifi
 Swiss Profile Issuance only supports IETF SD-JWT VC (see [Swiss Profile VC](todo)) <br>
 Credential Format Profiles "ISO mdoc" and "W3C VCDM" are not supported. <br>
 
-#### 3.3.3 Issuance Flow Variations**
+#### 3.3.3 Issuance Flow Variations
 Pre-Authorized Code Flow MUST be supported.<br>
 Authorization Code Flow and Wallet initiated communication are not supported.<br>
 
@@ -68,7 +69,7 @@ Wallets MUST support 6 digit tx_codes. Issuers SHOULD invalidate a credential of
 ## Credential
 ### 4.1. Credential Offer
 `credential_offer` MUST be supported.<br>
-`credential_offer_uri` is NOT SUPPORTED (Warnung) Must be evaluated if part of Swiss Profile 1.0; candidate Swiss Profile 1.1<br>
+`credential_offer_uri` is NOT SUPPORTED. <br>
 
 #### 4.1.1.Credential Offer Parameters
 Grant Type `authorization_code` is NOT SUPPORTED<br>
@@ -105,11 +106,11 @@ Wallets MUST support key attestation.<br>
 ### 8.2. Credential Request
 Requests MUST be sent with a DPoP Header.<br>
 `credential_identifier` is NOT supported.<br>
-`credential_configuration_id` MUST be set to credential_configuration_id from the credential offer.<br>
+`credential_configuration_id` MUST be set to `credential_configuration_id` from the credential offer.<br>
 `credential_response_encryption` MUST be used.<br>
 
 ### 8.3. Credential Response
-The number of elements in the credentials array MUST match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request. 
+The number of elements in the credentials array MUST match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request.<br>
 `notification_id` is NOT supported.<br>
 
 ## 9. Deferred Credential Endpoint
@@ -233,7 +234,7 @@ Wallets SHOULD define a limit how many credentials can be issued in one batch, t
 Only Supported Credential Format Profile is IETF SD-JWT VC<br>
 
 ### A.3. IETF SD-JWT VC
-#### A.3.2. Credential Issuer Metadata**
+#### A.3.2. Credential Issuer Metadata
 The following additional Credential Issuer metadata parameters are defined for this Credential Format for use in the `credential_configurations_supported` parameter, in addition to those defined in Section 12.2.4.
 - `vct` REQUIRED
 - vct_extends OPTIONAL - If used in the Credential being issued RECOMMENDED  todo!
@@ -268,7 +269,7 @@ The below sub-sections rely on the numbering from the original reference specifi
 </div>
 
 ## 4. DPoP Proof JWTs
-### 4.2. DPoP Proof JWT Syntax**
+### 4.2. DPoP Proof JWT Syntax
 Swiss Profile version indication with parameter `profile_version` in DPoP JWT header is REQUIRED.<br>
 
 ```
@@ -306,9 +307,9 @@ Credential Issuer MUST bind Authorization Code to the Holder's DPoP key.<br>
 DPoP is expanded with the additional features<br>
 
 ### Key Attestation
-When the one of the credentials offered by the issuer require a key attestation for a hardware bound key (`iso_18045_high`) , the key used for DPoP has the same requirement. In this case, the wallet MUST provide a Key Attestation JWT as described in OID4VCI Appendix D as part of the DPoP used when registering the public key with the first DPoP Access Token Request. The Issuer MUST validate this first key attestation. If the key attestation is not valid, the Issuer MUST reject the whole DPoP.</br>
+When the one of the credentials offered by the issuer require a key attestation for a hardware bound key (`iso_18045_high`) , the key used for DPoP has the same requirement. In this case, the wallet MUST provide a Key Attestation JWT as described in OID4VCI Appendix D as part of the DPoP used when registering the public key with the first DPoP Access Token Request. The Issuer MUST validate this first key attestation. If the key attestation is not valid, the Issuer MUST reject the whole DPoP.<br>
 In further requests using the same key, the wallet SHOULD NOT include the key attestation in the DPoP. The issuer MUST treat these additional key attestations as unknown parameters.<br>
-The key attestation is included in the JWT-Header of the DPoP as the claim `key_attestation`.<br>
+The key attestation is included in the JWT-Header of the DPoP as the claim `key_attestation`.
 
 ```
 {
