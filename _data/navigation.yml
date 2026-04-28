@@ -29,6 +29,8 @@ cookbooks_sidebarmenu:
         url: /cookbooks/onboarding-generic-verifier/
       - title: "VC Visual Presentation"
         url: /cookbooks/vc-visual-presentation/
+      - title: "Trust Protocol Implementation"
+        url: /trust-protocol-2-0-implementation/
 
 specifications_sidebarmenu:
   - title: "Specifications"
