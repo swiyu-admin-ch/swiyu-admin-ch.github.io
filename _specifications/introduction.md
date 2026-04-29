@@ -2,9 +2,9 @@
 title: "Introduction"
 toc: true
 toc_sticky: true
-excerpt: Introduction and Overview of the Swiss Profiles")
+excerpt: Introduction and Overview of the Swiss Profiles
 header:
-  teaser: ../assets/images/swiss-profile-overview.jpg
+  teaser: ../assets/images/swiss-profile-introduction.jpg
 ---
 
 
@@ -48,7 +48,7 @@ As of now there are 7 Swiss Profiles with the following specifications contained
 
 # Dependencies between Swiss Profiles
 
-While there exist no hard dependencies between Swiss Profiles (i.e. a spec from Swiss Profile X works on it's own and doesn't strictly need other specifications in Swiss Profile Y) there is still a de facto hierarchy of the Swiss Profiles: some Swiss Profiles build upon another, thus artefacts / use cases sometimes have to depend on multiple Swiss Profiles. 
+While there exist no hard dependencies between Swiss Profiles (i.e. a spec from Swiss Profile X works on it's own and doesn't strictly need other specifications in Swiss Profile Y) there is still a de facto hierarchy of the Swiss Profiles: some Swiss Profiles build upon another, thus artefacts / use cases sometimes have to depend on multiple Swiss Profiles. <br>
 
 _Example:
 The swiss-profile-verification-proximity is aimed specifically at an artefact concerned with proximity verification, i.e. verification using direct connection via Bluetooth Low Energy.
