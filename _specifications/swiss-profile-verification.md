@@ -3,7 +3,8 @@ title: "Swiss Profile Verification"
 toc: true
 toc_sticky: true
 excerpt: Specifications for OpenID4VP and JAR
-
+header:
+  teaser: ../assets/images/swiss-profile-verification.jpg
 ---
 
 
@@ -40,7 +41,14 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 ## 5. Authorization Request
 
-todo: check comments
+Verifiers MUST send Verification Requests as a JWT-Secured Authorization Request (JAR).
+- `client_id` MUST be the issuer (`iss`) of the JAR
+- `client_id` MUST be the verifier's identifier as defined in [swiss anchor profile]
+- The client ID values in the `client_id` request parameter and in the Request Object `client_id` claim MUST be identical, as defined in RFC 9101
+
+For Online Verification only passing a request object by reference is supported.
+
+Swiss Profile version indication with parameter profile_version in JWT-Secured Authorization Request header is REQUIRED.
 
 ```
 {
@@ -73,24 +81,21 @@ Swiss Profile version indication with new parameter `profile_version` is REQUIRE
 - `response_mode` MUST be direct_post.jwt
 
 ### 5.5 Using scope Parameter to Request Presentations
-`scope` parameter MUST be supported.
-
+`scope` parameter MUST be supported.<br>
 When `scope` parameter is set, an object in the `verifier_info` MUST contain the scope with the DCQL query.
 
 ### 5.8. aud of a Request Object
-As the verifier cannot identify the wallet any further before preparing the Request Object, only Static Discovery metadata is used.
+As the verifier cannot identify the wallet any further before preparing the Request Object, only Static Discovery metadata is used.<br>
 The aud claim of the signed Request Object MUST be "https://self-issued.me/v2", 
 
 ### 5.9. Client Identifier Prefix and Verifier Metadata Management
 #### 5.9.2. Fallback
-Fallback when no / an unknown Client Identifier Prefix is present MUST be intepreted as `decentralized_identifier`
+Fallback when no / an unknown Client Identifier Prefix is present MUST be intepreted as `decentralized_identifier`.
 
 #### 5.9.3. Defined Client Identifier Prefixes
-Client Identifier Prefix `decentralized_identifier` MUST be supported and SHOULD be used.
+Client Identifier Prefix `decentralized_identifier` MUST be supported and SHOULD be used.<br>
 
-Example: `decentralized_identifier:did:webvh:.....`
-
-?? state? (Warnung) Change since discussion - Remove statement about other client identifier prefixes: Any other Client Identifier Prefix is NOT be supported. 
+Example: `decentralized_identifier:did:webvh:.....`<br>
 
 Client Identifier Prefix `verifier_attestation` MUST be supported and SHOULD be used for proximity use cases.
 
@@ -117,17 +122,13 @@ Value: A list of VC issuer DIDs that the Verifier will accept
 }
 ```
 
-?? should the note be published?
-
 ## 7. Claims Path Pointer
 ### 7.2. Semantics for ISO mdoc-based credentials
 ISO mdoc-based credentials are NOT SUPPORTED
 
 ## 8. Response
-Response type MUST be `vp_token`.
-
-Response mode MUST be `direct_post.jwt`.
-
+Response type MUST be `vp_token`.<br>
+Response mode MUST be `direct_post.jwt`.<br>
 The usage of encryption MUST be enforced.
 
 ### 8.4 Transaction Data
@@ -147,11 +148,9 @@ URL scheme `openid4vp://` and `swiyu-verify://` MUST be supported.
 Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.
 
 ## 12 Verifier Attestation JWT
-Verifier Attestation JWT SHOULD be used by the Wallet to validate authenticity of the Verifier in proximity use cases.
+Verifier Attestation JWT SHOULD be used by the Wallet to validate authenticity of the Verifier in proximity use cases.<br>
 
 Otherwise, the Wallet SHOULD use Trust Protocol mechanisms instead to validate authenticity of the Verifier.
-
-??(Warnung)  MISSING: Verification Deep Link Concept Data Egger Fabrice BIT Amrein Patrick BIT 
 
 # RFC 9101 The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)
 ## 6. Validating JWT-Based Requests
