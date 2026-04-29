@@ -54,6 +54,7 @@ Note: While it is still possible to issue credentials with such fields in arbitr
 Public Beta Trust Registry: https://trust-reg.trust-infra.swiyu-int.admin.ch/
 
 ### Root trust anchors
+
 | Type | DID | 
 | --- | --- | 
 | Trust statement issuer | to be announced |
