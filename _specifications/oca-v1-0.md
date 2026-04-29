@@ -3,7 +3,8 @@ title: "Overlays Capture Architecture (OCA) 1.0"
 toc: true
 toc_sticky: true
 excerpt: Visualisation of Verifiable Credential with OCA 1.0
-
+header:
+  teaser: ../assets/images/specification-oca.jpg
 ---
 
 <div class="notice--info">
