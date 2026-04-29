@@ -4,7 +4,7 @@ toc: true
 toc_sticky: true
 excerpt: Trust Protocol Specification for the swiyu Trust Infrastructure
 header:
-  teaser: ../assets/images/specifications_interoperability-profile.jpg
+  teaser: ../assets/images/specifications-trust-protocol.jpg
 ---
 <div class="notice--info">
   Version 2.0 <br>
