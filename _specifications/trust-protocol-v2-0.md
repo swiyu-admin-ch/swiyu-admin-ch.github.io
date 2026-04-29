@@ -4,7 +4,7 @@ toc: true
 toc_sticky: true
 excerpt: Trust Protocol Specification for the swiyu Trust Infrastructure
 header:
-  teaser: ../assets/images/specifications-trust-protocol.jpg
+  teaser: ../assets/images/specification-trust-protocol.jpg
 ---
 <div class="notice--info">
   Version 2.0 <br>
@@ -34,13 +34,13 @@ In the context of the trust protocol, those JWTs are referred to as statements, 
 
 # Trust markers
 
-Each issuer and verifier in the swiyu ecosystem can be provided with various Statements by the governing actor, identified in the [swiss-profile-trust](/swiss-profile-trust/).
+Each issuer and verifier in the swiyu ecosystem can be provided with various Statements by the governing actor, identified in the [swiss-profile-trust](../swiss-profile-trust/).
 Those statements can be resolved to trust markers to assess the trust relationship between the different actors in an ongoing interaction
 
 Every actor in the ecosystem SHOULD validate the trust relationship with the party they interact with.
 Note: The trust relationship may also be established by other means, for example out of band. 
 
-The [swiss-profile-trust](/swiss-profile-trust/) does further define which trust markers are required for a trusted relationship in the swiyu ecosystem.
+The [swiss-profile-trust](../swiss-profile-trust/) does further define which trust markers are required for a trusted relationship in the swiyu ecosystem.
 
 
 
@@ -71,9 +71,9 @@ Issuers who issue such a VC MUST have a Protected Issuance Authorization Trust S
 
 The swiyu ecosystem defines certain fields in any VC as protected and requires special authorization for verifiers to be able to request those fields during verifications.
 
-Those fields are defined in the currently [swiss-profile-trust](/swiss-profile-trust/) and are simple strings which match fully any claim in any VC with the same key value.
+Those fields are defined in the currently [swiss-profile-trust](../swiss-profile-trust/) and are simple strings which match fully any claim in any VC with the same key value.
 
-For example, the protected field personal_administrative_number (containing the "AHV Nummer") as shown in the [implementation example](../cookbooks/trust-protocol-2-0-implementation/#guctm---protected-verification) requires a Protected Verification Authorization Trust Statement for verifiers to be able to request it during verification.
+For example, the protected field personal_administrative_number (containing the "AHV Nummer") as shown in the [implementation example](https://swiyu-admin-ch.github.io/cookbooks/trust-protocol-2-0-implementation/#guctm---protected-verification) requires a Protected Verification Authorization Trust Statement for verifiers to be able to request it during verification.
 
 ## Governed use case authorization Trust Marker (gucaTM)
 
@@ -118,7 +118,7 @@ When performing the necessary validations the wallet MUST perform all steps as i
 
 The following diagram shows how the wallet could resolve trust markers:
 
-[![trust-relationship-holder-issuer](../assets/images/trust-relationship-holder-issuer.png)](../assets/images/trust-relationship-holder-issuer.png)
+[![trust-relationship-holder-issuer](/assets/images/trust-relationship-holder-issuer.png)](/assets/images/trust-relationship-holder-issuer.png)
 
 ## Verification
 
@@ -161,7 +161,7 @@ When performing the necessary validations the wallet MUST perform all steps as i
 
 The following diagram shows how the wallet could resolve trust markers:
 
-[![trust-relationship-holder-verifier](../assets/images/trust-relationship-holder-verifier.png)](../assets/images/trust-relationship-holder-verifier.png)
+[![trust-relationship-holder-verifier](/assets/images/trust-relationship-holder-verifier.png)](/assets/images/trust-relationship-holder-verifier.png)
 
 ### Verifier view
 
@@ -181,7 +181,7 @@ When performing the necessary validations the verifier MUST process trust marks 
 
 The following diagram shows how the wallet could resolve trust markers:
 
-[![trust-relationship-verifier-issuer](../assets/images/trust-relationship-verifier-issuer.png)](../assets/images/trust-relationship-verifier-issuer.png)
+[![trust-relationship-verifier-issuer](/assets/images/trust-relationship-verifier-issuer.png)](/assets/images/trust-relationship-verifier-issuer.png)
 
 
 # Statement provisioning
@@ -200,7 +200,7 @@ The issuer MUST provide the Identity Trust Statement in the issuer metadata in t
 
 The issuer MUST provide, for each protected VC Type to be issued, a "protected_issuance_authorization_trust_statement" claim below the respective credential key in the "credential_configurations_supported" claim, as defined in 12.2.4. of [OpenID4VCI] containing the serialized Protected Issuance Authorization Trust Statement.
 
-[Issuer Metadata implementation example](../cookbooks/trust-protocol-2-0-implementation/#issuer-metadata)
+[Issuer Metadata implementation example](/cookbooks/trust-protocol-2-0-implementation/#issuer-metadata)
 
 ## Verifier
 
@@ -212,7 +212,7 @@ Each of those attestations MUST have the `format` claim `jwt`.
 
 Each of those attestations MUST NOT utilize the `credential_ids` claim.
 
-[Secured Authorization Request implementation example](../cookbooks/trust-protocol-2-0-implementation/#jwt-secured-authorization-request)
+[Secured Authorization Request implementation example](/cookbooks/trust-protocol-2-0-implementation/#jwt-secured-authorization-request)
 
 ## Trust Registry
 
@@ -585,7 +585,7 @@ List Response Object
 | `page.totalPages` | required | MUST be an integer depicting the total count of pages |
 | `page.totalElements` | required | MUST be an integer depicting the total count of elements over all pages |
 
-[List Response Object implementation example](../cookbooks/trust-protocol-2-0-implementation/#trust-registry-list-response-object)
+[List Response Object implementation example](/cookbooks/trust-protocol-2-0-implementation/#trust-registry-list-response-object)
 
 # Statements
 ## Representations
@@ -620,7 +620,7 @@ language_tag MUST be a string in accordance to [BCP 47]
 An application displaying a localized claim SHOULD display the localized value instead of the non localized value in accordance with the users preferences.>br>
 If a claim is provided in a localized version it SHOULD also provide the locale of the default value.
 
-[implementation example](../cookbooks/trust-protocol-2-0-implementation/#localization))
+[implementation example](/cookbooks/trust-protocol-2-0-implementation/#localization))
 
 ## Statement types
 ### Identity Trust Statement (idTS)
@@ -652,7 +652,7 @@ Registry ID Object
 |--- |--- |--- |--- |--- |
 | `UID` | 123456789| Unternehmens-Identifikationsnummer | [Federal Statistical Office] | [FAQ] | 
 
-[implementation example](../cookbooks/trust-protocol-2-0-implementation/#identity-trust-statement))
+[implementation example](/cookbooks/trust-protocol-2-0-implementation/#identity-trust-statement))
 
 ### Verification Query Public Statement (vqPS)
 
@@ -680,9 +680,9 @@ Verification Type: DCQL
 
 A query of type "DCQL" must comply with [OpenID4VP] and MUST contain for each Credential Query a "meta" field with an object containing at least the field "vct_values" with an non empty array.
 
-[DCQL query implementation example](../cookbooks/trust-protocol-2-0-implementation/#verification-type-dcql))
+[DCQL query implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-type-dcql))
 
-[Verification Query Public Statement implementation example](../cookbooks/trust-protocol-2-0-implementation/#verification-query-public-statement))
+[Verification Query Public Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-query-public-statement))
 
 ### Protected Verification Authorization Trust Statement (pvaTS)
 
@@ -699,7 +699,7 @@ This statement is provided by verifiers to provide authorization to request prot
 
 A Protected Verification Authorization Trust Statement provides authorization to the verifier identified in the "sub" claim if the protected field is listed in the "authorized_fields" claim.
 
-[Protected Verification Authorization Trust Statement implementation example](../cookbooks/trust-protocol-2-0-implementation/#protected-verification-authorization-trust-statement))
+[Protected Verification Authorization Trust Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-verification-authorization-trust-statement))
 
 ### Protected Issuance Authorization Trust Statement (piaTS)
 
@@ -724,7 +724,7 @@ Defines the scope and descriptive details of the authorization.
 | `vct_name` | required | MUST be a human readable string defining the name of the credential to be issued. MUST not contain more than 40 characters. MAY be localized. |
 | `reason` | optional | MUST be a human readable string defining reason of why the subject is permitted to issue this credential. MUST not contain more than 1000 characters. MAY be localized. |
 
-[Protected Issuance Authorization Trust Statement implementation example](../cookbooks/trust-protocol-2-0-implementation/#protected-issuance-authorization-trust-statement))
+[Protected Issuance Authorization Trust Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-authorization-trust-statement))
 
 ### Protected Issuance Trust List Statement (piTLS)
 
@@ -738,7 +738,7 @@ Information for actors which VCTs can be issued only by authorized issuers.
 | `jti` | Payload | required |MUST be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
 | `vct_values` | Payload | required | MUST be an array of strings that MUST be valid type identifiers as defined in [SD-JWT VC] |
 
-[Protected Issuance Trust List Statement implementation example](../cookbooks/trust-protocol-2-0-implementation/#protected-issuance-trust-list-statement-pitls))
+[Protected Issuance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-trust-list-statement-pitls))
 
 ### Non-Compliance Trust List Statement (ncTLS)
 
@@ -761,4 +761,4 @@ Defines the scope of the state authorization.
 | `flagged_at` | required | MUST be a [RFC 3339] compliant String |
 | `reason` | required | MUST be a human readable String with a description of why this actor was deemed a bad actor. MAY be localized (Frage) |  
 
-[Non-Compliance Trust List Statement implementation example](../cookbooks/trust-protocol-2-0-implementation/#non-compliance-trust-list-statement))
+[Non-Compliance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#non-compliance-trust-list-statement))
