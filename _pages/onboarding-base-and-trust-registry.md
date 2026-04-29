@@ -286,39 +286,197 @@ curl -X PUT \
   --data-binary @did-updated.jsonl
 ```
 
-# 4. Proof of Possession creation
+# 4. Trust Onboarding — Proof of Possession
 
-The proof of possession (PoP) is a testament that its creator is in possession of something.
-In the context of the trust onboarding, this PoP takes the form of a [JSON Web Token (JWT)](https://www.jwt.io/introduction#what-is-json-web-token).
-Such a PoP can be created with the [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/latest).
-Prerequisites for generating a PoP are:
+After uploading your DID log (step 3.3), you must prove to the trust registry that you control the private key corresponding to your DID's assertion method. A proof of possession (PoP) is a [JSON Web Token (JWT)](https://www.jwt.io/introduction#what-is-json-web-token) signed with a private key from your DID document. It can be created with the [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/latest).
+
+Prerequisites:
 
 * A valid DID log containing at least 1 public key.
-* The corresponding private key for said public key.
-* Possession in form of a string, referred to as nonce.
+* The corresponding private key for that public key.
+* A nonce — a unique challenge string provided by the trust registry.
 
 <div class="notice--warning">
-  The generated PoP is only valid within the next 24 hours.
+  The generated PoP is only valid for 24 hours.
 </div>
+
+## 4.1. Fetch the Challenge
+
+Call the **swiyucorebusiness_trust** API to retrieve the pending trust onboarding submission for your business partner. The response provides the DID and a one-time `nonce`.
 
 ```sh
 # Parameter
-java -jar didtoolbox.jar create-pop -d $DID_LOG_PATH -k $ID_OF_PUBLIC_KEY -s $PRIVATE_KEY_PEM_FILE_PATH -n $NONCE
+curl -X GET \
+  "https://trust-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/trust/trust-onboarding-submission/proof-of-possessions" \
+  -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN"
 
-# Example
-java -jar didtoolbox.jar create-pop -d did.jsonl -k "did:webvh:QmfNchmAvY4EJ7WrxaiWRyrspV9B8dSRzUgcs4CWUggiBD:example.com#assert-key-01" -s .didtoolbox/assert-key-01 -n "99A2BF79-3575-4824-87A5-8F66E6E8C2C7"
+# Example response
+[
+  {
+    "did": "did:tdw:QmfNchmAvY4EJ7WrxaiWRyrspV9B8dSRzUgcs4CWUggiBD:identifier-reg.trust-infra.swiyu.admin.ch:api:v1:did:18fa7c77-9dd1-4e20-a147-fb1bec146085",
+    "nonce": "99A2BF79-3575-4824-87A5-8F66E6E8C2C7"
+  }
+]
 ```
 
-<div class="notice--warning">
-  The generated PoP is used in the next step and will be further referenced as POP_JWT.
-</div>
+Save the `did` and `nonce` values — they are referenced below as `DID` and `NONCE`.
 
-> TODO How to upload is mising here
+## 4.2. Create the Proof of Possession
 
-# 5. Proof of Possession creation of additional dids
+Use the DID Toolbox to sign the nonce with your assertion private key.
 
-> TODO
+```sh
+# Parameter
+java -jar didtoolbox.jar create-pop \
+  -d $DID_LOG_PATH \
+  -k $ID_OF_PUBLIC_KEY \
+  -s $PRIVATE_KEY_PEM_FILE_PATH \
+  -n $NONCE
 
-# 6. Updating and DID
+# Example
+java -jar didtoolbox.jar create-pop \
+  -d did.jsonl \
+  -k "did:tdw:QmfNchmAvY4EJ7WrxaiWRyrspV9B8dSRzUgcs4CWUggiBD:identifier-reg.trust-infra.swiyu.admin.ch:api:v1:did:18fa7c77-9dd1-4e20-a147-fb1bec146085#assert-key-01" \
+  -s .didtoolbox/assert-key-01 \
+  -n "99A2BF79-3575-4824-87A5-8F66E6E8C2C7"
+```
 
-> TODO
+Save the output JWT as `POP_JWT`.
+
+## 4.3. Submit the Proof of Possession
+
+Upload the signed JWT to complete the trust onboarding submission.
+
+```sh
+# Parameter
+curl -X POST \
+  "https://trust-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/trust/trust-onboarding-submission/proof-of-possessions" \
+  -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "{\"proofOfPossessions\": [\"$POP_JWT\"]}"
+
+# Example
+curl -X POST \
+  "https://trust-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/trust/trust-onboarding-submission/proof-of-possessions" \
+  -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"proofOfPossessions": ["eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9..."]}'
+```
+
+A `200 OK` response confirms your trust onboarding submission has been accepted and your DID is now registered in the trust registry.
+
+# 5. Adding Additional DIDs
+
+Once your first DID is onboarded, you can register additional DIDs under the same business partner. Each new DID must be accompanied by a **trust-add-dids submission** containing proofs of possession from **both** your existing (permission) DID and every new DID being added.
+
+## 5.1. Create a New Identifier Entry
+
+Request a new DID space for your business partner via the **swiyucorebusiness_identifier** API.
+
+```sh
+# Parameter
+curl -X POST \
+  "https://identifier-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/identifier/business-entities/$PARTNER_ID/identifier-entries/" \
+  -H "Authorization: Bearer $SWIYU_IDENTIFIER_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/json"
+
+# Example response
+{
+  "id": "a3c9e12f-0451-4bde-bf7c-3a0f918db20e",
+  "identifierRegistryUrl": "https://identifier-reg.trust-infra.swiyu.admin.ch/api/v1/did/a3c9e12f-0451-4bde-bf7c-3a0f918db20e",
+  "status": "NOT_INITIALIZED"
+}
+```
+
+Save the `id` as `IDENTIFIER_REGISTRY_ENTRY_ID_2` and `identifierRegistryUrl` as `IDENTIFIER_REGISTRY_URL_2`.
+
+## 5.2. Generate and Upload the DID Log
+
+Repeat steps 3.2 and 3.3 for the new identifier entry, using `IDENTIFIER_REGISTRY_URL_2` as the `--identifier-registry-url` argument and `IDENTIFIER_REGISTRY_ENTRY_ID_2` in the `PUT` request path. Store the resulting key files in a separate working directory (e.g. `did2/`) to keep them distinct from your first DID's keys.
+
+## 5.3. Create the Trust Add DIDs Submission
+
+Submit a request to add the new DID to the trust registry. Provide your existing **permission DID** (the DID already registered in the trust registry) and the list of new DID(s) to add. The response contains a shared `nonce` that must be signed by all DIDs involved.
+
+```sh
+# Parameter
+curl -X POST \
+  "https://trust-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/trust/trust-add-dids-submissions" \
+  -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "{\"permissionDid\": \"$DID\", \"didsToAdd\": [\"$NEW_DID\"]}"
+
+# Example response
+{
+  "id": "b7f3a1c5-9e24-4d61-a8c0-2e5f7b3d1a9e",
+  "nonce": "A1B2C3D4-E5F6-7890-ABCD-EF1234567890"
+}
+```
+
+Save the `id` as `TRUST_ADD_SUBMISSION_ID` and the `nonce` as `NONCE_2`.
+
+## 5.4. Create Proof of Possession JWTs
+
+Create one PoP JWT for **each DID** involved — your existing permission DID and every new DID being added. All PoPs use the same `NONCE_2`.
+
+```sh
+# PoP for the existing permission DID (authorises the addition)
+java -jar didtoolbox.jar create-pop \
+  -d did.jsonl \
+  -k "$DID#assert-key-01" \
+  -s .didtoolbox/assert-key-01 \
+  -n "$NONCE_2"
+
+# PoP for the new DID
+java -jar didtoolbox.jar create-pop \
+  -d did2.jsonl \
+  -k "$NEW_DID#assert-key-01" \
+  -s did2/.didtoolbox/assert-key-01 \
+  -n "$NONCE_2"
+```
+
+Save the outputs as `POP_JWT_1` (permission DID) and `POP_JWT_2` (new DID).
+
+## 5.5. Submit All Proofs of Possession
+
+Upload all PoP JWTs in a single call to the trust-add-dids submission endpoint.
+
+```sh
+# Parameter
+curl -X POST \
+  "https://trust-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/trust/trust-add-dids-submissions/$TRUST_ADD_SUBMISSION_ID" \
+  -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "{\"proofOfPossessions\": [\"$POP_JWT_1\", \"$POP_JWT_2\"]}"
+
+# Example
+curl -X POST \
+  "https://trust-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/trust/trust-add-dids-submissions/b7f3a1c5-9e24-4d61-a8c0-2e5f7b3d1a9e" \
+  -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"proofOfPossessions": ["eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9...", "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9..."]}'
+```
+
+A `200 OK` response confirms the new DID(s) have been added to the trust registry.
+
+# 6. Updating an Existing DID
+
+To update an existing DID — for example to rotate keys — generate a new DID log using the `update` command of the DID Toolbox (see step 3.4) and upload it to the Base Registry using the `PUT` endpoint. The new log replaces the existing one for that identifier entry.
+
+```sh
+# Parameter
+curl -X PUT \
+  "https://identifier-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/identifier/business-entities/$PARTNER_ID/identifier-entries/$IDENTIFIER_REGISTRY_ENTRY_ID" \
+  -H "Authorization: Bearer $SWIYU_IDENTIFIER_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/jsonl+json" \
+  --data-binary @did-updated.jsonl
+
+# Example
+curl -X PUT \
+  "https://identifier-reg-api.trust-infra.swiyu-int.admin.ch/api/v1/identifier/business-entities/8432e1f3-8119-4fb9-a879-190ab2cb9deb/identifier-entries/18fa7c77-9dd1-4e20-a147-fb1bec146085" \
+  -H "Authorization: Bearer $SWIYU_IDENTIFIER_REGISTRY_ACCESS_TOKEN" \
+  -H "Content-Type: application/jsonl+json" \
+  --data-binary @did-updated.jsonl
+```
+
+A `200 OK` response confirms the updated DID log is published and the DID document is resolved from the new log.
