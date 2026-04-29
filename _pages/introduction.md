@@ -180,7 +180,7 @@ The swiyu Trust Infrastructure supports the development of trust between interac
 
 Trust in the swiyu ecosystem is built on trust artefacts. A trust artefact is a cryptographically signed statement (JWT) about an entity, asserting that specific information about a subject is valid and verifiable.
 
-All trust statements are issued by the [Trust Management System], which is part of the [Trust Registry] and acts as the central trust authority in the swiyu ecosystem. These statements are made available via the Trust Service APIs, forming the second component of the Trust Registry.
+All trust statements are issued by the [Trust Management System], which is part of the [Trust Registry](#swiyu-trust-registry) and acts as the central trust authority in the swiyu ecosystem. These statements are made available via the Trust Service APIs, forming the second component of the Trust Registry.
 
 The following types of statements exist:
 
