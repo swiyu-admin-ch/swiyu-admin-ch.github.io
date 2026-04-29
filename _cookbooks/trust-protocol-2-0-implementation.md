@@ -4,14 +4,12 @@ toc: true
 toc_sticky: true
 excerpt: Examples on how to implement the swiyu Trust Protocol
 header:
-  teaser: ../assets/images/cookbook_beta_eid.jpg
+  teaser: ../assets/images/specification-trust-protocol.jpg
 ---
 
 {% capture notice-text %}
 
-For a general introduction on Trust ... trust-profile and trust protocol
-
-
+For a general introduction please refer to [Trust Artefacts in swiyu](https://swiyu-admin-ch.github.io/introduction/#trust-artefacts-in-swiyu). The examples derive from the specifications for the swyiu [Trust Protocol 2.0](https://swiyu-admin-ch.github.io/specifications/trust-protocol-v2-0/).
 
 {% endcapture %}
 
