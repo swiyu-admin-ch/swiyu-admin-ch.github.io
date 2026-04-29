@@ -225,7 +225,7 @@ The following types of statements exist:
     </tr>
     <tr>
        <th>Details</th>
-       <td colspan=2><a href="/specifications/trust-protocol-v2-0/#protected-verification-authorization-trust-statement-pvats">Trust Protocol 2.0: Protected Verification Authorization Trust Statement (pvaTS)</a></td>
+       <td colspan=2><a href="../specifications/trust-protocol-v2-0/#protected-verification-authorization-trust-statement-pvats">Trust Protocol 2.0: Protected Verification Authorization Trust Statement (pvaTS)</a></td>
     </tr>
     <tr>
        <th rowspan=2>Provisioning</th>
@@ -249,7 +249,7 @@ The following types of statements exist:
     </tr>
     <tr>
        <th>Details</th>
-       <td colspan=2><a href="/specifications/trust-protocol-v2-0/#protected-issuance-authorization-trust-statement-piats">Trust Protocol 2.0: Protected Issuance Authorization Trust Statement (piaTS)</a></td>
+       <td colspan=2><a href="../specifications/trust-protocol-v2-0/#protected-issuance-authorization-trust-statement-piats">Trust Protocol 2.0: Protected Issuance Authorization Trust Statement (piaTS)</a></td>
     </tr>
     <tr>
        <th rowspan=2>Provisioning</th>
@@ -275,7 +275,7 @@ The following types of statements exist:
     </tr>
     <tr>
        <th>Details</th>
-       <td colspan=2><a href="/specifications/trust-protocol-v2-0/#verification-query-public-statement-vqps">Trust Protocol 2.0: Verification Query Public Statement (vqPS)</a></td>
+       <td colspan=2><a href="../specifications/trust-protocol-v2-0/#verification-query-public-statement-vqps">Trust Protocol 2.0: Verification Query Public Statement (vqPS)</a></td>
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
@@ -299,7 +299,7 @@ The following types of statements exist:
     </tr>
     <tr>
        <th>Details</th>
-       <td colspan=2><a href="/specifications/trust-protocol-v2-0/#protected-issuance-trust-list-statement-pitls">Trust Protocol 2.0: Protected Issuance Trust List Statement (piTLS)</a></td>
+       <td colspan=2><a href="../specifications/trust-protocol-v2-0/#protected-issuance-trust-list-statement-pitls">Trust Protocol 2.0: Protected Issuance Trust List Statement (piTLS)</a></td>
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
@@ -322,7 +322,7 @@ The following types of statements exist:
     </tr>
     <tr>
        <th>Details</th>
-       <td colspan=2><a href="/specifications/trust-protocol-v2-0/#non-compliance-trust-list-statement-nctls">Trust Protocol 2.0: Non-Compliance Trust List Statement (ncTLS)</a></td>
+       <td colspan=2><a href="../specifications/trust-protocol-v2-0/#non-compliance-trust-list-statement-nctls">Trust Protocol 2.0: Non-Compliance Trust List Statement (ncTLS)</a></td>
     </tr>    
     <tr>
        <th rowspan=2>Provisioning</th>
