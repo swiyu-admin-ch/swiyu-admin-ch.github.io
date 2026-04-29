@@ -3,6 +3,7 @@ title: "Release Announcement for May 2026"
 categories:
   - PublicBeta
 ---
+The information is also available in German on [GitHub](https://github.com/orgs/swiyu-admin-ch/discussions/11?sort=new#discussioncomment-16757311).
 
 A new version of the [Beta Credential Service](https://bcs.admin.ch/bcs-web/#/) (BCS) is expected to be installed in the first week of May. This new version includes the next steps in the development of ‘Swiss Profile 1.0’.
 This release requires the upcoming swiyu Wallet versions iOS 1.15.0 and Android 1.14.0 and is not backwards compatible with older versions of the swiyu Wallet. **To avoid breaking changes, we ask the community to migrate to the latest components.** 
@@ -45,10 +46,9 @@ We have updated our specifications e.g. with reference to the Versions 1.0 from 
 - [Swiss Profile Trust](https://swiyu-admin-ch.github.io/specifications/swiss-profile-trust)
 - [Swiss Profile Issuance](https://swiyu-admin-ch.github.io/specifications/swiss-profile-issuance)
 - [Swiss Profile Verification](https://swiyu-admin-ch.github.io/specifications/swiss-profile-verification)
-- [Swiss Profile Proximity](https://swiyu-admin-ch.github.io/specifications/swiss-profile-proximity)
 
-We recommend to read the introductions for the new [Swiss-Profiles](https://swiyu-admin-ch.github.io/specifications/introduction/) and the new [trust artefacts].
+We recommend to read the introductions for the new [Swiss-Profiles](https://swiyu-admin-ch.github.io/specifications/introduction/) and the new [trust artefacts](https://swiyu-admin-ch.github.io/introduction/#trust-artefacts-in-swiyu).
 
 These specifications are a first draft, which we wanted to publish at an early stage. Once the versions are finalised, we will outline the next steps in the roadmap and announce them in this channel.
 
-The information is also available in German on [GitHub]().
+
