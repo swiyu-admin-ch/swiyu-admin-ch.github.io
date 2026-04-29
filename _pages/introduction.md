@@ -174,7 +174,7 @@ The swiyu Trust Infrastructure supports the development of trust between interac
 
 ## Overview
 
-- Grafik trust-in-swiyu
+[![introduction_ecosystem](../assets/images/introduction-ecosystem.png)](../assets/images/trust-in-swiyu.png) 
 
 ## Trust Artefacts in swiyu
 
@@ -196,7 +196,7 @@ The following types of statements exist:
     <tr>
        <th>Purpose</th>
        <td>Expresses trust in the identity of the trust subject. The subjects can hereby prove that their identity was verified by the Federal Office of Justice.</td>
-       <td><img src="../assets/images/trust-idTS.png" alt="idTS"></td> 
+       <td><img src="../assets/images/trust-IdTS.png" alt="idTS"></td> 
     </tr>
     <tr>
        <th>Details</th>
@@ -209,8 +209,8 @@ The following types of statements exist:
     </tr>
     <tr>
          <th>Side channel</th>
-       <td>- Verification: verifier_info in [JWT-Secured Authorization Request] <br>
-           - Issuance: tbd</td> 
+       <td>Verification: verifier_info in [JWT-Secured Authorization Request] <br>
+           Issuance: tbd</td> 
     </tr>
 </table>
 
@@ -234,7 +234,7 @@ The following types of statements exist:
     </tr>
     <tr>
          <th>Side channel</th>
-       <td>- Verification: verifier_info in [JWT-Secured Authorization Request] </td> 
+       <td>Verification: verifier_info in [JWT-Secured Authorization Request] </td> 
     </tr>
 </table>
 
@@ -258,8 +258,8 @@ The following types of statements exist:
     </tr>
     <tr>
          <th>Side channel</th>
-       <td>- Issuance: via Issuer Metadata <br>
-           - Verification: via Trust Registry
+       <td>Issuance: via Issuer Metadata <br>
+           Verification: via Trust Registry
        </td> 
     </tr>
 </table>
@@ -295,7 +295,7 @@ The following types of statements exist:
     <tr>
        <th>Purpose</th>
        <td>Contains an exhaustive list of all VC types whose issuance is protected. Absence from the list means the VCT is not protected.</td>
-       <td><img src="../assets/images/trust-ipiTLS.png" alt="piTLS"></td> 
+       <td><img src="../assets/images/trust-piTLS.png" alt="piTLS"></td> 
     </tr>
     <tr>
        <th>Details</th>
