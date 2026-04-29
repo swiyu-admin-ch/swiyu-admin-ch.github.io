@@ -2,14 +2,12 @@
 title: Trust Protocol based on VCs
 toc: true
 toc_sticky: true
-excerpt: Documentation of the publicly consumable specification of the Trust Protocol
-header:
-  teaser: ../../assets/images/specifications_trust-protocol.jpg
+permalink: /trust-protocol-v0-1/
 ---
 
 {% capture notice-text %}
 
-Status: Implemented in Public Beta<br/>
+Status: Deprecated<br/>
 Version: 0.1<br/>
 
 {% endcapture %}
@@ -282,4 +280,3 @@ Result
 
 **XMLSCHEMA11-2**<br/>
 [https://www.w3.org/TR/xmlschema11-2/#dateTime](https://www.w3.org/TR/xmlschema11-2/#dateTime)
-

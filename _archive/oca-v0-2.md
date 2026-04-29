@@ -2,15 +2,13 @@
 title: Visualization of Verifiable Credentials with OCA
 toc: true
 toc_sticky: true
-excerpt: Extention of the Overlays Capture Architecture (OCA) for VC visualisation
-header:
-  teaser: ../assets/images/specifications_oca.jpg
+permalink: /oca-v0-2/
 ---
 
 {% capture notice-text %}
 
-Status: Draft<br/>
-Version: 0.2<br/>
+Status: Deprecated<br/>
+Version: 0.2 (<br/>
 
 {% endcapture %}
 

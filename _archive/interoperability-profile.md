@@ -1,13 +1,11 @@
 ---
-title: "swiyu Trust Infrastructure: Interoperability profile"
+title: "swiyu Trust Infrastructure: Interoperability profile v0.1"
 toc: true
 toc_sticky: true
-excerpt: Technical profile of the swiyu Public Beta Trust Infrastructure ("Swiss Profile")
-header:
-  teaser: ../assets/images/specifications_interoperability-profile.jpg
+permalink: /interoperability-profile/
 ---
 
-**NOTE** <br/> This profile focuses on the Public Beta release and is not complete. It reflects the current state of implementation and will evolve in the future to fullfil the requirements of the swiyu Trust Infrastructure.
+**NOTE** <br/> This specification is outdatet and has been archived.  
 {: .notice--info}
 
 ## Introduction

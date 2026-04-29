@@ -112,9 +112,8 @@ include:
   - _pages
   - _cookbooks
   - _specifications
+  - _archive
 exclude:
-  - "*.sublime-project"
-  - "*.sublime-workspace"
   - vendor
   - .asset-cache
   - .bundle
@@ -212,12 +211,18 @@ collections:
       - how-to-use-beta-id.md
       - vc-visual-presentation.md
   specifications:
+    order:
+      - introduction.md
+      - swiss-profile-anchor.md
+      - swiss-profile-vc.md
+      - swiss-profile-trust.md
+      - swiss-profile-issuance.md
+      - swiss-profile-verification.md
+      - swiss-profile-proximity.md
+      - oca-v1-0.md
+      - trust-protocol-v2.0.md
     output: true
     permalink: /:collection/:path/
-    order:
-      - interoperability-profile.md
-      - trust-protocol.md
-      - oca.md
            
 # Plugins (previously gems:)
 plugins:
