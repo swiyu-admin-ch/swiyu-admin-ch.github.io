@@ -29,7 +29,7 @@ As of now there are 7 Swiss Profiles with the following specifications contained
 | [swiss-profile-vc](../swiss-profile-vc/)           | Token Status List  <br> SD-JWT <br>  SD-JWT-VC <br>  OCA                     |
 | [swiss-profile-issuance](../swiss-profile-issuance/)     | OAuth 2.0 DPoP  <br> OpenID4VCI              |
 | [swiss-profile-verification](../swiss-profile-verification/) | OpenID4VP      <br> JAR                 |
-| [swiss-profile-proximity](../swiss-profile-proximity/)    | mDL ISO-18013-5 BLE     |
+| swiss-profile-proximity   | mDL ISO-18013-5 BLE     |
 | swiss-profile-portability  | Wallet Backup Container |
 
 # Scope
