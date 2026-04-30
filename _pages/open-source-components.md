@@ -79,7 +79,7 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 
 ### Onboarding
 
-The onboarding process for the swiyu Base- and Trust Registry and other use cases are documented in the [Cookbook](https://swiyu-admin-ch.github.io/cookbooks/) section. Advanced users will find more technical details in the different repositories. We integrate various technologies in the Swiss Trust Infrastructure. You can view the supported specifications and the integrated versions in the ["Interoperability Profile"](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/).
+The onboarding process for the swiyu Base- and Trust Registry and other use cases are documented in the [Cookbook](https://swiyu-admin-ch.github.io/cookbooks/) section. Advanced users will find more technical details in the different [repositories](https://github.com/orgs/swiyu-admin-ch/repositories). We integrate various technologies in the Swiss Trust Infrastructure. You can view the supported specifications and the integrated versions in the ["Swiss Profiles"](https://swiyu-admin-ch.github.io/specifications/introduction/).
 
 ### Testing Tools
 
