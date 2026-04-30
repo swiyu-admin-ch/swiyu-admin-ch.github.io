@@ -225,7 +225,10 @@ collections:
       - trust-protocol-v2.0.md
     output: true
     permalink: /:collection/:path/
-           
+  archive:
+    output: true
+    permalink: /:collection/:path/
+         
 # Plugins (previously gems:)
 plugins:
   - jekyll-paginate
