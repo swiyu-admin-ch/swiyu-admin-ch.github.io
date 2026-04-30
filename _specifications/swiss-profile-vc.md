@@ -60,7 +60,7 @@ In addition to the already specified claims the JWT Claims Set MUST contain:
 - `exp`: REQUIRED. As generally defined in [RFC7519]. The `exp` (expiration time) MUST be set and can be any time in the future.
 
 The JWT header of the Status List Token MUST contain: 
-- `kid`: REQUIRED. Must be an absolute `kid` as specified in [swiss-profile-anchor](#JWTValidationwithcryptographickeysfromDIDs).
+- `kid`: REQUIRED. Must be an absolute `kid` as specified in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).
 
 The Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC but CAN use a different key.<br>
 
@@ -111,7 +111,7 @@ X.509 Certificate Extended Key Usage Extension is NOT SUPPORTED.
 ## 11. Security Considerations
 
 11.3. Key Resolution and Trust Management<br>
-As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers CAN use a different key for the signature. See [swiss-profile-anchor](../swiss-profile-anchor/JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
+As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers CAN use a different key for the signature. See [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
 
 ## 12. Privacy Considerations
 
@@ -198,7 +198,7 @@ JWS JSON Serialization is NOT SUPPORTED.
 As specified in chapter 3.1 of the SD-JWT-VC standard, the media type MUST be `application/dc+sd-jwt`.
 
 ### Validation of aud claim in Key Binding JWT
-The wallet MUST verify that the client_id belongs to the verifier to prevent identity fraud attacks. This SHOULD done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](#JWTValidationwithcryptographickeysfromDIDs).<br> 
+The wallet MUST verify that the client_id belongs to the verifier to prevent identity fraud attacks. This SHOULD done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).<br> 
 Only after a successful verification SHOULD the wallet include this client_id into the aud claim of the Key Binding JWT. <br>
 
 The verifier MUST ensure that the Key Binding JWT received during a presentation is intended for this verifier by checking the aud claim specified by the wallet.<br>
@@ -316,11 +316,11 @@ Extending types is NOT SUPPORTED.
 ## 7. Display Metadata
 
 ### 7.1. Rendering Metadata
-The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA](../oca-v1-0.md/). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
+The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA](../oca-v1-0/). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
 
 The `oca` rendering method object contains the following properties:
 - `uri`: REQUIRED. a URI which is either a URL that points to an OCA Bundle file with an associated application/json media type or a Data URL.
-- `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6](#referenced-token).
+- `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6](#6-referenced-token).
 
 Below is a non-normative example of a OCA rendering method declaration inside the Type Metadata `display` property.
 
