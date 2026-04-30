@@ -70,7 +70,7 @@ If you are registered with multiple business partners, you can click the busines
 
 **swiyucorebusiness_identifier:** Use this API to update your public key material on the Base Registry.
 
-**swiyucorebusiness_status:** Use this API to manage your [status list](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/#credential-status).
+**swiyucorebusiness_status:** Use this API to manage your [status list](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/#4-status-list).
 
 Subscribe with your business partner to both _swiyu Core Business Service_ APIs.
 
