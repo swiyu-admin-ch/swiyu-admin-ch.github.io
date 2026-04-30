@@ -24,7 +24,7 @@ This manual describes how to define the visual presentation of issuer, verifier 
 
 Its goal is to enable issuers in creating clean, professional looking credentials that effectively represent their organisation or service and to enable the visualization of issuer and verifier with logo and name. This guide provides all necessary information to prepare from the start the appropriate graphic assets and determine the suitable settings.
 
-The instruction is based on the OID metadata, which are defined in the [Swiss Profile](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/).
+The instruction is based on the OID metadata, which are defined in the [Swiss Profile (deprecated)](https://swiyu-admin-ch.github.io/archive/interoperability-profile/).
 
 ## Purpose and Overview 
 
