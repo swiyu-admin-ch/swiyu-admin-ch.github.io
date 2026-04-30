@@ -9,13 +9,8 @@ header:
 
 <div class="notice--info">
   Version 1.0 <br>
-  Status: draft - technically complete, but might to be reformulated
+  Status: draft - parts of the specification are under revision
 </div>
-
-see PR https://github.com/admin-ch-ssi/specifications-to-publish/pull/15
-
-- check references to old interoperability profile in pr!
-
 
 # Visualisation of Verifiable Credential with OCA 1.0
 
