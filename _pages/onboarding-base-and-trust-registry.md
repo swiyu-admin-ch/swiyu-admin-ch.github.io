@@ -286,7 +286,7 @@ curl -X PUT \
   --data-binary @did-updated.jsonl
 ```
 
-# 4. Trust Onboarding — Proof of Possession
+# 4. Create Proof of Possession for initial did
 
 After uploading your DID log (step 3.3), you must prove to the trust registry that you control the private key corresponding to your DID's assertion method. A proof of possession (PoP) is a [JSON Web Token (JWT)](https://www.jwt.io/introduction#what-is-json-web-token) signed with a private key from your DID document. It can be created with the [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/latest).
 
@@ -459,7 +459,7 @@ curl -X POST \
 
 A `200 OK` response confirms the new DID(s) have been added to the trust registry.
 
-# 6. Updating an Existing DID
+# 6. Updating an existing DID
 
 To update an existing DID — for example to rotate keys — generate a new DID log using the `update` command of the DID Toolbox (see step 3.4) and upload it to the Base Registry using the `PUT` endpoint. The new log replaces the existing one for that identifier entry.
 
