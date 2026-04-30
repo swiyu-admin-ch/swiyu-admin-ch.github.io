@@ -18,7 +18,7 @@ Please be advised that the current system and its operations are provided on a b
   {{ notice-text | markdownify }}
 </div>
 
-This software is a web server implementing the technical standards as specified in the ["Swiss Profile"](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/). Together with the other generic components provided, this software forms a collection of APIs allowing issuance and verification of verifiable credentials without the need of reimplementing the standards.
+This software is a web server implementing the technical standards as specified in the ["Swiss Profile Verification"](https://swiyu-admin-ch.github.io/specifications/swiss-profile-verification/). Together with the other generic components provided, this software forms a collection of APIs allowing issuance and verification of verifiable credentials without the need of reimplementing the standards.
 
 [![ecosystem components](../../assets/images/components.png)](../../assets/images/components.png)
 
