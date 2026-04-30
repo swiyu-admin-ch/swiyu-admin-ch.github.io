@@ -1,7 +1,5 @@
 ---
 title: "Introduction"
-toc: true
-toc_sticky: true
 excerpt: Introduction and Overview of the Swiss Profiles
 header:
   teaser: ../assets/images/swiss-profile-introduction.jpg
@@ -56,7 +54,7 @@ It builds upon the regular swiss-profile-verification, which covers the more gen
 
 The following diagram shows how the Swiss Profiles build upon each other:
 
-[![swiss-profiles-dependencies](../assets/images/swiss-profiles-dependencies.png)](../assets/images/swiss-profiles-dependencies.png)
+[![swiss-profiles-dependencies](/assets/images/swiss-profiles-dependencies.png)](/assets/images/swiss-profiles-dependencies.png)
 
 # Versioning
 
