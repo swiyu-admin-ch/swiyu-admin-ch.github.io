@@ -105,6 +105,8 @@ footer:
     - label: "Community"
       icon: "fab fa-fw fa-github"
       url: https://github.com/swiyu-admin-ch/community
+    - label: "Archive"
+      url: /archive/
 
 # Reading Files
 include:
