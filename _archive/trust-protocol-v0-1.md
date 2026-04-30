@@ -2,12 +2,11 @@
 title: Trust Protocol based on VCs
 toc: true
 toc_sticky: true
-permalink: /trust-protocol-v0-1/
 ---
 
 {% capture notice-text %}
 
-Status: Deprecated<br/>
+Status: Deprecated - this specification is outdated and archived<br/>
 Version: 0.1<br/>
 
 {% endcapture %}
