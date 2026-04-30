@@ -2,18 +2,18 @@
 title: Visualization of Verifiable Credentials with OCA
 toc: true
 toc_sticky: true
-permalink: /oca-v0-2/
 ---
+
 
 {% capture notice-text %}
 
-Status: Deprecated<br/>
+Status: This specification is outdatet and has been archived<br/>
 Version: 0.2 (<br/>
 
 {% endcapture %}
 
-<div class="notice--info">
-  <h4 class="no_toc">Current status</h4>
+<div class="notice--warning">
+  <h4 class="no_toc">Deprecated!</h4>
   {{ notice-text | markdownify }}
 </div>
 
