@@ -2,11 +2,10 @@
 title: "swiyu Trust Infrastructure: Interoperability profile v0.1"
 toc: true
 toc_sticky: true
-permalink: /interoperability-profile/
 ---
 
-**NOTE** <br/> This specification is outdatet and has been archived.  
-{: .notice--info}
+**WARNING** <br/> This specification is outdatet and has been archived.  
+{: .notice--warning}
 
 ## Introduction
 This document defines a set of requirements based on new or existing technical specifications and aims to enable interoperability between issuers, wallets and verifiers of credentials in the swiyu Public Beta Trust Infrastructure. It is intended as an interoperability profile that can be used by implementers. As such it shows how the referenced specifications can, and sometimes have to be, implemented.
