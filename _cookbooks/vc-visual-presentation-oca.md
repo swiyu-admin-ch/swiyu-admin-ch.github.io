@@ -1,5 +1,5 @@
 ---
-title: Designing the visualization for Issuer, Verifier and Credential
+title: Designing the visualisation for Issuer, Verifier and Credential
 toc: true
 toc_sticky: true
 excerpt: Learn how to define the visual layout for issuer, verifier and credentials with OCA
@@ -36,7 +36,7 @@ In the swiyu wallet app, Verifiable Credentials (VC) are visually represented as
 - the name of the credential
 - the displayed complementary info of the credential (description)
 - the attributes of the credential
-- the clustering and ordering of the the credential's attributes
+- the clustering and ordering of the credential's attributes
 
 All these visible or readible features are set and configured by the issuer/verifier in it's Credential Issuer Metadata and/or OCA Bundle. 
 
@@ -49,8 +49,6 @@ As an example we take this metadata (OID4VCI and OID4VP), and focus only on the 
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "display": [
     {
       "name": "Issuer title",
@@ -61,46 +59,40 @@ credential_issuer_metadata.json: |
     }
   ],
   "credential_configurations_supported": {
-    "demo-sdjwt": {
-      "format": "vc+sd-jwt",
-      
-      ...
-      
-      "display": [
-        {
-          "name": "Title of credential",
-          "locale": "en",
-          "logo": {
-            "uri": "data:image/png;base64,<...base64code....>"
+    "demo-credential": {
+      "credential_metadata": {
+        "display": [
+          {
+            "name": "Title of credential",
+            "locale": "en",
+            "logo": {
+              "uri": "data:image/png;base64,<...base64code....>"
+            },
+            "description": "Demo purpose",
+            "background_color": "#FF5733"
+          }
+        ],
+        "claims": [
+          {
+            "path": ["family_name"],
+            "display": [
+              {
+                "name": "Surname",
+                "locale": "en"
+              }
+            ]
           },
-          "description": "Demo purpose",
-          "background_color": "#FF5733"
-        }
-      ],
-      "claims": {
-        "given_name": {
-          "value_type": "string",
-          "display": [
-            {
-              "name": "Given name",
-              "locale": "en"
-            }
-          ]
-        },
-        "family_name": {
-          "value_type": "string",
-          "display": [
-            {
-              "name": "Surname",
-              "locale": "en"
-            }
-          ]
-        }
-      },
-      "order": [
-        "family_name",
-        "given_name"
-      ]
+          {
+            "path": ["given_name"],
+            "display": [
+              {
+                "name": "Given Name",
+                "locale": "en"
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 }
@@ -153,14 +145,8 @@ oca_bundle.json: |
 verification_authorization_request.json: |
 {
   "client_id": "${CLIENT_ID}",
-  "client_name#en": "Reference Demo Verifier",
-  "client_name#fr": "Vérificateur de démonstration de référence",
-  "client_name#de-DE": "Referenz-Demo-Verifizier",
-  "client_name#de-CH": "Referänz-Demo-Verifizier",
-  "client_name#de": "Referenz-Demo-Verifizierer (Fallback DE)",
-  "client_name": "REF Demo Verifier (Base)",
+  "client_name": "Reference Demo Verifier",
   "logo_uri": "data:image/png;base64,<...base64code....>",
-  "logo_uri#fr": "data:image/png;base64,<...base64code....>"
 }
 ```
 
@@ -177,11 +163,12 @@ oca_bundle.json: |
 
 "language": "en-GB"
 ```
+
 ```
 verification_authorization_request.json: |
 {
   "client_name#en-GB": "Reference Demo Verifier",
-  "client_name": "REF Demo Verifier (Fallback)",
+  "client_name": "Reference Demo Verifier (Base)",
   "logo_uri#en-GB": "data:image/png;base64,<...base64code....>",
   "logo_uri": "data:image/png;base64,<...base64code....>"
 }
@@ -213,17 +200,15 @@ It is recommended to always use region information when declaring visualisation 
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "credential_configurations_supported": {
-    "demo-sdjwt": {
-	  ...
-      "display": [
-        {
-          ...
-          "background_color": "#FF5733"
-        }
-      ]
+    "demo-credential": {
+      "credential_metadata": {
+        "display": [
+          {
+            "background_color": "#FF5733"
+          }
+        ]
+      }
     }
   }
 }
@@ -232,12 +217,9 @@ credential_issuer_metadata.json: |
 ```
 oca_bundle.json: |
 {
-  ...
-
   "overlays": [
     {
       "type": "aries/overlays/branding/1.1",
-      ...
       "primary_background_color": "#FF5733"
     }
   ]
@@ -704,12 +686,12 @@ The swiyu app displays the various data type as following:
 
 <table>
   <tr>
-    <th colspan=2>Data Type</th>
-    <th colspan=2>Sample Attribute Value</th>
-    <th rowspan=2>Credential Issuer Metadata</th>
-	<th rowspan=2>OCA Bundle</th>  
-	<th colspan=2>Localized Display</th>  
-	<th colspan=2>Comment</th>  
+    <th rawspan="2">Data Type</th>
+    <th rawspan="2">Sample Attribute Value</th>
+    <th colspan="2">Credential Issuer Metadata</th>
+	<th colspan="2">OCA Bundle</th>  
+	<th rawspan="2">Localized Display</th>  
+	<th rawspan="2">Comment</th>  
   </tr>
   <tr>
     <th>value_type</th>
@@ -768,7 +750,7 @@ The swiyu app displays the various data type as following:
     <td>OCA display format depends on precision of the input date & time</td>
   </tr>
   <tr>
-    <td colspan=2>images</td>
+    <td rawspan="2">images</td>
     <td><base64code></td>
     <td>image/png image/jpeg</td>
     <td><image></td>
