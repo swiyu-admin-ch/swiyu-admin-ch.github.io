@@ -23,7 +23,7 @@ All underlying specifications referenced by the included standards are considere
 | Token Status List (TSL) | Standards Track (Draft 15) | [Token Status List (TSL) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-15.html)) |
 | SD-JWT | RFC-9901 | [RFC 9901: Selective Disclosure for JSON Web Tokens](https://www.rfc-editor.org/rfc/rfc9901.html) |
 | SD-JWT-VC | Standards Track (Draft 15) | [SD-JWT-based Verifiable Digital Credentials (SD-JWT VC) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html) |
-| Visualisation of Verifiable Credentials with OCA | 1.0 | [Visualization of Verifiable Credentials with OCA](../oca-v1-0/) |
+| Visualisation of Verifiable Credentials with OCA | 1.0 | [Visualisation of Verifiable Credentials with OCA](../oca-v1-0/) |
 
 
 # Cryptography
@@ -41,7 +41,7 @@ This section details the implementation notes and gaps pertaining to the support
 The specification is fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following subsections. <br>
 
 <div class="notice--warning">
-The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
+The subsections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
 ## 1. Introduction
