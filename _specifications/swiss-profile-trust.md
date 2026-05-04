@@ -21,7 +21,7 @@ All underlying specifications referenced by the included standards are considere
 
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
-| Trust Protocol | 2.0 | [/trust-protocol-v2-0](../trust-protocol-v2-0.md/)  |
+| Trust Protocol | 2.0 | [/trust-protocol-v2-0](../trust-protocol-v2-0/)  |
 
 <div class="notice--primary">
 
@@ -41,7 +41,7 @@ In addition the following details are defined as active providers for the Trust 
 
 ## Protected fields
 Protected fields are claims of VCs in the swiss ecosystem which do require special permission to verify.<br>
-Those fields require a special protection flow, as defined in [Trust Protocol 2.0](../trust-protocol-v2-0.md/), to verify them.<br>
+Those fields require a special protection flow, as defined in [Trust Protocol 2.0](../trust-protocol-v2-0/), to verify them.<br>
 Note: While it is still possible to issue credentials with such fields in arbitrary VCs it is not recommended to do so. A verifier needs special permission to verify this field, regardless of the VCT it belongs to.
 
 | Description | Field name | Organisational Entity |
@@ -74,7 +74,7 @@ An actor of the ecosystem SHOULD decline any trust relationships which do not ha
 
 The wallet SHOULD decline any trust relationships during the verification process which do not have the Compliant actor Trust Mark.<br>
 The wallet MAY decline any trust relationships during the verification process which do not have the Transparent verification Trust Mark.<br>
-Note: A good reason to not require the Transparent verification Trust Mark would be a holder contented overwrite of the required Transparent verification Trust Mark.
+Note: A good reason to not require the Transparent verification Trust Mark would be a holder consented overwrite of the required Transparent verification Trust Mark.
 
 ## Trust Statement Details
 
