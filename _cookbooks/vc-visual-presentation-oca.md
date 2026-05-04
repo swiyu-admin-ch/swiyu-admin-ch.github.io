@@ -683,91 +683,94 @@ oca_bundle.json: |
 
 The swiyu app displays the various data type as following:
 
-
 <table>
-  <tr>
-    <th rawspan="2">Data Type</th>
-    <th rawspan="2">Sample Attribute Value</th>
-    <th colspan="2">Credential Issuer Metadata</th>
-	<th colspan="2">OCA Bundle</th>  
-	<th rawspan="2">Localized Display</th>  
-	<th rawspan="2">Comment</th>  
-  </tr>
-  <tr>
-    <th>value_type</th>
-    <th>display</th>
-    <th>attribute type</th>
-	<th>display</th>  
-  </tr>
-  <tr>
-    <td>string</td>
-    <td>"a value"</td>
-    <td>string</td>
-    <td>a value</td>
-	<td>Text</td>
-    <td>a value</td>
-    <td>no*</td>
-    <td>is displayed the same as input</td>  
-  </tr>
-  <tr>
-    <td>boolean</td>
-    <td>true</td>
-    <td>-**</td>
-    <td>true</td>
-	<td>Boolean</td>
-    <td>true</td>
-    <td>no*</td>
-    <td> </td>
-  </tr>
-  <tr>
-    <td>integer</td>
-    <td>1000</td>
-    <td>-**</td>
-    <td>1000</td>
-	<td>Numeric</td>
-    <td>1'000</td>
-    <td>yes*</td>
-    <td>OCA with grouping separator </td>
-  </tr>
-  <tr>
-    <td>float/double</td>
-    <td>1234.56</td>
-    <td>-**</td>
-    <td>1234.56</td>
-	<td>Numeric</td>
-    <td>1,234.56</td>
-    <td>yes*</td>
-    <td>OCA with grouping separator </td>
-  </tr>
-  <tr>
-    <td>date</td>
-    <td>2007-04-05T14:30:40Z</td>
-    <td>-**</td>
-    <td>2007-04-05T14:30:40Z</td>
-	<td>DateTime</td>
-    <td>05.04.2007, 16:30:40</td>
-    <td>yes</td>
-    <td>OCA display format depends on precision of the input date & time</td>
-  </tr>
-  <tr>
-    <td rawspan="2">images</td>
-    <td><base64code></td>
-    <td>image/png image/jpeg</td>
-    <td><image></td>
-    <td>Binary</td>
-    <td><image></td>
-	<td>no</td>	
-    <td>base64 encoded image binary data</td>
-  </tr>
-  <tr>
-    <td>data:image/png;base64,<base64code></td>
-    <td>-**</td>
-    <td><image></td>
-    <td>Text</td>
-    <td><image></td>
-	<td>no</td>	
-    <td>Data URL images</td>
-  </tr>
+  <thead>
+	  <tr>
+	    <th rawspan="2">Data Type</th>
+	    <th rawspan="2">Sample Attribute Value</th>
+	    <th colspan="2">Credential Issuer Metadata</th>
+		<th colspan="2">OCA Bundle</th>  
+		<th rawspan="2">Localized Display</th>  
+		<th rawspan="2">Comment</th>  
+      </tr>
+	  <tr>
+	    <th>value_type</th>
+	    <th>display</th>
+	    <th>attribute type</th>
+		<th>display</th>  
+	  </tr>
+  </thead>
+  <tbody>
+	  <tr>
+	    <td>string</td>
+	    <td>"a value"</td>
+	    <td>string</td>
+	    <td>a value</td>
+		<td>Text</td>
+	    <td>a value</td>
+	    <td>no*</td>
+	    <td>is displayed the same as input</td>  
+	  </tr>
+	  <tr>
+	    <td>boolean</td>
+	    <td>true</td>
+	    <td>-**</td>
+	    <td>true</td>
+		<td>Boolean</td>
+	    <td>true</td>
+	    <td>no*</td>
+	    <td> </td>
+	  </tr>
+	  <tr>
+	    <td>integer</td>
+	    <td>1000</td>
+	    <td>-**</td>
+	    <td>1000</td>
+		<td>Numeric</td>
+	    <td>1'000</td>
+	    <td>yes*</td>
+	    <td>OCA with grouping separator </td>
+	  </tr>
+	  <tr>
+	    <td>float/double</td>
+	    <td>1234.56</td>
+	    <td>-**</td>
+	    <td>1234.56</td>
+		<td>Numeric</td>
+	    <td>1,234.56</td>
+	    <td>yes*</td>
+	    <td>OCA with grouping separator </td>
+	  </tr>
+	  <tr>
+	    <td>date</td>
+	    <td>2007-04-05T14:30:40Z</td>
+	    <td>-**</td>
+	    <td>2007-04-05T14:30:40Z</td>
+		<td>DateTime</td>
+	    <td>05.04.2007, 16:30:40</td>
+	    <td>yes</td>
+	    <td>OCA display format depends on precision of the input date & time</td>
+	  </tr>
+	  <tr>
+	    <td rawspan="2">images</td>
+	    <td><base64code></td>
+	    <td>image/png image/jpeg</td>
+	    <td><image></td>
+	    <td>Binary</td>
+	    <td><image></td>
+		<td>no</td>	
+	    <td>base64 encoded image binary data</td>
+	  </tr>
+	  <tr>
+	    <td>data:image/png;base64,<base64code></td>
+	    <td>-**</td>
+	    <td><image></td>
+	    <td>Text</td>
+	    <td><image></td>
+		<td>no</td>	
+	    <td>Data URL images</td>
+	  </tr>
+  </tbody>
 </table>
 
 *  can be mapped to a localized string with OCA Entry & Entry Code Overlay <br>
