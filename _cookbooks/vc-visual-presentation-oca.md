@@ -531,26 +531,6 @@ The Branding Overlay's primary_field supports templating. The placeholders in do
   {{ notice-text | markdownify }}
 </div>
 
-## Fallback Versions
-
-If no assets (neither background color nor logo) are provided, a standard visual presentation is used.
-
-Typically, this includes:
-
-- A neutral pre-defined background
-- A fallback logo/icon
-
-{% capture notice-text %}
-**Definition per language (localisation)**
-
-Background color and/or icon can be set per language. This means that if a definition for a particular language is missing, the fallback will primary be the English version (if available) or another one provided. 
-{% endcapture %}
-
-<div class="notice--info">
-  <h3 class="no_toc">Good to know:</h3>
-  {{ notice-text | markdownify }}
-</div>
-
 ## Order of Attributes
 
 The display-order of attributes for a credential will be applied in the credential offer screen, in the detail view of the credential and in the verification presentation request screen.
@@ -681,15 +661,174 @@ Clusters can be nested. For example, a Capture Base "CB1" may contain an attribu
 
 ## Data Types
 
->> hier weiter
+The swiyu app visualise attribute values according to their data type. 
 
-To manage the display-order in the credential, use the order array in the metadata.
+In Credential Issuer Metadata, the data type of an attribute is declared by the value_type property within the claims objects.
 
-## Useful hints
+```
+credential_issuer_metadata.json: |
+{
+  ...
 
-- Currently, the datasets or attributes are displayed in the credential detail view exactly as defined at the VC schema level. The ability to customise the ordering or grouping of these datasets will be available once the OCA layer is implemented.
-- The OCA (information overlay) is planned to be deployed at a later date in 2025.
-- Multilingualism: swiyu app currently supports 5 languages (German, French, Italian, Rumantsch, English)
+  "credential_configurations_supported": {
+    "demo-sdjwt": {
+      "format": "vc+sd-jwt",
+      
+      ...
+      
+      "claims": {
+        "family_name": {
+          ...
+          "value_type": "string"
+        }
+      }
+    }
+  }
+}
+```
+
+In an OCA Bundle, the data type for an attribute is declared in the Capture Base within the attributes key-value pairs where the key is the attribute name and the value is the attribute type.
+
+```
+oca_bundle.json: |
+{
+  "capture_bases": [
+    {
+      "type": "spec/capture_base/1.0",
+      "digest": "abc-123",
+      "attributes": {
+        "family_name": "Text"
+      }
+    }
+  ]
+}
+```
+
+The swiyu app displays the various data type as following:
+
+
+<table>
+  <tr>
+    <th colspan=2>Data Type</th>
+    <th colspan=2>Sample Attribute Value</th>
+    <th rowspan=2>Credential Issuer Metadata</th>
+	<th rowspan=2>OCA Bundle</th>  
+	<th colspan=2>Localized Display</th>  
+	<th colspan=2>Comment</th>  
+  </tr>
+  <tr>
+    <th>value_type</th>
+    <th>display</th>
+    <th>attribute type</th>
+	<th>display</th>  
+  </tr>
+  <tr>
+    <td>string</td>
+    <td>"a value"</td>
+    <td>string</td>
+    <td>a value</td>
+	<td>Text</td>
+    <td>a value</td>
+    <td>no*</td>
+    <td>is displayed the same as input</td>  
+  </tr>
+  <tr>
+    <td>boolean</td>
+    <td>true</td>
+    <td>-**</td>
+    <td>true</td>
+	<td>Boolean</td>
+    <td>true</td>
+    <td>no*</td>
+    <td> </td>
+  </tr>
+  <tr>
+    <td>integer</td>
+    <td>1000</td>
+    <td>-**</td>
+    <td>1000</td>
+	<td>Numeric</td>
+    <td>1'000</td>
+    <td>yes*</td>
+    <td>OCA with grouping separator </td>
+  </tr>
+  <tr>
+    <td>float/double</td>
+    <td>1234.56</td>
+    <td>-**</td>
+    <td>1234.56</td>
+	<td>Numeric</td>
+    <td>1,234.56</td>
+    <td>yes*</td>
+    <td>OCA with grouping separator </td>
+  </tr>
+  <tr>
+    <td>date</td>
+    <td>2007-04-05T14:30:40Z</td>
+    <td>-**</td>
+    <td>2007-04-05T14:30:40Z</td>
+	<td>DateTime</td>
+    <td>05.04.2007, 16:30:40</td>
+    <td>yes</td>
+    <td>OCA display format depends on precision of the input date & time</td>
+  </tr>
+  <tr>
+    <td colspan=2>images</td>
+    <td><base64code></td>
+    <td>image/png image/jpeg</td>
+    <td><image></td>
+    <td>Binary</td>
+    <td><image></td>
+	<td>no</td>	
+    <td>base64 encoded image binary data</td>
+  </tr>
+  <tr>
+    <td>data:image/png;base64,<base64code></td>
+    <td>-**</td>
+    <td><image></td>
+    <td>Text</td>
+    <td><image></td>
+	<td>no</td>	
+    <td>Data URL images</td>
+  </tr>
+</table>
+
+*  can be mapped to a localized string with OCA Entry & Entry Code Overlay <br>
+** displayed as data type string
+
+## Fallback Version
+
+If an OCA Bundle is present and valid, it takes priority over the Credential Issuer Metadata. If neither is declared, a fallback visualisation takes place.
+
+Similarly, generally missing visualisation information is covered by an adequate fallback.
+
+For missing assets like background colour and logos, a standard visual presentation is used. Typically, this includes:
+
+- A neutral pre-defined background
+- A neutral logo
+
+[image
+
+## Theming
+
+With an OCA Bundle, the appearance of a credential can be themed. This allows you to declare a background colour, credential logo and description, depending on whether the swiyu app is in dark or light mode.
+
+The Branding Overlay supports the theme property. If a Branding Overlay is declared with a "dark" theme, the visualisation information is only considered when the swiyu app is in dark mode. Any other theme is considered to be used in light mode.
+
+```
+oca_bundle.json: |
+{
+  ...
+
+  "overlays": [
+    {
+      "type": "aries/overlays/branding/1.1",
+      ...
+      "theme": "dark"
+    }
+  ]
+}
+```
 
 ## General questions
 
