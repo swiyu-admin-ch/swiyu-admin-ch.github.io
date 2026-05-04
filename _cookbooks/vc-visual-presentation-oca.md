@@ -24,11 +24,11 @@ This manual describes how to define the visual presentation of a Verifiable Cred
 
 Its goal is to enable issuers in creating clean, professional looking credentials that effectively represent their organisation or service. This guide provides all necessary information to prepare from the start the appropriate graphic assets and deterimine the suitable settings. 
 
-The instruction is based on the credential visualisation with OID Credential Issuer Metadata and Overlays Capture Architecture (OCA), which are defined in the [Swiss Profiles].
+The instruction is based on the credential visualisation with OID Credential Issuer Metadata and Overlays Capture Architecture (OCA), which are defined in the [Swiss Profile](..specifications/introduction/).
 
 ## Purpose and Overview 
 
-In the swiyu wallet app, Verifiable Credentials (VC) are visually represented as cards to allow users to easily recognise and utilise them.  According to the implemented credential visualisation metadata, an issuer/verifier can define the following:
+In the swiyu wallet app, Verifiable Credentials (VC) are visually represented as cards to allow users to easily recognise and utilise them. According to the implemented credential visualisation metadata, an issuer/verifier can define the following:
 
 - the verifier's or issuer's name and logo
 - the background colour of the credential
@@ -193,7 +193,7 @@ If none of the languages supported by the app are declared in the visualisation 
 
 {% capture notice-text %}
 
-<b>Definition pro Language (Localisation)</b>
+<b>Definition per Language (Localisation)</b>
 Background colour, logos, name and description can be set per language.
 
 <b>Locale region</b>
@@ -263,7 +263,7 @@ Although the swiyu app supports dark mode, the VC’s color scheme remains unaff
 
 **Demo-Watermark**
 
-All the credentials which are issued within the swiyu Public Beta environment are applied with a DEMO watermark to differentiate those credentials to the productive ones.
+All the credentials which are issued within the swiyu Public Beta are applied with a DEMO watermark to differentiate those credentials to the productive ones.
 
 {% endcapture %}
 
@@ -301,7 +301,7 @@ Recommendation:
 
 **Plurilingualism**
 
-The VC supports multilingual settings. This means the logo can be defined per language.
+The VC supports multilingual visualisation metadata. This means the logo/icon can be defined per language.
 {% endcapture %}
 
 <div class="notice--info">
@@ -314,19 +314,17 @@ The VC supports multilingual settings. This means the logo can be defined per la
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "credential_configurations_supported": {
-    "demo-sdjwt": {
-      ...
-      "display": [
-        {
-          ...
-          "logo": {
-            "uri": "data:image/png;base64,<...base64code....>"
+    "demo-credential": {
+      "credential_metadata": {
+        "display": [
+          {
+            "logo": {
+              "uri": "data:image/png;base64,<...base64code....>"
+            }
           }
-        }
-      ]
+        ]
+      }
     }
   }
 }
@@ -335,12 +333,9 @@ credential_issuer_metadata.json: |
 ```
 oca_bundle.json: |
 {
-  ...
-
   "overlays": [
     {
       "type": "aries/overlays/branding/1.1",
-      ...
       "logo": "data:image/png;base64,<...base64code....>"
     }
   ]
