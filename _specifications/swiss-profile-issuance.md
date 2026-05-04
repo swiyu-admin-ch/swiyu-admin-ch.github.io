@@ -40,13 +40,13 @@ This section details the implementation notes and gaps pertaining to the support
 The specifications are fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following subsections.
 
 <div class="notice--warning">
-The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
+The subsections rely on the numbering from the original reference specification for ease of reference and comparison.
 </div>
 
 ## 3. Overview
 ### 3.3. Core Concepts
 #### 3.3.1. Credential Formats and Credential Format Profiles
-Swiss Profile Issuance only supports IETF SD-JWT VC (see [Swiss Profile VC](todo)) <br>
+Swiss Profile Issuance only supports IETF SD-JWT VC (see [Swiss Profile VC](../swiss-profile-vc)) <br>
 Credential Format Profiles "ISO mdoc" and "W3C VCDM" are not supported. <br>
 
 #### 3.3.3 Issuance Flow Variations
@@ -144,9 +144,9 @@ GET https://example.com/.well-known/openid-configuration/issuer1
 
 #### 12.2.3. Signed Metadata
 Issuers MUST also provide Signed Metadata.<br>
-The wallet MUST request signed metadata.<br>
+The Wallet MUST request and use Signed Metadata.<br>
 Signed Metadata MUST be used.<br>
-The signed metadata MUST be verified according swiss trust system. <br>
+The Signed Metadata MUST be verified according swiss trust system. <br>
 The `kid` header claim is REQUIRED and must be a absolute fragment containing a DID as described in swiss-profile-anchor.<br>
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JWT header is REQUIRED.
@@ -167,30 +167,30 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 #### 12.2.4. Credential Issuer Metadata Parameters
 - `authorization_servers` is NOT SUPPORTED.
 - `notification_endpoint` is NOT SUPPORTED.
-- `nonce_endpoint` is REQUIRED
+- `nonce_endpoint` is REQUIRED.
 - `credential_request_encryption` is REQUIRED.
 - `credential_response_encryption` is REQUIRED.
 - `batch_credential_issuance` is RECOMMENDED for privacy relevant use-cases.
   - `batch_size` is REQUIRED. Integer value MUST be at least 10 specifying the maximum array size for the proofs parameter in a Credential Request.
-    The wallet MAY send fewer proofs than defined in the batch size. The Issuer MUST create as many Credentials as proofs received.
-- `display` is RECOMMEND to properly display issuer information to wallets
-  - `logo` remains OPTIONAL
+    The Wallet MAY send fewer proofs than defined in the batch size. The Issuer MUST create as many Credentials as proofs received.
+- `display` is RECOMMEND to properly display issuer information to Wallets
+  - `logo` remains OPTIONAL.
     - `uri` MUST be a Data-URL (data URI schema) with MIME-type (media type) image/jpeg or image/png and be base64 encoded.
-      This means the `uri` must begin with `data:image/png;base64`  or `data:image/jpeg;base64` 
-- `credential_configurations_supported` 
-  - `scope` is NOT SUPPORTED
+      This means the `uri` MUST begin with `data:image/png;base64`  or `data:image/jpeg;base64`. 
+- `credential_configurations_supported` remaind REQUIRED.
+  - `scope` is NOT SUPPORTED.
   - `cryptographic_binding_methods_supported` MUST be `jwk` as only JWK format for holder bindings are supported.
   - `proof_types_supported` MUST be `jwt` as only JWT format is supported.
-    - `key_attestations_required` MUST be supported by wallets, and MAY be used by issuers.
-- `credential_metadata` 
-  - `display` MAY be used as fallback to OCA
-    - `logo` remains OPTIONAL
+    - `key_attestations_required` MUST be supported by Wallets, and MAY be used by Issuers.
+- `credential_metadata` remains OPTIONAL.
+  - `display` MAY be used as visualisation fallback to OCA Bundle.
+    - `logo` remains OPTIONAL.
       - `uri` MUST be a Data-URL (data URI schema) with MIME-type (media type) `image/jpeg` or `image/png` and be base64 encoded.
-        This means the `uri` must begin with `data:image/png;base64`  or `data:image/jpeg;base64`  
-    - `background_image` is NOT SUPPORTED
-    - `text_color` is NOT SUPPORTED
-  - `claims` remains OPTIONAL
-    - `mandatory` is NOT SUPPORTED
+        This means the `uri` MUST begin with `data:image/png;base64`  or `data:image/jpeg;base64`.  
+    - `background_image` is NOT SUPPORTED.
+    - `text_color` is NOT SUPPORTED.
+  - `claims` remains OPTIONAL.
+    - `mandatory` is NOT SUPPORTED.
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JSON body is REQUIRED.
 
@@ -207,7 +207,7 @@ The OAuth 2.0 Authorization Server Metadata are provided signed the same way as 
 ## 13. Security Considerations
 ### 13.6. Pre-Authorized Code Flow
 Issuer SHOULD accept pre-authorized codes only once.<br>
-When providing the Pre-Authorized Code as QR code, issuers SHOULD use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
+When providing the Pre-Authorized Code as QR code, Issuers SHOULD use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
 
 ### 13.11. Application-Layer Encryption
 Application-Layer encryption MUST be used for request and response.<br>
@@ -224,21 +224,22 @@ The Wallet MUST send at maximums the amount of proofs defined in the issuer meta
 The Issuer MUST send exactly as many credentials as proofs received.<br>
 The Issuer should only use Batch Issuing if unlinkability of Verifiers is desired.<br>
 Batch Issuance should not be used for credentials that rely on use cases where the data itself can be used to link different presentations.<br>
-There is no guarantee that any wallet uses a credential of a batch only once. Issuers and Verifiers should not rely on the fact that a credential in a batch is only shown once in the wallet. Batch issuing is therefore not suited for a batch of credentials like e.g., day passes, multi ride tickets or loyalty cards as the content of a credential in a batch is required to be equal. <br>
+There is no guarantee that any Wallet uses a credential of a batch only once. Issuers and Verifiers should not rely on the fact that a credential in a batch is only shown once in the Wallet. Batch issuing is therefore not suited for a batch of credentials like e.g., day passes, multi ride tickets or loyalty cards as the content of a credential in a batch is required to be equal. <br>
 
 ### 14.A Batch Issuance - Batch Size
-The batch size MUST be at least 10, to ensure holder privacy. If holder were to refresh credentials often due to a small batch size, issuers could easily gather telemetry data.<br>
+The batch size MUST be at least 10, to ensure Holder privacy. If holder were to refresh credentials often due to a small batch size, Issuers could easily gather telemetry data.<br>
 Wallets SHOULD define a limit how many credentials can be issued in one batch, to prevent being overloaded by exceedingly large batch sizes. This can be done by limiting the amount of proof of possessions being created.<br>
 
 ## Appendix A. Credential Format Profiles
-Only Supported Credential Format Profile is IETF SD-JWT VC<br>
+Only supported Credential Format Profile is IETF SD-JWT VC<br>
 
 ### A.3. IETF SD-JWT VC
 #### A.3.2. Credential Issuer Metadata
-The following additional Credential Issuer metadata parameters are defined for this Credential Format for use in the `credential_configurations_supported` parameter, in addition to those defined in Section 12.2.4.
-- `vct` REQUIRED
-- vct_extends OPTIONAL - If used in the Credential being issued RECOMMENDED  todo!
+The following additional Credential Issuer Metadata parameters are defined for this Credential Format for use in the `credential_configurations_supported` parameter, in addition to those defined in Section 12.2.4 and A3.2.
 - `vct_metadata_uri` OPTIONAL - If used in the Credential being issued RECOMMENDED
+- `vct_metadata_uri#integrity` OPTIONAL
+
+See usage of this additional parameters in [swiss-profile-vc](../swiss-profile-vc).
 
 ## Appendix D. Key Attestations
 Wallets MUST support key attestations.<br>
@@ -261,13 +262,6 @@ Swiss Profile version indication with parameter `profile_version` in the key att
 ```
 
 # OAuth 2.0 Demonstrating Proof of Possession (DPoP) - RFC 9449
-
-The specifications are fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following subsections.
-
-<div class="notice--warning">
-The below sub-sections rely on the numbering from the original reference specification for ease of reference and comparison.
-</div>
-
 ## 4. DPoP Proof JWTs
 ### 4.2. DPoP Proof JWT Syntax
 Swiss Profile version indication with parameter `profile_version` in DPoP JWT header is REQUIRED.<br>
