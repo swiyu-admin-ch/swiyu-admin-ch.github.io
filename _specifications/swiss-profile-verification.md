@@ -102,9 +102,6 @@ Client Identifier Prefix `verifier_attestation` MUST be supported and SHOULD be 
 ### 5.10. Request URI Method post
 Request URI method `post` is NOT SUPPORTED 
 
-### 5.11. Verifier Info
-Verifier Info is NOT SUPPORTED.
-
 ## 6. Digital Credentials Query Language (DCQL)
 ### 6.1. Credential Query
 #### 6.1.1. Trusted Authorities Query
@@ -118,9 +115,10 @@ Value: A list of VC issuer DIDs that the Verifier will accept
 ```
 {
   "type": "did",
-  "values": ["did:webvh:<scid>:www.example.com", "did:webvh:<scid>:www.admin.ch", "did:webvh:<scid>:www.ch.ch", "did:web:www.srf.ch"]
+  "values": ["did:webvh:<scid>:www.example.com", "did:webvh:<scid>:www.admin.ch", "did:webvh:<scid>:www.ch.ch"]
 }
 ```
+(!) Injected back into WG through an Issue open for Milestone 1.1 [https://github.com/openid/OpenID4VP/issues/494](https://github.com/openid/OpenID4VP/issues/494)
 
 ## 7. Claims Path Pointer
 ### 7.2. Semantics for ISO mdoc-based credentials
@@ -132,7 +130,7 @@ Response mode MUST be `direct_post.jwt`.<br>
 The usage of encryption MUST be enforced.
 
 ### 8.4 Transaction Data
-Transaction Data is NOT SUPPORTED and SHOULD NOT be used in this swiss-profile version.
+Transaction Data is NOT SUPPORTED and SHOULD NOT be used in this swiss-profile-verification version.
 
 ### 8.5 Error Response
 - `invalid_request_uri_method` is NOT SUPPORTED
