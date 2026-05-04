@@ -175,7 +175,7 @@ Recursive Disclosures MUST be supported and SHOULD be used when dealing with nes
 
 ### 4.3. Key Binding JWT
 JWT payload:
-- aud: REQUIRED. The aud claim MUST be client_id that was sent in the JAR of the verifier (see [swiss-profile-verification 1.0](../swiss-profile-verification/). Please respect the security considerations in the implementation: [Validation of aud claim in Key Binding JWT](#validation-of-aud-claim-in-key-binding-jwt).
+- aud: REQUIRED. The aud claim MUST be client_id that was sent in the JAR of the verifier (see [swiss-profile-verification 1.0](../swiss-profile-verification/)). Please respect the security considerations in the implementation: [Validation of aud claim in Key Binding JWT](#validation-of-aud-claim-in-key-binding-jwt).
   
 ## 6 Considerations on Nested Data in SD-JWTs
 
@@ -357,7 +357,7 @@ Claim metadata is NOT SUPORTED.
 ## 9. Security Considerations
 
 ### 9.6. Credential Type Extension and Issuer Authorization
-Issuer authorization and the challenge of credential type extension (trust chain) is specified in detail in [swiss-profile-trust].
+Issuer authorization and the challenge of credential type extension (trust chain) is specified in detail in [swiss-profile-trust](../swiss-profile-trust/).
 
 ### 9.7. Trust in Type Metadata
 (???) How is trust established in Type Metadata 
@@ -377,7 +377,7 @@ It differs from the exp claim of the SD-JWT VC the following way:
 
 - The `expiry_date` claim MUST be a Disclosure but the exp claim MUST NOT be part of a Disclosure. 
 - The holder of the swiyu wallet can still use and present the credential if the business expiry time is reached. There is only a warning shown to the holder when trying to present the digital credential. It is then up to the verifier to decide whether to accept this credential or not (e.g., Accepting a "over 18" proof for a expired e-ID). 
-- The digital credential cannot be shared once the exp time is reached. It is considered invalid for all participants of the trust infrastructure. 
+- The digital credential cannot be shared once the exp time is reached. It is considered invalid for all participants of the swiyu Trust Infrastructure. 
 - Once the business expiry time is reached it will be displayed to the Holder as Expired / Abgelaufen / Expiré / Scaduto / Spirà in the swiyu App
 
 ## Privacy-Preserving Retrieval of VCT Metadata
