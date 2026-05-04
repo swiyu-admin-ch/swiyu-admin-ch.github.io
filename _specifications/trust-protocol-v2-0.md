@@ -82,10 +82,10 @@ The presence of this marker indicates that the issuer or verifier does have auth
 # Trust Flows
 Each trust flow is bound to an interaction between two actors. The flow indicates how an actor to resolve the trust markers to establish trust relationship. Adherence to the trust protocol enhances the privacy for the holder.
 
-All actors MUST[1] validate the received Statements, see Statement provisioning, before they act upon the data provided by those statements.
+All actors MUST[^1] validate the received Statements, see Statement provisioning, before they act upon the data provided by those statements.
 If a statement is not valid the trust marker evaluated CANNOT be set for the trust relationship.
 
-[1] The key words in CAPITAL are described in the [introduction](../introduction/) of the Swiss Profiles
+[^1]: The key words in CAPITAL are described in the [introduction](../introduction/) of the Swiss Profiles
 
 ## Issuance
 
