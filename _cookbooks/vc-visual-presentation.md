@@ -9,12 +9,12 @@ header:
 
 {% capture notice-text %}
 
-Please be advised that the current system and its operations are provided on a best-effort basis and will continue to evolve over time. The security of the system and its overall maturity remain under development.
+This information is outdated and has been archived. For the current implementation, please refer to [VC visual presentation with OCA](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/)
 
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Deprecated</h4>
   {{ notice-text | markdownify }}
 </div>
 
