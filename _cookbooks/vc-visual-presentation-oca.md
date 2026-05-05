@@ -95,7 +95,9 @@ credential_issuer_metadata.json: |
       }
     }
   }
-}```
+}
+
+```
 
 ```
 oca_bundle.json: |
@@ -137,7 +139,8 @@ oca_bundle.json: |
       "primary_field": "Demo purpose for {{given_name}} {{family_name}}"
     }
   ]
-}```
+}
+```
 
 ```
 verification_authorization_request.json: |
@@ -150,6 +153,9 @@ verification_authorization_request.json: |
 ```
 
 ## Multilanguage
+
+The swiyu app supports the following languages: DE, FR, IT, RM, EN.
+If none of the languages supported by the app are declared in the visualisation metadata, the app selects a suitable default locale based on the device settings and the general range of locales declared in the visualisation metadata.
 
 ```
 credential_issuer_metadata.json: |
@@ -172,10 +178,6 @@ verification_authorization_request.json: |
   "logo_uri": "data:image/png;base64,<...base64code....>"
 }
 ```
-
-All following definitions can be localed. The swiyu app supports the following languages: DE, FR, IT, RM, EN.
-
-If none of the languages supported by the app are declared in the visualisation metadata, the app selects a suitable default locale based on the device settings and the general range of locales declared in the visualisation metadata.
 
 {% capture notice-text %}
 
@@ -356,8 +358,6 @@ verification_authorization_request.json: |
   }
 }
 ```
-
-
 
 ## Name
 
@@ -590,15 +590,45 @@ oca_bundle.json: |
   ]
 }
 ```
+
 The order of attributes displayed to the user is determined by the attribute order number ascending.
 
+## Sensitive Attributes
 
-## Sensitive Attributes -> hier weiter
+Sensitive attributes can be marked as such, indicating attributes that require protection against unauthorized or unwarranted disclosure. A visual indicator is displayed for these attributes.
+
+Sensitive attributes can only be defined within an OCA Bundle by declaring a Sensitive Overlay.
+
+```
+oca_bundle.json: |
+{
+  "overlays": [
+    {
+      "type": "spec/overlays/sensitive/1.0",
+      "attributes": ["family_name", "given_name"]
+    }
+  ]
+}
+```
+
+[![todo](../../assets/images/oca-sensitive-attributes.png)](../../assets/images/oca-sensitive-attributes.png)
+
+{% capture notice-text %}
+
+**Sensitive Data** 
+
+The Sensitive Overlay does just flags attributes as sensitive with a visual indicator. No further protection or privacy mechanism is applied by the swiyu app based on these information. It's up to the credential issuer to preserve user's privacy.
+{% endcapture %}
+
+<div class="notice--info">
+  <h4 class="no_toc">Recommendation:</h4>
+  {{ notice-text | markdownify }}
+</div>
 
 
 ## Clustering of Attributes
 
-Clustering enables you to organise your attributes into groups. Within each cluster, you can use three headlines (H1, H2 and H3) to organise and categorise your attributes, making them easier for users to scan. Headline 1 for the cluster itself is optional, as are all other headlines.
+Clustering enables you to organise credential attributes into groups. Within each cluster, three headlines (H1, H2 and H3) can be used to organise and categorise the credential attributes, making them easier for users to scan. Headline 1 for the cluster itself is optional, as are all other headlines.
 
 [![name](../../assets/images/oca-vc-clustering.png)](../../assets/images/oca-vc-clustering.png)
 
@@ -636,7 +666,7 @@ oca_bundle.json: |
   "overlays": [
     {
       "capture_base": "root",
-      "type": "spec/overlays/label/1.0",
+      "type": "spec/overlays/label/1.1",
       "attribute_labels": {
         "basis": "Basis Data",
         "additional": "Additional Data"
@@ -656,10 +686,10 @@ oca_bundle.json: |
 As an example, the above OCA Bundle defines two clusters, in the display-order "basis" first and second "additional", with each a H1 headline "Basis Data" and "Additional Data". Cluster "basis" contains the attributes "given_name" and "family_name" while cluster "additional" contains attributes "birthday" and "over_18".  
 
 ```
-- basis
+- cluster "basis"
   - given_name
   - family_name
-- additional
+- cluster "additional"
   - birthday
   - over_18
 ```
@@ -682,31 +712,9 @@ Clusters can be nested. For example, a Capture Base "CB1" may contain an attribu
 
 ## Data Types
 
-The swiyu app visualise attribute values according to their data type. 
+The swiyu app visualises attribute values according to their data type. 
 
-In Credential Issuer Metadata, the data type of an attribute is declared by the value_type property within the claims objects.
-
-```
-credential_issuer_metadata.json: |
-{
-  ...
-
-  "credential_configurations_supported": {
-    "demo-sdjwt": {
-      "format": "vc+sd-jwt",
-      
-      ...
-      
-      "claims": {
-        "family_name": {
-          ...
-          "value_type": "string"
-        }
-      }
-    }
-  }
-}
-```
+For Credential Issuer Metadata, the data type of an attribute is determined by the value type of the attribute's JSON field.
 
 In an OCA Bundle, the data type for an attribute is declared in the Capture Base within the attributes key-value pairs where the key is the attribute name and the value is the attribute type.
 
@@ -731,98 +739,107 @@ The swiyu app displays the various data type as following:
   <thead>
 	  <tr>
 	    <th rawspan="2">Data Type</th>
+	    <th colspan="2">Attribute Type</th>
 	    <th rawspan="2">Sample Attribute Value</th>
-	    <th colspan="2">Credential Issuer Metadata</th>
-		<th colspan="2">OCA Bundle</th>  
-		<th rawspan="2">Localized Display</th>  
+		<th rawspan="2">Displayed Value</th>  
+		<th rawspan="2">Localizable Display</th>  
 		<th rawspan="2">Comment</th>  
       </tr>
 	  <tr>
-	    <th>value_type</th>
-	    <th>display</th>
-	    <th>attribute type</th>
-		<th>display</th>  
+	    <th>Credential Issuer Metadata (JSON value_type)</th>
+	    <th>OCA Bundle</th>
 	  </tr>
   </thead>
   <tbody>
 	  <tr>
 	    <td>string</td>
-	    <td>"a value"</td>
 	    <td>string</td>
-	    <td>a value</td>
-		<td>Text</td>
-	    <td>a value</td>
+	    <td>Text</td>
+	    <td>"a value 1234"</td>
+		<td>a value 1234</td>
 	    <td>no*</td>
-	    <td>is displayed the same as input</td>  
+	    <td>Is displayed the same as input.</td>  
 	  </tr>
 	  <tr>
 	    <td>boolean</td>
+	    <td>boolean</td>
+	    <td>Boolean</td>
 	    <td>true</td>
-	    <td>-**</td>
-	    <td>true</td>
-		<td>Boolean</td>
-	    <td>true</td>
+		<td>true</td>
 	    <td>no*</td>
 	    <td> </td>
 	  </tr>
 	  <tr>
 	    <td>integer</td>
+	    <td>number</td>
+	    <td>Numeric</td></td>
 	    <td>1000</td>
-	    <td>-**</td>
-	    <td>1000</td>
-		<td>Numeric</td>
-	    <td>1'000</td>
+		<td>1'000</td>
 	    <td>yes*</td>
 	    <td>OCA with grouping separator </td>
 	  </tr>
 	  <tr>
 	    <td>float/double</td>
-	    <td>1234.56</td>
+	    <td>number</td>
 	    <td>-**</td>
+	    <td>Numeric</td>
 	    <td>1234.56</td>
-		<td>Numeric</td>
-	    <td>1,234.56</td>
+		<td>1,234.56</td>  
 	    <td>yes*</td>
 	    <td>OCA with grouping separator </td>
 	  </tr>
 	  <tr>
 	    <td>date</td>
+	    <td>string**</td>
+	    <td>DateTime</td>	  
 	    <td>2007-04-05T14:30:40Z</td>
-	    <td>-**</td>
-	    <td>2007-04-05T14:30:40Z</td>
-		<td>DateTime</td>
-	    <td>05.04.2007, 16:30:40</td>
-	    <td>yes</td>
-	    <td>OCA display format depends on precision of the input date & time</td>
+		<td>05.04.2007, 16:30:40</td>
+	    <td>yes*</td>
+	    <td>OCA display format depends on precision of the input date & time and of the platform specific formatting.</td>
 	  </tr>
 	  <tr>
 	    <td rawspan="2">images</td>
-	    <td><base64code></td>
-	    <td>image/png image/jpeg</td>
+		<td>string**</td>
+		<td>Binary</td>
 	    <td><image></td>
-	    <td>Binary</td>
-	    <td><image></td>
-		<td>no</td>	
-	    <td>base64 encoded image binary data</td>
+	    <td>no</td>	
+	    <td>Base64 encoded image binary data. Mime-types image/png and image/jpeg are supported.</td>
 	  </tr>
 	  <tr>
-	    <td>data:image/png;base64,<base64code></td>
-	    <td>-**</td>
-	    <td><image></td>
+		<td>string**</td>
 	    <td>Text</td>
+		<td>data:image/png;base64,<base64code></td>
 	    <td><image></td>
 		<td>no</td>	
-	    <td>Data URL images</td>
+	    <td>Data URL images. OCA requires Standard Overlay to match Data URL from Text type attributes.</td>
+	  </tr>
+	  <tr>
+	    <td>object</td>
+	    <td>object</td>
+	    <td>Reference</td>
+	    <td>{"attribute": "value"}</td>
+	    <td> </td>
+		<td>yes</td>	
+	    <td>Data is a JSON object containing attributes of one of the supported data type.</td>
+	  </tr>
+	  <tr>
+	    <td>array</td>
+	    <td>array</td>
+	    <td>Array[]</td>
+	    <td>["a", "b", "c"]</td>
+	    <td>a,b,c</td>
+		<td>yes</td>	
+	    <td>Data is a JSON array containing values of one of the supported data type.</td>
 	  </tr>
   </tbody>
 </table>
 
 *  can be mapped to a localized string with OCA Entry & Entry Code Overlay <br>
-** displayed as data type string
+** the string is matched to the respective data type
 
-## Fallback Version
+## Fallback Visualisation
 
-If an OCA Bundle is present and valid, it takes priority over the Credential Issuer Metadata. If neither is declared, a fallback visualisation takes place.
+If an OCA Bundle is present and valid, it takes priority over the Credential Issuer Metadata. If neither is declared, a fallback visualisation takes place. There is no mix of visualisation information between OCA Bundle and Credential Issuer Metadata, either one or the other is applied.
 
 Similarly, generally missing visualisation information is covered by an adequate fallback.
 
@@ -831,23 +848,20 @@ For missing assets like background colour and logos, a standard visual presentat
 - A neutral pre-defined background
 - A neutral logo
 
-[image
+[image]
 
 ## Theming
 
 With an OCA Bundle, the appearance of a credential can be themed. This allows you to declare a background colour, credential logo and description, depending on whether the swiyu app is in dark or light mode.
 
-The Branding Overlay supports the theme property. If a Branding Overlay is declared with a "dark" theme, the visualisation information is only considered when the swiyu app is in dark mode. Any other theme is considered to be used in light mode.
+The Branding Overlay supports the `theme` property. If a Branding Overlay is declared with "dark" theme, the visualisation information is only considered when the swiyu app is in dark mode. Any other theme is considered to be used in light mode.
 
 ```
 oca_bundle.json: |
 {
-  ...
-
   "overlays": [
     {
       "type": "aries/overlays/branding/1.1",
-      ...
       "theme": "dark"
     }
   ]
