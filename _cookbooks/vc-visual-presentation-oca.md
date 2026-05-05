@@ -77,7 +77,7 @@ credential_issuer_metadata.json: |
             "path": ["family_name"],
             "display": [
               {
-                "name": "Surname",
+                "name": "Lastname",
                 "locale": "en"
               }
             ]
@@ -86,7 +86,7 @@ credential_issuer_metadata.json: |
             "path": ["given_name"],
             "display": [
               {
-                "name": "Given Name",
+                "name": "Firstname",
                 "locale": "en"
               }
             ]
@@ -95,8 +95,7 @@ credential_issuer_metadata.json: |
       }
     }
   }
-}
-```
+}```
 
 ```
 oca_bundle.json: |
@@ -120,12 +119,12 @@ oca_bundle.json: |
       "description": "Demo purpose"
     },
     {
-      "type": "spec/overlays/label/1.0",
+      "type": "spec/overlays/label/1.1",
       "capture_base": "abc-123",
       "language": "en",
       "attribute_labels": {
-        "given_name": "Given name",
-        "family_name": "Surname"
+        "given_name": "Firstname",
+        "family_name": "Lastname"
       }
     },
     {
@@ -138,15 +137,15 @@ oca_bundle.json: |
       "primary_field": "Demo purpose for {{given_name}} {{family_name}}"
     }
   ]
-}
-```
+}```
 
 ```
 verification_authorization_request.json: |
 {
-  "client_id": "${CLIENT_ID}",
-  "client_name": "Reference Demo Verifier",
-  "logo_uri": "data:image/png;base64,<...base64code....>",
+  "client_metadata": {
+    "client_name": "Reference Demo Verifier",
+    "logo_uri": "data:image/png;base64,<...base64code....>",
+  }
 }
 ```
 
@@ -245,7 +244,7 @@ Although the swiyu app supports dark mode, the VC’s color scheme remains unaff
 
 **Demo-Watermark**
 
-All the credentials which are issued within the swiyu Public Beta are applied with a DEMO watermark to differentiate those credentials to the productive ones.
+All the credentials which are issued within the swiyu Public Beta/Sandbox Wallet are applied with a DEMO watermark to differentiate those credentials to the productive ones.
 
 {% endcapture %}
 
@@ -333,12 +332,8 @@ The issuer's logo is part of the OID Credential Issuer Metadata and will be used
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "display": [
     {
-      ...
-
       "logo": {
         "uri": "data:image/png;base64,<...base64code....>"
       }
@@ -356,9 +351,9 @@ The verifier's logo is only part of the OID4VP Authorization Request and will be
 ```
 verification_authorization_request.json: |
 {
-  "client_id": "${CLIENT_ID}",
-  ...
-  "logo_uri": "data:image/png;base64,<...base64code....>"
+  "client_metadata": {
+    "logo_uri": "data:image/png;base64,<...base64code....>",
+  }
 }
 ```
 
@@ -388,17 +383,15 @@ If you issue a family of diverse credentials (like e.g. entry pass spa, entry pa
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "credential_configurations_supported": {
-    "demo-sdjwt": {
-      ...
-      "display": [
-        {
-          ...
-          "name": "Title of credential"
-        }
-      ]
+    "demo-credential": {
+      "credential_metadata": {
+        "display": [
+          {
+            "name": "Title of credential",
+          }
+        ]
+      }
     }
   }
 }
@@ -407,17 +400,78 @@ credential_issuer_metadata.json: |
 ```
 oca_bundle.json: |
 {
-  ...
-
   "overlays": [
     {
       "type": "spec/overlays/meta/1.0",
-      ...
       "name": "Title of credential"
     }
   ]
 }
 ```
+
+### Attribute Name
+Each credential's attribute can be named. This avoids that the technical name like `given_name` is displayed for an attribute.
+
+```
+credential_issuer_metadata.json: |
+{
+  "credential_configurations_supported": {
+    "demo-credential": {
+      "credential_metadata": {
+        "claims": [
+          {
+            "path": ["family_name"],
+            "display": [
+              {
+                "name": "Lastname",
+                "locale": "en"
+              }
+            ]
+          },
+          {
+            "path": ["given_name"],
+            "display": [
+              {
+                "name": "Firstname",
+                "locale": "en"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
+```
+
+```
+oca_bundle.json: |
+{
+  "overlays": [
+    {
+      "type": "spec/overlays/label/1.1",
+      "language": "en",
+      "attribute_labels": {
+        "given_name": "Firstname",
+        "family_name": "Lastname"
+      }
+    }
+  ]
+}
+```
+
+{% capture notice-text %}
+**Templating support**  
+
+The Label Overlay supports templating. The placeholders in double brackets get replaced by the attribute value of the credential. This is especially useful for cluster headlines or object attributes in lists.
+
+{% endcapture %}
+
+<div class="notice--info">
+  <h3 class="no_toc">Good to know:</h3>
+  {{ notice-text | markdownify }}
+</div>
+
 
 ### Issuer Name
 The issuer's name is only part of the OID Credential Issuer Metadata and will be used for the credential offer screen and in the detail view of the credential.
@@ -425,12 +479,8 @@ The issuer's name is only part of the OID Credential Issuer Metadata and will be
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "display": [
     {
-      ...
-
       "name": "Issuer title"
     }
   ]
@@ -443,9 +493,9 @@ The verifier's name is only part of the OID4VP Authorization Request and will be
 ```
 verification_authorization_request.json: |
 {
-  "client_id": "${CLIENT_ID}",
-  ...
-  "client_name": "Verifier title"
+  "client_metadata": {
+    "client_name": "Verifier title"
+  }
 }
 ```
 
@@ -458,20 +508,15 @@ Keep metadata concise and relevant to avoid overwhelming the user with unnecessa
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "credential_configurations_supported": {
-    "demo-sdjwt": {
-      "format": "vc+sd-jwt",
-      
-      ...
-      
-      "display": [
-        {
-          ...
-          "description": "Demo purpose"
-        }
-      ]
+    "demo-credential": {
+      "credential_metadata": {
+        "display": [
+          {
+            "description": "Demo purpose"
+          }
+        ]
+      }
     }
   }
 }
@@ -480,17 +525,13 @@ credential_issuer_metadata.json: |
 ```
 oca_bundle.json: |
 {
-  ...
-
   "overlays": [
     {
       "type": "spec/overlays/meta/1.0",
-      ...
       "description": "Demo purpose"
     },
     {
       "type": "aries/overlays/branding/1.1",
-      ...
       "primary_field": "Demo purpose for {{given_name}} {{family_name}}"
     }
   ]
@@ -500,7 +541,7 @@ With an OCA Bundle, the description is taken in first priority from the Branding
 
 {% capture notice-text %}
 **Templating support**
-The Branding Overlay's primary_field supports templating. The placeholders in double brackets get replaced by the attribute value of the credential. 
+The Branding Overlay's `primary_field` supports templating. The placeholders in double brackets get replaced by the attribute value of the credential. 
 {% endcapture %}
 
 <div class="notice--info">
@@ -518,31 +559,29 @@ The display-order of attributes for a credential will be applied in the credenti
 ```
 credential_issuer_metadata.json: |
 {
-  ...
-
   "credential_configurations_supported": {
-    "demo-sdjwt": {
-      "format": "vc+sd-jwt",
-      
-      ...
-      
-      "order": [
-        "family_name",
-        "given_name"
-      ]
+    "demo-credential": {
+        "claims": [
+          {
+            "path": ["family_name"]
+          },
+          {
+            "path": ["given_name"]
+          }
+        ]
+      }
     }
   }
 }
 ```
+The order of claims description objects in the `claims` array is used to determine the order in which the attributes are displayed to the user.
+
 ```
 oca_bundle.json: |
 {
-  ...
-
   "overlays": [
     {
       "type": "extend/overlays/order/1.0",
-      ...
       "attribute_orders": {
         "given_name": 2,
         "family_name": 1
@@ -551,6 +590,11 @@ oca_bundle.json: |
   ]
 }
 ```
+The order of attributes displayed to the user is determined by the attribute order number ascending.
+
+
+## Sensitive Attributes -> hier weiter
+
 
 ## Clustering of Attributes
 
