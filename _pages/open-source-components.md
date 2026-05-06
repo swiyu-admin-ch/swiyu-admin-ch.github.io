@@ -51,6 +51,8 @@ The source code is available in the following repository:
 
 - [swiyu Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer)
 
+In the repository, you will also find a [detailed documentation](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/docs/Architecture_generic_issuer.pdf) of the use cases, architecture and interfaces of this generic component.
+
 ### swiyu Generic Verifier
 Entities can integrate the reference verifier implementation to verify VCs, ensuring cryptographic integrity and validity according to their specific needs.
 
