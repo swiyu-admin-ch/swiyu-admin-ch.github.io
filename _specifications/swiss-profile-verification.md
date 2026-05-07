@@ -145,6 +145,12 @@ URL scheme `openid4vp://` and `swiyu-verify://` MUST be supported.
 ### 10.2 Obtaining Wallet's Metadata
 Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.
 
+## 11 Verifier Metadata (Client Metadata)
+The following client metadata fields MUST be supported
+
+- `client_name`: OPTIONAL. Human-readable string name of the Verifier (client_id) to be presented to the end-user during authorization. The field MAY be internationalized, as described in [Section 2.2](https://datatracker.ietf.org/doc/html/rfc7591#section-2.2).
+- `logo_uri`: OPTIONAL. URL string that references a logo for the Verifier (client_id). MUST be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded. The field MAY be internationalized, as described in [Section 2.2](https://datatracker.ietf.org/doc/html/rfc7591#section-2.2).
+
 ## 12 Verifier Attestation JWT
 Verifier Attestation JWT SHOULD be used by the Wallet to validate authenticity of the Verifier in proximity use cases.<br>
 
