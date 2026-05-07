@@ -16,7 +16,7 @@ header:
 
 ## Introduction
 
-This document extends the [Overlays Capture Architecture (OCA)](https://oca.colossi.network/) by adding a technical specification for visualising verifiable credentials (VCs) through a mobile wallet. The aim is to define a set of requirements and clarify the use and support of OCA functionalities that go beyond the core [OCA specifications 1.0.1](https://oca.colossi.network/specification/v1.0.1) by focusing on the context of [VC visualisation](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/). The significance of the key words in CAPITAL LETTERS are described in the [introduction](/introduction/).
+This document extends the [Overlays Capture Architecture (OCA)](https://oca.colossi.network/) by adding a technical specification for visualising verifiable credentials (VCs) through a mobile wallet. The aim is to define a set of requirements and clarify the use and support of OCA functionalities that go beyond the core [OCA specifications 1.0.1](https://oca.colossi.network/specification/v1.0.1) by focusing on the context of [VC visualisation](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/). The significance of the key words in CAPITAL LETTERS are described in the [introduction](/specifications/introduction/).
 
 <a id="capture-base-extension"></a>
 
