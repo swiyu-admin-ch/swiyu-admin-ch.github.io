@@ -634,37 +634,68 @@ Clustering enables you to organise credential attributes into groups. Within eac
 
 Clustering can only be defined within an OCA Bundle by declaring Capture Bases. Headlines are taken from the respective OCA Label Overlay.
 
+As an example, the below OCA Bundle defines two clusters, in the display-order "basis" first and second "additional", with each a H1 headline "Basis Data" and "Additional Data". Cluster "basis" contains the attributes "given_name", "family_name" and each nationality as a sub-cluster H2 with headline from attribute "country", while cluster "additional" contains attributes "birthday" and "over_18".  
+
+```
+credential.json: |
+{
+  "given_name": "Seraina",
+  "family_name": "Muster",
+  "birth_year": "1988",
+  "over_18": true,
+  "nationalities": [
+    {
+      "country": "Switzerland",
+      "code": "CH"
+    },
+    {
+      "country": "France",
+      "code": "FR"
+    }
+  ]
+}
+```
+
 ```
 oca_bundle.json: |
 {
   "capture_bases": [
-    {
+    {
       "type": "spec/capture_base/1.0",
       "digest": "root",
       "attributes": {
-        "basis": "refs:abc-123",
-        "additional": "refs:xyz-789"
+        "basis": "refs:base",
+        "additional": "refs:add"
       }
     },
     {
       "type": "spec/capture_base/1.0",
-      "digest": "abc-123",
+      "digest": "base",
       "attributes": {
         "given_name": "Text",
-        "family_name": "Text"
+        "family_name": "Text",
+        "nationalities": "Array[refs:nat]"
       }
     },
-    {
+    {
       "type": "spec/capture_base/1.0",
-      "digest": "xyz-789",
+      "digest": "add",
       "attributes": {
-        "birthday": "DateTime",
+        "birth_year": "DateTime",
         "over_18": "Boolean"
+      }
+    },
+    {
+      "type": "spec/capture_base/1.0",
+      "digest": "nat",
+      "attributes": {
+        "country": "Text",
+        "code": "Text"
       }
     }
   ],
-  "overlays": [
-    {
+  "overlays": [
+    {
       "capture_base": "root",
       "type": "spec/overlays/label/1.1",
       "attribute_labels": {
@@ -672,26 +703,58 @@ oca_bundle.json: |
         "additional": "Additional Data"
       }
     },
-    {
+    {
+      "capture_base": "base",
+      "type": "spec/overlays/label/1.1",
+      "attribute_labels": {
+        "given_name": "Firstname",
+        "family_name": "Lastname",
+        "nationalities": "{refs:nat:country}"
+      }
+    },
+    {
+      "capture_base": "add",
+      "type": "spec/overlays/label/1.1",
+      "attribute_labels": {
+        "birth_year": "Year of birth",
+        "over_18": "Age over 18 years"
+      }
+    },
+    {
+      "capture_base": "nat",
+      "type": "spec/overlays/label/1.1",
+      "attribute_labels": {
+        "country": "Country",
+        "code": "Code"
+      }
+    },
+    {
       "type": "extend/overlays/order/1.0",
-      "capture_base": "root",
+      "capture_base": "root",
       "attribute_orders": {
         "basis": 1,
         "additional": 2
       }
     }
-  ]
+  ]
 }
 ```
-As an example, the above OCA Bundle defines two clusters, in the display-order "basis" first and second "additional", with each a H1 headline "Basis Data" and "Additional Data". Cluster "basis" contains the attributes "given_name" and "family_name" while cluster "additional" contains attributes "birthday" and "over_18".  
+
+Cluster structure:
 
 ```
-- cluster "basis"
-  - given_name
-  - family_name
-- cluster "additional"
-  - birthday
-  - over_18
+H1 "Basis Data"
+  "Firstname": "Seraina"
+  "Lastname": "Muster"
+  H2 "Switzerland"
+    "Country": "Switzerland"
+    "Code": "CH"
+  H2 "France"
+    "Country": "France"
+    "Code": "FR" 
+H1 "Additional Data"
+  "Year of birth": 1988
+  "Age over 18 years": yes
 ```
 
 {% capture notice-text %}
@@ -703,6 +766,11 @@ A single cluster with a given headline is created by declaring a root Capture Ba
 
 **Subclusters and headlines H2-H3**<br>
 Clusters can be nested. For example, a Capture Base "CB1" may contain an attribute of type Reference to another Capture Base "CB2". The cluster "CB2" is then a subcluster of the cluster "CB1" with the headline "H2". The swiyu app will display up to three levels; any further nested clusters will be displayed as if they were on level three.
+
+**Array object clusters**
+
+For array of objects, in a Capture Base with an attribute of type `Array[Reference]`, each object in the array is displayed as an individual cluster with the hierarchy level of it's Capture Base.
+
 {% endcapture %}
 
 <div class="notice--info">
