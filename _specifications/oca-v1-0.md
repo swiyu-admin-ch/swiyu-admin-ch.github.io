@@ -16,9 +16,7 @@ header:
 
 ## Introduction
 
-This document extends the [Overlays Capture Architecture (OCA)](https://oca.colossi.network/) by adding a technical specification for visualising verifiable credentials (VCs) through a mobile wallet. The aim is to define a set of requirements and clarify the use and support of OCA functionalities that go beyond the core [OCA specifications 1.0.1](https://oca.colossi.network/specification/v1.0.1) by focusing on the context of VC visualisation.
-
--> Link auf generelle Konventionen/Key Words
+This document extends the [Overlays Capture Architecture (OCA)](https://oca.colossi.network/) by adding a technical specification for visualising verifiable credentials (VCs) through a mobile wallet. The aim is to define a set of requirements and clarify the use and support of OCA functionalities that go beyond the core [OCA specifications 1.0.1](https://oca.colossi.network/specification/v1.0.1) by focusing on the context of [VC visualisation](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/). The significance of the key words in CAPITAL LETTERS are described in the [introduction](/introduction/).
 
 <a id="capture-base-extension"></a>
 
@@ -714,6 +712,8 @@ function calculateCesrDigest(payload):
 
 
 1. Prepare the Capture Base and fill the `digest` attribute with the diggest dummy defined by [CESR](https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html#section-4.2) (44 '#' for the SHA-256 digest).
+2. Canonicalise the payload, as the order of JSON properties cannot be guaranteed otherwise. JCS (RFC8785) sets a specification to canonicalise JSON.
+   
     ```json
     {
         "type":"spec/capture_base/1.0",
@@ -724,7 +724,7 @@ function calculateCesrDigest(payload):
     }
     ``` 
 
-2. Compute the CESR encoded SHA-256 digest with the pseudo code given above (step 1 to 4) and put the value into the `digest` attribute. The output should match the following result:
+3. Compute the CESR encoded SHA-256 digest with the pseudo code given above (step 1 to 4) and put the value into the `digest` attribute. The output should match the following result:
 
     ```json
     {
@@ -736,7 +736,7 @@ function calculateCesrDigest(payload):
     }
     ``` 
 
-3. Add the Capture Base and Overlays to the JSON and fill the reference to the Capture Base in each Overlay.
+4. Add the Capture Base and Overlays to the JSON and fill the reference to the Capture Base in each Overlay.
 
     ```json 
     {
@@ -762,7 +762,8 @@ function calculateCesrDigest(payload):
     }
 
     ```
-4. The core OCA specification computes a CESR encoded digest for each Overlay in the same way as in steps 1 and 2. This documentation skips the generation of the Overlay digests, as the additional digests add no value to a single file OCA Bundle. 
+    
+5. The core OCA specification computes a CESR encoded digest for each Overlay in the same way as in steps 1 and 2. This documentation skips the generation of the Overlay digests, as the additional digests add no value to a single file OCA Bundle. 
 
 After those steps the following content is generated:
 
@@ -792,34 +793,13 @@ After those steps the following content is generated:
 
 ## References
 
-**Aries Branding Overlay**<br/>
-https://github.com/hyperledger/aries-rfcs/blob/main/features/0755-oca-for-aries/README.md#aries-specific-branding-overlay
-
-**CESR**<br/>
-https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html
-
-**ISO8601**<br/>
-https://www.iso.org/iso-8601-date-and-time-format.html
-
-**OpenID4VCI credential format profiles**<br/>
-https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html
-
-**Overlays Capture Architecture**<br/>
-https://oca.colossi.network/specification/v1.0.1
-
-**RFC2397**<br/>
-https://datatracker.ietf.org/doc/html/rfc2397
-
-**RFC8785**<br/>
-https://datatracker.ietf.org/doc/html/rfc8785
-
-**RFC9535**<br/>
-https://www.rfc-editor.org/rfc/rfc9535.html
-
-**SD-JWT VC**<br/>
-https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/
-
-**W3C.SRI**<br/>
-https://www.w3.org/TR/SRI/
-
-
+- [Aries Branding Overlay](https://github.com/hyperledger/aries-rfcs/blob/main/features/0755-oca-for-aries/README.md#aries-specific-branding-overlay)
+- [CESR](https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html)
+- [ISO8601](https://www.iso.org/iso-8601-date-and-time-format.html)
+- [OpenID4VCI credential format profiles](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html)
+- [Overlays Capture Architecture](https://oca.colossi.network/specification/v1.0.1)
+- [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397)
+- [RFC8785](https://datatracker.ietf.org/doc/html/rfc8785)
+- [RFC9535](https://www.rfc-editor.org/rfc/rfc9535.html)
+- [SD-JWT VC](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/)
+- [W3C.SRI](https://www.w3.org/TR/SRI/)
