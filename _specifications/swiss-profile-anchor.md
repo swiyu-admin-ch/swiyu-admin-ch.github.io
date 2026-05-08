@@ -104,7 +104,7 @@ DID Resolution MUST be used.
 ### 7.2 DID URL Dereferencing
 DID URL Dereferencing is not supported by the swiyu DIDResolver.
 
-# DID Method did:webvh
+# did:webvh DID Method 
 
 The specification is fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following subsections.
 
@@ -118,7 +118,7 @@ The /whois Use Case is not supportet in the Base Register.
 
 Instead use the [Trust Protocol](../trust-protocol-v2-0/) mechanisms to validate trustworthiness of the DID.<br>
 
-## 3 DID Method Specification
+## 3 did:webvh DID Method Specification
 ### 3.7 DID Method Processes
 #### 3.7.1 did:webvh DID Method Parameters
 The Base Register does not support DID Portability.<br>
