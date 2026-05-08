@@ -13,7 +13,7 @@ header:
 </div>
 
 
-# Summary
+# Introduction
 
 This profile concerns itself with how an public ecosystem actor can be identified and linked to a real world identity and how to protect anyone complying with this protocol from fraudsters impersonating official government institutions and VCs.
 
@@ -57,8 +57,8 @@ Public Beta Trust Registry: https://trust-reg.trust-infra.swiyu-int.admin.ch/
 
 | Type | DID | 
 | --- | --- | 
-| Trust statement issuer | to be announced |
-| Public transparency statement issuer | tba |
+| Trust statement issuer | did:webvh:QmRCTm94HZCq2YL1kjCDXRQ1ved4cb3Q3FiEao1nRSbp3A:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:75b5d64d-6de0-426e-b5aa-9e9e4452f11a |
+| Public transparency statement issuer | did:webvh:QmaQHULUL7HbM76k2T42QhBDtnYM96Dj8cCwpVfvJ2pyCb:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:71c14e91-2637-4dbd-a7dd-4de7254b936d |
 
 ### Trust Registries
 
@@ -68,19 +68,15 @@ Public Beta Trust Registry: https://trust-reg.trust-infra.swiyu-int.admin.ch/
 
 ## Trust requirements
 
-An actor of the ecosystem MUST validate the trust relationship, and therefore the actor knows the trust markers of the actors in the interaction.<br>
-An actor of the ecosystem MUST decline any trust relationships which do have the Governmental use case Trust Mark but not the Verified governmental authorization Trust Mark.<br>
-An actor of the ecosystem SHOULD decline any trust relationships which do not have the Verified Identity Trust Mark.<br>
+An actor of the ecosystem **MUST** validate the trust relationship, and therefore the actor knows the trust markers of the actors in the interaction.<br>
+An actor of the ecosystem **MUST** decline any trust relationships which do have the Governmental use case Trust Mark but not the Verified governmental authorization Trust Mark.<br>
+An actor of the ecosystem **SHOULD** decline any trust relationships which do not have the Verified Identity Trust Mark.<br>
 
-The wallet SHOULD decline any trust relationships during the verification process which do not have the Compliant actor Trust Mark.<br>
-The wallet MAY decline any trust relationships during the verification process which do not have the Transparent verification Trust Mark.<br>
+The wallet **SHOULD** decline any trust relationships during the verification process which do not have the Compliant actor Trust Mark.<br>
+The wallet **MAY** decline any trust relationships during the verification process which do not have the Transparent verification Trust Mark.<br>
 Note: A good reason to not require the Transparent verification Trust Mark would be a holder consented overwrite of the required Transparent verification Trust Mark.
 
-## Trust Statement Details
 
-### Verification Query Public Statement (vqPS)
-
-All vqPS issued by the swiyu trust infrastructure are valid for 6 months.
 
 
 
