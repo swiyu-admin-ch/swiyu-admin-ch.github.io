@@ -170,7 +170,7 @@ A credential lifecycle refers to the series of stages that a digital credential 
 
 # Trust in the swiyu ecosystem
 
-The swiyu Trust Infrastructure supports the development of trust between interacting parties by different means. An important part of this are the trust artefacts. For a more in-depth technical documentation please refer to the specification of the latest [Trust Protocol].
+The swiyu Trust Infrastructure supports the development of trust between interacting parties by different means. An important part of this are the trust artefacts. For a more in-depth technical documentation please refer to the specification of the latest [Trust Protocol](/specifications/trust-protocol-v2-0/).
 
 ## Overview
 
