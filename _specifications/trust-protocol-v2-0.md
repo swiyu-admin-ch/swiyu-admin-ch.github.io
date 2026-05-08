@@ -123,14 +123,14 @@ The following diagram shows how the wallet could resolve trust markers:
 ## Verification
 
 To allow the wallet to mark the trust relationship to the verifier with the Verified Identity Trust Mark trust marker the following needs to be provided by the verifier:
-- The verifier **MUST** provide his Identity Trust Statement to the wallet as described in Statement provisioning>Verifier>JWT-Secured Authorization Request (Request Object).
+- The verifier **MUST** provide his Identity Trust Statement to the wallet as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
 
 To allow the wallet to mark the trust relationship to the verifier with the Governed use case authorization Trust Mark trust marker the following needs to be provided by the verifier:
-- The verifier **MUST** provide the relevant Verification Query Public Statement to the wallet, as described in Statement provisioning>Verifier>JWT-Secured Authorization Request (Request Object).
+- The verifier **MUST** provide the relevant Verification Query Public Statement to the wallet, as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
 - The verifier **MUST** link to the "scope" claim of the Verification Query Public Statement via the scope parameter, as defined in section 5.5 of [OpenID4VP].
 
 To allow the wallet to mark the trust relationship to the verifier with the Governed use case authorization Trust Marker trust marker the following needs to be provided by the verifier:
-- The verifier **MUST** provide for each protected VC Type to be verified a matching Protected Verification Authorization Trust Statements as described in Statement provisioning>Verifier>JWT-Secured Authorization Request (Request Object).
+- The verifier **MUST** provide for each protected VC Type to be verified a matching Protected Verification Authorization Trust Statements as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
 
 
 ### Wallet view
@@ -157,7 +157,7 @@ When performing the necessary validations the wallet **MUST** perform all steps 
 | Transparent verification Trust Mark	| 1. Validate that the provided attestations contain exactly one Verification Query Public Statement. <br> 2. Validate that the presentation request contains a "scope" parameter, as defined in section 5.5 of [OpenID4VP]. <br> 3. Validate that the "scope" claim of the Verification Query Public Statement is contained in the presentation request "scope" claim. |
 | Governed use case Trust Mark | 1. Identify at least one protected field in the presentation, as defined in Protected verification. |
 | Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. <br> 2. Identify each protected field in the presentation, as defined in Protected verification. <br> 3. Protected fields **MUST** be matched against all claims which are send from the wallet to the verifier. <br> 4. For each protected field the wallet **MUST** adhere to the following process: <br> a. Make sure the protected field is listed in the "authorized_fields" claim of a Protected Verification Authorization Trust Statement. <br>  b. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Protected Verification Authorization Trust Statement. If the "client_id" contains the prefix "decentralized_identifier:" it **MUST** be removed before the comparison. |
-| Compliant actor Trust Mark | 1. Aact upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. <br> 2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.  If the "client_id" contains the prefix "decentralized_identifier:" it **MUST** be removed before the comparison. |
+| Compliant actor Trust Mark | 1. Act upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. <br> 2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.  If the "client_id" contains the prefix "decentralized_identifier:" it **MUST** be removed before the comparison. |
 
 The following diagram shows how the wallet could resolve trust markers:
 
@@ -222,7 +222,7 @@ For examples please use the following OpenAPI Specification: [Trust Protocol 2.0
 
 A trust registry **MUST** provide the following HTTP REST endpoints:
 
-### Retrieving Identity Trust Statements
+### Retrieving Identity Trust Statements 
 
 <table>
   <tr>
@@ -233,8 +233,8 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
   <tr>
     <td> /api/v2/identity-trust-statement/	</td>
     <td>GET</td> 
-    <td>MUST return a List Response Object, The content objects are serialized Identity Trust Statements. <br>
-        MUST support the following parameters: <br>
+    <td><b>MUST</b> return a List Response Object, The content objects are serialized Identity Trust Statements. <br>
+        <b>MUST</b> support the following parameters: <br>
         <table>
             <tr>
                 <td>Name</td>
@@ -246,33 +246,33 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
                 <td>sub</td>
                 <td>Query</td>
                 <td>No default</td>
-                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+                <td>If provided <b>MUST</b> be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
             </tr>
             <tr>
                 <td>filterActive</td>
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br> Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+                <td><b>MUST</b> be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br> Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
             <tr>
                 <td>page</td>
                 <td>Query</td>
                 <td>0</td>
-                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+                <td><b>MUST</b> be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
                 <td>size</td>
                 <td>Query</td>
                 <td>20</td>
-                <td>MUST be an integer. The requested size of the page to be returned. actual returned size may differ.</td>
+                <td><b>MUST</b> be an integer. The requested size of the page to be returned. actual returned size may differ.</td>
             </tr>
         </table> </td>
   </tr>
   <tr>    
     <td>/api/v2/identity-trust-statement/{identifier}</td>
     <td>GET</td> 
-    <td>MUST return a serialized Identity Trust Statement. <br>
-        MUST support the following parameters: <br>
+    <td><b>MUST</b> return a serialized Identity Trust Statement. <br>
+        <b>MUST</b> support the following parameters: <br>
          <table>
             <tr>
                 <td>Name</td>
@@ -302,8 +302,8 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
   <tr>
     <td> /api/v2/verification-query-public-statement/	</td> 	
     <td>GET</td> 
-    <td> MUST return a List Response Object, The content objects are serialized Verification Query Public Statements. <br>
-         MUST support the following parameters:       <br>
+    <td> <b>MUST</b> return a List Response Object, The content objects are serialized Verification Query Public Statements. <br>
+         <b>MUST</b> support the following parameters:       <br>
         <table>
             <tr>
                 <td>Name</td>
@@ -315,33 +315,33 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
                 <td>sub</td> 
                 <td>Query</td>
                 <td>No default</td>
-                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+                <td>If provided <b>MUST</b> be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
             </tr>
             <tr>
                 <td>filterActive</td> 
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br> Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
+                <td><b>MUST</b> be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br> Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
             <tr> 
                 <td>page</td>
                 <td>Query</td>
                 <td>0</td>
-                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+                <td><b>MUST</b> be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
                 <td>size</td> 
                 <td>Query</td>
                 <td>20</td>
-                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+                <td><b>MUST</b> be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
         </table> </td>
   </tr>      
   <tr>
     <td>/api/v2/verification-query-public-statement/{jti}</td> 
     <td>GET</td> 
-    <td>MUST return a serialized Verification Query Public Statement. <br>
-        MUST support the following parameters: <br>
+    <td><b>MUST</b> return a serialized Verification Query Public Statement. <br>
+        <b>MUST</b> support the following parameters: <br>
          <table>
             <tr>
                 <td>Name</td>
@@ -353,7 +353,7 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
                 <td>jti</td>
                 <td>Path</td>
                 <td>No default</td>
-                <td>MUST be a UUIDv4, see [RFC 9562], of the Verification Query Public Statement to return.</td>
+                <td><b>MUST</b> be a UUIDv4, see [RFC 9562], of the Verification Query Public Statement to return.</td>
             </tr>
            </table> </td>
    </tr>        
@@ -370,8 +370,8 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
   <tr>
     <td> /api/v2/protected-verification-authorization-trust-statement/	</td> 	
     <td>GET</td> 
-    <td> MUST return a List Response Object, The content objects are serialized Protected Verification Authorization Trust Statements.  <br>
-         MUST support the following parameters:       <br>
+    <td> <b>MUST</b> return a List Response Object, The content objects are serialized Protected Verification Authorization Trust Statements.  <br>
+         <b>MUST</b> support the following parameters:       <br>
         <table>
             <tr>
                 <td>Name</td>
@@ -383,34 +383,34 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
                 <td>sub</td> 
                 <td>Query</td>
                 <td>No default</td>
-                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+                <td>If provided <b>MUST</b> be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
             </tr>
             <tr>
                 <td>filterActive</td> 
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br>
+                <td><b>MUST</b> be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br>
 Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
             <tr> 
                 <td>page</td>
                 <td>Query</td>
                 <td>0</td>
-                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+                <td><b>MUST</b> be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
                 <td>size</td> 
                 <td>Query</td>
                 <td>20</td>
-                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+                <td><b>MUST</b> be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
         </table> </td>
   </tr>      
   <tr>
     <td>/api/v2/protected-verification-authorization-trust-statement/{jti}</td> 
     <td>GET</td> 
-    <td>MUST return a serialized Protected Verification Authorization Trust Statement. <br>
-        MUST support the following parameters: <br>
+    <td><b>MUST</b> return a serialized Protected Verification Authorization Trust Statement. <br>
+        <b>MUST</b> support the following parameters: <br>
          <table>
             <tr>
                 <td>Name</td>
@@ -422,7 +422,7 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>jti</td>
                 <td>Path</td>
                 <td>No default</td>
-                <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Verification Authorization Trust Statement to return.</td>
+                <td><b>MUST</b> be a UUIDv4, see [RFC 9562], of the Protected Verification Authorization Trust Statement to return.</td>
             </tr>
            </table> </td>
    </tr>        
@@ -440,8 +440,8 @@ Implementation Note: The client still needs to validate the statements and canno
   <tr>
     <td> /api/v2/protected-issuance-trust-list-statement/	</td> 	
     <td>GET</td> 
-    <td>MUST return a List Response Object, The content objects are serialized Protected Issuance Trust List Statements.  <br>
-         MUST support the following parameters:       <br>
+    <td><b>MUST</b> return a List Response Object, The content objects are serialized Protected Issuance Trust List Statements.  <br>
+         <b>MUST</b> support the following parameters:       <br>
         <table>
             <tr>
                 <td>Name</td>
@@ -453,34 +453,34 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>sub</td> 
                 <td>Query</td>
                 <td>No default</td>
-                <td>If provided MUST be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
+                <td>If provided <b>MUST</b> be a string. The trust registry returns only statements where the sub claim matches exactly.</td>
             </tr>
             <tr>
                 <td>filterActive</td> 
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br>
+                <td><b>MUST</b> be a boolean. Indicates that the trust registry only returns trust statements it deems active. <br>
 Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
             <tr>  
                 <td>page</td>
                 <td>Query</td>
                 <td>0</td>
-                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+                <td><b>MUST</b> be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
                 <td>size</td> 
                 <td>Query</td>
                 <td>20</td>
-                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+                <td><b>MUST</b> be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
         </table> </td>
   </tr>    
   <tr>
     <td>/api/v2/protected-issuance-authorization-trust-statement/{jti}</td> 
     <td>GET</td> 
-    <td>MUST return a serialized Protected Issuance Authorization Trust Statement.  <br>
-        MUST support the following parameters: <br>
+    <td><b>MUST</b> return a serialized Protected Issuance Authorization Trust Statement.  <br>
+        <b>MUST</b> support the following parameters: <br>
          <table>
             <tr>
                 <td>Name</td>
@@ -492,7 +492,7 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>jti</td>
                 <td>Path</td>
                 <td>No default</td>
-                <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Authorization Trust Statement to return.</td>
+                <td><b>MUST</b> be a UUIDv4, see [RFC 9562], of the Protected Issuance Authorization Trust Statement to return.</td>
             </tr>
            </table> </td>
    </tr>        
@@ -509,8 +509,8 @@ Implementation Note: The client still needs to validate the statements and canno
   <tr>
     <td> /api/v2/protected-issuance-authorization-trust-statement/	</td> 	
     <td>GET</td> 
-    <td>MUST return a List Response Object, The content objects are serialized Protected Issuance Authorization Trust Statements.  <br>
-         MUST support the following parameters:       <br>
+    <td><b>MUST</b> return a List Response Object, The content objects are serialized Protected Issuance Authorization Trust Statements.  <br>
+         <b>MUST</b> support the following parameters:       <br>
         <table>
             <tr>
                 <td>Name</td>
@@ -522,28 +522,28 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>filterActive</td> 
                 <td>Query</td>
                 <td>true</td>
-                <td>MUST be a boolean. Indicates that the trust registry only returns trust statements it deems active.
+                <td><b>MUST</b> be a boolean. Indicates that the trust registry only returns trust statements it deems active.
 Implementation Note: The client still needs to validate the statements and cannot assume that all statements returned are indeed active.</td>
             </tr>
             <tr> 
                 <td>page</td>
                 <td>Query</td>
                 <td>0</td>
-                <td>MUST be an integer. The zero-based page index (0..N) to retrive.</td>
+                <td><b>MUST</b> be an integer. The zero-based page index (0..N) to retrive.</td>
             </tr>
             <tr>
                 <td>size</td> 
                 <td>Query</td>
                 <td>20</td>
-                <td>MUST be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
+                <td><b>MUST</b> be an integer. The requested size of the page to be returned. Actual returned size may differ.</td>
             </tr>
         </table> </td>
   </tr>      
   <tr>
     <td>/api/v2/protected-issuance-trust-list-statement/{jti}</td> 
     <td>GET</td> 
-    <td>MUST return are serialized Protected Issuance Trust List Statement  <br>
-        MUST support the following parameters: <br>
+    <td><b>MUST</b> return are serialized Protected Issuance Trust List Statement  <br>
+        <b>MUST</b> support the following parameters: <br>
          <table>
             <tr>
                 <td>Name</td>
@@ -555,14 +555,14 @@ Implementation Note: The client still needs to validate the statements and canno
                 <td>jti</td>
                 <td>Path</td>
                 <td>No default</td>
-                <td>MUST be a UUIDv4, see [RFC 9562], of the Protected Issuance Trust List Statement to return.</td>
+                <td><b>MUST</b> be a UUIDv4, see [RFC 9562], of the Protected Issuance Trust List Statement to return.</td>
             </tr>
            </table> </td>
   </tr>         
   <tr>
           <td>/api/v2/protected-issuance-trust-list	</td> 	
           <td>GET</td> 
-          <td>MUST return are serialized Protected Issuance Trust List Statement</td>
+          <td><b>MUST</b> return are serialized Protected Issuance Trust List Statement</td>
   </tr>  
 </table> 
 
@@ -617,10 +617,10 @@ To provide the localizated version of a string the following format is used:
 
 language_tag **MUST** be a string in accordance to [BCP 47]
 
-An application displaying a localized claim **SHOULD** display the localized value instead of the non localized value in accordance with the users preferences.>br>
+An application displaying a localized claim **SHOULD** display the localized value instead of the non localized value in accordance with the users preferences.<br>
 If a claim is provided in a localized version it **SHOULD** also provide the locale of the default value.
 
-[implementation example](/cookbooks/trust-protocol-2-0-implementation/#localization))
+[implementation example](/cookbooks/trust-protocol-2-0-implementation/#localization)
 
 ## Statement types
 ### Identity Trust Statement (idTS)
@@ -648,11 +648,11 @@ Registry ID Object
 
 ### Well known registry IDs 
 
-| Type Identifier | Example Value | Name | Owner | Spec ]
+| Type Identifier | Example Value | Name | Owner | Spec |
 |--- |--- |--- |--- |--- |
 | `UID` | 123456789| Unternehmens-Identifikationsnummer | [Federal Statistical Office] | [FAQ] | 
 
-[implementation example](/cookbooks/trust-protocol-2-0-implementation/#identity-trust-statement))
+[implementation example](/cookbooks/trust-protocol-2-0-implementation/#identity-trust-statement)
 
 ### Verification Query Public Statement (vqPS)
 
@@ -664,8 +664,8 @@ This statement is provided by verifiers to provide public transparency on their 
 | `kid` | Header | required | This statement **MUST** be issued by a public transparency statement issuer identified in the [swiss-profile-trust](/swiss-profile-trust/).| 
 | `sub` |  Payload | required | **MUST** be an identifier of the verifier in a format defined in the [swiss-profile-anchor 1.0]/swiss-profile-anchor/) | 
 | `jti` | Payload | required | **MUST** be a UUIDv4, see [RFC 9562], provided by the statement issuer to facilitate easier matching in cross reference documents like the verifiers metadata.| 
-| `purpose_name` | Payload |  required | **MUST** be a human readable string defining the purpose of this verification. **MUST** not contain more than 40 characters. MAY be localized | 
-| `purpose_description` | Payload |  required | **MUST** be a human readable string defining the purpose of this verification. MUST not contain more than 1000 characters. MAY be localized. | 
+| `purpose_name` | Payload |  required | **MUST** be a human readable string defining the purpose of this verification. **MUST NOT** contain more than 40 characters. MAY be localized | 
+| `purpose_description` | Payload |  required | **MUST** be a human readable string defining the purpose of this verification. **MUST NOT** contain more than 1000 characters. MAY be localized. | 
 | `request` |  Payload |  required | **MUST** be an Verification Request Object. | 
 
 Verification Request Object 
@@ -678,11 +678,11 @@ Verification Request Object
 
 Verification Type: DCQL
 
-A query of type "DCQL" must comply with [OpenID4VP] and **MUST** contain for each Credential Query a "meta" field with an object containing at least the field "vct_values" with an non empty array.
+A query of type "DCQL" **MUST** comply with [OpenID4VP] and **MUST** contain for each Credential Query a "meta" field with an object containing at least the field "vct_values" with an non empty array.
 
-[DCQL query implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-type-dcql))
+[DCQL query implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-type-dcql)
 
-[Verification Query Public Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-query-public-statement))
+[Verification Query Public Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-query-public-statement)
 
 ### Protected Verification Authorization Trust Statement (pvaTS)
 
@@ -699,7 +699,7 @@ This statement is provided by verifiers to provide authorization to request prot
 
 A Protected Verification Authorization Trust Statement provides authorization to the verifier identified in the "sub" claim if the protected field is listed in the "authorized_fields" claim.
 
-[Protected Verification Authorization Trust Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-verification-authorization-trust-statement))
+[Protected Verification Authorization Trust Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-verification-authorization-trust-statement)
 
 ### Protected Issuance Authorization Trust Statement (piaTS)
 
@@ -724,7 +724,7 @@ Defines the scope and descriptive details of the authorization.
 | `vct_name` | required | **MUST** be a human readable string defining the name of the credential to be issued. **MUST NOT** contain more than 40 characters. **MAY** be localized. |
 | `reason` | optional | **MUST** be a human readable string defining reason of why the subject is permitted to issue this credential. **MUST NOT** contain more than 1000 characters. **MAY** be localized. |
 
-[Protected Issuance Authorization Trust Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-authorization-trust-statement))
+[Protected Issuance Authorization Trust Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-authorization-trust-statement)
 
 ### Protected Issuance Trust List Statement (piTLS)
 
@@ -738,7 +738,7 @@ Information for actors which VCTs can be issued only by authorized issuers.
 | `jti` | Payload | required | **MUST** be a UUIDv4, see [RFC 9562]. Identifies the protected claim trust statement |
 | `vct_values` | Payload | required | **MUST** be an array of strings that **MUST** be valid type identifiers as defined in [SD-JWT VC] |
 
-[Protected Issuance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-trust-list-statement-pitls))
+[Protected Issuance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-trust-list-statement-pitls)
 
 ### Non-Compliance Trust List Statement (ncTLS)
 
@@ -761,4 +761,4 @@ Defines the scope of the state authorization.
 | `flagged_at` | required | **MUST** be a [RFC 3339] compliant String |
 | `reason` | required | **MUST** be a human readable String with a description of why this actor was deemed a bad actor. MAY be localized (Frage) |  
 
-[Non-Compliance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#non-compliance-trust-list-statement))
+[Non-Compliance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#non-compliance-trust-list-statement)
