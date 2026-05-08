@@ -14,22 +14,31 @@ header:
 </div>
 
 
-# Summary
+# Introduction
 
-This profile concerns itself with how a wallet is presenting VCs to a relying party, henceforth called verifier. It excludes the details on the VC or establishing trust between wallet and verifier.
+This profile concerns itself with how a wallet is **presenting VCs** to a relying party, henceforth called verifier. It excludes the details on the VC or establishing trust between wallet and verifier.
+
+## Cryptography
+To decrease complexity, initially the cryptographic options are limited to following algorithms.
+- JWS algorithm MUST be ES256.
+- Encryption MUST use only ECDH-ES with P-256 Keys with A256GCM algorithm.
+- If using encryption is possible, it MUST be used.
+
+## Specifications
 
 All underlying specifications referenced by the included standards are considered fully supported unless explicitly noted otherwise.
+
+The following sections point out implementation notes and gaps pertaining to the supported specifications.
+
+The specifications are fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following sections.
 
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
 | OpenID4VP | 1.0 | [OpenID for Verifiable Credential Presentation (OID4VP) v1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) |
 | JAR | RFC-9101 | [RFC9101 - The OAuth Authorization Framework: JWT-Secured Authorization Request (JAR)](https://www.rfc-editor.org/rfc/rfc9101) |
 
-# Cryptography
-To decrease complexity, initially the cryptographic options are limited to following algorithms.
-- JWS algorithm MUST be ES256.
-- Encryption MUST use only ECDH-ES with P-256 Keys with A256GCM algorithm.
-- If using encryption is possible, it MUST be used.
+**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+
 
 # OpenID for Verifiable Presentations 1.0
 
@@ -97,15 +106,13 @@ Client Identifier Prefix `decentralized_identifier` MUST be supported and SHOULD
 
 Example: `decentralized_identifier:did:webvh:.....`<br>
 
-Client Identifier Prefix `verifier_attestation` MUST be supported and SHOULD be used for proximity use cases.
-
 ### 5.10. Request URI Method post
 Request URI method `post` is NOT SUPPORTED 
 
 ## 6. Digital Credentials Query Language (DCQL)
 ### 6.1. Credential Query
 #### 6.1.1. Trusted Authorities Query
-None of the trusted_authorities defined in the spec apply for the swiss trust infrastructure, instead a new did based authorities query is used.
+None of the trusted_authorities defined in the spec apply for the swiyu Trust Infrastructure, instead a new DID based authorities query is used.
 
 
 Type: "did"
@@ -118,7 +125,6 @@ Value: A list of VC issuer DIDs that the Verifier will accept
   "values": ["did:webvh:<scid>:www.example.com", "did:webvh:<scid>:www.admin.ch", "did:webvh:<scid>:www.ch.ch"]
 }
 ```
-(!) Injected back into WG through an Issue open for Milestone 1.1 [https://github.com/openid/OpenID4VP/issues/494](https://github.com/openid/OpenID4VP/issues/494)
 
 ## 7. Claims Path Pointer
 ### 7.2. Semantics for ISO mdoc-based credentials
@@ -148,8 +154,8 @@ Verifier has pre-obtained a static set of the Wallet's metadata as defined by th
 ## 11 Verifier Metadata (Client Metadata)
 The following client metadata fields MUST be supported
 
-- `client_name`: OPTIONAL. Human-readable string name of the Verifier (client_id) to be presented to the end-user during authorization. The field MAY be internationalized, as described in [Section 2.2](https://datatracker.ietf.org/doc/html/rfc7591#section-2.2).
-- `logo_uri`: OPTIONAL. URL string that references a logo for the Verifier (client_id). MUST be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded. The field MAY be internationalized, as described in [Section 2.2](https://datatracker.ietf.org/doc/html/rfc7591#section-2.2).
+- `client_name`: OPTIONAL. Human-readable string name of the Verifier to be presented to the end-user during authorization. The field MAY be internationalized, as described in [Section 2.2](https://datatracker.ietf.org/doc/html/rfc7591#section-2.2).
+- `logo_uri`: OPTIONAL. URL string that references a logo for the Verifier. MUST be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded. The field MAY be internationalized, as described in [Section 2.2](https://datatracker.ietf.org/doc/html/rfc7591#section-2.2).
 
 ## 12 Verifier Attestation JWT
 Verifier Attestation JWT SHOULD be used by the Wallet to validate authenticity of the Verifier in proximity use cases.<br>
