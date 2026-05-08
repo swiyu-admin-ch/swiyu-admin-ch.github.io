@@ -24,7 +24,7 @@ All underlying specifications referenced by the included standards are considere
 | OpenID4VCI | 1.0 | [OpenID for Verifiable Credential Issuance (OID4VCI) v1.0](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) |
 | OAuth 2.0 DPoP | RFC-9449 | [RFC9449 - Demonstrating Proof of Possession (DPoP)](https://datatracker.ietf.org/doc/html/rfc9449) |
 
-# Cryptography
+## Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
 - JWS algorithm MUST be ES256.
 - Encryption MUST use only ECDH-ES with P-256 Keys with A256GCM algorithm.
@@ -53,19 +53,19 @@ Pre-Authorized Code Flow MUST be supported.<br>
 Authorization Code Flow and Wallet initiated communication are NOT SUPPORTED.<br>
 
 #### 3.3.4. Identifying Credentials Being Issued Throughout the Issuance Flow
-authorization_details is not used. It is expected that the credential issuer links the credential to be issued to the wallet through the pre-authorized_code.<br>
-scope is NOT used.<br>
+authorization_details is NOT SUPPORTED. It is expected that the credential issuer links the credential to be issued to the wallet through the pre-authorized_code.<br>
+scope is NOT SUPPORTED.<br>
 
 ### 3.4. Authorization Code Flow
 Authorization Code Flow is NOT SUPPORTED.<br>
 
 ### 3.5. Pre-Authorized Code Flow
-(4) Token Request requires use of Demonstrating Proof of Possession (DPoP)<br>
+(4) Token Request MUST use of Demonstrating Proof of Possession (DPoP)<br>
 Registering a DPoP key MUST come with a key attestation (with the same [security level](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-attack-potential-resistance) as allowed by the issuer for the holder binding key) in case where a hardware-bound credential is requested. <br>
 Transaction Code `tx_code` MUST be supported. The use of Transaction Code is OPTIONAL.<br>
 Wallets MUST support 6 digit tx_codes. Issuers SHOULD invalidate a credential offer after 5 failed retries.<br>
 
-## Credential
+## 4. Credential Offer Endpoint
 ### 4.1. Credential Offer
 `credential_offer` MUST be supported.<br>
 `credential_offer_uri` is NOT SUPPORTED. <br>
@@ -146,7 +146,7 @@ Issuers MUST also provide Signed Metadata.<br>
 The Wallet MUST request and use Signed Metadata.<br>
 Signed Metadata MUST be used.<br>
 The Signed Metadata MUST be verified according to [swiss-profile-anchor](/swiss-profile-anchor/). <br>
-The `kid` header claim is REQUIRED and must be an absolute fragment containing a DID as described in [swiss-profile-anchor](/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
+The `kid` header claim is REQUIRED and MUST be an absolute fragment containing a DID as described in [swiss-profile-anchor](/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JWT header is REQUIRED.
 
@@ -201,7 +201,7 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 ```
 
 ### 12.3. OAuth 2.0 Authorization Server Metadata
-The OAuth 2.0 Authorization Server Metadata are provided signed the same way as defined in 12.2.3. Signed Metadata for credential issuer metadata as `application/jwt.`<br>
+The OAuth 2.0 Authorization Server Metadata MUST be provided the same way as defined in [12.2.3]. <br>
 
 ## 13. Security Considerations
 ### 13.6. Pre-Authorized Code Flow
@@ -219,7 +219,7 @@ Issuers can always refuse the refresh.<br>
 If refused because a refresh is already in progress, Issuer MUST respond with error code 429 (Too Many Requests).<br>
 
 ### 14.6. Batch Issuing Credentials
-The Wallet MUST send at maximums the amount of proofs defined in the issuer metadata `batch_size`.<br>
+The Wallet MUST send at maximum the amount of proofs defined in the issuer metadata `batch_size`.<br>
 The Issuer MUST send exactly as many credentials as proofs received.<br>
 The Issuer should only use Batch Issuing if unlinkability of Verifiers is desired.<br>
 Batch Issuance should not be used for credentials that rely on use cases where the data itself can be used to link different presentations.<br>
