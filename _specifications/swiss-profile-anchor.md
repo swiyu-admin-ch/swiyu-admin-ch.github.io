@@ -27,7 +27,7 @@ All underlying specifications referenced by the included standards are considere
 # Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
 
-- JWS algorithm used is ES256.
+- JWS algorithm MUST be ES256.
 
 As per did:webvh:1.0 specification:
 
