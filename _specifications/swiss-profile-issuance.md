@@ -7,14 +7,13 @@ header:
   teaser: ../assets/images/swiss-profile-issuance.jpg
 ---
 
-
 <div class="notice--info">
   Version: 1.0 <br>
   Status: draft - technically complete, but might to be reformulated
 </div>
 
 
-# Summary
+# Introduction
 
 This profile defines the capabilities required to issue **Verifiable Credentials (VCs)** to a holder’s wallet. It deliberately **does not** cover the structure or semantics of the credentials themselves, nor does it address trust establishment between wallets, issuers, or other ecosystem entities.
 
@@ -28,7 +27,7 @@ All underlying specifications referenced by the included standards are considere
 # Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
 - JWS algorithm MUST be ES256.
-- Encryption MUST uses only ECDH-ES with P-256 Keys with A128GCM or A256GCM algorithm.
+- Encryption MUST use only ECDH-ES with P-256 Keys with A256GCM algorithm.
 - If zipping is possible, Deflate (DEF) MUST be used.
 - If using encryption is possible, it MUST be used.
 
@@ -47,11 +46,11 @@ The subsections rely on the numbering from the original reference specification 
 ### 3.3. Core Concepts
 #### 3.3.1. Credential Formats and Credential Format Profiles
 Swiss Profile Issuance only supports IETF SD-JWT VC (see [Swiss Profile VC](../swiss-profile-vc)) <br>
-Credential Format Profiles "ISO mdoc" and "W3C VCDM" are not supported. <br>
+Credential Format Profiles "ISO mdoc" and "W3C VCDM" are NOT SUPPORTED. <br>
 
 #### 3.3.3 Issuance Flow Variations
 Pre-Authorized Code Flow MUST be supported.<br>
-Authorization Code Flow and Wallet initiated communication are not supported.<br>
+Authorization Code Flow and Wallet initiated communication are NOT SUPPORTED.<br>
 
 #### 3.3.4. Identifying Credentials Being Issued Throughout the Issuance Flow
 authorization_details is not used. It is expected that the credential issuer links the credential to be issued to the wallet through the pre-authorized_code.<br>
@@ -63,7 +62,7 @@ Authorization Code Flow is NOT SUPPORTED.<br>
 ### 3.5. Pre-Authorized Code Flow
 (4) Token Request requires use of Demonstrating Proof of Possession (DPoP)<br>
 Registering a DPoP key MUST come with a key attestation (with the same [security level](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-attack-potential-resistance) as allowed by the issuer for the holder binding key) in case where a hardware-bound credential is requested. <br>
-Transaction Code `tx_code` MUST be supported. The use of Transaction Code is optional, but recommended.<br>
+Transaction Code `tx_code` MUST be supported. The use of Transaction Code is OPTIONAL.<br>
 Wallets MUST support 6 digit tx_codes. Issuers SHOULD invalidate a credential offer after 5 failed retries.<br>
 
 ## Credential
@@ -88,7 +87,7 @@ For Verifiable Credential Lifecycle such as renewal, Wallets MUST support refres
 Requests to the token endpoint MUST be sent with a DPoP Header.<br>
 
 ### 6.1.1 Request Credential Issuance using authorization_details Parameter
-authorization_details are NOT supported<br>
+authorization_details are NOT SUPPORTED<br>
 
 ### 6.2. Successful Token Response
 Authorization server MUST NOT return authorization_details<br>
@@ -105,13 +104,13 @@ Wallets MUST support key attestation.<br>
 
 ### 8.2. Credential Request
 Requests MUST be sent with a DPoP Header.<br>
-`credential_identifier` is NOT supported.<br>
+`credential_identifier` is NOT SUPPORTED.<br>
 `credential_configuration_id` MUST be set to `credential_configuration_id` from the credential offer.<br>
 `credential_response_encryption` MUST be used.<br>
 
 ### 8.3. Credential Response
 The number of elements in the credentials array MUST match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request.<br>
-`notification_id` is NOT supported.<br>
+`notification_id` is NOT SUPPORTED.<br>
 
 ## 9. Deferred Credential Endpoint
 Requests MUST be sent with a DPoP Header.<br>
@@ -146,8 +145,8 @@ GET https://example.com/.well-known/openid-configuration/issuer1
 Issuers MUST also provide Signed Metadata.<br>
 The Wallet MUST request and use Signed Metadata.<br>
 Signed Metadata MUST be used.<br>
-The Signed Metadata MUST be verified according swiss trust system. <br>
-The `kid` header claim is REQUIRED and must be a absolute fragment containing a DID as described in swiss-profile-anchor.<br>
+The Signed Metadata MUST be verified according to [swiss-profile-anchor](/swiss-profile-anchor/). <br>
+The `kid` header claim is REQUIRED and must be an absolute fragment containing a DID as described in [swiss-profile-anchor](/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JWT header is REQUIRED.
 
@@ -175,7 +174,7 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
     The Wallet MAY send fewer proofs than defined in the batch size. The Issuer MUST create as many Credentials as proofs received.
 - `display` is RECOMMEND to properly display issuer information to Wallets
   - `logo` remains OPTIONAL.
-    - `uri` MUST be a Data-URL (data URI schema) with MIME-type (media type) image/jpeg or image/png and be base64 encoded.
+    - `uri` MUST be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded.
       This means the `uri` MUST begin with `data:image/png;base64`  or `data:image/jpeg;base64`. 
 - `credential_configurations_supported` remaind REQUIRED.
   - `scope` is NOT SUPPORTED.
@@ -185,7 +184,7 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 - `credential_metadata` remains OPTIONAL.
   - `display` MAY be used as visualisation fallback to OCA Bundle.
     - `logo` remains OPTIONAL.
-      - `uri` MUST be a Data-URL (data URI schema) with MIME-type (media type) `image/jpeg` or `image/png` and be base64 encoded.
+      - `uri` MUST be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded.
         This means the `uri` MUST begin with `data:image/png;base64`  or `data:image/jpeg;base64`.  
     - `background_image` is NOT SUPPORTED.
     - `text_color` is NOT SUPPORTED.
@@ -207,7 +206,7 @@ The OAuth 2.0 Authorization Server Metadata are provided signed the same way as 
 ## 13. Security Considerations
 ### 13.6. Pre-Authorized Code Flow
 Issuer SHOULD accept pre-authorized codes only once.<br>
-When providing the Pre-Authorized Code as QR code, Issuers SHOULD use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
+When providing the Pre-Authorized Code for example as QR, Issuers SHOULD use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
 
 ### 13.11. Application-Layer Encryption
 Application-Layer encryption MUST be used for request and response.<br>
@@ -302,7 +301,7 @@ DPoP is expanded with the additional features<br>
 
 ### Key Attestation
 When the one of the credentials offered by the issuer require a key attestation for a hardware bound key (`iso_18045_high`) , the key used for DPoP has the same requirement. In this case, the wallet MUST provide a Key Attestation JWT as described in OID4VCI Appendix D as part of the DPoP used when registering the public key with the first DPoP Access Token Request. The Issuer MUST validate this first key attestation. If the key attestation is not valid, the Issuer MUST reject the whole DPoP.<br>
-In further requests using the same key, the wallet SHOULD NOT include the key attestation in the DPoP. The issuer MUST treat these additional key attestations as unknown parameters.<br>
+In further requests using the same key, the wallet SHOULD NOT include the key attestation in the DPoP. The issuer MUST treat these additional key attestations as unknown parameters. This is to prevent to accidentally invalidating DPoPs and making refresh impossible should the key_attestation jwt date run out or the key attestation service perform a key rotation.<br>
 The key attestation is included in the JWT-Header of the DPoP as the claim `key_attestation`.
 
 ```
