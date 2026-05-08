@@ -28,7 +28,7 @@ All underlying specifications referenced by the included standards are considere
 # Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
 - JWS algorithm MUST be ES256.
-- Encryption MUST use only ECDH-ES with P-256 Keys with A128GCM or A256GCM algorithm.
+- Encryption MUST use only ECDH-ES with P-256 Keys with A256GCM algorithm.
 - If using encryption is possible, it MUST be used.
 
 # OpenID for Verifiable Presentations 1.0
@@ -42,8 +42,8 @@ The below sub-sections rely on the numbering from the original reference specifi
 ## 5. Authorization Request
 
 Verifiers MUST send Verification Requests as a JWT-Secured Authorization Request (JAR).
-- `client_id` MUST be the issuer (`iss`) of the JAR
-- `client_id` MUST be the verifier's identifier as defined in [swiss anchor profile]
+- `client_id` MUST be the key id (`kid`) JAR without suffix fragment. If the `client_id` contains the prefix "`decentralized_identifier:`" it MUST be removed before the comparison.
+- `client_id` MUST be the verifier's identifier as defined in [swiss-profile-anchor](/swiss-profile-anchor/) And MAY be prefixed with the Client Identifier Prefix.
 - The client ID values in the `client_id` request parameter and in the Request Object `client_id` claim MUST be identical, as defined in RFC 9101
 
 For Online Verification only passing a request object by reference is supported.
