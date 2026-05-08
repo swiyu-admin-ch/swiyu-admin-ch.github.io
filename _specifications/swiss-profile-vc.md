@@ -12,15 +12,15 @@ header:
   Status: draft - technically complete, but might to be reformulated
 </div>
 
-# Summary
+# Introduction
 
-This profile concerns itself with how a **Verifiable Credential** (VC) in the swiyu Trust Infrastructure is structured. Components of the swiyu Trust Infrastructure can use verifiable credentials only if they satisfy the following specifications.
+This profile concerns itself with how a **Verifiable Credential (VC)** in the swiyu Trust Infrastructure is structured and visualized as well as how information on their validity/revocation state is provided. Components of the swiyu Trust Infrastructure can use verifiable credentials only if they satisfy the following specifications.
 
 All underlying specifications referenced by the included standards are considered fully supported / needed unless explicitly noted otherwise.
 
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
-| Token Status List (TSL) | Standards Track (Draft 15) | [Token Status List (TSL) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-15.html)) |
+| Token Status List (TSL) | Standards Track (Draft 20) | [Token Status List (TSL) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-20.html)) |
 | SD-JWT | RFC-9901 | [RFC 9901: Selective Disclosure for JSON Web Tokens](https://www.rfc-editor.org/rfc/rfc9901.html) |
 | SD-JWT-VC | Standards Track (Draft 15) | [SD-JWT-based Verifiable Digital Credentials (SD-JWT VC) - Standards Track](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html) |
 | Visualisation of Verifiable Credentials with OCA | 1.0 | [Visualisation of Verifiable Credentials with OCA](../oca-v1-0/) |
@@ -34,9 +34,7 @@ To decrease complexity, initially the cryptographic options are limited to follo
 
 If using encryption is possible, it MUST be used.
 
-# Token Status List (TSL) Draft 15
-
-This section details the implementation notes and gaps pertaining to the supported specifications.
+# Token Status List (TSL) Draft 20
 
 The specification is fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following subsections. <br>
 
@@ -49,15 +47,15 @@ In the swiyu Trust Infrastructure the roles of Issuer and Status Issuer are fulf
 
 ## 4. Status List
 ### 4.2. Status List in JSON Format
-`aggreation_uri` is NOT supported
+`aggreation_uri` is NOT SUPPORTED
 
 ### 4.3. Status List in CBOR Format
-Status List in CBOR Format is NOT supported
+Status List in CBOR Format is NOT SUPPORTED
 
 ## 5. Status List Token
 ### 5.1. Status List Token in JWT Format
 In addition to the already specified claims the JWT Claims Set MUST contain:
-- `exp`: REQUIRED. As generally defined in [RFC7519]. The `exp` (expiration time) MUST be set and can be any time in the future.
+- `exp`: REQUIRED. As generally defined in [RFC7519](https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-14.html#RFC7519). The `exp` (expiration time) MUST be set and can be any time in the future.
 
 The JWT header of the Status List Token MUST contain: 
 - `kid`: REQUIRED. Must be an absolute `kid` as specified in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).
@@ -111,7 +109,7 @@ X.509 Certificate Extended Key Usage Extension is NOT SUPPORTED.
 ## 11. Security Considerations
 
 11.3. Key Resolution and Trust Management<br>
-As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers CAN use a different key for the signature. See [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
+As specified above, the Status List Token MUST be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers MAY use a different key for the signature. See [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
 
 ## 12. Privacy Considerations
 
@@ -139,7 +137,7 @@ Additional checks to the content of the Status List Token are performed:
 | Claim |	Requirement Type |	Validation Logic |
 |-----|-----|-----|
 | `kid` (Key Identifier) |	Initial Upload |	MUST match a Decentralized Identifier (DID) currently authorized and assigned to the submitting swiyu business partner. |
-| `kid` (Key Identifier) | Subsequent Updates |	MUST be identical to the iss value of the previously recorded version of the Status List. |
+| `kid` (Key Identifier) | Subsequent Updates |	MUST be identical to the iss value of the previously recorded version of the Status List. See [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs). |
 | `iat` (Issued At) |	Freshness Check |	MUST be greater than T - 24 hours (where T represents the current system time). Documents older than 24 hours cannot be uploaded. |
 | `exp` (Expiration) |	Validity Window |	MUST be present and MUST be greater than the current system time (T). |
 
@@ -195,10 +193,10 @@ JWS JSON Serialization is NOT SUPPORTED.
 ## 9. Security Considerations
 
 ### 9.11. Explicit Typing
-As specified in chapter 3.1 of the SD-JWT-VC standard, the media type MUST be `application/dc+sd-jwt`.
+As specified in [chapter 3.1](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-13.html#name-media-type) of the SD-JWT-VC standard, the media type MUST be `application/dc+sd-jwt`.
 
 ### Validation of aud claim in Key Binding JWT
-The wallet MUST verify that the client_id belongs to the verifier to prevent identity fraud attacks. This SHOULD done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).<br> 
+The wallet MUST verify that the client_id belongs to the verifier to prevent identity fraud attacks. This SHOULD be done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).<br> 
 Only after a successful verification SHOULD the wallet include this client_id into the aud claim of the Key Binding JWT. <br>
 
 The verifier MUST ensure that the Key Binding JWT received during a presentation is intended for this verifier by checking the aud claim specified by the wallet.<br>
@@ -231,13 +229,13 @@ Swiss Profile version indication with parameter `profile_version` in SD-JWT-VC h
 #### 3.2.2. JWT Claims Set
 ##### 3.2.2.2  Registered JWT Claims
 The following additional JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in Disclosures, i.e., cannot be selectively disclosed:
-- `vct_metadata_uri`: OPTIONAL. URI pointing towards where the VC Type Metadata can be fetched. Takes precedence over vct claim Type Metadata resolution.
+- `vct_metadata_uri`: OPTIONAL. URI pointing towards where the VC Type Metadata can be fetched. Takes precedence over `vct` claim Type Metadata resolution.
 - `vct_metadata_uri#integrity`: OPTIONAL. SRI integrity hash for the resources loaded from the `vct_metadata_uri`.
-- `iat`: OPTIONAL. Meaning as specified in the standard. Contrary to the standard, this claim is NOT allowed to be set as a disclosure.
+- `iat`: OPTIONAL. Meaning as specified in the standard. Contrary to the standard, this claim, if present, MUST NOT be set as a disclosure.
 
   
 The following registered JWT claims MUST be included in Disclosures:
-- `sub`: OPTIONAL. Meaning as specified in the standard. Contrary to the standard, this claim is ONLY allowed to be set as a disclosure.
+- `sub`: OPTIONAL. Meaning as specified in the standard. Contrary to the standard, this claim, if present, MUST be set as a disclosure.
 - `aud`: OPTIONAL. Meaning as specified in the standard. 
 - `jti`: OPTIONAL. Meaning as specified in the standard. 
 
@@ -246,17 +244,23 @@ Additionally, if present for some use-cases, the following (business) claims MUS
 - `vct_subtype`: OPTIONAL. value that can describe an adaption (more specific context) of the `vct`, that defines another standard that can be used by issuers, referenced in the standardization.
 - `vct_subtype_version`: OPTIONAL. value is version (semver) of the `vct_subtype`.
 - `expiry_date`: OPTIONAL. a date according to [RFC 8943] full-date. The validity of the business expiry is up to and including the entire day.
-  
+
+Business expiry date differs from the exp claim of the SD-JWT VC the following way:
+- The `expiry_date` claim MUST be a Disclosure but the `exp` claim MUST NOT be part of a Disclosure. 
+- The holder of the swiyu wallet can still use and present the credential if the `expiry_date` time is reached. There is only a warning shown to the holder when trying to present the digital credential. It is then up to the verifier to decide whether to accept this credential or not (e.g., Accepting a "over 18" proof for a expired e-ID). 
+- The digital credential cannot be shared once the `exp` time is reached. It is considered invalid for all participants of the trust infrastructure. 
+- Once the business expiry (`expiry_date`) time is reached it will be displayed to the Holder as "Expired / Abgelaufen / Expiré / Scaduto / Spirà" in the swiyu App
+
 ##### 3.2.2.3 Public and Private JWT claims
 The only binary data claims supported are: 
 - `data:image/png;base64,`
 - `data:image/jpeg;base64,`
 
 ##### 3.2.2.4. SD-JWT VC without Selectively Disclosable Claims
-An SD-JWT VC MUST NOT have no selectively disclosable claims. Any claim without Disclosure except listed in [3.2.2.2 Registered JWT Claims] MUST NOT be supported and MUST be rejected.
+An SD-JWT VC MUST only have selectively disclosable claims, apart form the claims listed in [3.2.2.2 Registered JWT Claims](#3222--registered-jwt-claims).Other non-selectively dislosable claims MUST NOT be supported and MUST be rejected.
 
 ### 3.5. Issuer Signature Mechanisms
-The Issuer Signature mechanism is described in [swiss-profile-anchor].
+The Issuer Signature mechanism is described in [swiss-profile-anchor](/swiss-profile-anchor/).
 
 ## 4. JWT VC Issuer Metadata
 
@@ -303,7 +307,7 @@ Additionally, `schema_uri#integrity` MAY be present as defined in [Section 6].<b
 Registry retrieval is NOT SUPPORTED.
 
 #### 5.3.3. Using a Defined Retrieval Method
-A Consumer MAY use claim `vct_metadata_uri` to retrieve Type Metadata for a SD-JWT VC type. If `vct_metadata_uri` is present in the SD-JWT VC on root level (same level like claim vct), this method takes precedence over any other defined method to retrieve Type Metadata. If the type is a URL using the HTTPS scheme, Type Metadata MUST be retrieved using the HTTP GET method. A successful response MUST use an HTTP 200 status code and return a JSON object as defined in [Section 5.2] using the `application/json` content type. An error response MUST use the applicable HTTP status code value.<br>
+A Consumer MAY use claim `vct_metadata_uri` to retrieve Type Metadata for a SD-JWT VC type. If `vct_metadata_uri` is present in the SD-JWT VC on root level (same level like claim `vct`), this method takes precedence over any other defined method to retrieve Type Metadata. If the type is a URL using the HTTPS scheme, Type Metadata MUST be retrieved using the HTTP GET method. A successful response MUST use an HTTP 200 status code and return a JSON object as defined in [Section 5.2] using the `application/json` content type. An error response MUST use the applicable HTTP status code value.<br>
 
 If the claim `vct_metadata_uri#integrity` is present in the SD-JWT VC, its value `vct_metadata_uri#integrity` MUST be an "integrity metadata" string as defined in [Section 6].<br>
 
@@ -316,11 +320,11 @@ Extending types is NOT SUPPORTED.
 ## 7. Display Metadata
 
 ### 7.1. Rendering Metadata
-The display property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA](../oca-v1-0/). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
+The `display` property supports Overlay Capture Architecture (OCA), an additional rendering method (more on this in the specification: [Visualisation of Verifiable Credential with OCA](../oca-v1-0/). If no OCA Bundle is present, rendering will fall back to the Credential Issuer Metadata display.<br>
 
 The `oca` rendering method object contains the following properties:
 - `uri`: REQUIRED. a URI which is either a URL that points to an OCA Bundle file with an associated application/json media type or a Data URL.
-- `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6](#6-referenced-token).
+- `uri#integrity`: OPTIONAL. an "integrity metadata" string as described in [Section 6].
 
 Below is a non-normative example of a OCA rendering method declaration inside the Type Metadata `display` property.
 
@@ -342,7 +346,7 @@ Below is a non-normative example of a OCA rendering method declaration inside th
 ```
 
 #### 7.1.1. Rendering Method “simple”
-"Simple" rendering Is NOT SUPPORTED.
+"Simple" rendering is NOT SUPPORTED.
 
 #### 7.1.2. Rendering Method “svg_templates”
 SVG rendering is NOT SUPPORTED.
@@ -359,30 +363,76 @@ Claim metadata is NOT SUPORTED.
 ### 9.6. Credential Type Extension and Issuer Authorization
 Issuer authorization and the challenge of credential type extension (trust chain) is specified in detail in [swiss-profile-trust](../swiss-profile-trust/).
 
-### 9.7. Trust in Type Metadata
-(???) How is trust established in Type Metadata 
 
-## 10 Privacy Considerations
-### 10.4 Privacy-Preserving Retrieval of Type Metadata
-(???) <br>
+## Implementation Considerations
 
-# Implementation Considerations
+### Privacy-Preserving Retrieval of VCT Metadata
 
-## Business Expiry Claim
-The swiyu Wallet implementation supports a business expiry claim to be set in the verifiable credential.
+Wallets SHOULD prefer methods for retrieving VCT Metadata that do not leak information about the usage of a credential to third parties. Wallets SHOULD retrieve VCT Metadata (Type Metadata, JSON Schema or OCA Bundle) only at the time of VC issuance and store the necessary metadata in a local cache.
 
-`expiry_date`: OPTIONAL, a date according to RFC 8943 full-date. The validity of the business expiry is up to and including the entire day. If present, it MUST be part of a disclosure.<br>
+# Credential Visualisation
 
-It differs from the exp claim of the SD-JWT VC the following way:
-
-- The `expiry_date` claim MUST be a Disclosure but the exp claim MUST NOT be part of a Disclosure. 
-- The holder of the swiyu wallet can still use and present the credential if the business expiry time is reached. There is only a warning shown to the holder when trying to present the digital credential. It is then up to the verifier to decide whether to accept this credential or not (e.g., Accepting a "over 18" proof for a expired e-ID). 
-- The digital credential cannot be shared once the exp time is reached. It is considered invalid for all participants of the swiyu Trust Infrastructure. 
-- Once the business expiry time is reached it will be displayed to the Holder as Expired / Abgelaufen / Expiré / Scaduto / Spirà in the swiyu App
-
-## Privacy-Preserving Retrieval of VCT Metadata
-
-Consumers SHOULD prefer methods for retrieving VCT Metadata that do not leak information about the usage of a credential to third parties. Wallet and Verifier SHOULD retrieve VCT Metadata (Type Metadata, JSON Schema or OCA Bundle) only at the time of VC issuance and store the necessary metadata in a local cache.
+Wallets MUST support the following methods to visualise credential on their display in the order of support priority
+- 1. Overlays Capture Architecture (OCA) in [Visualisation of Verifiable Credential with OCA](/oca-v1-0/)
+- 2. Credential Issuer Metadata in [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata)
 
 
+Supported requirements for OID4VCI Credential Issuer Metadata can be found in [swiss-profile-issuance](/swiss-profile-issuance/).
 
+Any invalid OCA object (Capture Base or Overlay) will invalidate the entire OCA Bundle. If no valid OCA Bundle is available, the Wallet will visualise the credential based on default values. If usage of OCA is indicated by the Issuer providing an OCA Bundle in VC Type Metadata, no fallback to Credential Issuer Metadata is made for unavailable visualisation metadata (e.g. an Overlay in the OCA Bundle is invalid). Credential Issuer Metadata is only considered in the case no OCA Bundle at all is provided.
+
+## Visualisation of Verifiable Credential with OCA
+### OCA Bundle as JSON file
+Swiss Profile version indication with parameter `profile_version` in OCA Bundle JSON body is REQUIRED.
+
+```
+{
+  "profile_version": "swiss-profile-vc:1.0.0",
+  "capture_bases":[],
+  "overlays":[]
+}
+```
+
+### OCA Object Types
+#### Capture Base
+OCA object [Capture Base 1.0](https://oca.colossi.network/specification/v1.0.1.html#capture-base) MUST be supported.
+
+**Attributes**<br>
+Attributes `classification` and `flagged_attributes` are NOT SUPPORTED.
+
+The following attribute types MUST be supported:
+
+- `Text` - including Data URL with mime-type `image/png` and `image/jpeg`
+- `Numeric`
+- `Boolean`
+- `DateTime` - ISO 8601 and Epoch Time
+- `Reference`
+- `Binary` - mime-type `image/png` and `image/jpeg`
+- `Array[Text]` - excluding Data URL
+- `Array[Numeric]`
+- `Array[Boolean]`
+- `Array[DateTime]`
+- `Array[Reference]`
+- `Array[Binary]`
+  
+Image binary attributes (attribute type `Binary`) MUST have declared encoding `base64` in the Character Encoding Overlay and the respective mime-type `image/png` and `image/jpeg` in the Format Overlay. Any other binary mime-type MUST NOT be supported.
+
+#### Overlays
+
+The following OCA Overlay objects MUST be supported:
+
+- [Character Encoding Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#character-encoding-overlay)
+- [Format Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#format-overlay)
+- [Standard Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#standard-overlay)
+- [Meta Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#meta-overlay)
+- [Entry Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#entry-overlay)
+- [Entry Code Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#entry-code-overlay)
+- [Sensitive Overlay 1.0](https://oca.colossi.network/specification/v1.0.1.html#sensitive-overlay)
+- [Label Overlay 1.1](https://swiyu-admin-ch.github.io/specifications/oca-v1-0/#label-overlay-update)
+- [Data Source Mapping Overlay 2.0](https://swiyu-admin-ch.github.io/specifications/oca-v1-0/#data-source-mapping-overlay)
+- [Order Overlay 1.0](https://swiyu-admin-ch.github.io/specifications/oca-v1-0/#order-overlay)
+- [Branding Overlay 1.1](https://swiyu-admin-ch.github.io/specifications/oca-v1-0/#aries-branding-overlay-update)
+
+Code Tables in Entry & Entry Code Overlay 1.0 MUST NOT be supported.
+
+Wallets SHOULD use the Branding Overlay 1.1 with attribute `theme` set to `"dark"` to display branding information when running in dark mode.
