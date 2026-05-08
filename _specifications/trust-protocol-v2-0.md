@@ -8,7 +8,7 @@ header:
 ---
 <div class="notice--info">
   Version 2.0 <br>
-  Status: draft - technically complete, but might to be reformulated (and needs better formatting)
+  Status: draft - content is under review and may still change
 </div>
 
 
