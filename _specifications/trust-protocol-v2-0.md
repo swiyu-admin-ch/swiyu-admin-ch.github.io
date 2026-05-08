@@ -82,16 +82,16 @@ The presence of this marker indicates that the issuer or verifier does have auth
 # Trust Flows
 Each trust flow is bound to an interaction between two actors. The flow indicates how an actor to resolve the trust markers to establish trust relationship. Adherence to the trust protocol enhances the privacy for the holder.
 
-All actors MUST[^1] validate the received Statements, see Statement provisioning, before they act upon the data provided by those statements.
-If a statement is not valid the trust marker evaluated CANNOT be set for the trust relationship.
+All actors MUST[^1] validate the received Statements (see [Statement provisioning](#statement-provisioning), before they act upon the data provided by those statements.
+If a statement is not valid the trust marker evaluated MUST NOT be set for the trust relationship.
 
 [^1]: The key words in CAPITAL are described in the [introduction](../introduction/) of the Swiss Profiles
 
 ## Issuance
 
-To allow the wallet to mark the trust relationship to the issuer with the Verified Identity Trust Mark trust marker the following needs to be provided by the issuer:
+To allow the wallet to mark the trust relationship to the issuer with the [Verified Identity Trust Marker](#verified-identity-trust-marker-vitm) the following needs to be provided by the issuer:
 
-- The issuer MUST provide his Identity Trust Statement in the issuer metadata, as described in Statement provisioning>Issuer>Issuer Metadata.
+- The issuer MUST provide his [Identity Trust Statement](#identity-trust-statement-idts) in the issuer metadata, as described in [Statement provisioning](#issuer-metadata).
   
 An additonal trust statement must be provided if the Issuer offers credentials which are part of the Protected Issuance Trust List Statement. To allow the wallet to mark the trust relationship to the issuer with the Governed use case authorization Trust Marker trust marker the following needs to be provided by the issuer:
 - The issuer MUST provide, for each protected VC Type to be issued, the Protected Issuance Authorization Trust Statement in the issuer metadata, as described in Statement provisioning>Issuer>Issuer Metadata.
@@ -167,7 +167,7 @@ The following diagram shows how the wallet could resolve trust markers:
 
 The verifier MUST NOT make any requests, or notify by any other means, the issuer about the individual verification.
 
-To process this flow the wallet needs an Protected Issuance Trust List Statement, the currently active Protected Issuance Trust List Statement SHOULD be fetched via Retrieving Protected Issuance Trust List Statements.
+To process this flow the verifier needs an Protected Issuance Trust List Statement, the currently active Protected Issuance Trust List Statement SHOULD be fetched via Retrieving Protected Issuance Trust List Statements.
 
 The verifier SHOULD mark the trust relationship to the issuer with the following trust marks if the necessary validations are done.
 
