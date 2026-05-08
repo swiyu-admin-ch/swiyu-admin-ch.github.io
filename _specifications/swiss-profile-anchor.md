@@ -127,8 +127,7 @@ The Base Register does not support Witnesses.<br>
 - The parameter `witness` MUST be set to {}.<br>
 The Base Register does not support Watchers.<br>
 - The parameter `watchers` MUST be set to []<br>
-Swiss Profile version indication with property `profile_version` in first DID Log entry
-**body** is REQUIRED.<br>
+Swiss Profile version indication with property `profile_version` in every DID Log entry **body** is REQUIRED.<br>
 
 ```
 {
