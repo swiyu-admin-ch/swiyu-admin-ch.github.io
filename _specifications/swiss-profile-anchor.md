@@ -64,7 +64,7 @@ The property controller SHOULD NOT be used, if it is it MUST point to the DID it
 While the Base Register supports setting the controller property, it always needs to point to the DID itself.
 
 #### 5.1.3 Also Known As
-The Base Register does not support alsoKnownAs in the DIDDoc.
+The Base Register does not support `alsoKnownAs` in the DIDDoc.
 
 ### 5.2 Verification Methods
 Field controller MUST point to the DID itself. 
@@ -79,13 +79,13 @@ publicKeyJwk is REQUIRED<br>
 
 ### 5.3 Verification Relationships
 #### 5.3.3 Key Agreement
-The verification relationship keyAgreement MUST NOT be used.
+The verification relationship `keyAgreement` MUST NOT be used.
 
 #### 5.3.4 Capability Invocation
-The verification relationship capabilityInvocation MUST NOT be used.
+The verification relationship `capabilityInvocation` MUST NOT be used.
 
 #### 5.3.5 Capability Delegation
-The verification relationship capabilityDelegation  MUST NOT be used.
+The verification relationship `capabilityDelegation` MUST NOT be used.
 
 ### 5.4 Services
 The property service MUST NOT be used.
