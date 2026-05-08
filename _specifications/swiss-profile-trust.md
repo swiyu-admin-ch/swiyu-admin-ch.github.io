@@ -21,7 +21,7 @@ All underlying specifications referenced by the included standards are considere
 
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
-| Trust Protocol | 2.0 | [/trust-protocol-v2-0](../trust-protocol-v2-0/)  |
+| Trust Protocol | 2.0 | [trust-protocol-v2-0](../trust-protocol-v2-0/)  |
 
 <div class="notice--primary">
 
