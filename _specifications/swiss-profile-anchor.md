@@ -15,7 +15,7 @@ header:
 
 # Introduction
 
-This profile concerns itself with how an public ecosystem actor can be identified by other actors and how they can exchange basic cryptographic details to verify integrity and authenticity of exchanged data.
+This profile concerns itself with how a public ecosystem actor can be identified by other actors and how they can exchange basic cryptographic details to verify integrity and authenticity of exchanged data.
 
 ## Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
@@ -65,10 +65,10 @@ The property controller **SHOULD NOT** be used, if it is, it **MUST** point to t
 
 ### 5.1 Identifiers
 #### 5.1.2 DID Controller
-While the Base Register supports setting the controller property, it always needs to point to the DID itself.
+While the Base Registry supports setting the controller property, it always needs to point to the DID itself.
 
 #### 5.1.3 Also Known As
-The Base Register does not support `alsoKnownAs` in the DIDDoc.
+`alsoKnownAs` in the DIDDoc is **NOT SUPPORTED** by the Base Registry.
 
 ### 5.2 Verification Methods
 Field `controller` **MUST** point to the DID itself. 
@@ -82,17 +82,20 @@ Field `controller` **MUST** point to the DID itself.
 `publicKeyJwk` is **REQUIRED**<br>
 
 ### 5.3 Verification Relationships
+#### 5.3.1 Authentification
+It is **RECOMMENDED** to have at least one key in the "`authentication`" [verification relationship](https://www.w3.org/TR/did-1.0/#dfn-verification-relationship).
+
 #### 5.3.3 Key Agreement
-The verification relationship `keyAgreement` **MUST NOT** be used.
+Setting the verification relationship `keyAgreement` in the DIDDoc is **NOT SUPPORTED** by the Base Registry.
 
 #### 5.3.4 Capability Invocation
-The verification relationship `capabilityInvocation` **MUST NOT** be used.
+Setting the verification relationship `capabilityInvocation` in the DIDDoc is **NOT SUPPORTED** by the Base Registry. 
 
 #### 5.3.5 Capability Delegation
-The verification relationship `capabilityDelegation` **MUST NOT** be used.
+Setting the verification relationship `capabilityDelegation` in the DIDDoc is **NOT SUPPORTED** by the Base Registry.  
 
 ### 5.4 Services
-The property service **MUST NOT** be used.
+`services` in the DIDDoc is **NOT SUPPORTED** by the Base Registry. 
 
 ## 6 Representations
 ### 6.2 JSON
@@ -103,7 +106,7 @@ The JSON-LD Representation **MUST NOT** be used.
 
 ## 7 Resolution
 ### 7.1 DID Resolution
-DID Resolution **MUST** be used.
+DID Resolution **MUST** be used.<br>
 
 ### 7.2 DID URL Dereferencing
 DID URL Dereferencing is **NOT SUPPORTED** by the swiyu DIDResolver.
@@ -118,18 +121,18 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 ## 2 Overview
 ### 2.1 The /whois Use Case
-The /whois Use Case is **NOT SUPPORTED** in the Base Register.
+The /whois Use Case is **NOT SUPPORTED** in the Base Registry.
 
-Instead use the [Trust Protocol](../trust-protocol-v2-0/) mechanisms to validate trustworthiness of the DID.<br>
+Instead the [Trust Protocol](../trust-protocol-v2-0/) mechanisms **SHOULD** be used to validate trustworthiness of the DID.<br>
 
 ## 3 did:webvh DID Method Specification
 ### 3.7 DID Method Processes
 #### 3.7.1 did:webvh DID Method Parameters
-The Base Register does not support DID Portability.<br>
+DID Portability is **NOT SUPPORTED** in the Base Registry. .<br>
 - The parameter `portable` MUST be set to false.<br>
-The Base Register does not support Witnesses.<br>
+Witnesses is **NOT SUPPORTED** in the Base Registry.<br>
 - The parameter `witness` MUST be set to {}.<br>
-The Base Register does not support Watchers.<br>
+Watchers is **NOT SUPPORTED** in the Base Registry.<br>
 - The parameter `watchers` MUST be set to []<br>
 Swiss Profile version indication with property `profile_version` in every DID Log entry **body** is REQUIRED.<br>
 
@@ -145,30 +148,30 @@ Swiss Profile version indication with property `profile_version` in every DID Lo
 ```
 
 #### 3.7.5 Authorized Keys
-We do recommend to utilize Pre-rotation of keys.
+Use of Pre-rotation of keys is **RECOMMENDED**.
 
 #### 3.7.6 DID Portability
-The Base Register does not support DID Portability.
+DID Portability is **NOT SUPPORTED** in the Base Registry.
 
 #### 3.7.8 DID Witnesses
-The Base Register does not support Witnesses.
+Witnesses is **NOT SUPPORTED** in the Base Registry.
 
 #### 3.7.9 DID Watchers
-The Base Register does not support Watchers.
+Watchers is **NOT SUPPORTED** in the Base Registry.
 
 #### 3.7.10 Publishing a Parallel did:web DID
-The Base Register does not support publishing a parallel did:web.
+publishing a parallel did:web is **NOT SUPPORTED** in the Base Registry.
 
 ### 3.8 DID URL Resolution
-The DIDResolver and Base Registry does not support the did:web fallback.<br>
+The did:web fallback is **NOT SUPPORTED** by the DIDResolver and the Base Registry.<br>
 A did:web fallback **SHOULD NOT** be utilized.
 
 ### 3.9 DID URL Path Resolution
 DID URL Path Resolution is **NOT SUPPORTED**.
 
 ### 3.10 WHOIS Resolution
-The Base Register and Wallets do not support WHOIS resolution.<br>
-Instead use the mechanisms defined in the swiss-profile-trust to validate trustworthiness of the DID.
+WHOIS resolution is **NOT SUPPORTED** by the Base Registry and the swiyu wallet.<br>
+Instead, use the mechanisms defined in the [swiss-profile-trust](../swiss-profile-trust/) to validate trustworthiness of the DID.
 
 ## JWT Validation with cryptographic keys from DIDs
 
