@@ -177,7 +177,7 @@ Instead, use the mechanisms defined in the [swiss-profile-trust](../swiss-profil
 
 Whenever cryptographic material from a DID is used to sign a JWT the following rules hold throughout the ecosystem:
 
-- The `kid` JWT header claim is **REQUIRED** and **MUST** be an absolute identifier of the form "{DID}#{key identifier}" (see: [https://www.w3.org/TR/did-1.0/#example-a-unique-verification-method-in-a-did-document](https://www.w3.org/TR/did-1.0/#example-a-unique-verification-method-in-a-did-document])).
+- The `kid` JWT header claim is **REQUIRED** and **MUST** be an absolute identifier of the form "[{DID}#{key identifier}](https://www.w3.org/TR/did-1.0/)".
   - Additionally, both the DID and the key identifier **MUST NOT** contain a # symbol. Implementations **SHOULD** ensure this to prevent parsing differential attacks.
   - The `kid` JWT header **MUST** be used to perform signature validation.
   - Any authorization or trust information checks of the entity issuing the JWT **MUST** be done on the DID part of the `kid` (If two `kid` are different but have matching DIDs they are considered to be signed by the same entity).
