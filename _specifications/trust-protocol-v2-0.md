@@ -50,7 +50,7 @@ The following trust markers are described in this protocol:
 The presence of this marker indicates that the identity of the actor is validated by the governing actor.
 
 ## Compliant Actor Trust Marker (caTM)
-The presence of this marker indicates that the actor was not identified as a bad actor in the ecosystem.
+The presence of this marker indicates that the actor was not identified as a non-compliant actor in the ecosystem.
 
 ## Transparent Verification Trust Marker (tvTM)
 The presence of this marker indicates that the ongoing verification request is publicly transparent and can be reviewed by 3rd party actors.
