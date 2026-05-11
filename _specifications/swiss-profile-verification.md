@@ -95,7 +95,7 @@ When `scope` parameter is set, an object in the `verifier_info` **MUST** contain
 
 ### 5.8. aud of a Request Object
 As the verifier cannot identify the wallet any further before preparing the Request Object, only Static Discovery metadata is used.<br>
-The aud claim of the signed Request Object **MUST** be "https://self-issued.me/v2", 
+The `aud` claim of the signed Request Object **MUST** be "https://self-issued.me/v2", 
 
 ### 5.9. Client Identifier Prefix and Verifier Metadata Management
 #### 5.9.2. Fallback
@@ -111,6 +111,8 @@ Request URI method `post` is **NOT SUPPORTED**.
 
 ## 6. Digital Credentials Query Language (DCQL)
 ### 6.1. Credential Query
+`multiple` is **NOT SUPPORTED** - only a single credential can be used in a verification.
+
 #### 6.1.1. Trusted Authorities Query
 None of the trusted_authorities defined in the spec apply for the swiyu Trust Infrastructure, instead a new DID based authorities query is used.
 
@@ -149,7 +151,17 @@ URL scheme `openid4vp://` and `swiyu-verify://` **MUST** be supported.
 
 ## 10 Wallet Metadata
 ### 10.2 Obtaining Wallet's Metadata
-Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.
+Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.<br>
+Dynamic fetching of the wallet's metadata is **NOT SUPPORTED**.<br>
+The vp_formats_supported of the static metadata is: <br>
+
+```
+{
+  "vp_formats_supported": {
+    "dc+sd-jwt": {
+      "sd-jwt_alg_values": ["ES256", "EdDSA"]
+}
+```
 
 ## 11 Verifier Metadata (Client Metadata)
 The following client metadata fields **MUST** be supported
