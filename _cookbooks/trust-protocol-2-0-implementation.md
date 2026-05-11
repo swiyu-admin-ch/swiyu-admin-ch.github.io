@@ -179,6 +179,7 @@ The following is a non-normative example of a Identity Trust Statement.
 .
 {
     "sub": "did:example:actor",
+	"jti": "07f289d5-8b1f-4604-bf72-53bdcb71ee05",
     "iat": 1690360968,
     "exp": 1753432968,
     "status":  {
@@ -374,6 +375,7 @@ The following is a non-normative example of a Protected Issuance Authorization T
 {
   "iat": 1690360968,
   "exp": 1753432968,
+  "jti": "07f289d5-8b1f-4604-bf72-53bdcb71ee05", 
   "status": {
     "status_list": {
       "idx": 0,
