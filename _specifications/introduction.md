@@ -60,7 +60,17 @@ The following diagram shows how the Swiss Profiles build upon each other:
 
 # Versioning
 
-to be announced soon
+We follow strict [Semantic Versioning](https://semver.org/) wherever versions are used.
+
+In summary our versions follow the schema MAJOR.MINOR.PATCH, where:
+
+- MAJOR version for breaking changes, i.e. incompatible changes to any interface
+- MINOR version for backwards compatible changes, e.g. adding functionality
+- PATCH version for backward compatible bug fixes
+
+The following diagram shows an overview of the various versioned entities in the swiyu ecosystem and how they relate among each other, as well as to third party standards specifications.
+
+[![swiyu-ecosystem-versioning](/assets/images/swiyu-ecosystem-versioning.png)](/assets/images/swiyu-ecosystem-versioning.png)
 
 # Key Words
 
