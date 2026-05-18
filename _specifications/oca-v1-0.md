@@ -33,7 +33,7 @@ The JSON object **MUST** contain the following properties:
 - `overlays` Array containing zero, one or more Overlay objects.
 
 
-> ⚙️ Important  
+> ⚙️ Important:  
 > A Capture Base is called the *Root Capture Base*, if it isn't referenced by any other Capture Base.
 
 
@@ -159,7 +159,7 @@ And in the context of OCA Bundle, it adds the following constraints:
 }
 ```
 
-> ⚙️ Note
+> ⚙️ Note: <br>
 > It is up to the wallet implementers to interpret the Branding Overlay attributes they need to implement their design und style guidelines.
 
 ### Order Overlay
@@ -174,7 +174,7 @@ JSON object that contains a map of key-value pairs (String:Int) which defines th
 
 Any attributes not declared in the Order Overlay **SHOULD** be ordered after the highest order and **MUST** not be hidden from the user. 
 
-> ⚙️ Note
+> ⚙️ Note: <br>
 > It is up to the wallet implementers to define the order for non declared attributes.
 
 **Example of an Order Overlay**
@@ -220,6 +220,7 @@ OCA Bundle
 ``` 
 
 ### Label Overlay update
+
 The OCA Label Overlay 1.0 does not include templating. This specification adds additional templating support in the Label Overlay 1.1:
 
 - the Label Overlay **MUST** use the `attribute_labels` attribute mapping key-value pairs where the key is the attribute name and the value is a human-meaningful attribute label in a specific language with templating support (see [Overlay templating support](#overlay-templating-support)).
@@ -227,7 +228,6 @@ The OCA Label Overlay 1.0 does not include templating. This specification adds a
 And in the context of OCA Bundle, it adds the following constraints:
 
 - the Label Overlay **MUST** use the value `spec/overlays/label/1.1` in the `type` attribute.
-
 
 <a id="overlay-templating-support"></a>
 
@@ -299,7 +299,7 @@ A DateTime attribute is represented with the following constraints:
 - ISO8601 DateTime **MUST** define ISO8601 standard with the urn URI scheme `urn:iso:std:iso:8601` in the Standard Overlay.
 - Unix Epoch DateTime **MUST** define Unix Epoch Time standard with the urn URI scheme `urn:iso:std:iso-iec:9945` or `urn:iso:std:iso-iec-ieee:9945` in the Standard Overlay.
 
-> ⚙️ Note
+> ⚙️ Note:
 > It is up to the wallet implementers how to gather/interpret the granularity of the DateTime.
 
 **Example OCA Bundle with a DateTime attribute**
@@ -343,6 +343,7 @@ OCA Bundle
 ```
 
 ### Data URLs
+
 Data URL is a way to represent media like images in a compact form to be embedded into other formats. Data URLs are defined by the [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397).
 
 Data URLs are represented with the following constraints:
@@ -456,7 +457,7 @@ OCA Bundle
 
 Clustering
 
-<img src="./images/root-capture-base-refs-only.png" alt="Root Capture Base containing only attributes of type Reference" width="191" height="341" style="border: 2px solid grey" />
+[![Root Capture Base containing only attributes of type Reference](../../assets/images/root-capture-base-refs-only.png)](../../assets/images/root-capture-base-refs-only.png)
 
 **Example Root Capture Base containing attributes of various types**
 
@@ -511,9 +512,11 @@ Clustering
 [![Root Capture Base containing attributes of various types](../../assets/images/root-capture-base-various-types.png)](../../assets/images/root-capture-base-various-types.png)
 
 ## OCA Bundle reference in Verifiable Credentials
+
 For the OCA to be usable, it needs to be resolvable by the Wallet and referenced inside the VC.
 
 ### SD-JWT VC
+
 When an Issuer desires to specify OCA rendering instructions for a Verifiable Credential in the `dc+sd-jwt` format, they **MUST** add a render property to the Type Metadata, that uses the data model described below. This specification extends the [SD-JWT VC Render Metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-rendering-metadata) with a new `oca` rendering method.
 
 The `oca` rendering method is intended for use in applications that support OCA rendering. The object **MUST** contain the following properties:
@@ -560,7 +563,7 @@ The extension of the Capture Base definition in chapter [Capture Base Extension]
 
 As per OCA core specification, Capture Base can be referenced by using the `refs:` prefix followed by the CESR digest of the additional Capture Base.
 
-> ⚙️ Note
+> ⚙️ Note: <br>
 > A Capture Base structure does not have to exactly match the structure of it's data source. For instance, a data source may have attributes in a flat hierarchy with no nested objects whereas the OCA Bundle defines multiple Capture Bases that group some of the data source attributes together.
 
 
@@ -762,6 +765,7 @@ Finally, interpret the data into a detail view like the following example:
 [![Pet Permit Detail View](../../assets/images/pet-permit-detail.png)](../../assets/images/pet-permit-detail.png)
 
 ### CESR encoding
+
 The OCA specification defines that the OCA file name and the digest inside the OCA bundle have to use the [CESR encoding](https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html).
 
 CESR is an encoding format for text and binary data that has the unique property of text-binary concatenation composability (for context: A popular encoding format for binary is Base64).
@@ -777,6 +781,7 @@ The smallest common denominator of 8 and 6 is 24, so the smallest CESR unit is 2
 Each CESR encoding also includes metadata over the content of the data. In the digest case, it will start with a letter which defines which digest algorithm was used.
 
 ### Generate CESR encoding flow with SHA-256
+
 A SHA-256 digest has a size of 256 bits. It is divisible by 8 but not by 6. The next possible value would be 264 bits which are 33 bytes.
 
 Hence, the CESR encoding will need 33 bytes to work which means that the SHA-256 hash needs a padding byte.
@@ -788,8 +793,7 @@ The CESR encoding flow works as described next and depicted in Fig. 1.:
 3. Remove the part of the Base64 encoded padding by removing character A (will remove 6 of the 8 lead padding bits)
 4. Add the CESR algorithm code in front of the result of step 3 (uppercase i => I for SHA-256 digest)
 
-
-![CESR explained](./cesr-explained.png)
+![CESR explained](../../assets/images/cesr-explained.png)
 
 A [CESR SHA-256 JavaScript implementation](#/appendix-cesr-sha256-encoder/) can be found in the appendix.
 
@@ -872,6 +876,7 @@ function calculateCesrDigest(payload):
     }
 
     ```
+    
 5. The core OCA specification computes a CESR encoded digest for each Overlay in the same way. This documentation skips the generation of the Overlay digests, as the additional digests add no value to a single file OCA Bundle. 
 
 After those steps the following content is generated:
@@ -918,7 +923,7 @@ After those steps the following content is generated:
 
 This appendix proposes an implementation to encode SHA-256 digest in the CESR format.
 
-> Warning
+> Warning: <br>
 > The canonicalizition step is necessary, as the order of JSON properties can not be guaranteed otherwise. JCS (RFC8785) sets a specification to canonicalize JSON.
 
 ```javascript
