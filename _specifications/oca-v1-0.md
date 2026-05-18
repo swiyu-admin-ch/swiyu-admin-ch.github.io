@@ -795,7 +795,7 @@ The CESR encoding flow works as described next and depicted in Fig. 1.:
 
 ![CESR explained](../../assets/images/cesr-explained.png)
 
-A [CESR SHA-256 JavaScript implementation](#/appendix-cesr-sha256-encoder/) can be found in the appendix.
+A [CESR SHA-256 JavaScript implementation](#cesr-sha256-encoder/) can be found in the appendix.
 
 ### CESR hash creation example of an OCA Bundle
 
