@@ -9,24 +9,24 @@ header:
 
 {% capture notice-text %}
 
-Please be advised that the current system and its operations are provided on a best-effort basis and will continue to evolve over time. The security of the system and its overall maturity remain under development.
+This information is outdated and has been archived. For the current implementation, please refer to [VC visual presentation with OCA](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/)
 
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Deprecated</h4>
   {{ notice-text | markdownify }}
 </div>
 
 ## Introduction
 
-This manual describes how to define the visual presentation of issuer, verifier and a verifiable credential (VC) displayed in the swiyu app, the digital wallet of the Swiss Confederation.
+This manual describes how to define the visual presentation of issuer, verifier and a verifiable credential (VC) displayed in the swiyu app, the digital wallet of the Swiss Confederation.
 
 Its goal is to enable issuers in creating clean, professional looking credentials that effectively represent their organisation or service and to enable the visualization of issuer and verifier with logo and name. This guide provides all necessary information to prepare from the start the appropriate graphic assets and determine the suitable settings.
 
 The instruction is based on the OID metadata, which are defined in the [Swiss Profile (deprecated)](https://swiyu-admin-ch.github.io/archive/interoperability-profile/).
 
-## Purpose and Overview 
+## Purpose and Overview 
 
 In the swiyu wallet app, verifiable credentials (VC) are visually represented as cards to allow users to easily recognise and utilise them. At the moment [^1] an issuer/verifier can define the following:
 
@@ -39,7 +39,7 @@ In the swiyu wallet app, verifiable credentials (VC) are visually represented as
 - the displayed complementary info of the credential
 - attributes of the credential
 
-All these visibility or readability features are set and configured by the issuer/verifier in their metadata. 
+All these visibility or readability features are set and configured by the issuer/verifier in their metadata. 
 
 Below is an example of how various credentials are displayed in different situations in the swiyu app.
 
@@ -121,7 +121,7 @@ Images are not supported.
 No transparency/alpha channels are supported.
 
 {% capture notice-text %}
-**Readability** 
+**Readability** 
 
 To ensure proper contrast and legibility of the information displayed on the card (such as the VC name, user name, and logo/icon), a gradient overlay is applied. This helps text and icons stand out clearly against the chosen background color, improving readability and overall user experience.
 
@@ -146,21 +146,21 @@ All the credentials which are issued within the swiyu Public Beta environment ar
 
 The logo or icon dimensions must not exceed 512×512 pixels and will be displayed at 24×24 pixels at any zoom level.
 
-The logo or icon must be a transparent PNG (excluding the background). 
+The logo or icon must be a transparent PNG (excluding the background). 
 
-No alpha channels or transparency for solid elements. 
+No alpha channels or transparency for solid elements. 
 
-Multi-colored logos and gradients are automatically converted to a monochrome version to foster readability and ease of use. 
+Multi-colored logos and gradients are automatically converted to a monochrome version to foster readability and ease of use. 
 
 {% capture notice-text %}
-**Downscaling**  
+**Downscaling**  
 
 The logo/icon is automatically scaled down to a maximum size of 24×24 px. Extreme landscape or portrait logos/icons will be scaled such that the longest side is reduced to 24 px.
 
 Recommendation:
 
 - Use a square format whenever possible so it scales evenly across various layouts.
-- Work with simplified icons/logos so they are readable even when small. 
+- Work with simplified icons/logos so they are readable even when small. 
 
 **Plurilingualism**
 
@@ -225,9 +225,9 @@ verifier_client_metadata.json: |
 "name": "Title of credential"
 ```
 
-Care to use a self-explanatory credential name that is of reasonable length. 
+Care to use a self-explanatory credential name that is of reasonable length. 
 
-Think to set the various language versions of it so that name is displayed in the app language of the user. 
+Think to set the various language versions of it so that name is displayed in the app language of the user. 
 
 {% capture notice-text %}
 If you issue a family of diverse credentials (like e.g. entry pass spa, entry pass fitness & spa) try to integrate the difference already in the name and/or the color so that it is easier for a user to distinguish them.
@@ -274,10 +274,10 @@ Background color and/or icon can be set per language. This means that if a defin
 ```
 "credential_configurations_supported": {
 			"order": [
-              "firstName",
-              "lastName",
+              "firstName",
+              "lastName",
               "..."
-            ]
+            ]
 }
 ```
 
