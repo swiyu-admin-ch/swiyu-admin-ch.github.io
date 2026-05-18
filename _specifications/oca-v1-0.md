@@ -33,7 +33,7 @@ The JSON object **MUST** contain the following properties:
 - `overlays` Array containing zero, one or more Overlay objects.
 
 
-> [!IMPORTANT]  
+> ⚙️ Important  
 > A Capture Base is called the *Root Capture Base*, if it isn't referenced by any other Capture Base.
 
 
@@ -159,8 +159,8 @@ And in the context of OCA Bundle, it adds the following constraints:
 }
 ```
 
-> [!NOTE]
-> It is up to the Wallet implementers to interpret the Branding Overlay attributes they need to implement their design und style guidelines.
+> ⚙️ Note
+> It is up to the wallet implementers to interpret the Branding Overlay attributes they need to implement their design und style guidelines.
 
 ### Order Overlay
 The Order Overlay adds the possibility to define the order of attributes within the Capture Base. This allows to display relevant attributes first and order technical based information like identifiers at the end.
@@ -174,8 +174,8 @@ JSON object that contains a map of key-value pairs (String:Int) which defines th
 
 Any attributes not declared in the Order Overlay **SHOULD** be ordered after the highest order and **MUST** not be hidden from the user. 
 
->[!NOTE]
-> It is up to the Wallet implementers to define the order for non declared attributes.
+> ⚙️ Note
+> It is up to the wallet implementers to define the order for non declared attributes.
 
 **Example of an Order Overlay**
 
@@ -299,8 +299,8 @@ A DateTime attribute is represented with the following constraints:
 - ISO8601 DateTime **MUST** define ISO8601 standard with the urn URI scheme `urn:iso:std:iso:8601` in the Standard Overlay.
 - Unix Epoch DateTime **MUST** define Unix Epoch Time standard with the urn URI scheme `urn:iso:std:iso-iec:9945` or `urn:iso:std:iso-iec-ieee:9945` in the Standard Overlay.
 
->[!NOTE]
-> It is up to the Wallet implementers how to gather/interpret the granularity of the DateTime.
+> ⚙️ Note
+> It is up to the wallet implementers how to gather/interpret the granularity of the DateTime.
 
 **Example OCA Bundle with a DateTime attribute**
 
@@ -389,6 +389,8 @@ OCA Bundle
     ]
 }
 ```
+
+<a id="clustering-of-attributes"></a>
 
 ## Clustering of attributes
 Visualisations of VC claims mapped to Capture Base attributes are organised into clusters based on the Capture Base structure. Therefore, a Capture Base represents one cluster. The labels for either the VC claim or the cluster headline are taken from the respective attribute mapping in the Label Overlay. Nested Capture Bases are displayed as nested clusters with the hierarchy level of their Capture Base (see [Handling nested objects](#handling-nested-objects) for an example).
@@ -506,8 +508,7 @@ OCA Bundle
 
 Clustering
 
-<img src="./images/root-capture-base-various-types.png" alt="Root Capture Base containing attributes of various types" width="231" height="341" style="border: 2px solid grey" />
-
+[![Root Capture Base containing attributes of various types](../../assets/images/root-capture-base-various-types.png)](../../assets/images/root-capture-base-various-types.png)
 
 ## OCA Bundle reference in Verifiable Credentials
 For the OCA to be usable, it needs to be resolvable by the Wallet and referenced inside the VC.
@@ -549,6 +550,8 @@ And **MAY** contain:
 
 ## Implementation Guide
 
+<a id="handling-nested-objects"></a>
+
 ### Handling nested objects
 
 The following example presents how nested object **SHOULD** be presented in the core OCA specification.
@@ -557,7 +560,7 @@ The extension of the Capture Base definition in chapter [Capture Base Extension]
 
 As per OCA core specification, Capture Base can be referenced by using the `refs:` prefix followed by the CESR digest of the additional Capture Base.
 
->[!NOTE]
+> ⚙️ Note
 > A Capture Base structure does not have to exactly match the structure of it's data source. For instance, a data source may have attributes in a flat hierarchy with no nested objects whereas the OCA Bundle defines multiple Capture Bases that group some of the data source attributes together.
 
 
@@ -742,9 +745,7 @@ The rendering process depends on which view is rendered. Here are two rendering 
 3. Interpret the data types of the Capture Base attributes and search for additional context on how to visualize them in the **Standard Overlay**, **Format Overlay**, etc.
 4. Interpret the data into a preview view like the following example:
 
-<img src="./images/pet-permit-preview.png" alt="Pet Permit Preview View" width="200" height="400" style="border: 2px solid grey" />
-
-<br/>
+[![Pet Permit Preview View](../../assets/images/pet-permit-preview.png)](../../assets/images/pet-permit-preview.png)
 
 **VC Detail rendering**
 
@@ -758,10 +759,7 @@ Start with the *Root Capture Base*:
 
 Finally, interpret the data into a detail view like the following example:
 
-
-<img src="./images/pet-permit-detail.png" alt="Pet Permit Detail View" width="200" height="400" style="border: 2px solid grey" />
-
-<br/>
+[![Pet Permit Detail View](../../assets/images/pet-permit-detail.png)](../../assets/images/pet-permit-detail.png)
 
 ### CESR encoding
 The OCA specification defines that the OCA file name and the digest inside the OCA bundle have to use the [CESR encoding](https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html).
@@ -793,7 +791,7 @@ The CESR encoding flow works as described next and depicted in Fig. 1.:
 
 ![CESR explained](./cesr-explained.png)
 
-A [CESR SHA-256 JavaScript implementation](./appendixes/cesr-sha256-encoder.md) can be found in the appendix.
+A [CESR SHA-256 JavaScript implementation](#/appendix-cesr-sha256-encoder/) can be found in the appendix.
 
 ### CESR hash creation example of an OCA Bundle
 
@@ -914,3 +912,47 @@ After those steps the following content is generated:
 - [RFC9535](https://www.rfc-editor.org/rfc/rfc9535.html)
 - [SD-JWT VC](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html)
 - [W3C.SRI](https://www.w3.org/TR/SRI/)
+
+# Appendix
+## CESR SHA-256 Encoder
+
+This appendix proposes an implementation to encode SHA-256 digest in the CESR format.
+
+> Warning
+> The canonicalizition step is necessary, as the order of JSON properties can not be guaranteed otherwise. JCS (RFC8785) sets a specification to canonicalize JSON.
+
+```javascript
+// Generate CESR encoded SHA-256 digest
+// Code only works for digest with fixed length!
+// see original function _infil() https://github.com/WebOfTrust/cesr-ts/tree/development/src/matter.ts#L387
+  
+const { Buffer } = require('node:buffer');
+const crypto = require('node:crypto');
+const canonicalize = require('canonicalize');
+  
+const data ={"data": "value"};
+const canonicalizedData = canonicalize(data)
+const raw = crypto.createHash('sha256').update(canonicalizedData).digest();
+const padSize = (3 - (raw.length % 3)) % 3; // compute necessary lead size bytes. A SHA-256 digest's length will always be 32 which means that the padSize will be 1.
+  
+const code = "I" // SHA2_256 digest CESR metadata
+const codeSize = code.length; // SHA2_256 digest CESR metadata
+  
+// prepad the SHA-256 digest
+const bytes = new Uint8Array(padSize + raw.length);
+for (let i = 0; i < padSize; i++) {
+    bytes[i] = 0;
+}
+for (let i = 0; i < raw.length; i++) {
+    const odx = i + padSize;
+    bytes[odx] = raw[i];
+}
+  
+// Transform padded SHA-256 bytes to Base64, Remove character 'A' (6 out of the 8 padding bits) and add CESR metadata code in front
+console.log(
+    code +
+    Buffer.from(bytes)
+        .toString('base64url')
+        .slice(codeSize % 4)
+);
+```
