@@ -16,13 +16,15 @@ header:
 
 ## Introduction
 
-This document extends the [Overlays Capture Architecture (OCA)](https://oca.colossi.network/) by adding a technical specification for visualising verifiable credentials (VCs) through a mobile wallet. The aim is to define a set of requirements and clarify the use and support of OCA functionalities that go beyond the core [OCA specifications 1.0.1](https://oca.colossi.network/specification/v1.0.1) by focusing on the context of [VC visualisation](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/). The significance of the key words in CAPITAL LETTERS are described in the [introduction](/specifications/introduction/).
+This document extends the [Overlays Capture Architecture (OCA)](https://oca.colossi.network/) by adding a technical specification for visualising verifiable credentials (VCs) through a mobile wallet. The aim is to define a set of requirements and clarify the use and support of OCA functionalities that go beyond the core [OCA specifications 1.0.1](https://oca.colossi.network/specification/v1.0.1) by focusing on the context of [VC visualisation](https://swiyu-admin-ch.github.io/cookbooks/vc-visual-presentation-oca/). 
+
+**KEY WORDS** for this specification expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
 <a id="capture-base-extension"></a>
 
 ## OCA Bundle as JSON file
 
-A OCA Bundle **SHOULD** be represented by a file containing a JSON object.
+An OCA Bundle **SHOULD** be represented by a file containing a JSON object.
 
 The JSON object **MUST** contain the following properties:
 
@@ -75,7 +77,8 @@ The following Overlays are defined, in addition to those specified in the core O
 
 ### Data Source Mapping Overlay
 The core OCA specification captures an abstracted data structure in their Capture Base. A client with an complete understanding of the semantic could then implicitely link the Capture Base to their data source.
-Currently this is not the case with verifiable credentials and also why an additional Overlay is necessary to link the Capture Base to the actual VC data source.
+
+Currently this is not the case with verifiable credentials and also why an additional Overlay is necessary to link the Capture Base to the actual VC data source. This also allows attributes to be structured into clusters (see [Clustering of attributes](#clustering-of-attributes)) with a flat data source, or vice versa.
 
 This specification adds an Overlay which defines a mapping between the Capture Base attributes and their data sources with the following attributes:
 
@@ -159,7 +162,6 @@ And in the context of OCA Bundle, it adds the following constraints:
 > [!NOTE]
 > It is up to the Wallet implementers to interpret the Branding Overlay attributes they need to implement their design und style guidelines.
 
-
 ### Order Overlay
 The Order Overlay adds the possibility to define the order of attributes within the Capture Base. This allows to display relevant attributes first and order technical based information like identifiers at the end.
 
@@ -218,7 +220,7 @@ OCA Bundle
 ``` 
 
 ### Label Overlay update
-The core OCA Label Overlay does not include templating. This specification adds additional templating support in the Label Overlay:
+The OCA Label Overlay 1.0 does not include templating. This specification adds additional templating support in the Label Overlay 1.1:
 
 - the Label Overlay **MUST** use the `attribute_labels` attribute mapping key-value pairs where the key is the attribute name and the value is a human-meaningful attribute label in a specific language with templating support (see [Overlay templating support](#overlay-templating-support)).
 
@@ -284,7 +286,6 @@ resolved template value
 ```
 "Fullname: John Smith from Switzerland/France/Germany/Italy"
 ```
-
 
 ## Special type handling
 In the core OCA specification, attributes in the Capture Base are defined through a data type. Those data types are not only used to understand the type of an attribute value but also to provide a specific way to interpret data in the Overlays.
@@ -396,11 +397,120 @@ A *Root Capture Base* that contains **only** `Reference` attributes (referencing
 
 A *Root Capture Base* containing attributes of various types is displayed as a single cluster without a headline label. Referenced Capture Bases are displayed as nested clusters with the hierarchy level of their Capture Base.
 
+**Example Root Capture Base containing only attributes of type Reference**
 
-## OCA reference in Verifiable Credentials
+data source
+```json
+{
+    "firstname":"John",
+    "lastname":"Smith",
+    "birthdate":"2026-12-01",
+    "nationalities":[
+        {
+            "name":"Switzerland",
+            "code":"CH"
+        },
+        {
+            "name":"France",
+            "code":"FR"
+        }
+    ]
+}
+```
+
+OCA Bundle
+
+```json
+{
+    "capture_bases": [
+        {
+            "type":"spec/capture_base/1.0",
+            "digest":"IH9-zyhAKgrRijczp11n8p2y7il_1kHIhCVD4Bggp0wZ",
+            "attributes":{
+                "person":"refs:ICXjR6pKk86GPjLsVw3NMGiZRQJ7sQ-G7sUKexXXyvsW",
+                "nationalities":"Array[refs:IKFPGHwRoHqEep0xTJD8k3lQGaN-7Ytg-NnaIDX6pBoe]"
+            }
+        },
+        {
+            "type":"spec/capture_base/1.0",
+            "digest":"ICXjR6pKk86GPjLsVw3NMGiZRQJ7sQ-G7sUKexXXyvsW",
+            "attributes":{
+                "lastname":"Text",
+                "firstname":"Text",
+                "birthdate":"DateTime"
+            }
+        },
+        {
+            "type":"spec/capture_base/1.0",
+            "digest":"IKFPGHwRoHqEep0xTJD8k3lQGaN-7Ytg-NnaIDX6pBoe",
+            "attributes":{
+                "name":"Text",
+                "code":"Text"
+            }
+        }
+    ]
+}
+```
+
+Clustering
+
+<img src="./images/root-capture-base-refs-only.png" alt="Root Capture Base containing only attributes of type Reference" width="191" height="341" style="border: 2px solid grey" />
+
+**Example Root Capture Base containing attributes of various types**
+
+data source
+```json
+"person":{
+    "firstname":"John",
+    "lastname":"Smith",
+    "birthdate":"2026-12-01"
+},
+"nationalities":[
+    {
+        "name":"Switzerland",
+        "code":"CH"
+    },
+    {
+        "name":"France",
+        "code":"FR"
+    }
+]
+```
+
+OCA Bundle
+
+```json
+{
+    "capture_bases":[
+        {
+            "type":"spec/capture_base/1.0",
+            "digest":"IIQFN-3CMpBvSllFw8wpfiZ8Bl0F5IM2nkjDmrP2I5LA",
+            "attributes":{
+                "lastname":"Text",
+                "firstname":"Text",
+                "birthdate":"DateTime",
+                "nationalities":"Array[refs:IKFPGHwRoHqEep0xTJD8k3lQGaN-7Ytg-NnaIDX6pBoe]"
+            }
+        },
+        {
+            "type":"spec/capture_base/1.0",
+            "digest":"IKFPGHwRoHqEep0xTJD8k3lQGaN-7Ytg-NnaIDX6pBoe",
+            "attributes":{
+                "name":"Text",
+                "code":"Text"
+            }
+        }
+    ]
+}
+```
+
+Clustering
+
+<img src="./images/root-capture-base-various-types.png" alt="Root Capture Base containing attributes of various types" width="231" height="341" style="border: 2px solid grey" />
+
+
+## OCA Bundle reference in Verifiable Credentials
 For the OCA to be usable, it needs to be resolvable by the Wallet and referenced inside the VC.
-
-Additional VC formats **MAY** be specified and used as long as the Wallet is able to resolve the OCA Bundle. 
 
 ### SD-JWT VC
 When an Issuer desires to specify OCA rendering instructions for a Verifiable Credential in the `dc+sd-jwt` format, they **MUST** add a render property to the Type Metadata, that uses the data model described below. This specification extends the [SD-JWT VC Render Metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-rendering-metadata) with a new `oca` rendering method.
@@ -439,11 +549,9 @@ And **MAY** contain:
 
 ## Implementation Guide
 
-<a id="handling-nested-objects"></a>
-
 ### Handling nested objects
 
-The following example presents how nested object **MUST** be presented in the core OCA specification.
+The following example presents how nested object **SHOULD** be presented in the core OCA specification.
 
 The extension of the Capture Base definition in chapter [Capture Base Extension](#capture-base-extension) allows for multiple Capture Base in one file and gives the capability to define every aspect of a verifiable credential.
 
@@ -453,7 +561,7 @@ As per OCA core specification, Capture Base can be referenced by using the `refs
 > A Capture Base structure does not have to exactly match the structure of it's data source. For instance, a data source may have attributes in a flat hierarchy with no nested objects whereas the OCA Bundle defines multiple Capture Bases that group some of the data source attributes together.
 
 
-The following example includes a nested data source object `pets` and a `address` Capture Base (mapping data source `street`, `city` and `country`) which gives the possibility to define visual properties of array items and cluster data source attributes.
+The following example includes a nested data source object `pets` and an `address` Capture Base (mapping data source `street`, `city` and `country`) which gives the possibility to define visual properties of array items and cluster data source attributes.
 
 data source
 ```json
@@ -660,7 +768,7 @@ The OCA specification defines that the OCA file name and the digest inside the O
 
 CESR is an encoding format for text and binary data that has the unique property of text-binary concatenation composability (for context: A popular encoding format for binary is Base64).
 
-For those interested, the composable concatenation is described in detail in the [CESR Specification](https://trustoverip.github.io/tswg-cesr-specification/#concatenation-composability-property). However, it is not necessary to understand how the encoding of digests works to proceed with this document.
+For those interested, the composable concatenation is described in detail in the [CESR Specification](https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html#name-concatenation-composability). However, it is not necessary to understand how the encoding of digests works to proceed with this document.
 
 CESR uses the Base64 transformation in it's process to encode binaries but the composability property only works when no Base64 padding is used (when you have padding in Base64 you can not add two binaries together!).
 
@@ -697,23 +805,24 @@ function calculateCesrDigest(payload):
     # Step 0: Temporarily replace the digest field with a dummy string of the correct length
     payload.digest = "#".repeat(ALGORITHM_DIGEST_LENGTH)
 
-    # Step 1: Calculate the cryptographic digest of the modified payload
-    digest = calculate_hash(payload, ALGORITHM)
+    # Step 1: canonicalise payload
+    canonicalised_payload = canonicalize(payload)
 
-    # Step 2: Prepend a 0x00 byte to the digest
+    # Step 2: Calculate the cryptographic digest of the modified payload
+    digest = calculate_hash(canonicalised_payload, ALGORITHM)
+
+    # Step 3: Prepend a 0x00 byte to the digest
     combined = concatenate(leading_byte, digest)
 
-    # Step 3: Encode the result in URL-safe Base64 (no padding)
+    # Step 4: Encode the result in URL-safe Base64 (no padding)
     base64_url = base64_url_safe_encode(combined)
 
-    # Step 4: Replace the first character with the algorithm code and return
+    # Step 5: Replace the first character with the algorithm code and return
     digest = ALGORITHM_CODE + substring(base64_url, 1)
 ```
 
 
 1. Prepare the Capture Base and fill the `digest` attribute with the diggest dummy defined by [CESR](https://weboftrust.github.io/ietf-cesr/draft-ssmith-cesr.html#section-4.2) (44 '#' for the SHA-256 digest).
-2. Canonicalise the payload, as the order of JSON properties cannot be guaranteed otherwise. JCS (RFC8785) sets a specification to canonicalise JSON.
-   
     ```json
     {
         "type":"spec/capture_base/1.0",
@@ -724,7 +833,10 @@ function calculateCesrDigest(payload):
     }
     ``` 
 
-3. Compute the CESR encoded SHA-256 digest with the pseudo code given above (step 1 to 4) and put the value into the `digest` attribute. The output should match the following result:
+2. Canonicalise the payload, as the order of JSON properties cannot be guaranteed otherwise. JCS (RFC8785) sets a specification to canonicalise JSON.
+
+
+3. Compute the CESR encoded SHA-256 digest with the pseudo code given above (step 2 to 5) and put the value into the `digest` attribute. The output should match the following result:
 
     ```json
     {
@@ -762,8 +874,7 @@ function calculateCesrDigest(payload):
     }
 
     ```
-    
-5. The core OCA specification computes a CESR encoded digest for each Overlay in the same way as in steps 1 and 2. This documentation skips the generation of the Overlay digests, as the additional digests add no value to a single file OCA Bundle. 
+5. The core OCA specification computes a CESR encoded digest for each Overlay in the same way. This documentation skips the generation of the Overlay digests, as the additional digests add no value to a single file OCA Bundle. 
 
 After those steps the following content is generated:
 
@@ -801,5 +912,5 @@ After those steps the following content is generated:
 - [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397)
 - [RFC8785](https://datatracker.ietf.org/doc/html/rfc8785)
 - [RFC9535](https://www.rfc-editor.org/rfc/rfc9535.html)
-- [SD-JWT VC](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/)
+- [SD-JWT VC](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html)
 - [W3C.SRI](https://www.w3.org/TR/SRI/)
