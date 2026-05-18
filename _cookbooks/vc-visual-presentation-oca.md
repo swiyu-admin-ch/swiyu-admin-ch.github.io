@@ -488,7 +488,7 @@ credential_issuer_metadata.json: |
 ```
 
 ### Verifier Name
-The verifier's name is only part of the OID4VP Authorization Request and will be use in the presentation request screen.
+The verifier's name is only part of the OID4VP Authorization Request and will be used in the presentation request screen.
 
 ```
 verification_authorization_request.json: |
@@ -858,20 +858,21 @@ The swiyu app displays the various data type as following:
 	  </tr>
 	  <tr>
 	    <td>date</td>
-	    <td>string**</td>
+	    <td>string** or number**</td>
 	    <td>DateTime</td>	  
 	    <td>2007-04-05T14:30:40Z</td>
 		<td>05.04.2007, 16:30:40</td>
 	    <td>yes*</td>
-	    <td>OCA display format depends on precision of the input date & time and of the platform specific formatting.</td>
+	    <td>Date formats ISO8601 or Unix Epoch Time are supported. OCA display of dates depends on the precision of the input date & time and on the platform specific formatting. Date format is declared in Standard Overlay for the attribute.</td>
 	  </tr>
 	  <tr>
 	    <td rawspan="2">images</td>
 		<td>string**</td>
 		<td>Binary</td>
+		<td><base64code</td>  
 	    <td><image></td>
 	    <td>no</td>	
-	    <td>Base64 encoded image binary data. Mime-types image/png and image/jpeg are supported.</td>
+	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types image/png and image/jpeg are supported.</td>
 	  </tr>
 	  <tr>
 		<td>string**</td>
@@ -903,7 +904,7 @@ The swiyu app displays the various data type as following:
 </table>
 
 *  can be mapped to a localized string with OCA Entry & Entry Code Overlay <br>
-** the string is matched to the respective data type
+** the data value is matched to the respective data type
 
 ## Fallback Visualisation
 
