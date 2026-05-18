@@ -11,7 +11,7 @@ header:
 
 The images in this cookbook are outdated and will be replaced asasp. <br>
 The underlying specification and the new Swiss Profiles are currently under revision and are subject to change. <br>
-The outdated version of this cookbook has been [archived](../archive/vc-visual-presentation/).
+The outdated version of this cookbook has been [archived](/archive/vc-visual-presentation/).
 
 {% endcapture %}
 
@@ -26,7 +26,7 @@ This manual describes how to define the visual presentation of a Verifiable Cred
 
 Its goal is to enable issuers in creating clean, professional looking credentials that effectively represent their organisation or service. This guide provides all necessary information to prepare from the start the appropriate graphic assets and deterimine the suitable settings. 
 
-The instruction is based on the credential visualisation with OID Credential Issuer Metadata and Overlays Capture Architecture (OCA), which are defined in the [Swiss Profile](../specifications//oca-v1-0//).
+The instruction is based on the credential visualisation with OID Credential Issuer Metadata and Overlays Capture Architecture (OCA), which are defined in the [Swiss Profile](/specifications//oca-v1-0/).
 
 ## Purpose and Overview 
 
