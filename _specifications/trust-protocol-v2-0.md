@@ -12,7 +12,7 @@ header:
 </div>
 
 
-# Abstract 
+# Introduction 
 
 This document defines the publicly consumable technical specification of the trust protocol, is based on JWTs and was created for the swiyu Trust Infrastructure. The aim is to provide a straight-forward solution allowing a governing body (trust issuer) to confirm the identity of issuers and verifiers, as well as propagating further claims about the legitimacy of the actors actions (e.g., issuance and verification of a specific credential type).
 
@@ -32,7 +32,11 @@ In the context of the trust protocol, those JWTs are referred to as statements, 
   Statements issued by a trust root anchor of type "Public transparency statement issuer".
   Those statements do not require a manual verification process in most cases and are issued to a specific actors identifier.
 
-# Trust markers
+**KEY WORDS** for this Trust Protocol expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+
+# Trust Protocol
+
+## Trust Markers
 
 Each issuer and verifier in the swiyu ecosystem can be provided with various Statements by the governing actor, identified in the [swiss-profile-trust](../swiss-profile-trust/).
 Those statements can be resolved to trust markers to assess the trust relationship between the different actors in an ongoing interaction.
@@ -46,20 +50,20 @@ The [swiss-profile-trust](../swiss-profile-trust/) does further define which tru
 
 The following trust markers are described in this protocol:
 
-## Verified Identity Trust Marker (viTM)
+### Verified Identity Trust Marker (viTM)
 The presence of this marker indicates that the identity of the actor is validated by the governing actor.
 
-## Compliant Actor Trust Marker (caTM)
+### Compliant Actor Trust Marker (caTM)
 The presence of this marker indicates that the actor was not identified as a non-compliant actor in the ecosystem.
 
-## Transparent Verification Trust Marker (tvTM)
+### Transparent Verification Trust Marker (tvTM)
 The presence of this marker indicates that the ongoing verification request is publicly transparent and can be reviewed by 3rd party actors.
 This does not mean the individual verification - neither what data is requested, nor what data is exposed to the verifier - is publicly available, only that the verifier made the type of verifications they are performing public for review.
 
-## Governed use case Trust Marker (gucTM)
+### Governed use case Trust Marker (gucTM)
 The presence of this marker indicates that the issuance or verification is identified to be protected by an governing actor. A valid authorization needs to be presented to continue processing such use cases.
 
-### Protected issuance 
+#### Protected issuance 
 
 The swiyu ecosystem defines certain VC Types as protected and requires special authorization by issuers to be able to issue VCs of those types.
 
@@ -67,7 +71,7 @@ A VC Type is protected if and only if its "vct" claim is listed in the "vct_valu
 
 Issuers who issue such a VC **MUST** have a Protected Issuance Authorization Trust Statement.
 
-### Protected verification 
+#### Protected verification 
 
 The swiyu ecosystem defines certain fields in any VC as protected and requires special authorization for verifiers to be able to request those fields during verifications.
 
@@ -75,11 +79,11 @@ Those fields are defined in the currently [swiss-profile-trust](../swiss-profile
 
 For example, the protected field personal_administrative_number (containing the "AHV Nummer") as shown in the [implementation example](https://swiyu-admin-ch.github.io/cookbooks/trust-protocol-2-0-implementation/#guctm---protected-verification) requires a Protected Verification Authorization Trust Statement for verifiers to be able to request it during verification.
 
-## Governed use case authorization Trust Marker (gucaTM)
+### Governed use case authorization Trust Marker (gucaTM)
 
 The presence of this marker indicates that the issuer or verifier does have authorization by the governing actor to process this use case.
 
-# Trust Flows
+## Trust Flows
 Each trust flow is bound to an interaction between two actors. The flow indicates how an actor to resolve the trust markers to establish trust relationship. Adherence to the trust protocol enhances the privacy for the holder.
 
 All actors which consume statements **MUST**[^1] validate the received Statements (see [Statement provisioning](#statement-provisioning), before they act upon the data provided by those statements.
@@ -87,7 +91,7 @@ If a statement is not valid the trust marker evaluated **MUST NOT** be set for t
 
 [^1]: The key words in **CAPITAL** are described in the [introduction](../introduction/) of the Swiss Profiles
 
-## Issuance
+### Issuance
 
 To allow the wallet to mark the trust relationship to the issuer with the [Verified Identity Trust Marker](#verified-identity-trust-marker-vitm) the following needs to be provided by the issuer:
 
@@ -96,7 +100,7 @@ To allow the wallet to mark the trust relationship to the issuer with the [Verif
 An additonal trust statement must be provided if the Issuer offers credentials which are part of the Protected Issuance Trust List Statement. To allow the wallet to mark the trust relationship to the issuer with the Governed use case authorization Trust Marker trust marker the following needs to be provided by the issuer:
 - The issuer **MUST** provide, for each protected VC Type to be issued, the Protected Issuance Authorization Trust Statement in the issuer metadata, as described in Statement provisioning>Issuer>Issuer Metadata.
 
-### Wallet view
+#### Wallet view
 The wallet **SHOULD** read the Identity Trust Statement and Protected Issuance Authorization Trust Statement from the issuers metadata.
 
 To process this flow the wallet needs a Protected Issuance Trust List Statement, the currently active Protected Issuance Trust List Statement **SHOULD** be fetched via Retrieving Protected Issuance Trust List Statements.
@@ -120,7 +124,7 @@ The following diagram shows how the wallet could resolve trust markers:
 
 [![trust-relationship-holder-issuer](/assets/images/trust-relationship-holder-issuer.png)](/assets/images/trust-relationship-holder-issuer.png)
 
-## Verification
+### Verification
 
 To allow the wallet to mark the trust relationship to the verifier with the Verified Identity Trust Mark trust marker the following needs to be provided by the verifier:
 - The verifier **MUST** provide his Identity Trust Statement to the wallet as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
@@ -133,7 +137,7 @@ To allow the wallet to mark the trust relationship to the verifier with the Gove
 - The verifier **MUST** provide for each protected VC Type to be verified a matching Protected Verification Authorization Trust Statements as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
 
 
-### Wallet view
+#### Wallet view
 
 The wallet **MUST NOT** send any data which is not explicitly requested by the verifier or data technically required to perform the verification, to the verifier.
 
@@ -163,7 +167,7 @@ The following diagram shows how the wallet could resolve trust markers:
 
 [![trust-relationship-holder-verifier](/assets/images/trust-relationship-holder-verifier.png)](/assets/images/trust-relationship-holder-verifier.png)
 
-### Verifier view
+#### Verifier view
 
 The verifier **MUST NOT** make any requests, or notify by any other means, the issuer about the individual verification.
 
@@ -184,14 +188,14 @@ The following diagram shows how the wallet could resolve trust markers:
 [![trust-relationship-verifier-issuer](/assets/images/trust-relationship-verifier-issuer.png)](/assets/images/trust-relationship-verifier-issuer.png)
 
 
-# Statement provisioning
+## Statement provisioning
 Issuer and verifier **MUST** provide identification and permission statements via their respective provisioning channels to the wallet.
 
 Issuer and verifier **MUST** provide identification as soon as possible in their respective flows.
 
 Issuer and verifier **SHOULD** make sure the provided data is up to date.
 
-## Issuer
+### Issuer
 ### Issuer Metadata 
 
 The issuer metadata are provided as signed metadata as defined in the [swiss-profile-issuance 1.0](/swiss-profile-issuance/). The trust statements are included in the signed metadata. The trust statements included in the signed metadata provide a cryptographic chain of trust, with which proves that the metadata was created by the issuer without outside call beyond the trust statement revocation status list.
@@ -202,9 +206,9 @@ The issuer **MUST** provide, for each protected VC Type to be issued, a "protect
 
 [Issuer Metadata implementation example](/cookbooks/trust-protocol-2-0-implementation/#issuer-metadata)
 
-## Verifier
+### Verifier
 
-### JWT-Secured Authorization Request (Request Object)
+#### JWT-Secured Authorization Request (Request Object)
 
 The verifier **MUST** add his Identity Trust Statement, the relevant Verification Query Public Statement for this verification and if needed the relevant Protected Verification Authorization Trust Statement as attestations to the `verifier_info` claim in the JWT-Secured Authorization Request as defined in [OpenID4VP].
 
@@ -214,7 +218,7 @@ Each of those attestations **MUST NOT** utilize the `credential_ids` claim.
 
 [Secured Authorization Request implementation example](/cookbooks/trust-protocol-2-0-implementation/#jwt-secured-authorization-request)
 
-## Trust Registry
+### Trust Registry
 
 A trust registry, identified in the [swiss-profile-trust](/swiss-profile-trust/), provides statements to the public.
 
@@ -222,7 +226,7 @@ For examples please use the following OpenAPI Specification: [Trust Protocol 2.0
 
 A trust registry **MUST** provide the following HTTP REST endpoints:
 
-### Retrieving Identity Trust Statements 
+#### Retrieving Identity Trust Statements 
 
 <table>
   <tr>
@@ -359,7 +363,7 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
    </tr>        
 </table> 
 
-### Retrieving Protected Verification Authorization Trust Statements
+#### Retrieving Protected Verification Authorization Trust Statements
 
 <table>
   <tr>
@@ -428,7 +432,7 @@ Implementation Note: The client still needs to validate the statements and canno
    </tr>        
 </table> 
 
-### Retrieving Protected Issuance Authorization Trust Statements  
+#### Retrieving Protected Issuance Authorization Trust Statements  
 
 
 <table>
@@ -498,7 +502,7 @@ Implementation Note: The client still needs to validate the statements and canno
    </tr>        
 </table> 
 
-### Retrieving Protected Issuance Trust List Statements
+#### Retrieving Protected Issuance Trust List Statements
 
 <table>
   <tr>
@@ -566,13 +570,13 @@ Implementation Note: The client still needs to validate the statements and canno
   </tr>  
 </table> 
 
-### Retrieving Non-Compliance Trust List Statements
+#### Retrieving Non-Compliance Trust List Statements
 
 | Path | Method | Description |
 |--- |--- |--- |
 | /api/v2/non-compliance-trust-list |	GET | **MUST** return are serialized Non-Compliance Trust List Statement. |
 
-### Shared object definitions
+#### Shared object definitions
 
 List Response Object 
 
@@ -587,11 +591,11 @@ List Response Object
 
 [List Response Object implementation example](/cookbooks/trust-protocol-2-0-implementation/#trust-registry-list-response-object)
 
-# Statements
-## Representations
+## Statements
+### Representations
 Statements **MUST** utilize the JWT format detailed below.
 
-### JWT Format
+#### JWT Format
 Statements **MUST** be valid in accordance to [RFC 7519].
 
 If a statement needs to be serialized the JWS Compact Serialization **MUST** be used.
@@ -609,7 +613,7 @@ If a statement needs to be serialized the JWS Compact Serialization **MUST** be 
 To identify to which trust protocol a given statement belongs and how to process it the claims "profile_version" and "typ" **MUST** be evaluated.
 The "profile_version" claim identifies the Trust Protocol version to utilize and the "typ" claim identifies the relevant statement of that trust protocol version.
 
-### Localization  
+#### Localization  
 
 Certain claims of the statements need localization support.
 To provide the localizated version of a string the following format is used:
@@ -647,7 +651,7 @@ Registry ID Object
 | `type` | required | **MUST** be a string defining the type of the registry identifier. We provide a non exhaustive list of well known types and corresponding information blow. |
 | `value` | required | **MUST** be a string. Further requirements of the identifier might apply depending on the type of identifier. |
 
-### Well known registry IDs 
+#### Well known registry IDs 
 
 | Type Identifier | Example Value | Name | Owner | Spec |
 |--- |--- |--- |--- |--- |
