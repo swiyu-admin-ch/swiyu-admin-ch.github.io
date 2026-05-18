@@ -159,7 +159,7 @@ And in the context of OCA Bundle, it adds the following constraints:
 }
 ```
 
-> ⚙️ Note: <br>
+> ⚙️ : <br>
 > It is up to the wallet implementers to interpret the Branding Overlay attributes they need to implement their design und style guidelines.
 
 ### Order Overlay
@@ -174,7 +174,7 @@ JSON object that contains a map of key-value pairs (String:Int) which defines th
 
 Any attributes not declared in the Order Overlay **SHOULD** be ordered after the highest order and **MUST** not be hidden from the user. 
 
-> ⚙️ Note: <br>
+> ⚙️ : <br>
 > It is up to the wallet implementers to define the order for non declared attributes.
 
 **Example of an Order Overlay**
@@ -299,7 +299,7 @@ A DateTime attribute is represented with the following constraints:
 - ISO8601 DateTime **MUST** define ISO8601 standard with the urn URI scheme `urn:iso:std:iso:8601` in the Standard Overlay.
 - Unix Epoch DateTime **MUST** define Unix Epoch Time standard with the urn URI scheme `urn:iso:std:iso-iec:9945` or `urn:iso:std:iso-iec-ieee:9945` in the Standard Overlay.
 
-> ⚙️ Note:
+> ⚙️ Note: <br>
 > It is up to the wallet implementers how to gather/interpret the granularity of the DateTime.
 
 **Example OCA Bundle with a DateTime attribute**
