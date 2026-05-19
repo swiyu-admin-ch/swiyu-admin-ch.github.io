@@ -818,8 +818,7 @@ The swiyu app displays the various data type as following:
 	  <tr>
 	    <th>Credential Issuer Metadata (JSON value_type)</th>
 	    <th>OCA Bundle</th>
-	  </tr>
-  </thead>
+	  </tr></thead>
   <tbody>
 	  <tr>
 	    <td>string</td>
@@ -837,7 +836,7 @@ The swiyu app displays the various data type as following:
 	    <td>true</td>
 		<td>true</td>
 	    <td>no*</td>
-	    <td> </td>
+	    <td></td>
 	  </tr>
 	  <tr>
 	    <td>integer</td>
@@ -846,7 +845,7 @@ The swiyu app displays the various data type as following:
 	    <td>1000</td>
 		<td>1'000</td>
 	    <td>yes*</td>
-	    <td>OCA with grouping separator </td>
+	    <td>OCA with grouping separator</td>
 	  </tr>
 	  <tr>
 	    <td>float/double</td>
@@ -855,7 +854,7 @@ The swiyu app displays the various data type as following:
 	    <td>1234.56</td>
 		<td>1,234.56</td>  
 	    <td>yes*</td>
-	    <td>OCA with grouping separator </td>
+	    <td>OCA with grouping separator</td>
 	  </tr>
 	  <tr>
 	    <td>date</td>
@@ -864,16 +863,16 @@ The swiyu app displays the various data type as following:
 	    <td>2007-04-05T14:30:40Z</td>
 		<td>05.04.2007, 16:30:40</td>
 	    <td>yes*</td>
-	    <td>Date formats ISO8601 or Unix Epoch Time are supported. OCA display of dates depends on the precision of the input date & time and on the platform specific formatting. Date format               is declared in Standard Overlay for the attribute.</td>
+	    <td>Date formats ISO8601 or Unix Epoch Time are supported. OCA display of dates depends on the precision of the input date & time and on the platform specific formatting.                 Date format is declared in Standard Overlay for the attribute.</td>
 	  </tr>
 	  <tr>
 	    <td rawspan="2">images</td>
 		<td>string**</td>
 		<td>Binary</td>
-		<td><base64code</td>  
+		<td><base64code></td>  
 	    <td><image></td>
 	    <td>no</td>	
-	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types image/png             and image/jpeg are supported.</td>
+	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types             image/png and image/jpeg are supported.</td>
 	  </tr>
 	  <tr>
 		<td>string**</td>
@@ -888,7 +887,7 @@ The swiyu app displays the various data type as following:
 	    <td>object</td>
 	    <td>Reference</td>
 	    <td>{"attribute": "value"}</td>
-	    <td> </td>
+	    <td></td>
 		<td>yes</td>	
 	    <td>Data is a JSON object containing attributes of one of the supported data type.</td>
 	  </tr>
