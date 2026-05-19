@@ -805,8 +805,7 @@ oca_bundle.json: |
 
 The swiyu app displays the various data type as following:
 
-<table>
-  <thead>
+<table><thead>
 	  <tr>
 	    <th rawspan="2">Data Type</th>
 	    <th colspan="2">Attribute Type</th>
