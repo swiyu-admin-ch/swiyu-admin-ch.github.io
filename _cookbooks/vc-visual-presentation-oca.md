@@ -851,7 +851,6 @@ The swiyu app displays the various data type as following:
 	  <tr>
 	    <td>float/double</td>
 	    <td>number</td>
-	    <td>-**</td>
 	    <td>Numeric</td>
 	    <td>1234.56</td>
 		<td>1,234.56</td>  
