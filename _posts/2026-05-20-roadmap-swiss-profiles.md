@@ -2,7 +2,6 @@
 title: "Roadmap to Swiss Profiles V1.0"
 categories:
   - PublicBeta
-published: false
 ---
 The information is also available in German on [GitHub]().
 
@@ -36,11 +35,11 @@ All the relevant steps for the migration are referenced in this [roadmap feature
 
 ## Swiss Profile Verification
 
-The [Swiss Profile Verification V1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-verification/) concerns itself with how a wallet is presenting VCs to a verifier.
-- Expand/Migrate, welche der Verifier bereits drin hat: https://github.com/swiyu-admin-ch/swiyu-verifier/issues/260
+The [Swiss Profile Verification V1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-verification/) concerns itself with how a wallet is presenting VCs to a verifier. Upcoming "contract"-steps are:
+- Support Client ID Prefixes & Remove 'client_id_scheme'
 - Enforce DCQL in iOS and Android wallet (DIF Presentation Exchange is no longer supported)
   -  For interactions with the BCS: the parameter "vct_values" must contain the old and new values of the vct-claims ("betaid-sdjwt" und "urn:vct:ch.admin.bcs.betaid")
-- Enforce Payload Encryption in iOS and Android wallet
+- Enforce Payload Encryption and Signed Metadata in iOS and Android wallet
 
 All the relevant steps for the migration are referenced in this [roadmap feature](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/issues/10).
 
@@ -50,4 +49,9 @@ As the governance measures for the Public Beta differ from those for the future 
 
 ## Swiss Profile VC
 
-The new generic issuer and generic verifier for the [Swiss Profile VC 1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/) should be available by the end of June 2026. The respective wallet release should be ready by September. Together with the new components we will adjust our documentation and provide guidance for the VC migration.
+The new generic issuer and generic verifier for the [Swiss Profile VC 1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/) should be available by the end of June 2026. The respective wallet version should be released by September 2026. Together with the new components we will adjust our documentation and provide guidance for the VC migration.
+
+# Roadmap, Status Board and Release Notes
+
+Our [roadmap](https://github.com/orgs/swiyu-admin-ch/projects/1) shows a high-level overview of the upcoming features. The [status board](https://github.com/orgs/swiyu-admin-ch/projects/2) provides a more detailed overview of which tasks are still in the backlog, which are currently being worked on, and which are ready for rollout. In the release notes (in this channel) you'll find the concrete [EMC-steps](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) and links to migration guides.    
+
