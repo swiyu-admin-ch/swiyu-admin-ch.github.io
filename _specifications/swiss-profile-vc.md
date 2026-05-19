@@ -304,16 +304,16 @@ Property extends and extends#integrity are **NOT SUPPORTED**.
 The additional new properties are defined:
 - `schema_uri`: **OPTIONAL**. a URI pointing to a JSON Schema describing the vct and its claims. If provided, Wallet **MAY** perform JSON Schema validation against the issued verifiable credential.
   
-Additionally, `schema_uri#integrity` **MAY** be present as defined in [Section 6].<br>
+Additionally, `schema_uri#integrity` **MAY** be present as defined in [Section 6](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#document-integrity).<br>
 
 ### 5.3. Retrieving Type Metadata
 #### 5.3.2. From a Registry
 Registry retrieval is **NOT SUPPORTED**.
 
 #### 5.3.3. Using a Defined Retrieval Method
-A Consumer **MAY** use claim `vct_metadata_uri` to retrieve Type Metadata for a SD-JWT VC type. If `vct_metadata_uri` is present in the SD-JWT VC on root level (same level like claim `vct`), this method takes precedence over any other defined method to retrieve Type Metadata. If the type is a URL using the HTTPS scheme, Type Metadata **MUST** be retrieved using the HTTP GET method. A successful response **MUST** use an HTTP 200 status code and return a JSON object as defined in [Section 5.2] using the `application/json` content type. An error response **MUST** use the applicable HTTP status code value.<br>
+A Consumer **MAY** use claim `vct_metadata_uri` to retrieve Type Metadata for a SD-JWT VC type. If `vct_metadata_uri` is present in the SD-JWT VC on root level (same level like claim `vct`), this method takes precedence over any other defined method to retrieve Type Metadata. If the type is a URL using the HTTPS scheme, Type Metadata **MUST** be retrieved using the HTTP GET method. A successful response **MUST** use an HTTP 200 status code and return a JSON object as defined in [Section 5.2](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#name-type-metadata-format) using the `application/json` content type. An error response **MUST** use the applicable HTTP status code value.<br>
 
-If the claim `vct_metadata_uri#integrity` is present in the SD-JWT VC, its value `vct_metadata_uri#integrity` **MUST** be an "integrity metadata" string as defined in [Section 6].<br>
+If the claim `vct_metadata_uri#integrity` is present in the SD-JWT VC, its value `vct_metadata_uri#integrity` **MUST** be an "integrity metadata" string as defined in [Section 6](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#document-integrity).<br>
 
 #### 5.3.4. From a Local Cache
 The decision whether to cache the Type Metadata or not is left to the Wallet implementation. The absence of a hash for integrity protection does not require the Wallet to re-fetch the Type Metadata according to the Cache-Control header.
@@ -328,7 +328,7 @@ The `display` property supports Overlay Capture Architecture (OCA), an additiona
 
 The `oca` rendering method object contains the following properties:
 - `uri`: **REQUIRED**. a URI which is either a URL that points to an OCA Bundle file with an associated application/json media type or a Data URL.
-- `uri#integrity`: **OPTIONAL**. an "integrity metadata" string as described in [Section 6].
+- `uri#integrity`: **OPTIONAL**. an "integrity metadata" string as described in [Section 6](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#document-integrity).
 
 Below is a non-normative example of a OCA rendering method declaration inside the Type Metadata `display` property.
 
