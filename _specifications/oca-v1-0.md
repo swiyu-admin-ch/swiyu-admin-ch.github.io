@@ -73,9 +73,11 @@ The JSON object **MUST** contain the following properties:
 ```
 
 ## Additional Overlays
+
 The following Overlays are defined, in addition to those specified in the core OCA specification, to allow visualisation of verifiable credentials.
 
 ### Data Source Mapping Overlay
+
 The core OCA specification captures an abstracted data structure in their Capture Base. A client with an complete understanding of the semantic could then implicitely link the Capture Base to their data source.
 
 Currently this is not the case with verifiable credentials and also why an additional Overlay is necessary to link the Capture Base to the actual VC data source. This also allows attributes to be structured into clusters (see [Clustering of attributes](#clustering-of-attributes)) with a flat data source, or vice versa.
@@ -92,6 +94,7 @@ And in the context of OCA Bundle, it adds the following constraints:
 **Example of a Data Source Mapping Overlay**
 
 data source
+
 ```json
 {
     "firstname":"John",
@@ -159,10 +162,11 @@ And in the context of OCA Bundle, it adds the following constraints:
 }
 ```
 
-> ⚙️ : <br>
+> ⚙️ Note: <br>
 > It is up to the wallet implementers to interpret the Branding Overlay attributes they need to implement their design und style guidelines.
 
 ### Order Overlay
+
 The Order Overlay adds the possibility to define the order of attributes within the Capture Base. This allows to display relevant attributes first and order technical based information like identifiers at the end.
 
 - The `type` attribute's value **MUST** be `extend/overlays/order/1.0`
@@ -174,12 +178,13 @@ JSON object that contains a map of key-value pairs (String:Int) which defines th
 
 Any attributes not declared in the Order Overlay **SHOULD** be ordered after the highest order and **MUST** not be hidden from the user. 
 
-> ⚙️ : <br>
+> ⚙️ Note: <br>
 > It is up to the wallet implementers to define the order for non declared attributes.
 
 **Example of an Order Overlay**
 
 data source
+
 ```json
 {
     "id":"123456",
@@ -190,6 +195,7 @@ data source
 ```
 
 OCA Bundle
+
 ```json
 {
     "capture_bases":[
@@ -254,10 +260,10 @@ For `<attribute_name>` referencing an attribute of type `Array`, joining of the 
 
 When no join separator is defined, the default separator string `, ` is used.
 
-
 **Example of a templating value**
 
 data source
+
 ```
 - firstname: "John"
 - lastname: "Smith"
@@ -265,6 +271,7 @@ data source
 ```
 
 Capture Base
+
 ```json
 {
     "type": "spec/capture_base/1.0",
@@ -278,21 +285,25 @@ Capture Base
 ```
 
 template
+
 ```
 "Fullname: {{firstname}} {{lastname}} from {{nationalities.join('/')}}"
 ```
 
 resolved template value
+
 ```
 "Fullname: John Smith from Switzerland/France/Germany/Italy"
 ```
 
 ## Special type handling
+
 In the core OCA specification, attributes in the Capture Base are defined through a data type. Those data types are not only used to understand the type of an attribute value but also to provide a specific way to interpret data in the Overlays.
 
 Special types, such as data URLs, need to have a standardised representation so that they can be interpreted the same way by everyone.
 
 ### DateTime
+
 A DateTime attribute is represented with the following constraints:
 
 - A DateTime attribute **MUST** be of attribute type `DateTime` in the Capture Base.
@@ -305,6 +316,7 @@ A DateTime attribute is represented with the following constraints:
 **Example OCA Bundle with a DateTime attribute**
 
 data source
+
 ```json
 {
     "id":"123456",
@@ -354,6 +366,7 @@ Data URLs are represented with the following constraints:
 **Example OCA Bundle with an image Data URL**
 
 data source
+
 ```json
 {
     "id":"123456",
@@ -394,6 +407,7 @@ OCA Bundle
 <a id="clustering-of-attributes"></a>
 
 ## Clustering of attributes
+
 Visualisations of VC claims mapped to Capture Base attributes are organised into clusters based on the Capture Base structure. Therefore, a Capture Base represents one cluster. The labels for either the VC claim or the cluster headline are taken from the respective attribute mapping in the Label Overlay. Nested Capture Bases are displayed as nested clusters with the hierarchy level of their Capture Base (see [Handling nested objects](#handling-nested-objects) for an example).
 
 A *Root Capture Base* that contains **only** `Reference` attributes (referencing a nested Capture Base) is displayed as an individual cluster for each referenced attribute at the same top level. In case of attribute type `Array[Reference]`, each `Reference` element in the array is displayed as an individual cluster at the same top level. Cluster headlines are taken from the label attribute mapping in the Label Overlay.
@@ -403,6 +417,7 @@ A *Root Capture Base* containing attributes of various types is displayed as a s
 **Example Root Capture Base containing only attributes of type Reference**
 
 data source
+
 ```json
 {
     "firstname":"John",
@@ -462,6 +477,7 @@ Clustering
 **Example Root Capture Base containing attributes of various types**
 
 data source
+
 ```json
 "person":{
     "firstname":"John",
@@ -545,8 +561,8 @@ And **MAY** contain:
 }
 ``` 
 
-
 ## Limitations
+
 - OCA Bundle **MUST** be a single JSON file
 - Capture Bases and Overlays **MUST** be canonicalized with [JCS (RFC8785)](https://datatracker.ietf.org/doc/html/rfc8785) before generating a CESR digest.
 - CESR digest **MUST** be encoded with SHA-256
@@ -570,6 +586,7 @@ As per OCA core specification, Capture Base can be referenced by using the `refs
 The following example includes a nested data source object `pets` and an `address` Capture Base (mapping data source `street`, `city` and `country`) which gives the possibility to define visual properties of array items and cluster data source attributes.
 
 data source
+
 ```json
 {
     "firstname":"John",
@@ -591,6 +608,7 @@ data source
 ```
 
 OCA Bundle
+
 ```json
 {
     "capture_bases": [
@@ -800,6 +818,7 @@ A [CESR SHA-256 JavaScript implementation](#cesr-sha256-encoder/) can be found i
 ### CESR hash creation example of an OCA Bundle
 
 Pseudo code:
+
 ```
 function calculateCesrDigest(payload):
     leading_byte = [0x00]
