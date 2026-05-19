@@ -3,7 +3,6 @@ title: "Roadmap to Swiss Profiles V1.0"
 categories:
   - PublicBeta
 ---
-The information is also available in German on [GitHub]().
 
 We would like to give an outlook to the upcoming changes related to the migration to the new Swiss Profiles. All details are based on current plans and are subject to change. Updates with more precise release dates will be announced on this channel as far in advance as possible.
 
@@ -53,5 +52,7 @@ The new generic issuer and generic verifier for the [Swiss Profile VC 1.0](https
 
 # Roadmap, Status Board and Release Notes
 
-Our [roadmap](https://github.com/orgs/swiyu-admin-ch/projects/1) shows a high-level overview of the upcoming features. The [status board](https://github.com/orgs/swiyu-admin-ch/projects/2) provides a more detailed overview of which tasks are still in the backlog, which are currently being worked on, and which are ready for rollout. In the release notes (in this channel) you'll find the concrete [EMC-steps](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) and links to migration guides.    
+Our [roadmap](https://github.com/orgs/swiyu-admin-ch/projects/1) shows a high-level overview of the upcoming features. The [status board](https://github.com/orgs/swiyu-admin-ch/projects/2) provides a more detailed overview of which tasks are still in the backlog, which are currently being worked on, and which are ready for rollout. In the release notes (in this channel) you'll find the concrete [EMC-steps](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md) and links to migration guides.
+
+We will provide a component-related view for the migration for issuers and verifiers in the next [participation meeting](https://www.eid.admin.ch/en/partizipation-e) on 4 June 2026.
 
