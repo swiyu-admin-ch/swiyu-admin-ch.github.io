@@ -865,7 +865,7 @@ The swiyu app displays the various data type as following:
 	    <td>2007-04-05T14:30:40Z</td>
 		<td>05.04.2007, 16:30:40</td>
 	    <td>yes*</td>
-	    <td>Date formats ISO8601 or Unix Epoch Time are supported. OCA display of dates depends on the precision of the input date & time and on the platform specific formatting. Date format is declared in Standard Overlay for the attribute.</td>
+	    <td>Date formats ISO8601 or Unix Epoch Time are supported. OCA display of dates depends on the precision of the input date & time and on the platform specific formatting. Date format               is declared in Standard Overlay for the attribute.</td>
 	  </tr>
 	  <tr>
 	    <td rawspan="2">images</td>
@@ -874,7 +874,7 @@ The swiyu app displays the various data type as following:
 		<td><base64code</td>  
 	    <td><image></td>
 	    <td>no</td>	
-	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types image/png and image/jpeg are supported.</td>
+	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types image/png             and image/jpeg are supported.</td>
 	  </tr>
 	  <tr>
 		<td>string**</td>
@@ -919,7 +919,7 @@ For missing assets like background colour and logos, a standard visual presentat
 - A neutral pre-defined background
 - A neutral logo
 
-[image]
+
 
 ## Theming
 
