@@ -75,7 +75,7 @@ Issuers who issue such a VC **MUST** have a Protected Issuance Authorization Tru
 
 The swiyu ecosystem defines certain fields in any VC as protected and requires special authorization for verifiers to be able to request those fields during verifications.
 
-Those fields are defined in the currently [swiss-profile-trust](../swiss-profile-trust/) and are simple strings which match fully any claim in any VC with the same key value.
+Those fields are defined in the current [swiss-profile-trust](../swiss-profile-trust/) and are simple strings which match fully any claim in any VC with the same key value.
 
 For example, the protected field personal_administrative_number (containing the "AHV Nummer") as shown in the [implementation example](https://swiyu-admin-ch.github.io/cookbooks/trust-protocol-2-0-implementation/#guctm---protected-verification) requires a Protected Verification Authorization Trust Statement for verifiers to be able to request it during verification.
 
@@ -131,7 +131,7 @@ To allow the wallet to mark the trust relationship to the verifier with the Veri
 
 To allow the wallet to mark the trust relationship to the verifier with the Governed use case authorization Trust Mark trust marker the following needs to be provided by the verifier:
 - The verifier **MUST** provide the relevant Verification Query Public Statement to the wallet, as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
-- The verifier **MUST** link to the "scope" claim of the Verification Query Public Statement via the scope parameter, as defined in section 5.5 of [OpenID4VP].
+- The verifier **MUST** link to the "scope" claim of the Verification Query Public Statement via the scope parameter, as defined in section 5.5 of [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.5).
 
 To allow the wallet to mark the trust relationship to the verifier with the Governed use case authorization Trust Marker trust marker the following needs to be provided by the verifier:
 - The verifier **MUST** provide for each protected VC Type to be verified a matching Protected Verification Authorization Trust Statements as described in [Statement provisioning](#jwt-secured-authorization-request-request-object).
@@ -158,7 +158,7 @@ When performing the necessary validations the wallet **MUST** perform all steps 
 | Trust Mark              | Necessary Validations          |
 |---------------------------- |------------------------- |
 | Verified Identity Trust Mark	| 1. Validate that the provided attestations do contain exactly one Identity Trust Statement. <br> 2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Identity Trust Statement. <br> If the "client_id" contains the prefix "decentralized_identifier:" it **MUST** be removed before the comparison. |
-| Transparent verification Trust Mark	| 1. Validate that the provided attestations contain exactly one Verification Query Public Statement. <br> 2. Validate that the presentation request contains a "scope" parameter, as defined in section 5.5 of [OpenID4VP]. <br> 3. Validate that the "scope" claim of the Verification Query Public Statement is contained in the presentation request "scope" claim. |
+| Transparent verification Trust Mark	| 1. Validate that the provided attestations contain exactly one Verification Query Public Statement. <br> 2. Validate that the presentation request contains a "scope" parameter, as defined in section 5.5 of [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#section-5.5). <br> 3. Validate that the "scope" claim of the Verification Query Public Statement is contained in the presentation request "scope" claim. |
 | Governed use case Trust Mark | 1. Identify at least one protected field in the presentation, as defined in Protected verification. |
 | Governed use case authorization Trust Mark	| 1. Validate that the trust relationship is already marked with the Governed use case Trust Mark. <br> 2. Identify each protected field in the presentation, as defined in Protected verification. <br> 3. Protected fields **MUST** be matched against all claims which are send from the wallet to the verifier. <br> 4. For each protected field the wallet **MUST** adhere to the following process: <br> a. Make sure the protected field is listed in the "authorized_fields" claim of a Protected Verification Authorization Trust Statement. <br>  b. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request matches the "sub" claim of the Protected Verification Authorization Trust Statement. If the "client_id" contains the prefix "decentralized_identifier:" it **MUST** be removed before the comparison. |
 | Compliant actor Trust Mark | 1. Act upon a Non-Compliance Trust List Statement which is valid at the time of the trust process. <br> 2. Validate that the "client_id" claim of the verifiers JWT-Secured Authorization Request is not listed in any Non-Compliant Actor Objects "actor" claim of the root "non_compliant_actors" claim.  If the "client_id" contains the prefix "decentralized_identifier:" it **MUST** be removed before the comparison. |
@@ -202,7 +202,7 @@ The issuer metadata are provided as signed metadata as defined in the [swiss-pro
 
 The issuer **MUST** provide the Identity Trust Statement in the issuer metadata in the claim "credential_issuer_identity_trust_statement".
 
-The issuer **MUST** provide, for each protected VC Type to be issued, a "protected_issuance_authorization_trust_statement" claim below the respective credential key in the "credential_configurations_supported" claim, as defined in 12.2.4. of [OpenID4VCI] containing the serialized Protected Issuance Authorization Trust Statement.
+The issuer **MUST** provide, for each protected VC Type to be issued, a "protected_issuance_authorization_trust_statement" claim below the respective credential key in the "credential_configurations_supported" claim, as defined in 12.2.4. of [OpenID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata-p) containing the serialized Protected Issuance Authorization Trust Statement.
 
 [Issuer Metadata implementation example](/cookbooks/trust-protocol-2-0-implementation/#issuer-metadata)
 
@@ -210,7 +210,7 @@ The issuer **MUST** provide, for each protected VC Type to be issued, a "protect
 
 #### JWT-Secured Authorization Request (Request Object)
 
-The verifier **MUST** add his Identity Trust Statement, the relevant Verification Query Public Statement for this verification and if needed the relevant Protected Verification Authorization Trust Statement as attestations to the `verifier_info` claim in the JWT-Secured Authorization Request as defined in [OpenID4VP].
+The verifier **MUST** add his Identity Trust Statement, the relevant Verification Query Public Statement for this verification and if needed the relevant Protected Verification Authorization Trust Statement as attestations to the `verifier_info` claim in the JWT-Secured Authorization Request as defined in [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html).
 
 Each of those attestations **MUST** have the `format` claim `jwt`.
 
@@ -605,10 +605,10 @@ If a statement needs to be serialized the JWS Compact Serialization **MUST** be 
 | `typ` | Header | required | **MUST** be a string. Implementation Note: The specific statements define the typ string. |
 | `alg` | Header | required | **MUST** be a cryptographic identifier string defined in the [swiss-profile-trust 1.0](/swiss-profile-trust/) |
 | `kid` | Header | required | **MUST** be an identifier which can be resolved to a specific cryptographic key as defined in the [swiss-profile-anchor 1.0](/swiss-profile-anchor/). Implementation Note: The specific statements define the type of the issuer, which are further defined in the [swiss-profile-trust](/swiss-profile-trust/). |
-| `jti` | Payload | required | **MUST** be a MUST be a UUIDv4, see [RFC 9562]. Identifies the statement. |
-| `profile_version` | Header | required | **MUST** be a string identifying the trust protocol version to process the statement. **MUST** start with "swiss-profile-trust:" and afterward **MUST** contain a version string following the [Semantic Versioning] standard. |
-| `iat` | Payload | required | Issuance time, **MUST** be in accordance to [RFC 7519] |
-| `exp` | Payload | required | Expiry of validity time, **MUST** be in accordance to [RFC 7519] |
+| `jti` | Payload | required | **MUST** be a MUST be a UUIDv4, see [RFC 9562](https://www.rfc-editor.org/rfc/rfc9562). Identifies the statement. |
+| `profile_version` | Header | required | **MUST** be a string identifying the trust protocol version to process the statement. **MUST** start with "swiss-profile-trust:" and afterward **MUST** contain a version string following the [Semantic Versioning](https://semver.org/lang/de/) standard. |
+| `iat` | Payload | required | Issuance time, **MUST** be in accordance to [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519) |
+| `exp` | Payload | required | Expiry of validity time, **MUST** be in accordance to [RFC 7519](https://datatracker.ietf.org/doc/html/rfc7519) |
 
 To identify to which trust protocol a given statement belongs and how to process it the claims "profile_version" and "typ" **MUST** be evaluated.
 The "profile_version" claim identifies the Trust Protocol version to utilize and the "typ" claim identifies the relevant statement of that trust protocol version.
@@ -625,7 +625,7 @@ language_tag **MUST** be a string in accordance to [BCP 47]
 An application displaying a localized claim **SHOULD** display the localized value instead of the non localized value in accordance with the users preferences.<br>
 If a claim is provided in a localized version it **SHOULD** also provide the locale of the default value.
 
-[implementation example](/cookbooks/trust-protocol-2-0-implementation/#localization)
+[Localization implementation example](/cookbooks/trust-protocol-2-0-implementation/#localization)
 
 ## Statement types
 ### Identity Trust Statement (idTS)
@@ -657,7 +657,7 @@ Registry ID Object
 |--- |--- |--- |--- |--- |
 | `UID` | 123456789| Unternehmens-Identifikationsnummer | [Federal Statistical Office] | [FAQ] | 
 
-[implementation example](/cookbooks/trust-protocol-2-0-implementation/#identity-trust-statement)
+[Identity trust statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#identity-trust-statement)
 
 ### Verification Query Public Statement (vqPS)
 
@@ -677,12 +677,12 @@ Verification Request Object
 | Field Name | Usage is| Claim Value Description | 
 |--- |--- |--- |
 | `type` | required | **MUST** be the string "DCQL"|
-| `scope` | required | **MUST** be a string in accordance to the "scope" parameter defined in [OpenID4VP]. |
+| `scope` | required | **MUST** be a string in accordance to the "scope" parameter defined in [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html). |
 | `query` | required | If the type "DCQL" is chosen **MUST** be complying to restrictions of Verification Type: DCQL |
 
 Verification Type: DCQL
 
-A query of type "DCQL" **MUST** comply with [OpenID4VP] and **MUST** contain for each Credential Query a "meta" field with an object containing at least the field "vct_values" with an non empty array.
+A query of type "DCQL" **MUST** comply with [OpenID4VP](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) and **MUST** contain for each Credential Query a "meta" field with an object containing at least the field "vct_values" with an non empty array.
 
 [DCQL query implementation example](/cookbooks/trust-protocol-2-0-implementation/#verification-type-dcql)
 
