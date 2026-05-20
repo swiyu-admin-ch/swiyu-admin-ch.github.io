@@ -377,6 +377,7 @@ Wallets **SHOULD** prefer methods for retrieving VCT Metadata that do not leak i
 # Credential Visualisation
 
 Wallets **MUST** support the following methods to visualise credential on their display in the order of support priority
+
 - 1. Overlays Capture Architecture (OCA) in [Visualisation of Verifiable Credential with OCA](/oca-v1-0/)
 - 2. Credential Issuer Metadata in [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata)
 
@@ -440,3 +441,5 @@ The following OCA Overlay objects **MUST** be supported:
 Code Tables in Entry & Entry Code Overlay 1.0 **MUST NOT** be supported.
 
 Wallets **SHOULD** use the Branding Overlay 1.1 with attribute `theme` set to `"dark"` to display branding information when running in dark mode.
+
+We provide a [cookbook](../cookbooks/vc-visual-presentation-oca/) which provides more details about how to implement OCA according to the Swiss Profiles.
