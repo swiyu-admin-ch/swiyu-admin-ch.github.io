@@ -378,8 +378,8 @@ Wallets **SHOULD** prefer methods for retrieving VCT Metadata that do not leak i
 
 Wallets **MUST** support the following methods to visualise credential on their display in the order of support priority
 
-- 1. Overlays Capture Architecture (OCA) in [Visualisation of Verifiable Credential with OCA](/oca-v1-0/)
-- 2. Credential Issuer Metadata in [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata)
+1. Overlays Capture Architecture (OCA) in [Visualisation of Verifiable Credential with OCA](/oca-v1-0/)
+2. Credential Issuer Metadata in [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata)
 
 
 Supported requirements for OID4VCI Credential Issuer Metadata can be found in [swiss-profile-issuance](/swiss-profile-issuance/).
