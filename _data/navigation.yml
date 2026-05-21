@@ -28,7 +28,7 @@ cookbooks_sidebarmenu:
       - title: "Generic Verifier"
         url: /cookbooks/onboarding-generic-verifier/
       - title: "VC Visual Presentation"
-        url: /cookbooks/vc-visual-presentation/
+        url: /cookbooks/vc-visual-presentation-oca/
       - title: "Trust Protocol Implementation"
         url: /cookbooks/trust-protocol-2-0-implementation/
 

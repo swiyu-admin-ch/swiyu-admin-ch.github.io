@@ -805,19 +805,18 @@ oca_bundle.json: |
 
 The swiyu app displays the various data type as following:
 
-<table><thead>
+<table>
+ <thead>
 	  <tr>
-	    <th rawspan="2">Data Type</th>
-	    <th colspan="2">Attribute Type</th>
-	    <th rawspan="2">Sample Attribute Value</th>
-	  	<th rawspan="2">Displayed Value</th>  
-		  <th rawspan="2">Localizable Display</th>  
-		  <th rawspan="2">Comment</th>  
-    </tr>
-	  <tr>
+	    <th>Data Type</th>
 	    <th>Credential Issuer Metadata (JSON value_type)</th>
-	    <th>OCA Bundle</th>
-	  </tr></thead>
+      <th>OCA Bundle</th>
+	    <th>Sample Attribute Value</th>
+	  	<th>Displayed Value</th>  
+		  <th>Localizable Display</th>  
+		  <th>Comment</th>  
+    </tr>
+  </thead>
   <tbody>
 	  <tr>
 	    <td>string</td>
@@ -825,7 +824,7 @@ The swiyu app displays the various data type as following:
 	    <td>Text</td>
 	    <td>"a value 1234"</td>
 		  <td>a value 1234</td>
-	    <td>no*</td>
+	    <td>no<a href="#footnote-1">[1]</a></td>
 	    <td>Is displayed the same as input.</td>  
 	  </tr>
 	  <tr>
@@ -834,16 +833,16 @@ The swiyu app displays the various data type as following:
 	    <td>Boolean</td>
 	    <td>true</td>
 		  <td>true</td>
-	    <td>no*</td>
+	    <td>no<a href="#footnote-1">[1]</a></td>
 	    <td></td>
 	  </tr>
 	  <tr>
 	    <td>integer</td>
 	    <td>number</td>
-	    <td>Numeric</td></td>
+	    <td>Numeric</td>
 	    <td>1000</td>
 		  <td>1'000</td>
-	    <td>yes*</td>
+	    <td>yes<a href="#footnote-1">[1]</a></td>
 	    <td>OCA with grouping separator</td>
 	  </tr>
 	  <tr>
@@ -852,32 +851,33 @@ The swiyu app displays the various data type as following:
 	    <td>Numeric</td>
 	    <td>1234.56</td>
 		  <td>1,234.56</td>  
-	    <td>yes*</td>
+	    <td>yes<a href="#footnote-1">[1]</a></td>
 	    <td>OCA with grouping separator</td>
 	  </tr>
 	  <tr>
 	    <td>date</td>
-	    <td>string** or number**</td>
+	    <td>string<a href="#footnote-2">[2]</a> or number<a href="#footnote-2">[2]</a></td>
 	    <td>DateTime</td>	  
 	    <td>2007-04-05T14:30:40Z</td>
 		  <td>05.04.2007, 16:30:40</td>
-	    <td>yes*</td>
+	    <td>yes<a href="#footnote-1">[1]</a></td>
 	    <td>Date formats ISO8601 or Unix Epoch Time are supported. OCA display of dates depends on the precision of the input date & time and on the platform specific formatting. Date format is declared in Standard Overlay for the attribute.</td>
 	  </tr>
 	  <tr>
-	    <td rawspan="2">images</td>
-		  <td>string**</td>
+	    <td>images</td>
+		  <td>string<a href="#footnote-2">[2]</a></td>
 		  <td>Binary</td>
-		  <td><base64code></td>  
-	    <td><image></td>
+		  <td>base64code</td>  
+	    <td>image</td>
 	    <td>no</td>	
 	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types image/png and image/jpeg are supported.</td>
 	  </tr>
 	  <tr>
-		  <td>string**</td>
+      <td>images</td>
+		  <td>string<a href="#footnote-2">[2]</a></td>
 	    <td>Text</td>
-		  <td>data:image/png;base64,<base64code></td>
-	    <td><image></td>
+		  <td>data:image/png;base64,base64code</td>
+	    <td>image</td>
 		  <td>no</td>	
 	    <td>Data URL images. OCA requires Standard Overlay to match Data URL from Text type attributes.</td>
 	  </tr>
@@ -902,9 +902,8 @@ The swiyu app displays the various data type as following:
   </tbody>
 </table>
 
-
-can be mapped to a localized string with OCA Entry & Entry Code Overlay<br>
-** the data value is matched to the respective data type
+<p id="footnote-1">[1] Can be mapped to a localized string with OCA Entry & Entry Code Overlay</p>
+<p id="footnote-2">[2] The data value is matched to the respective data type</p>
 
 ## Fallback Visualisation
 
