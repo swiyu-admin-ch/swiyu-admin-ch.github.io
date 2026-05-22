@@ -16,7 +16,7 @@ header:
 
 This document defines the publicly consumable technical specification of the trust protocol, is based on JWTs and was created for the swiyu Trust Infrastructure. The aim is to provide a straight-forward solution allowing a governing body (trust issuer) to confirm the identity of issuers and verifiers, as well as propagating further claims about the legitimacy of the actors actions (e.g., issuance and verification of a specific credential type).
 
-The trust protocol is based on JWTs, and on the flows defined in [swiss-profile-issuance 1.0](../swiss-profile-issuance/) and [swiss-profile-verification 1.0](../swiss-profile-verification/).
+The trust protocol is based on [JWTs](https://datatracker.ietf.org/doc/html/rfc7519), and on the flows defined in [swiss-profile-issuance 1.0](../swiss-profile-issuance/) and [swiss-profile-verification 1.0](../swiss-profile-verification/).
 
 JWTs are signed by a root trust anchor to authenticate the corresponding statement.
 
@@ -67,9 +67,9 @@ The presence of this marker indicates that the issuance or verification is ident
 
 The swiyu ecosystem defines certain VC Types as protected and requires special authorization by issuers to be able to issue VCs of those types.
 
-A VC Type is protected if and only if its "vct" claim is listed in the "vct_values" claim of an active Protected Issuance Trust List Statement.
+A VC Type is protected if and only if its "vct" claim is listed in the "vct_values" claim of an active [Protected Issuance Trust List Statement](#protected-issuance-trust-list-statement-pitls).
 
-Issuers who issue such a VC **MUST** have a Protected Issuance Authorization Trust Statement.
+Issuers who issue such a VC **MUST** have a [Protected Issuance Authorization Trust Statement](#protected-issuance-authorization-trust-statement-piats).
 
 #### Protected verification 
 
@@ -77,7 +77,7 @@ The swiyu ecosystem defines certain fields in any VC as protected and requires s
 
 Those fields are defined in the current [swiss-profile-trust](../swiss-profile-trust/) and are simple strings which match fully any claim in any VC with the same key value.
 
-For example, the protected field personal_administrative_number (containing the "AHV Nummer") as shown in the [implementation example](https://swiyu-admin-ch.github.io/cookbooks/trust-protocol-2-0-implementation/#guctm---protected-verification) requires a Protected Verification Authorization Trust Statement for verifiers to be able to request it during verification.
+For example, the protected field `personal_administrative_number` (containing the "AHV Nummer") as shown in the [implementation example](https://swiyu-admin-ch.github.io/cookbooks/trust-protocol-2-0-implementation/#guctm---protected-verification) requires a [Protected Verification Authorization Trust Statement](#protected-verification-authorization-trust-statement-pvats) for verifiers to be able to request it during verification.
 
 ### Governed use case authorization Trust Marker (gucaTM)
 
@@ -86,10 +86,8 @@ The presence of this marker indicates that the issuer or verifier does have auth
 ## Trust Flows
 Each trust flow is bound to an interaction between two actors. The flow indicates how an actor to resolve the trust markers to establish trust relationship. Adherence to the trust protocol enhances the privacy for the holder.
 
-All actors which consume statements **MUST**[^1] validate the received Statements (see [Statement provisioning](#statement-provisioning), before they act upon the data provided by those statements.
+All actors which consume statements **MUST** validate the received Statements (see [Statement provisioning](#statement-provisioning), before they act upon the data provided by those statements.
 If a statement is not valid the trust marker evaluated **MUST NOT** be set for the trust relationship.
-
-[^1]: The key words in **CAPITAL** are described in the [introduction](../introduction/) of the Swiss Profiles
 
 ### Issuance
 
@@ -97,11 +95,11 @@ To allow the wallet to mark the trust relationship to the issuer with the [Verif
 
 - The issuer **MUST** provide his [Identity Trust Statement](#identity-trust-statement-idts) in the issuer metadata, as described in [Statement provisioning](#issuer-metadata).
   
-An additonal trust statement must be provided if the Issuer offers credentials which are part of the Protected Issuance Trust List Statement. To allow the wallet to mark the trust relationship to the issuer with the Governed use case authorization Trust Marker trust marker the following needs to be provided by the issuer:
-- The issuer **MUST** provide, for each protected VC Type to be issued, the Protected Issuance Authorization Trust Statement in the issuer metadata, as described in Statement provisioning>Issuer>Issuer Metadata.
+An additonal trust statement must be provided if the Issuer offers credentials which are part of the [Protected Issuance Trust List Statement](#protected-issuance-trust-list-statement-pitls). To allow the wallet to mark the trust relationship to the issuer with the [Governed use case authorization Trust Marker](#governed-use-case-authorization-trust-marker-gucatm) the following needs to be provided by the issuer:
+- The issuer **MUST** provide, for each protected VC Type to be issued, the [Protected Issuance Authorization Trust Statement](#protected-issuance-authorization-trust-statement-piats) in the issuer metadata, as described in [Statement provisioning](#issuer-metadata).
 
 #### Wallet view
-The wallet **SHOULD** read the Identity Trust Statement and Protected Issuance Authorization Trust Statement from the issuers metadata.
+The wallet **SHOULD** read the [Identity Trust Statement](#identity-trust-statement-idts) and [Protected Issuance Authorization Trust Statement](#protected-issuance-authorization-trust-statement-piats) from the [issuers metadata](#issuer-metadata).
 
 To process this flow the wallet needs a Protected Issuance Trust List Statement, the currently active Protected Issuance Trust List Statement **SHOULD** be fetched via Retrieving Protected Issuance Trust List Statements.
 To process this flow the actor needs a Non-Compliance Trust List Statement, the currently active Non-Compliance Trust List Statement **SHOULD** be fetched via Retrieving Non-Compliance Trust List Statements.
