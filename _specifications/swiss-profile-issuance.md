@@ -205,7 +205,7 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 ```
 
 ### 12.3. OAuth 2.0 Authorization Server Metadata
-The OAuth 2.0 Authorization Server Metadata **MUST** be provided the same way as defined in [12.2.3]. <br>
+If used, `pre-authorized_grant_anonymous_access_supported` and any other additional OAuth 2.0 Authorization Server Metadata **MUST** be provided and signed as `application/jwt` in the same way as defined in ["12.2.3. Signed Metadata"](#1223-signed-metadata) for credential issuer metadata.<br>
 
 ## 13. Security Considerations
 ### 13.6. Pre-Authorized Code Flow
