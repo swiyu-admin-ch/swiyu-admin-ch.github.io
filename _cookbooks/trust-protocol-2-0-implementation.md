@@ -58,10 +58,10 @@ The following non-normative example shows a SD-JWT example VC with a protected f
 }
 .
 <SIGNATURE>
-
+```
 
 The following non-normative example shows a SD-JWT example VC with no protected field.
-
+```
 {
     "typ": "vc+sd-jwt",
     "alg": "ES256",
