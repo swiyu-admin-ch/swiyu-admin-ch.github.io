@@ -111,6 +111,34 @@ DID Resolution **MUST** be used.<br>
 ### 7.2 DID URL Dereferencing
 DID URL Dereferencing is **NOT SUPPORTED** by the swiyu DIDResolver.
 
+## Appendix
+
+### DID Log Entry Version
+
+Swiss Profile version indication with property `profile_version` in every DID Document entry _body_ is **REQUIRED**.
+
+```
+{
+  "profile_version": "swiss-profile-anchor:1.0.0",
+  "id": "did:example:123456789abcdefghi",
+  "verificationMethod": [{
+    "id": "did:example:123456789abcdefghi#key-20260101",
+    "type": "JsonWebKey",
+    "controller": "did:example:123456789abcdefghi",
+    "publicKeyJwk": {
+      "kid": "key-20260101",
+      "kty": "EC",
+      "crv": "P-256",
+      "alg": "ES256",
+      "x": "f83OJ3D2xF1Bg8vub9tLe1gHMzV76e8Tus9uPHvRVEU",
+      "y": "x_FEzRu9m36HLN_tue659LNpXW6pCyStikYjKIWI5a0"
+    }
+  }],
+  "authentication": ["did:example:123456789abcdefghi#key-20260101"]
+}
+
+```
+
 # did:webvh DID Method 
 
 The specification is fully supported by this profile (and components adhering to it) except for the specific cases mentioned in the following subsections.
@@ -134,18 +162,6 @@ Witnesses is **NOT SUPPORTED** in the Base Registry.<br>
 - The parameter `witness` MUST be set to {}.<br>
 Watchers is **NOT SUPPORTED** in the Base Registry.<br>
 - The parameter `watchers` MUST be set to []<br>
-Swiss Profile version indication with property `profile_version` in every DID Log entry **body** is REQUIRED.<br>
-
-```
-{
-  "portable": false,
-  "updateKeys": ["z82LkqR25TU88tztBEiFye"],
-  "nextKeyHashes": ["enkkrohe5ccxyc7zghic6qux5iny"],
-  "method": "did:webvh:1.0",
-  "profile_version": "swiss-profile-anchor:1.0.0",
-  "scid": "{SCID}"
-}
-```
 
 #### 3.7.5 Authorized Keys
 Use of Pre-rotation of keys is **RECOMMENDED**.
