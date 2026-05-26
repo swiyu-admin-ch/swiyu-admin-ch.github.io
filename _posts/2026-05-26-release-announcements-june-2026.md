@@ -38,4 +38,4 @@ By the end of June, we'll provide new cookbooks and the new flows for the onboar
 Also by the end of June, we will provide new generic components (swiyu-issuer and swiyu-verifier) as well as a guide for the migration to the [Swiss Profile VC 1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/).
 
 ## Planned System Outages on 25 June
-Due to internal system recovery tests, there may be disruptions of the swiyu Public Beta infrastructure on Thursday, 25 June 2026. You can find information about system outages in our [System Status Channel](https://github.com/orgs/swiyu-admin-ch/discussions/12)
+Due to internal system recovery tests, there may be disruptions of the swiyu Public Beta infrastructure on Thursday, 25 June 2026. You can find information about system outages in our [System Status Channel](https://github.com/orgs/swiyu-admin-ch/discussions/12).
