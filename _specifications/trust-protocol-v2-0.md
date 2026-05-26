@@ -286,7 +286,7 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
                 <td>identifier</td>
                 <td>Path</td>
                 <td>No default</td>
-                <td>URL encoded identifier of the actor in a format defined in the [swiss-profile-anchor 1.0](/swiss-profile-anchor/)</td>
+                <td>URL encoded identifier of the actor in a format defined in the <a href="/swiss-profile-anchor/">swiss-profile-anchor 1.0</a></td>
             </tr>
            </table> </td>
   </tr>         
@@ -638,7 +638,7 @@ The trust statements contains the following fields:
 | `kid` | Header | required | This statement **MUST** be issued by an trust statement issuer identified in the [swiss-profile-trust](/swiss-profile-trust/). |
 | `status` | Payload | required | **MUST** adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0](/swiss-profile-vc/). A statement **MUST** further be considered invalid when: status cannot be resolved status resolves does not resolve to valid the resolved status list is issued by a different identifier than the statement Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
 | `sub` | Payload | required | **MUST** be an identifier of the actor in a format defined in the [swiss-profile-anchor 1.0](/swiss-profile-anchor/) |
-| `entity_name` | Payload | required | **MUST** be a human readable string identifying the actor in the real world. MAY be [localized]. |
+| `entity_name` | Payload | required | **MUST** be a human readable string identifying the actor in the real world. MAY be [localized](#localization). |
 | `is_state_actor` | Payload | required | **MUST** be a boolean (true/false) value. Indicates that the subject is considered a government approved state actor. |
 | `registry_ids` | Payload | optional | **MUST** be an array of Registry ID Objects. |
 
@@ -735,7 +735,7 @@ Information for actors which VCTs can be issued only by authorized issuers.
 | `typ` | Header | required | **MUST** be "swiyu-protected-issuance-trust-list-statement+jwt" |
 | `kid` | Header | required | This statement **MUST** be issued by an trust statement issuer identified in the [swiss-profile-trust](/swiss-profile-trust/). |
 | `status` | Payload | required | **MUST** adhere to the status list revocation entry in a format defined by the [swiss-profile-vc 1.0](/swiss-profile-vc/).  A statement **MUST** further be considered invalid when: status cannot be resolved status resolves does not resolve to valid the resolved status list is issued by a different identifier than the statement; Implementation Note: A different key to the one used for the VC from the issuer's identity is still acceptable. |
-| `vct_values` | Payload | required | **MUST** be an array of strings that **MUST** be valid type identifiers as defined in [SD-JWT VC] |
+| `vct_values` | Payload | required | **MUST** be an array of strings that **MUST** be valid type identifiers as defined in [SD-JWT VC](/specifications/swiss-profile-vc/#sd-jwt-based-verifiable-credentials-sd-jwt-vc) |
 
 [Protected Issuance Trust List Statement implementation example](/cookbooks/trust-protocol-2-0-implementation/#protected-issuance-trust-list-statement-pitls)
 
