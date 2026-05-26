@@ -108,14 +108,14 @@ The following diagram shows an overview of the various versioned entities in the
 
 ## Versioning Indications
 
-| Specification | Entitiy/Interface | Versioning Indication |
+| Specification | Entity/Interface | Versioning Indication |
 |---|---|---|
 |Trust Protocol | JWT Statement | [Trust Statement version](../trust-protocol-v2-0/#statements) |
 |DID:webvh | DID Log | [DID Log Entry version](../swiss-profile-anchor/#did-log-entry-version) |
 |Token Status List | Status List Token | [Status List Token JWT version](../swiss-profile-vc/#5-status-list-token)  |
 | SD-JWT/SD-JWT-VC | VC | [SD-JWT VC version](../specifications/swiss-profile-vc/#321-jose-header)     |
 | SD-JWT/SD-JWT-VC | VCT | [VCT version](../specifications/swiss-profile-vc/#5-sd-jwt-vc-type-metadata)     |
-| OCA | OCA | [OCA Bundle JSON version] |
+| OCA | OCA | [OCA Bundle JSON version](../specifications/swiss-profile-vc/#oca-bundle-as-json-file) |
 | OAuth 2.0 DPoP | DPoP | [DPoP JWT version](../swiss-profile-issuance/#42-dpop-proof-jwt-syntax) |
 | OID4VCI | Issuer Meta Data | In case of _signed_ meta data: [Credential Issuer Metadata JWT version](../swiss-profile-issuance/#1223-signed-metadata) <br> In case of _unsigned_ meta data: [Credential Issuer Metadata](../swiss-profile-issuance/#1224-credential-issuer-metadata-parameters) |
 | Key Attestation | Key Attestation | [Key Attestation JWT version](../swiss-profile-issuance/#d1-key-attestation-in-jwt-format) |
