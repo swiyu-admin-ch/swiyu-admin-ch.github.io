@@ -17,7 +17,7 @@ With the upcoming wallet releases, we proceed further steps towards the Swiss Pr
 ## "Sandbox" Wallet available in App Stores 
 As the governance measures for the Public Beta differ from those for the future production environment, a dedicated "sandbox" wallet for the Public Beta environment will be available in the app stores. The present swiyu wallet will be restricted over the coming months to the productive environment. Existing credentials must be reissued into the sandbox wallet.
 
-## DID Toolbox Version
+## DID Toolbox
 - New standard did:webvh as specified in the [Swiss Profile Anchor 1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-anchor/)
 - [Swiss Profile Version](https://swiyu-admin-ch.github.io/specifications/introduction/#versioning-indications) in DID Log
 - New DID's created with did:webvh must be resolved with the new DID-Resolver
