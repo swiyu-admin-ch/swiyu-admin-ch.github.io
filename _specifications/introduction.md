@@ -60,17 +60,68 @@ The following diagram shows how the Swiss Profiles build upon each other:
 
 # Versioning
 
-We follow strict [Semantic Versioning](https://semver.org/) wherever versions are used.
+With the indication of the Swiss Profile version, participants can detect which exact version is currently used and are therefore able to support multiple versions even if there are breaking changes between these versions.
 
-In summary our versions follow the schema MAJOR.MINOR.PATCH, where:
+## Principles
+
+**Versioning is mandatory**
+
+Adding the versioning indication as mentioned is **REQUIRED**. There are some cases where this is not (yet) enforced to cope with legacy entities during a transitional period (e.g. old DID logs pre-existing the definition of this versioning indication).
+
+**Versioning Attribute**
+
+Wherever possible, the version is indicated in the various data structures of the specifications within the attribute/field name `profile_version`.
+- In JWTs the `profile_version` versioning attribute goes into the header of the JWT.
+- In regular JSONs the `profile_version` versioning attribute goes into the regular JSON body.
+
+**Versioning Entities vs References**
+
+We sometimes have (versioned) entities which refer to other versioned entities. E.g. entity Foo, a JWT, contains a reference to entity Bar, a JSON.
+
+The following principles apply:
+- Entities **MUST** have a versioning indication. (in the example above: versioning attribute in entity Bar).
+- Reference **CAN** get a versioning indication, this should only be done if there are good reasons for it (e.g. additionally adding the version of Bar next to the reference to Bar in Foo).
+
+## Pattern
+
+The pattern of the used Swiss Profile versions is:
+
+```
+swiss-profile-{type}:{profileVersion}
+```
+Where `{profileVersion}` follows the pattern of [Semantic Versioning](https://semver.org/). In summary our versions follow the schema MAJOR.MINOR.PATCH, where:
 
 - MAJOR version for breaking changes, i.e. incompatible changes to any interface
 - MINOR version for backwards compatible changes, e.g. adding functionality
 - PATCH version for backward compatible bug fixes
 
+Example:
+
+```
+swiss-profile-issuance:1.0.0
+```
+## Overview
+
 The following diagram shows an overview of the various versioned entities in the swiyu ecosystem and how they relate among each other, as well as to third party standards specifications.
 
 [![swiyu-ecosystem-versioning](/assets/images/swiyu-ecosystem-versioning.png)](/assets/images/swiyu-ecosystem-versioning.png)
+
+## Versioning Indications
+
+| Specification | Entitiy/Interface | Versioning Indication |
+|---|---|---|
+|Trust Protocol | JWT Statement | [Trust Statement version](../trust-protocol-v2-0/#statements) |
+|DID:webvh | DID Log | [DID Log Entry version](../swiss-profile-anchor/#did-log-entry-version) |
+|Token Status List | Status List Token | [Status List Token JWT version](../swiss-profile-vc/#5-status-list-token)  |
+| SD-JWT/SD-JWT-VC | VC | [SD-JWT VC version](../specifications/swiss-profile-vc/#321-jose-header)     |
+| SD-JWT/SD-JWT-VC | VCT | [VCT version](../specifications/swiss-profile-vc/#5-sd-jwt-vc-type-metadata)     |
+| OCA | OCA | [OCA Bundle JSON version] |
+| OAuth 2.0 DPoP | DPoP | [DPoP JWT version](../swiss-profile-issuance/#42-dpop-proof-jwt-syntax) |
+| OID4VCI | Issuer Meta Data | In case of _signed_ meta data: [Credential Issuer Metadata JWT version](../swiss-profile-issuance/#1223-signed-metadata) <br> In case of _unsigned_ meta data: [Credential Issuer Metadata](../swiss-profile-issuance/#1224-credential-issuer-metadata-parameters) |
+| Key Attestation | Key Attestation | [Key Attestation JWT version](../swiss-profile-issuance/#d1-key-attestation-in-jwt-format) |
+| OID4VP | Verification Request Object | [JAR version](../swiss-profile-verification/#5-authorization-request) |
+| mDL ISO-18013-5 BLE | Verifier Attestation | [Verifier Attestation JWT] |
+
 
 # Key Words
 
