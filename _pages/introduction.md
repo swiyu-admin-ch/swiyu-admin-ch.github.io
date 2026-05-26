@@ -209,7 +209,7 @@ The following types of statements exist:
     </tr>
     <tr>
          <th>Side channel</th>
-       <td>Verification: verifier_info in [JWT-Secured Authorization Request] <br>
+       <td>Verification: verifier_info in [JWT-Secured Authorization Request](/specifications/trust-protocol-v2-0/#jwt-secured-authorization-request-request-object) <br>
            Issuance: tbd</td> 
     </tr>
 </table>
@@ -234,7 +234,7 @@ The following types of statements exist:
     </tr>
     <tr>
          <th>Side channel</th>
-       <td>Verification: verifier_info in [JWT-Secured Authorization Request] </td> 
+       <td>Verification: verifier_info in [JWT-Secured Authorization Request](/specifications/trust-protocol-v2-0/#jwt-secured-authorization-request-request-object) </td> 
     </tr>
 </table>
 
@@ -258,7 +258,7 @@ The following types of statements exist:
     </tr>
     <tr>
          <th>Side channel</th>
-       <td>Issuance: via Issuer Metadata <br>
+       <td>Issuance: via [Issuer Metadata](/specifications/trust-protocol-v2-0/#issuer-metadata) <br>
            Verification: via Trust Registry
        </td> 
     </tr>
@@ -284,7 +284,7 @@ The following types of statements exist:
     </tr>
     <tr>
        <th>Side channel</th>
-       <td>Verification: verifier_info in JWT-Secured Authorization Request (Request Object) </td> 
+       <td>Verification: verifier_info in [JWT-Secured Authorization Request (Request Object)]((/specifications/trust-protocol-v2-0/#jwt-secured-authorization-request-request-object)) </td> 
     </tr>
 </table>
 
