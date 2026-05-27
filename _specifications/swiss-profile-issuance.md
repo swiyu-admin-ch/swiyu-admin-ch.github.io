@@ -185,15 +185,15 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
   - `cryptographic_binding_methods_supported` **MUST** be `jwk` as only JWK format for holder bindings are supported.
   - `proof_types_supported` **MUST** be `jwt` as only JWT format is supported.
     - `key_attestations_required` **MUST** be supported by Wallets, and **MAY** be used by Issuers.
-- `credential_metadata` remains **OPTIONAL**.
-  - `display` **MAY** be used as visualisation fallback to OCA Bundle.
-    - `logo` remains **OPTIONAL**.
-      - `uri` **MUST** be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded.
-        This means the `uri` **MUST** begin with `data:image/png;base64`  or `data:image/jpeg;base64`.  
-    - `background_image` is **NOT SUPPORTED**.
-    - `text_color` is **NOT SUPPORTED**.
-  - `claims` remains **OPTIONAL**.
-    - `mandatory` is **NOT SUPPORTED**.
+  - `credential_metadata` remains **OPTIONAL**.
+    - `display` **MAY** be used as visualisation fallback to OCA Bundle.
+      - `logo` remains **OPTIONAL**.
+        - `uri` **MUST** be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded.
+          This means the `uri` **MUST** begin with `data:image/png;base64`  or `data:image/jpeg;base64`.  
+      - `background_image` is **NOT SUPPORTED**.
+      - `text_color` is **NOT SUPPORTED**.
+    - `claims` remains **OPTIONAL**.
+      - `mandatory` is **NOT SUPPORTED**.
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JSON body is **REQUIRED**.
 
