@@ -9,7 +9,6 @@ header:
 
 {% capture notice-text %}
 
-The images in this cookbook are outdated and will be replaced asasp. <br>
 The underlying specification and the new Swiss Profiles are currently under revision and are subject to change. <br>
 The outdated version of this cookbook has been [archived](/archive/vc-visual-presentation/).
 
@@ -370,7 +369,7 @@ Think to set the various language versions of it so that name is displayed in th
 {% capture notice-text %}
 If you issue a family of diverse credentials (like e.g. entry pass spa, entry pass fitness & spa) try to integrate the difference already in the name and/or the color so that it is easier for a user to distinguish them.
 
-[![name](../../assets/images/oca-name.png)](../../assets/images/oca-nameo.png)
+[![name](../../assets/images/oca-name.png)](../../assets/images/oca-name.png)
 
 
 {% endcapture %}
@@ -555,7 +554,7 @@ The Branding Overlay's `primary_field` supports templating. The placeholders in 
 
 The display-order of attributes for a credential will be applied in the credential offer screen, in the detail view of the credential and in the verification presentation request screen.
 
-[![name](../../assets/images/oca-vc-ordering.png)](../../assets/images/oca-vc-ordering.png)
+[![Ordering](../../assets/images/oca-vc-ordering.png)](../../assets/images/oca-vc-ordering.png)
 
 
 ```
@@ -632,7 +631,7 @@ The Sensitive Overlay does just flags attributes as sensitive with a visual indi
 
 Clustering enables you to organise credential attributes into groups. Within each cluster, three headlines (H1, H2 and H3) can be used to organise and categorise the credential attributes, making them easier for users to scan. Headline 1 for the cluster itself is optional, as are all other headlines.
 
-[![name](../../assets/images/oca-vc-clustering.png)](../../assets/images/oca-vc-clustering.png)
+[![Clustering of Attributes](../../assets/images/oca-vc-clustering.png)](../../assets/images/oca-vc-clustering.png)
 
 Clustering can only be defined within an OCA Bundle by declaring Capture Bases. Headlines are taken from the respective OCA Label Overlay.
 
@@ -916,6 +915,7 @@ For missing assets like background colour and logos, a standard visual presentat
 - A neutral pre-defined background
 - A neutral logo
 
+[![Fallback Version](../../assets/images/oca-vc-fallback.png)](../../assets/images/oca-vc-fallback.png)
 
 ## Theming
 
