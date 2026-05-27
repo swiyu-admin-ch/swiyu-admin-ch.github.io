@@ -13,6 +13,7 @@ With the upcoming wallet releases, we proceed further steps towards the Swiss Pr
 - [Enforce DCQL Presentation](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/59) 
 - With the enforcement of DCQL, we also fix the issues ["Prevent bypassing vct filter rule"](https://github.com/swiyu-admin-ch/eidch-ios-wallet/issues/36) and ["DIF presentation can send wrong data"](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/39)
 - EMC-Expand for new DID standard and Swiss Profile Versioning (see below)
+- [Invalid Credentials can no longer be presented](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/62)
 
 ## "Sandbox" Wallet available in App Stores 
 As the governance measures for the Public Beta differ from those for the future production environment, a dedicated "sandbox" wallet for the Public Beta environment will be available in the app stores. The present swiyu wallet will be restricted over the coming months to the productive environment. Existing credentials must be reissued into the sandbox wallet.
