@@ -32,17 +32,17 @@ Obtained from the [self-service portal](https://selfservice.api.admin.ch/api-sel
 | `SWIYU_IDENTIFIER_REGISTRY_CUSTOMER_KEY` | OAuth2 client ID for the `swiyucorebusiness_identifier` API |
 | `SWIYU_IDENTIFIER_REGISTRY_CUSTOMER_SECRET` | OAuth2 client secret for the `swiyucorebusiness_identifier` API |
 | `SWIYU_IDENTIFIER_REGISTRY_BOOTSTRAP_REFRESH_TOKEN` | Initial refresh token for the `swiyucorebusiness_identifier` API (valid 168 h) |
-| `SWIYU_IDENTIFIER_REGISTRY_ACCESS_TOKEN` | Bearer token for the `swiyucorebusiness_identifier` API (valid 24 h) |
+| `SWIYU_IDENTIFIER_REGISTRY_ACCESS_TOKEN` | Bearer token for the `swiyucorebusiness_identifier` API (valid 25 h) |
 | `SWIYU_STATUS_REGISTRY_CUSTOMER_KEY` | OAuth2 client ID for the `swiyucorebusiness_status` API |
 | `SWIYU_STATUS_REGISTRY_CUSTOMER_SECRET` | OAuth2 client secret for the `swiyucorebusiness_status` API |
 | `SWIYU_STATUS_REGISTRY_BOOTSTRAP_REFRESH_TOKEN` | Initial refresh token for the `swiyucorebusiness_status` API (valid 168 h) |
-| `SWIYU_STATUS_REGISTRY_ACCESS_TOKEN` | Bearer token for the `swiyucorebusiness_status` API (valid 24 h) |
+| `SWIYU_STATUS_REGISTRY_ACCESS_TOKEN` | Bearer token for the `swiyucorebusiness_status` API (valid 25 h) |
 | `SWIYU_TRUST_REGISTRY_CUSTOMER_KEY` | OAuth2 client ID for the `swiyucorebusiness_trust` API |
 | `SWIYU_TRUST_REGISTRY_CUSTOMER_SECRET` | OAuth2 client secret for the `swiyucorebusiness_trust` API |
 | `SWIYU_TRUST_REGISTRY_BOOTSTRAP_REFRESH_TOKEN` | Initial refresh token for the `swiyucorebusiness_trust` API (valid 168 h) |
-| `SWIYU_TRUST_REGISTRY_ACCESS_TOKEN` | Bearer token for the `swiyucorebusiness_trust` API (valid 24 h) |
+| `SWIYU_TRUST_REGISTRY_ACCESS_TOKEN` | Bearer token for the `swiyucorebusiness_trust` API (valid 25 h) |
 
-All credentials are shown once in the self-service portal when you create an application. The `ACCESS_TOKEN` can be refreshed using the `REFRESH_TOKEN`. Both can be regenerated in the portal at any time if lost.
+All credentials are shown once in the self-service portal when you create an application. The `ACCESS_TOKEN` is obtained via the `REFRESH_TOKEN` (see [step 2.4](#24-refresh-your-access-token)). Both can be regenerated in the portal at any time if lost.
 
 ## 1.2. Business Partner & DID Space
 
@@ -146,7 +146,7 @@ SWIYU_TRUST_REGISTRY_BOOTSTRAP_REFRESH_TOKEN <br>
 SWIYU_TRUST_REGISTRY_ACCESS_TOKEN <br>
 </p>
 Safely store your keys, secrets, and tokens — this is the only time they are shown to you. It is possible to create new ones if necessary.<br>
-The ACCESS_TOKEN expires after 24 hours and can be refreshed using the REFRESH_TOKEN. The REFRESH_TOKEN is valid for 168 hours. You can always create new tokens if you lose them or both expire.
+The ACCESS_TOKEN expires after 25 hours. The REFRESH_TOKEN is valid for 168 hours (7 days). See <a href="#24-refresh-your-access-token">step 2.4</a> for how to obtain a fresh access token. You can always regenerate your token set in the portal if needed.
 
 {% endcapture %}
 
@@ -155,7 +155,50 @@ The ACCESS_TOKEN expires after 24 hours and can be refreshed using the REFRESH_T
   {{ token-notice | markdownify }}
 </div>
 
-## 2.4. API Documentation
+## 2.4. Refresh Your Access Token
+
+Access tokens are valid for **25 hours**. When an access token expires, you need a new one. How you obtain it depends on your network location:
+
+| Location | Grant type | Endpoint |
+|---|---|---|
+| Inside the federal network (intranet) | `client_credentials` | `https://keymanager-intra.api.admin.ch/token/v2` |
+| Outside the federal network (internet) | `refresh_token` | `https://keymanager.api.admin.ch/token/v2` |
+
+The `client_credentials` grant is only available on intranet endpoints for security reasons. **If you are accessing the APIs from outside the federal network — which is the common case — you must use the `refresh_token` grant.**
+
+Use the `BOOTSTRAP_REFRESH_TOKEN` from step 2.3 as your first refresh token. Each refresh call returns a new access token **and** a new refresh token — always store and use the latest one.
+
+```sh
+# Obtain a fresh access token from outside the federal network
+curl -X POST \
+  -d "client_id=$SWIYU_TRUST_REGISTRY_CUSTOMER_KEY&client_secret=$SWIYU_TRUST_REGISTRY_CUSTOMER_SECRET&grant_type=refresh_token&refresh_token=$SWIYU_TRUST_REGISTRY_BOOTSTRAP_REFRESH_TOKEN" \
+  "https://keymanager.api.admin.ch/token/v2"
+
+# Example response
+{
+  "access_token": "<new_access_token>",
+  "expires_in": 90000,
+  "refresh_expires_in": 604800,
+  "refresh_token": "<new_refresh_token>",
+  "token_type": "Bearer"
+}
+```
+
+Save the `access_token` as your `SWIYU_TRUST_REGISTRY_ACCESS_TOKEN` (and equivalently for the identifier and status APIs). Save the new `refresh_token` to replace your stored refresh token.
+
+{% capture refresh-token-warning %}
+
+<p>⚠️ <strong>Refresh tokens are single-use.</strong> Each refresh token may be used <strong>at most twice</strong> (one use + one retry for transient failures). If a refresh token is used a third time, <strong>all tokens originating from that session are permanently invalidated</strong>. You must then regenerate your full token set in the <a href="https://selfservice.api.admin.ch/api-selfservice">API Self-Service Portal</a>.</p>
+<p>⚠️ Always replace your stored refresh token with the new one returned in each refresh response. The refresh token itself expires after <strong>7 days</strong> (168 hours) if unused.</p>
+
+{% endcapture %}
+
+<div class="notice--danger">
+  <h4 class="no_toc">Important: Refresh Token Handling</h4>
+  {{ refresh-token-warning | markdownify }}
+</div>
+
+## 2.5. API Documentation
 
 Interactive API reference documentation is available for each of the three APIs:
 
@@ -492,7 +535,7 @@ Prerequisites:
 
 * Your business partner is subscribed to the **swiyucorebusiness_trust** API (see [step 2](#2-subscribe-to-swiyu-trust-infrastructure-apis)).
 * Your verifier DID is registered in the Trust Registry (see [step 4](#4-create-proof-of-possession-for-initial-did)).
-* You have a valid `SWIYU_TRUST_REGISTRY_ACCESS_TOKEN`.
+* You have a valid `SWIYU_TRUST_REGISTRY_ACCESS_TOKEN`. If you are accessing from outside the federal network, use the refresh token flow in [step 2.4](#24-refresh-your-access-token) to obtain one — the initial access token from the self-service portal is valid for 25 hours, but subsequent access tokens must be obtained via `refresh_token` grant.
 
 ## 7.1. Submit the vqPS
 
@@ -507,6 +550,7 @@ The request body contains:
 | `purpose_description` | localized map | ✓ | Human-readable description of the verification purpose, max 1000 chars per locale |
 | `scope` | string | ✓ | OpenID4VP scope string identifying this verification query |
 | `query` | JSON object | ✓ | DCQL query describing the credential(s) and claims being requested |
+| `waitForPublication` | boolean | ✓ | If `true`, the response waits synchronously for publication to complete or time out. If `false`, the response is returned immediately with `ACCEPTED` status. |
 
 Localized maps must include a `"default"` key and may include BCP 47 language tags (e.g. `"de"`, `"fr"`, `"it"`, `"en"`).
 
@@ -558,7 +602,7 @@ Save the `id` field as `VQPS_SUBMISSION_ID`.
 
 {% capture vqps-hint %}
 
-<p> ⚙️ The POST request waits synchronously for publication. If the Trust Registry does not confirm publication within the expected time frame, a <code>504 Gateway Timeout</code> is returned. In that case, use <a href="#72-check-submission-status">step 7.2</a> to poll the submission status until it reaches <code>PUBLICATION_SUCCEEDED</code> or <code>PUBLICATION_FAILED</code>.</p>
+<p> ⚙️ When <code>waitForPublication: true</code>, the POST request waits synchronously for publication. If the Trust Registry does not confirm publication within the expected time frame, the request returns <strong>HTTP 201</strong> with the submission in <code>ACCEPTED</code> status (no error is returned). In that case, use <a href="#72-check-submission-status">step 7.2</a> to poll the submission status until it reaches <code>PUBLICATION_SUCCEEDED</code> or <code>PUBLICATION_FAILED</code>.</p>
 <p> ⚙️ Each unique verification query requires its own vqPS. If your verification purpose or the requested claims change, submit a new vqPS.</p>
 
 {% endcapture %}
@@ -570,7 +614,7 @@ Save the `id` field as `VQPS_SUBMISSION_ID`.
 
 ## 7.2. Check Submission Status
 
-If the initial POST request timed out, or if you need to inspect an existing submission, retrieve its current status by ID.
+If the initial POST returned `ACCEPTED` status (publication pending), or if you need to inspect an existing submission, retrieve its current status by ID.
 
 ```sh
 # Parameter
