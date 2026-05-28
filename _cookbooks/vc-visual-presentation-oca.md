@@ -612,7 +612,7 @@ oca_bundle.json: |
 }
 ```
 
-[![todo](../../assets/images/oca-sensitive-attributes.png)](../../assets/images/oca-sensitive-attributes.png)
+[![Sensitive Attributes](../../assets/images/oca-sensitive-attributes.png)](../../assets/images/oca-sensitive-attributes.png)
 
 {% capture notice-text %}
 
@@ -922,6 +922,8 @@ For missing assets like background colour and logos, a standard visual presentat
 With an OCA Bundle, the appearance of a credential can be themed. This allows you to declare a background colour, credential logo and description, depending on whether the swiyu app is in dark or light mode.
 
 The Branding Overlay supports the `theme` property. If a Branding Overlay is declared with "dark" theme, the visualisation information is only considered when the swiyu app is in dark mode. Any other theme is considered to be used in light mode.
+
+[![Theming](../../assets/images/oca-theming.png)](../../assets/images/oca-theming.png)
 
 ```
 oca_bundle.json: |
