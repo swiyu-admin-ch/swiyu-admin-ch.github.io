@@ -43,7 +43,7 @@ All these visible or readible features are set and configured by the issuer/veri
 
 Below is an example of how various credentials are displayed in different situations in the swiyu app.  
 
-[![credential preview and detail](../../assets/images/vc_credential-preview-detail.png)](../../assets/images/vc_credential-preview-detail.png)
+[![credential preview and detail](../../assets/images/vc-credential-preview-detail.png)](../../assets/images/vc-credential-preview-detail.png)
 
 As an example we take this metadata (OID4VCI and OID4VP), and focus only on the relevant fields (technical fields are hidden):
 
