@@ -259,7 +259,7 @@ The following types of statements exist:
     <tr>
          <th>Side channel</th>
        <td>Issuance: via <a href="/specifications/trust-protocol-v2-0/#issuer-metadata">Issuer Metadata</a> <br>
-           Verification: via Trust Registry
+           Verification: via <a href="/specifications/trust-protocol-v2-0/#retrieving-protected-issuance-authorization-trust-statements">Trust Registry</a>
        </td> 
     </tr>
 </table>
