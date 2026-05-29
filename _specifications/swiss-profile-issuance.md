@@ -110,7 +110,7 @@ Wallets **MUST** support key attestation.<br>
 Requests **MUST** be sent with a DPoP Header.<br>
 `credential_identifier` is **NOT SUPPORTED**.<br>
 `credential_configuration_id` **MUST** be set to `credential_configuration_id` from the credential offer.<br>
-`credential_response_encryption` **MUST** be used and `encryption_required` **MUST** be `true`<br>
+`credential_response_encryption` **MUST** be used and `encryption_required` **MUST** be `true`.<br>
 
 ### 8.3. Credential Response
 The number of elements in the credentials array **MUST** match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request.<br>
@@ -172,9 +172,9 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 - `notification_endpoint` is **NOT SUPPORTED**.
 - `nonce_endpoint` is **REQUIRED**.
 - `credential_request_encryption` is **REQUIRED**.
-  - `encryption_required` **MUST** be `true`
+  - `encryption_required` **MUST** be `true`.
 - `credential_response_encryption` is **REQUIRED**.
-  - `encryption_required` **MUST** be `true`
+  - `encryption_required` **MUST** be `true`.
 - `batch_credential_issuance` is **RECOMMENDED** for privacy relevant use-cases.
   - `batch_size` is **REQUIRED**. Integer value **MUST** be at least 10 specifying the maximum array size for the proofs parameter in a Credential Request.
     The Wallet **MAY** send fewer proofs than defined in the batch size. The Issuer **MUST** create as many Credentials as proofs received.
