@@ -12,7 +12,8 @@ The structure of the documentation website covers the following topics:
 - Selected base technologies and supported technical standards
 - Open Source components: Overview and links to the code repositories
 - Cookbooks for onboarding the different stakeholders
-- Specifications of the "Swiss Profile", Trust Protocol, and other standards
+- Specifications of the "Swiss Profiles", Trust Protocol, and other standards
+- Threat Model of the swiyu Trust Infrastructure
 - Roadmap with the current stage and gaps of Public Beta
 - Footer with links to release announcements and our community repository
 
