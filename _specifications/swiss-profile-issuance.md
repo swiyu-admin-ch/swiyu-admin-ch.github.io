@@ -110,7 +110,7 @@ Wallets **MUST** support key attestation.<br>
 Requests **MUST** be sent with a DPoP Header.<br>
 `credential_identifier` is **NOT SUPPORTED**.<br>
 `credential_configuration_id` **MUST** be set to `credential_configuration_id` from the credential offer.<br>
-`credential_response_encryption` **MUST** be used and `encryption_required` **MUST** be `true`.<br>
+`credential_response_encryption` **MUST** be used.<br>
 
 ### 8.3. Credential Response
 The number of elements in the credentials array **MUST** match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request.<br>
