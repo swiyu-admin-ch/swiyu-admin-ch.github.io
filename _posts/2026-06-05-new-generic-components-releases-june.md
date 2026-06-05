@@ -51,7 +51,7 @@ The roadmap shows the current plan and is not binding. The dates and contents of
 
 - Enforce DCQL, Contract DIF presentation: iOS 1.16, Android 1.15, swiyu-verifier 3.0
 - Allow SD-JWT to contain structured nested data to selectively disclose a single element of an array: iOS 1.16, Android 1.15, swiyu-verifier 3.0
-- Expand-Migrate for [new credential format](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/56): iOS 1.16, Android 1.15
+- Expand-Migrate for [new credential format](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/56): iOS 1.16, Android 1.15, swiyu-issuer 3.2
 - Enforcement of JWT-Secured Authorization Request (JAR): iOS 1.16, Android 1.15
 - DPoP implementation: iOS 1.16, Android 1.15, swiyu-issuer 3.0
 - [Contract OCA overlays](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/61): iOS 1.17, Android 1.16
