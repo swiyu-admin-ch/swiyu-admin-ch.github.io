@@ -63,8 +63,8 @@ Public Beta Trust Registry: https://trust-reg.trust-infra.swiyu-int.admin.ch/
 
 | Type | DID | 
 | --- | --- | 
-| Trust statement issuer | did:webvh:QmRCTm94HZCq2YL1kjCDXRQ1ved4cb3Q3FiEao1nRSbp3A:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:75b5d64d-6de0-426e-b5aa-9e9e4452f11a |
-| Public transparency statement issuer | did:webvh:QmaQHULUL7HbM76k2T42QhBDtnYM96Dj8cCwpVfvJ2pyCb:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:71c14e91-2637-4dbd-a7dd-4de7254b936d |
+| Trust statement issuer | did:webvh:QmdVPcfEJgvQAJKEjaTWAhskT1kc59KZQiXNenqHBB7iH5:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:4c131dc4-ced1-454b-bbd4-9401c7512e37 |
+| Public transparency statement issuer | did:webvh:QmNTHuhETA3u2ypoujoaEMaZGKf5HpPwkV6ktfgzu7JzMp:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:5e5de412-0e7d-4982-a0ed-bd55a0f25a04 | 
 
 ### Trust Registries
 
