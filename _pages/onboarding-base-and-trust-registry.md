@@ -10,12 +10,12 @@ header:
 
 {% capture notice-text %}
 
-Please be advised that the current system and its operations are provided on a best-effort basis and will continue to evolve over time. The security of the system and its overall maturity remain under development.
+This page is still under construction and covers the new onboarding process, which has not yet been activated. The page is not linked and will be listed in the Cookbooks at a later date.
 
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Work in Progress</h4>
   {{ notice-text | markdownify }}
 </div>
 
