@@ -2,7 +2,7 @@
 title: Trust Protocol Implementation Examples
 toc: true
 toc_sticky: true
-excerpt: Examples on how to implement the swiyu Trust Protocol
+excerpt: Principles and examples on how to implement the swiyu Trust Protocol
 header:
   teaser: ../assets/images/specification-trust-protocol.jpg
 ---
@@ -20,7 +20,87 @@ For a general introduction please refer to [Trust Artefacts in swiyu](https://sw
 
 # Trust Protocol 2.0
 
-## gucTM - protected verification
+## Verification of Trust Artefacts: Implementation Guide
+
+This section describes how trust artefacts are verified by actors in the system – whether those actors are relays passing artefacts along, or final consumer relying on the data within them.
+
+This section targets the [swiyu Generic Issuer](https://swiyu-admin-ch.github.io/open-source-components/#swiyu-generic-issuer), [swiyu Generic Verifier](https://swiyu-admin-ch.github.io/open-source-components/#swiyu-generic-verifier), [swiyu Wallet](https://swiyu-admin-ch.github.io/open-source-components/#swiyu-android--ios-app) and swiyu Check.
+
+
+{% capture notice-text %}
+
+This section uses the following terms:
+
+**Verification** refers to verifying if a trust statement is valid – (not to be confused with the verification of VCs performed by a credential verifier). It consists of two parts:
+- Checking the cryptographic and semantic **validity** of a trust artefact, and
+- Confirming its current **status* against the status list.
+  
+**Relay** refers to an actor who merely passes on trust artefacts to other parties without having a business need to check their content. Example: Generic verifier passing on vqPS to the Holder.
+
+**Consumer** refers to an actor who is required to rely on the data in the trust statements. Example: Holder which needs to rely on the content of idTS during a verification flow.
+
+{% endcapture %}
+
+<div class="notice--info">
+  <h4 class="no_toc">Nomenclature</h4>
+  {{ notice-text | markdownify }}
+</div>
+
+### Base Principles
+
+| ID | Principle | Reasoning |
+|--- |--- |--- |
+| TA-PRINC-001 | All actors in the swiyu trust ecosystem must verify the validity of trust artefacts in the same way as outlined in PARENT-ADR-027 - Validating JWTs signed with DID keys. | This ensures that all parties have a common understanding of trust artefact validity and reduces redundant verification code. |
+| TA-PRINC-002 | A consumer MUST verify both validity and status of all trust artifacts at least once before they are used according to the Trust Protocol. | Verification of the validity of a trust artifact is paramount, but can be "cached". This reduces the number of calls due to validity verifications - which are not expected to suddenly change. |
+| TA-PRINC-003 | A relay MUST verify a trust artefact the first time they receive it. <br> - This MUST include checking validity, and <br> -MUST include checking the status list. |This ensures that bugs or issues during trust artefact issuance are caught as early as possible, allowing actors to react to it earlier. |
+| TA-PRINC-0054 | A relay MAY cache the verification result of a trust artefact - thus relying on a previous verification while further passing on said artefact (e.g. when it is cached locally). | This reduces the number of calls due to verifications - which are not expected to suddenly change. <br> Note that it is the responsibility of the relay to figure out how to do caching, cache invalidation/refresh, etc. |
+
+### Verification Rules
+
+From the above principles the following rules can be derived.
+
+**Generic Issuer (Relay)**
+| Artefact | Case | Action |
+|--- |--- |--- |
+|idTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
+|piaTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
+
+**Generic Verifier (Relay)**
+| Artefact | Case | Action |
+|--- |--- |--- |
+|idTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
+|vqPS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
+|pvaTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
+
+**Generic Verifier (Consumer)**
+| Artefact | Case | Action |
+|--- |--- |--- |
+|idTS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
+|piaTS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
+|piTLS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
+|ncTLS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
+
+**HOlder/Wallet (Consumer)**
+| Artefact | Case | Action |
+|--- |--- |--- |
+|idTS | upon receival | MUST verifiy |
+|vqPS | upon receival (during verification) | MUST verifiy |
+|pvaTS | upon receival (during verification of VC with protected claim) | MUST verifiy |
+|piaTS | upon receival (during issuance of VC with protected VCT) | MUST verifiy |
+|piTLS |	upon each use |	MUST verify |
+| ncTLS |	upon each use |	MUST verify |
+
+**CheckApp (Consumer)**
+| Artefact | Case | Action |
+|--- |--- |--- |
+|idTS | upon receival | MUST verifiy |
+|piaTS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
+|piTLS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
+
+
+## Code Examples
+
+### gucTM - protected verification
 
 The following non-normative example shows a SD-JWT example VC with a protected field at the root node.
 
@@ -81,7 +161,7 @@ The following non-normative example shows a SD-JWT example VC with no protected 
 <SIGNATURE>
 ```
 
-## Issuer Metadata
+### Issuer Metadata
 
 The following is a non-normative example of an abbreviated credential issuer metadata extended with a Identity Trust Statement and a Protected Issuance Authorization Trust Statement.
 ```
@@ -110,7 +190,8 @@ The following is a non-normative example of an abbreviated credential issuer met
 <signature>
 ```
 
-## JWT-Secured Authorization Request 
+### JWT-Secured Authorization Request 
+
 ```
  {
   "response_uri": "https://bcs.admin.ch/bcs-web/verifier-agent/oid4vp/api/request-object/af86e2ae-74f0-4dd2-86f3-91dc4cfbe028/response-data",
@@ -137,7 +218,7 @@ The following is a non-normative example of an abbreviated credential issuer met
 }
 ```
 
-## Trust Registry: List Response Object
+### Trust Registry: List Response Object
 
 The following is a non-normative example of a List Response Object.
 ```
@@ -154,7 +235,7 @@ The following is a non-normative example of a List Response Object.
 }
 ```
 
-## Localization
+### Localization
 
 The following is a non-normative example of a localized claim "name".
 ```
@@ -166,7 +247,7 @@ The following is a non-normative example of a localized claim "name".
   "name#fr-CH": "La forge de John Smith"
 }
 ```
-## Identity Trust Statement
+### Identity Trust Statement
 
 The following is a non-normative example of a Identity Trust Statement.
 ```
@@ -207,7 +288,7 @@ The following is a non-normative example of a Identity Trust Statement.
 <SIGNATURE>
 ```
 
-## Verification Type: DCQL
+### Verification Type: DCQL
 
 The following is a non-normative example of a trust process compliant DCQL query.
 ```
@@ -228,7 +309,8 @@ The following is a non-normative example of a trust process compliant DCQL query
   ]
 }
 ```
-## Verification Query Public Statement
+
+### Verification Query Public Statement
 
 The following is a non-normative example of a Verification Query Public Statement.
 ```
@@ -277,7 +359,7 @@ The following is a non-normative example of a Verification Query Public Statemen
 <SIGNATURE>
 ```
 
-## Protected Verification Authorization Trust Statement
+### Protected Verification Authorization Trust Statement
 
 The following is a non-normative example of a Protected Verification Authorization Trust Statement.
 ```
@@ -306,7 +388,7 @@ The following is a non-normative example of a Protected Verification Authorizati
 .
 <SIGNATURE>
 ```
-## Protected Issuance Authorization Trust Statement
+### Protected Issuance Authorization Trust Statement
 
 The following is a non-normative example of a Protected Issuance Authorization Trust Statement.
 ```
@@ -337,7 +419,9 @@ The following is a non-normative example of a Protected Issuance Authorization T
 .
 <SIGNATURE>
 ```
-## Protected Issuance Trust List Statement (piTLS)
+
+### Protected Issuance Trust List Statement (piTLS)
+
 ```
 {
     "typ": "swiyu-protected-issuance-trust-list-statement+jwt",
@@ -363,7 +447,9 @@ The following is a non-normative example of a Protected Issuance Authorization T
 .
 <SIGNATURE>
 ```
-## Non-Compliance Trust List Statement
+
+### Non-Compliance Trust List Statement
+
 ```
 {
     "typ": "swiyu-non-compliance-trust-list-statement+jwt",
