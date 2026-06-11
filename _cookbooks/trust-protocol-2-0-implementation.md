@@ -33,7 +33,7 @@ This section uses the following terms:
 
 **Verification** refers to verifying if a trust statement is valid – (not to be confused with the verification of VCs performed by a credential verifier). It consists of two parts:
 - Checking the cryptographic and semantic **validity** of a trust artefact, and
-- Confirming its current **status* against the status list.
+- Confirming its current **status** against the status list.
   
 **Relay** refers to an actor who merely passes on trust artefacts to other parties without having a business need to check their content. Example: Generic verifier passing on vqPS to the Holder.
 
@@ -50,9 +50,9 @@ This section uses the following terms:
 
 | ID | Principle | Reasoning |
 |--- |--- |--- |
-| TA-PRINC-001 | All actors in the swiyu trust ecosystem must verify the validity of trust artefacts in the same way as outlined in PARENT-ADR-027 - Validating JWTs signed with DID keys. | This ensures that all parties have a common understanding of trust artefact validity and reduces redundant verification code. |
+| TA-PRINC-001 | All actors in the swiyu trust ecosystem must verify the validity of trust artefacts in the same way as outlined [Validating JWTs signed with DID keys]. | This ensures that all parties have a common understanding of trust artefact validity and reduces redundant verification code. |
 | TA-PRINC-002 | A consumer MUST verify both validity and status of all trust artifacts at least once before they are used according to the Trust Protocol. | Verification of the validity of a trust artifact is paramount, but can be "cached". This reduces the number of calls due to validity verifications - which are not expected to suddenly change. |
-| TA-PRINC-003 | A relay MUST verify a trust artefact the first time they receive it. <br> - This MUST include checking validity, and <br> -MUST include checking the status list. |This ensures that bugs or issues during trust artefact issuance are caught as early as possible, allowing actors to react to it earlier. |
+| TA-PRINC-003 | A relay MUST verify a trust artefact the first time they receive it. <br> - This MUST include checking validity, and <br> - MUST include checking the status list. |This ensures that bugs or issues during trust artefact issuance are caught as early as possible, allowing actors to react to it earlier. |
 | TA-PRINC-0054 | A relay MAY cache the verification result of a trust artefact - thus relying on a previous verification while further passing on said artefact (e.g. when it is cached locally). | This reduces the number of calls due to verifications - which are not expected to suddenly change. <br> Note that it is the responsibility of the relay to figure out how to do caching, cache invalidation/refresh, etc. |
 
 ### Verification Rules
@@ -60,12 +60,14 @@ This section uses the following terms:
 From the above principles the following rules can be derived.
 
 **Generic Issuer (Relay)**
+
 | Artefact | Case | Action |
 |--- |--- |--- |
 |idTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
 |piaTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
 
 **Generic Verifier (Relay)**
+
 | Artefact | Case | Action |
 |--- |--- |--- |
 |idTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
@@ -73,6 +75,7 @@ From the above principles the following rules can be derived.
 |pvaTS | upon receival <br> when passing on | MUST verifiy <br> no verification needed |
 
 **Generic Verifier (Consumer)**
+
 | Artefact | Case | Action |
 |--- |--- |--- |
 |idTS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
@@ -80,7 +83,8 @@ From the above principles the following rules can be derived.
 |piTLS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
 |ncTLS | upon each use (during verification of VC with protected VCT) | MUST verifiy |
 
-**HOlder/Wallet (Consumer)**
+**Holder/Wallet (Consumer)**
+
 | Artefact | Case | Action |
 |--- |--- |--- |
 |idTS | upon receival | MUST verifiy |
@@ -91,6 +95,7 @@ From the above principles the following rules can be derived.
 | ncTLS |	upon each use |	MUST verify |
 
 **CheckApp (Consumer)**
+
 | Artefact | Case | Action |
 |--- |--- |--- |
 |idTS | upon receival | MUST verifiy |
