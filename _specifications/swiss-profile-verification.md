@@ -37,7 +37,7 @@ The specifications are fully supported by this profile (and components adhering 
 | OpenID4VP | 1.0 | [OpenID for Verifiable Credential Presentation (OID4VP) v1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) |
 | JAR | RFC-9101 | [RFC9101 - The OAuth Authorization Framework: JWT-Secured Authorization Request (JAR)](https://www.rfc-editor.org/rfc/rfc9101) |
 
-**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
 
 # OpenID for Verifiable Presentations 1.0
@@ -52,7 +52,7 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 Verifiers **MUST** send Verification Requests as a JWT-Secured Authorization Request (JAR).
 - `client_id` **MUST** be the key id (`kid`) JAR without suffix fragment. If the `client_id` contains the prefix "`decentralized_identifier:`" it **MUST** be removed before the comparison.
-- `client_id` **MUST** be the verifier's identifier as defined in [swiss-profile-anchor](/swiss-profile-anchor/) And **MAY** be prefixed with the Client Identifier Prefix.
+- `client_id` **MUST** be the verifier's identifier as defined in [swiss-profile-anchor](/specifications/swiss-profile-anchor/) And **MAY** be prefixed with the Client Identifier Prefix.
 - The client ID values in the `client_id` request parameter and in the Request Object `client_id` claim **MUST** be identical, as defined in RFC 9101
 
 For Online Verification only passing a request object by reference is supported.
@@ -174,7 +174,7 @@ Verifier Attestation JWT **SHOULD** be used by the Wallet to validate authentici
 
 Otherwise, the Wallet **SHOULD** use Trust Protocol mechanisms instead to validate authenticity of the Verifier.
 
-## Implementation Considerations
+## 13 Implementation Considerations
 
 ### Authorization Response Size
 
@@ -182,9 +182,9 @@ Otherwise, the Wallet **SHOULD** use Trust Protocol mechanisms instead to valida
 
 Generally verifiers are recommended to tailor the size of accepted presentations to their use case and to keep them small enough to prevent the risk of overloading systems/DoS.
 
-The recommended supported authorization response (aka presentation) size is the current [max payload limit](/swiss-profile-issuance/#83-credential-response) of accepted VCs plus one MB.
+The recommended supported authorization response (aka presentation) size is the current [max payload limit](/specifications/swiss-profile-issuance/#83-credential-response) of accepted VCs plus one MB.
 
-In order to be guaranteed to work with VCs presented by the swiyu Wallet a verifier needs to support a <b>presentation size of 21MB</b>.
+In order to be guaranteed to work with VCs presented by the swiyu Wallet a verifier needs to support an <b>authorization response size of 21MB</b>.
 
 {% endcapture %}
 
