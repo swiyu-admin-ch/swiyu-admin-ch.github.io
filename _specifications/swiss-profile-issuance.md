@@ -120,7 +120,7 @@ The number of elements in the credentials array **MUST** match the exact number 
 
 Generally issuers are recommended to fit the size of issued VCs to their usecase and to keep them as small as possible. The same goes for the batch payload limit.
 
-The <b>max batch payload limit SUPPORTED</b> by the swiyu Wallet is <b>20MB</b>(measured decompressed but potentially still encrypted payload).
+The <b>max batch payload limit SUPPORTED</b> by the swiyu Wallet is <b>20MB</b> (measured decompressed but potentially still encrypted payload).
 
 {% endcapture %}
 
