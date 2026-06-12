@@ -21,32 +21,32 @@ The outdated version of this cookbook has been [archived](/archive/vc-visual-pre
 
 ## Introduction
 
-This manual describes how to define the visual presentation of a Verifiable Credential (VC) displayed in the swiyu App, the digital wallet of the Swiss Confederation.
+This manual describes how to define the visual presentation of a Verifiable Credential (VC) displayed in the swiyu Wallet, the digital wallet app of the Swiss Confederation.
 
-Its goal is to enable issuers in creating clean, professional looking credentials that effectively represent their organisation or service. This guide provides all necessary information to prepare from the start the appropriate graphic assets and deterimine the suitable settings. 
+Its goal is to enable issuers in creating clean, professional looking credentials that effectively represent their organisation or service. This guide provides all necessary information to prepare from the start the appropriate graphic assets and determine the suitable settings. 
 
 The instruction is based on the credential visualisation with OID Credential Issuer Metadata and Overlays Capture Architecture (OCA), which are defined in the [Swiss Profile](/specifications//oca-v1-0/).
 
 ## Purpose and Overview 
 
-In the swiyu wallet app, Verifiable Credentials (VC) are visually represented as cards to allow users to easily recognise and utilise them. According to the implemented credential visualisation metadata, an issuer/verifier can define the following:
+In the swiyu Wallet, Verifiable Credentials (VC) are visually represented as cards to allow users to easily recognise and utilise them. According to the implemented credential visualisation metadata, an issuer/verifier can define the following:
 
 - the verifier's or issuer's name and logo
 - the background colour of the credential
 - the logo of the credential
 - the name of the credential
 - the displayed complementary info of the credential (description)
-- the attributes of the credential
-- the clustering and ordering of the credential's attributes
+- the name and value appearance of credential attributes (claims)
+- the clustering and ordering of the credential attributes
 
-All these visible or readible features are set and configured by the issuer/verifier in it's Credential Issuer Metadata and/or OCA Bundle. 
+All these visible or readable features are set and configured by the issuer/verifier in it's Credential Issuer Metadata and/or OCA Bundle. 
 
-Below is an example of how various credentials are displayed in different situations in the swiyu app.  
+Below is an example of how various credentials are displayed in different situations in the swiyu Wallet.  
 
 [![overview](../../assets/images/oca-overview.png)](../../assets/images/oca-overview.png)
 [![credential preview and detail](../../assets/images/vc-credential-preview-detail.png)](../../assets/images/vc-credential-preview-detail.png)
 
-As an example we take this metadata (OID4VCI and OID4VP), and focus only on the relevant fields (technical fields are hidden):
+As an example, the visualisation metadata in OID4VCI and OID4VP with focus on only the relevant fields (technical fields are hidden) look like this:
 
 ```
 credential_issuer_metadata.json: |
@@ -156,7 +156,7 @@ verification_authorization_request.json: |
 
 ## Multilanguage
 
-The swiyu app supports the following languages: DE, FR, IT, RM, EN.
+The swiyu Wallet supports the following languages: DE, FR, IT, RM, EN.
 If none of the languages supported by the app are declared in the visualisation metadata, the app selects a suitable default locale based on the device settings and the general range of locales declared in the visualisation metadata.
 
 ```
@@ -231,7 +231,7 @@ oca_bundle.json: |
 
 The background color is a solid HEX color value (e.g., #FFFFFF, #000000, #FF5733, etc.)
 
-Images are not supported.
+Background images are not supported.
 
 No transparency/alpha channels are supported.
 
@@ -240,15 +240,15 @@ No transparency/alpha channels are supported.
 
 To ensure proper contrast and legibility of the information displayed on the card (such as the VC name, description, and logo/icon), a gradient overlay is applied. This helps text and icons stand out clearly against the chosen background colour, improving readability and overall user experience.
 
-Furthermore, the swiyu app will automatically adjust the colour of the text and the logo to black or white, depending on the brightness or darkness of the defined colour.
+Furthermore, the swiyu Wallet will automatically adjust the colour of the text and the logo to black or white, depending on the brightness or darkness of the defined colour.
 
 **Darkmode**
 
-Although the swiyu app supports dark mode, the VC’s color scheme remains unaffected by this setting. Consequently, its background color stays the same in both light and dark modes.
+Although the swiyu Wallet supports dark mode, the VC’s color scheme remains unaffected by this setting. Consequently, its background color stays the same in both light and dark modes.
 
 **Demo-Watermark**
 
-All the credentials which are issued within the swiyu Public Beta/Sandbox Wallet are applied with a DEMO watermark to differentiate those credentials to the productive ones.
+All the credentials which are issued within the swiyu Sandbox Wallet are applied with a DEMO watermark to differentiate those credentials to the productive ones.
 
 {% endcapture %}
 
@@ -269,7 +269,7 @@ The Logo must be provided as image data URL, https URL are not supported.
 
 Multi-colored logos and gradients are automatically converted to a monochrome version to foster readability and ease of use. 
 
-The swiyu app will automatically tint the logo to black or white, depending on the brightness or darkness of the background colour.
+The swiyu Wallet will automatically tint the logo to black or white, depending on the brightness or darkness of the background colour.
 
 [![logo conversion](../../assets/images/vc_logo_conversion.png)](../../assets/images/vc_logo_conversion.png)
 [![logo scaling](../../assets/images/vc_logo_scaling.png)](../../assets/images/vc_logo_scaling.png)
@@ -649,7 +649,7 @@ oca_bundle.json: |
 
 **Sensitive Data** 
 
-The Sensitive Overlay does just flag attributes as sensitive with a visual indicator. No further protection or privacy mechanism is applied by the swiyu app based on these information. It's up to the credential issuer to preserve user's privacy.
+The Sensitive Overlay does just flag attributes as sensitive with a visual indicator. No further protection or privacy mechanism is applied by the swiyu Wallet based on these information. It's up to the credential issuer to preserve user's privacy.
 {% endcapture %}
 
 <div class="notice--info">
@@ -810,7 +810,7 @@ For Credential Issuer Metadata, a single cluster is displayed without a headline
 A single cluster with a given headline is created by declaring a root Capture Base that contains a single Reference attribute pointing to another Capture Base that holds the attributes of this cluster. The H1 headline is taken from the Label Overlay corresponding to the root Capture Base.
 
 **Subclusters and headlines H2-H3**<br>
-Clusters can be nested. For example, a Capture Base "CB1" may contain an attribute of type Reference to another Capture Base "CB2". The cluster "CB2" is then a subcluster of the cluster "CB1" with the headline "H2". The swiyu app will display up to three levels; any further nested clusters will be displayed as if they were on level three.
+Clusters can be nested. For example, a Capture Base "CB1" may contain an attribute of type Reference to another Capture Base "CB2". The cluster "CB2" is then a subcluster of the cluster "CB1" with the headline "H2". The swiyu Wallet will display up to three levels; any further nested clusters will be displayed as if they were on level three.
 
 **Array object clusters**
 
@@ -825,7 +825,7 @@ For array of objects, in a Capture Base with an attribute of type `Array[Referen
 
 ## Data Types
 
-The swiyu app visualises attribute values according to their data type. 
+The swiyu Wallet visualises attribute values according to their data type. 
 
 For Credential Issuer Metadata, the data type of an attribute is determined by the value type of the attribute's JSON field.
 
@@ -846,7 +846,7 @@ oca_bundle.json: |
 }
 ```
 
-The swiyu app displays the various data type as following:
+The swiyu Wallet displays the various data type as following:
 
 <table>
  <thead>
@@ -910,8 +910,8 @@ The swiyu app displays the various data type as following:
 	    <td>images</td>
 		  <td>string<a href="#footnote-2">[2]</a></td>
 		  <td>Binary</td>
-		  <td>base64code</td>  
-	    <td>image</td>
+		  <td>&#60;base64code&#62;</td>  
+	    <td>&#60;image&#62;</td>
 	    <td>no</td>	
 	    <td>Base64 encoded image binary data. OCA requires the attribute to be declared as base64 in CharacterEncoding Overlay and the image media type in Format Overlay. Media types image/png and image/jpeg are supported.</td>
 	  </tr>
@@ -919,8 +919,8 @@ The swiyu app displays the various data type as following:
       <td>images</td>
 		  <td>string<a href="#footnote-2">[2]</a></td>
 	    <td>Text</td>
-		  <td>data:image/png;base64,base64code</td>
-	    <td>image</td>
+		  <td>data:image/png;base64,&#60;base64code&#62;</td>
+	    <td>&#60;image&#62;</td>
 		  <td>no</td>	
 	    <td>Data URL images. OCA requires Standard Overlay to match Data URL from Text type attributes.</td>
 	  </tr>
@@ -963,9 +963,9 @@ For missing assets like background colour and logos, a standard visual presentat
 
 ## Theming
 
-With an OCA Bundle, the appearance of a credential can be themed. This allows you to declare a background colour, credential logo and description, depending on whether the swiyu app is in dark or light mode.
+With an OCA Bundle, the appearance of a credential can be themed. This allows you to declare a background colour, credential logo and description, depending on whether the swiyu Wallet is in dark or light mode.
 
-The Branding Overlay supports the `theme` property. If a Branding Overlay is declared with "dark" theme, the visualisation information is only considered when the swiyu app is in dark mode. Any other theme is considered to be used in light mode.
+The Branding Overlay supports the `theme` property. If a Branding Overlay is declared with "dark" theme, the visualisation information is only considered when the swiyu Wallet is in dark mode. Any other theme is considered to be used in light mode.
 
 [![Theming](../../assets/images/oca-theming.png)](../../assets/images/oca-theming.png)
 
@@ -1000,5 +1000,5 @@ No. To ensure contrast and legibility, images are not supported.
 
 ## Further assistance
 
-Thank you for following these guidelines. By doing so, you help to ensure that your credentials are displayed correctly in the swiyu app and are easily recognisable to users. If you have any questions or require further assistance, please feel free to open an issue in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io).
+Thank you for following these guidelines. By doing so, you help to ensure that your credentials are displayed correctly in the swiyu Wallet and are easily recognisable to users. If you have any questions or require further assistance, please feel free to open an issue in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io).
 
