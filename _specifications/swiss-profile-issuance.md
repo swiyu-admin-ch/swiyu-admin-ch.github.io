@@ -116,6 +116,19 @@ Requests **MUST** be sent with a DPoP Header.<br>
 The number of elements in the credentials array **MUST** match the exact number of keys that the Wallet has provided via the proofs parameter of the Credential Request.<br>
 `notification_id` is **NOT SUPPORTED**.<br>
 
+{% capture notice-text %}
+
+Generally issuers are recommended to fit the size of issued VCs to their usecase and to keep them as small as possible. The same goes for the batch payload limit.
+
+The <b>max batch payload limit SUPPORTED</b> by the swiyu Wallet is <b>20MB</b>(measured decompressed but potentially still encrypted payload).
+
+{% endcapture %}
+
+<div class="notice--info">
+  <h3 class="no_toc">Implementation Recommendation</h3>
+  {{ notice-text | markdownify }}
+</div>
+
 ## 9. Deferred Credential Endpoint
 Requests **MUST** be sent with a DPoP Header.<br>
 
