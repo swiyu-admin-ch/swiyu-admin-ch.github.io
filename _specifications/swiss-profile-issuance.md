@@ -162,8 +162,8 @@ GET https://example.com/.well-known/openid-configuration/issuer1
 Issuers **MUST** also provide Signed Metadata.<br>
 The Wallet **MUST** request and use Signed Metadata.<br>
 Signed Metadata **MUST** be used.<br>
-The Signed Metadata **MUST** be verified according to [swiss-profile-anchor](/swiss-profile-anchor/). <br>
-The `kid` header claim is **REQUIRED** and **MUST** be an absolute fragment containing a DID as described in [swiss-profile-anchor](/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
+The Signed Metadata **MUST** be verified according to [swiss-profile-anchor](/specifications/swiss-profile-anchor/). <br>
+The `kid` header claim is **REQUIRED** and **MUST** be an absolute fragment containing a DID as described in [swiss-profile-anchor](/specifications/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JWT header is **REQUIRED**.
 
