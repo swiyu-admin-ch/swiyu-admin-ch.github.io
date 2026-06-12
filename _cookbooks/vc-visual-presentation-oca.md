@@ -569,8 +569,20 @@ credential_issuer_metadata.json: |
           },
           {
             "path": ["given_name"]
+          },
+		  {
+            "path": ["social_security_number"]
+          },
+ 		  {
+            "path": ["over_16"]
+          },
+  		  {
+            "path": ["over_18"]
+          },
+  		  {
+            "path": ["birth_year"]
           }
-        ]
+        ]
       }
     }
   }
@@ -586,8 +598,12 @@ oca_bundle.json: |
       "type": "extend/overlays/order/1.0",
       "attribute_orders": {
         "given_name": 2,
-        "family_name": 1
-      }
+        "family_name": 1,
+		"social_security_number": 3,
+ 		"over_18": 5, 
+ 		"over_16": 4,
+ 		"birth_year": 6
+      }
     }
   ]
 }
@@ -595,11 +611,27 @@ oca_bundle.json: |
 
 The order of attributes displayed to the user is determined by the attribute order number ascending.
 
+{% capture notice-text %}
+
+**Unknown order** 
+
+If a claim/attribute is not defined with a specific order, it get ordered after the last known attribute/claim order.
+{% endcapture %}
+
+<div class="notice--info">
+  <h4 class="no_toc">Good to know:</h4>
+  {{ notice-text | markdownify }}
+</div>
+
+
+
 ## Sensitive Attributes
 
 Sensitive attributes can be marked as such, indicating attributes that require protection against unauthorized or unwarranted disclosure. A visual indicator is displayed for these attributes.
 
 Sensitive attributes can only be defined within an OCA Bundle by declaring a Sensitive Overlay.
+
+[![Sensitive Attributes](../../assets/images/oca-sensitive-attributes.png)](../../assets/images/oca-sensitive-attributes.png)
 
 ```
 oca_bundle.json: |
@@ -613,17 +645,15 @@ oca_bundle.json: |
 }
 ```
 
-[![Sensitive Attributes](../../assets/images/oca-sensitive-attributes.png)](../../assets/images/oca-sensitive-attributes.png)
-
 {% capture notice-text %}
 
 **Sensitive Data** 
 
-The Sensitive Overlay does just flags attributes as sensitive with a visual indicator. No further protection or privacy mechanism is applied by the swiyu app based on these information. It's up to the credential issuer to preserve user's privacy.
+The Sensitive Overlay does just flag attributes as sensitive with a visual indicator. No further protection or privacy mechanism is applied by the swiyu app based on these information. It's up to the credential issuer to preserve user's privacy.
 {% endcapture %}
 
 <div class="notice--info">
-  <h4 class="no_toc">Recommendation:</h4>
+  <h4 class="no_toc">Good to know</h4>
   {{ notice-text | markdownify }}
 </div>
 
@@ -636,7 +666,7 @@ Clustering enables you to organise credential attributes into groups. Within eac
 
 Clustering can only be defined within an OCA Bundle by declaring Capture Bases. Headlines are taken from the respective OCA Label Overlay.
 
-As an example, the below OCA Bundle defines two clusters, in the display-order "basis" first and second "additional", with each a H1 headline "Basis Data" and "Additional Data". Cluster "basis" contains the attributes "given_name", "family_name" and each nationality as a sub-cluster H2 with headline from attribute "country", while cluster "additional" contains attributes "birthday" and "over_18".  
+As an example, the below OCA Bundle defines two clusters, "base" and "additional", with each a H1 headline "Basis Data" and "Additional data". Cluster "base" contains the attributes "given_name", "family_name" and each nationality as a sub-cluster H2 with headline from attribute "country". Cluster "additional" contains attributes "birthday" and "over_18" and the subcluster "address" with H2 headline "Address". Further, subcluster "address" contains itself again a subcluster with H3 headline "Billing address". Each subcluster contain the the respective attribute "city". 
 
 ```
 credential.json: |
@@ -654,7 +684,13 @@ credential.json: |
       "country": "France",
       "code": "FR"
     }
-  ]
+  ],
+  "address": {
+    "city": "Berne"
+  },
+  "billing_address": {
+    "city": "Lausanne"
+  }
 }
 ```
 
@@ -667,7 +703,7 @@ oca_bundle.json: |
       "digest": "root",
       "attributes": {
         "basis": "refs:base",
-        "additional": "refs:add"
+        "additional": "refs:additional"
       }
     },
     {
@@ -681,10 +717,11 @@ oca_bundle.json: |
     },
     {
       "type": "spec/capture_base/1.0",
-      "digest": "add",
+      "digest": "additional",
       "attributes": {
         "birth_year": "DateTime",
-        "over_18": "Boolean"
+        "over_18": "Boolean",
+		"address": "refs:address"
       }
     },
     {
@@ -694,15 +731,30 @@ oca_bundle.json: |
         "country": "Text",
         "code": "Text"
       }
+    },
+    {
+      "type": "spec/capture_base/1.0",
+      "digest": "address",
+      "attributes": {
+        "city": "Text",
+		"billing_address": "refs:billaddress"
+      }
+    },
+     {
+      "type": "spec/capture_base/1.0",
+      "digest": "billaddress",
+      "attributes": {
+        "city": "Text"
+      }
     }
-  ],
+  ],
   "overlays": [
     {
       "capture_base": "root",
       "type": "spec/overlays/label/1.1",
       "attribute_labels": {
         "basis": "Basis Data",
-        "additional": "Additional Data"
+        "additional": "Additional data"
       }
     },
     {
@@ -715,11 +767,12 @@ oca_bundle.json: |
       }
     },
     {
-      "capture_base": "add",
+      "capture_base": "additional",
       "type": "spec/overlays/label/1.1",
       "attribute_labels": {
         "birth_year": "Year of birth",
-        "over_18": "Age over 18 years"
+        "over_18": "Age over 18 years",
+        "address": "Address"
       }
     },
     {
@@ -730,33 +783,23 @@ oca_bundle.json: |
         "code": "Code"
       }
     },
+    {
+      "capture_base": "address",
+      "type": "spec/overlays/label/1.1",
+      "attribute_labels": {
+        "city": "City",
+        "billing_address": "Billing address"
+      }
+    },
     {
-      "type": "extend/overlays/order/1.0",
-      "capture_base": "root",
-      "attribute_orders": {
-        "basis": 1,
-        "additional": 2
+      "capture_base": "billaddress",
+      "type": "spec/overlays/label/1.1",
+      "attribute_labels": {
+        "city": "City"
       }
     }
   ]
 }
-```
-
-Cluster structure:
-
-```
-H1 "Basis Data"
-  "Firstname": "Seraina"
-  "Lastname": "Muster"
-  H2 "Switzerland"
-    "Country": "Switzerland"
-    "Code": "CH"
-  H2 "France"
-    "Country": "France"
-    "Code": "FR" 
-H1 "Additional Data"
-  "Year of birth": 1988
-  "Age over 18 years": yes
 ```
 
 {% capture notice-text %}
