@@ -174,6 +174,25 @@ Verifier Attestation JWT **SHOULD** be used by the Wallet to validate authentici
 
 Otherwise, the Wallet **SHOULD** use Trust Protocol mechanisms instead to validate authenticity of the Verifier.
 
+## Implementation Considerations
+
+### Authorization Response Size
+
+{% capture notice-text %}
+
+Generally verifiers are recommended to tailor the size of accepted presentations to their use case and to keep them small enough to prevent the risk of overloading systems/DoS.
+
+The recommended supported authorization response (aka presentation) size is the current [max payload limit](/swiss-profile-issuance/#83-credential-response) of accepted VCs plus one MB.
+
+In order to be guaranteed to work with VCs presented by the swiyu Wallet a verifier needs to support a <b>presentation size of 21MB</b>.
+
+{% endcapture %}
+
+<div class="notice--info">
+  <h3 class="no_toc">Implementation Recommendation</h3>
+  {{ notice-text | markdownify }}
+</div>
+
 # RFC 9101 The OAuth 2.0 Authorization Framework: JWT-Secured Authorization Request (JAR)
 ## 6. Validating JWT-Based Requests
 ### 6.1. JWE Encrypted Request Object
