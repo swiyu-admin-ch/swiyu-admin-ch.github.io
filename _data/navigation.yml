@@ -15,43 +15,44 @@ main:
   - title: "Threat Model"
     url: /threat-model
 
-cookbooks_sidebarmenu:
-  - title: "Cookbooks"
-    url: /cookbooks/
-    children:
-      - title: "How to use Beta-ID"
-        url: /cookbooks/how-to-use-beta-id/
-      - title: "Base- and Trust-Registry"
-        url: /cookbooks/onboarding-base-and-trust-registry/
-      - title: "Generic Issuer"
-        url: /cookbooks/onboarding-generic-issuer/
-      - title: "Generic Verifier"
-        url: /cookbooks/onboarding-generic-verifier/
-      - title: "VC Visual Presentation"
-        url: /cookbooks/vc-visual-presentation-oca/
-      - title: "Trust Protocol Implementation"
-        url: /cookbooks/trust-protocol-2-0-implementation/
+# Sidebarmenu is not shown anymore due to changes for better readabilty
+#cookbooks_sidebarmenu:
+#  - title: "Cookbooks"
+#    url: /cookbooks/
+#    children:
+#      - title: "How to use Beta-ID"
+#        url: /cookbooks/how-to-use-beta-id/
+#      - title: "Base- and Trust-Registry"
+#        url: /cookbooks/onboarding-base-and-trust-registry/
+#      - title: "Generic Issuer"
+#        url: /cookbooks/onboarding-generic-issuer/
+#      - title: "Generic Verifier"
+#        url: /cookbooks/onboarding-generic-verifier/
+#      - title: "VC Visual Presentation"
+#        url: /cookbooks/vc-visual-presentation-oca/
+#      - title: "Trust Protocol Implementation"
+#        url: /cookbooks/trust-protocol-2-0-implementation/
 
-specifications_sidebarmenu:
-  - title: "Specifications"
-    url: /specifications/
-    children:
-      - title: "Introduction"
-        url: /specifications/introduction/
-      - title: "Anchor Profile"
-        url: /specifications/swiss-profile-anchor/
-      - title: "VC Profile"
-        url: /specifications/swiss-profile-vc/
-      - title: "Trust Profile"
-        url: /specifications/swiss-profile-trust/
-      - title: "Issuance Profile"
-        url: /specifications/swiss-profile-issuance/
-      - title: "Verification Profile"
-        url: /specifications/swiss-profile-verification/
-      - title: "Trust Protocol"
-        url: /specifications/trust-protocol-v2-0/
-      - title: "OCA"
-        url: /specifications/oca-v1-0/
+#specifications_sidebarmenu:
+#  - title: "Specifications"
+#    url: /specifications/
+#    children:
+#      - title: "Introduction"
+#        url: /specifications/introduction/
+#      - title: "Anchor Profile"
+#        url: /specifications/swiss-profile-anchor/
+#      - title: "VC Profile"
+#        url: /specifications/swiss-profile-vc/
+#      - title: "Trust Profile"
+#        url: /specifications/swiss-profile-trust/
+#      - title: "Issuance Profile"
+#        url: /specifications/swiss-profile-issuance/
+#      - title: "Verification Profile"
+#        url: /specifications/swiss-profile-verification/
+#      - title: "Trust Protocol"
+#        url: /specifications/trust-protocol-v2-0/
+#      - title: "OCA"
+#        url: /specifications/oca-v1-0/
 
 
 
