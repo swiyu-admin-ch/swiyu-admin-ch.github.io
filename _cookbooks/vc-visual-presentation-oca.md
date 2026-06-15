@@ -768,7 +768,7 @@ oca_bundle.json: |
       "attribute_labels": {
         "given_name": "Firstname",
         "family_name": "Lastname",
-        "nationalities": "{{refs:nat:country}"
+        "nationalities": "{{refs:nat:country}}"
       }
     },
     {
