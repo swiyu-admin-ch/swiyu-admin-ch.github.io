@@ -241,7 +241,7 @@ And in the context of OCA Bundle, it adds the following constraints:
 
 Overlays supporting attribute templating apply the following templating rules:
 
-- Expression between double brackets `{{EXPRESSION}}` **MUST** be interpreted as attribute from it's Capture Base.
+- Expression between double brackets ```{{EXPRESSION}}``` **MUST** be interpreted as attribute from it's Capture Base.
 - Expressions mapping to Capture Base attribute of type `Text`, `Boolean`, `Numeric`, `DateTime` and `Array` **MUST** be replaced by the attribute's data source value.
 - Expressions mapping to Capture Base attribute of type `Binary` or `Reference` **MAY** be replaced by the attribute's data source value.
 - When an expression can not be mapped to a Capture Base attribute, the expression **SHOULD** be replaced by an `empty string`.
@@ -253,7 +253,7 @@ An expression follows the pattern `refs:<digest>:<attribute_name>`, whereas
 - `<attribute_name>` is the attribute name in the Capture Base.
 - `<attribute_name>[<index>]` is the element at index of the attribute with type `Array`. Index `null` selects all elements of the attribute.
 
-Assuming a Capture Base with `"digest":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"` and Branding Overlay with `"capture_base":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"`, the expressions `{{refs:IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG:firstname}}` and `{{firstname}}` are equal.
+Assuming a Capture Base with `"digest":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"` and Branding Overlay with `"capture_base":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"`, the expressions ```{{refs:IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG:firstname}}``` and ```{{firstname}}``` are equal.
 
 For `<attribute_name>` referencing an attribute of type `Array`, joining of the elements can be defined by appending `.join('<separator>')`, whereas
 - `<separator>` is the string used to join each element when visualising the attribute.
