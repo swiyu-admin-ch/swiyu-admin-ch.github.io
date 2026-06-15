@@ -265,7 +265,7 @@ The logo or icon must be a transparent PNG (excluding the background).
 
 No alpha channels or transparency for solid elements. 
 
-The Logo must be provided as image data URL, https URL are not supported.
+The Logo must be provided as image Data-URI, https URL are not supported.
 
 Multi-colored logos and gradients are automatically converted to a monochrome version to foster readability and ease of use. 
 
@@ -295,6 +295,8 @@ The VC supports multilingual visualisation metadata. This means the logo/icon ca
 </div>
 
 ### Credential Logo
+
+The credential's logo is shown in any screen the credential is displayed.
 
 ```
 credential_issuer_metadata.json: |
@@ -348,7 +350,7 @@ credential_issuer_metadata.json: |
 
 ### Verifier Logo
 
-The verifier's logo is only part of the OID4VP Authorization Request and will be used in the presentation request screen.
+The verifier's logo is only part of the OID4VP Authorization Request and will be used in the VC presentation screen.
 
 [![verifier logo](../../assets/images/vc_verifier_name_logo.png)](../../assets/images/vc_verifier_name_logo.png)
 
@@ -365,7 +367,7 @@ verification_authorization_request.json: |
 
 Care to use a self-explanatory credential name that is of reasonable length. 
 
-Think to set the various language versions of it so that name is displayed in the app language of the user. 
+Think to set the various language versions of it, so that name is displayed in the app language of the user. 
 
 {% capture notice-text %}
 If you issue a family of diverse credentials (like e.g. entry pass spa, entry pass fitness & spa) try to integrate the difference already in the name and/or the color so that it is easier for a user to distinguish them.
@@ -381,6 +383,8 @@ If you issue a family of diverse credentials (like e.g. entry pass spa, entry pa
 </div>
 
 ### Credential Name
+
+The credential's name will be used for the credential offer screen, credential preview and in the detail view of the credential.
 
 ```
 credential_issuer_metadata.json: |
@@ -503,7 +507,7 @@ verification_authorization_request.json: |
 
 ## Description
 
-Carefully chose which metadata should come as complementary information on the overview right under the credential's name.
+Carefully chose which metadata should come as complementary information on the credential preview right under the credential's name.
 
 Keep metadata concise and relevant to avoid overwhelming the user with unnecessary information.
 
@@ -553,7 +557,7 @@ The Branding Overlay's `primary_field` supports templating. The placeholders in 
 
 ## Order of Attributes
 
-The display-order of attributes for a credential will be applied in the credential offer screen, in the detail view of the credential and in the verification presentation request screen.
+The display-order of attributes for a credential will be applied in the credential offer screen, in the detail view of the credential and in the credential presentation screen (verification).
 
 [![Ordering](../../assets/images/oca-vc-ordering.png)](../../assets/images/oca-vc-ordering.png)
 
@@ -615,7 +619,7 @@ The order of attributes displayed to the user is determined by the attribute ord
 
 **Unknown order** 
 
-If a claim/attribute is not defined with a specific order, it get ordered after the last known attribute/claim order.
+If an attribute is not defined with a specific order, it is placed after the last known attribute order.
 {% endcapture %}
 
 <div class="notice--info">
@@ -628,8 +632,6 @@ If a claim/attribute is not defined with a specific order, it get ordered after 
 ## Sensitive Attributes
 
 Sensitive attributes can be marked as such, indicating attributes that require protection against unauthorized or unwarranted disclosure. A visual indicator is displayed for these attributes.
-
-Sensitive attributes can only be defined within an OCA Bundle by declaring a Sensitive Overlay.
 
 [![Sensitive Attributes](../../assets/images/oca-sensitive-attributes.png)](../../assets/images/oca-sensitive-attributes.png)
 
@@ -644,6 +646,9 @@ oca_bundle.json: |
   ]
 }
 ```
+
+Sensitive attributes can only be defined within an OCA Bundle by declaring a Sensitive Overlay.
+
 
 {% capture notice-text %}
 
@@ -666,7 +671,7 @@ Clustering enables you to organise credential attributes into groups. Within eac
 
 Clustering can only be defined within an OCA Bundle by declaring Capture Bases. Headlines are taken from the respective OCA Label Overlay.
 
-As an example, the below OCA Bundle defines two clusters, "base" and "additional", with each a H1 headline "Basis Data" and "Additional data". Cluster "base" contains the attributes "given_name", "family_name" and each nationality as a sub-cluster H2 with headline from attribute "country". Cluster "additional" contains attributes "birthday" and "over_18" and the subcluster "address" with H2 headline "Address". Further, subcluster "address" contains itself again a subcluster with H3 headline "Billing address". Each subcluster contain the the respective attribute "city". 
+As an example, the below OCA Bundle defines two clusters, "base" and "additional", with each a H1 headline "Basis Data" and "Additional data". Cluster "base" contains the attributes "given_name", "family_name" and each nationality as a sub-cluster H2 with headline from attribute "country". Cluster "additional" contains attributes "birthday", "over_18" and the subcluster "address" with H2 headline "Address". Further, subcluster "address" contains itself again a subcluster "billaddress" with H3 headline "Billing address".
 
 ```
 credential.json: |
@@ -763,7 +768,7 @@ oca_bundle.json: |
       "attribute_labels": {
         "given_name": "Firstname",
         "family_name": "Lastname",
-        "nationalities": "{refs:nat:country}"
+        "nationalities": "{{refs:nat:country}"
       }
     },
     {
@@ -922,7 +927,7 @@ The swiyu Wallet displays the various data type as following:
 		  <td>data:image/png;base64,&#60;base64code&#62;</td>
 	    <td>&#60;image&#62;</td>
 		  <td>no</td>	
-	    <td>Data URL images. OCA requires Standard Overlay to match Data URL from Text type attributes.</td>
+	    <td>Data URL images. OCA requires Standard Overlay to match Data URL from "Text" type attributes.</td>
 	  </tr>
 	  <tr>
 	    <td>object</td>
@@ -954,10 +959,7 @@ If an OCA Bundle is present and valid, it takes priority over the Credential Iss
 
 Similarly, generally missing visualisation information is covered by an adequate fallback.
 
-For missing assets like background colour and logos, a standard visual presentation is used. Typically, this includes:
-
-- A neutral pre-defined background
-- A neutral logo
+For missing assets like background colour and logos, a standard visual presentation is used. 
 
 [![Fallback Version](../../assets/images/oca-vc-fallback.png)](../../assets/images/oca-vc-fallback.png)
 
@@ -987,10 +989,10 @@ oca_bundle.json: |
 The logo is automatically converted to a single-color (monochrome) version. It is not possible to preserve color nuances.
 
 **Can I use an SVG for the logo?**
-Only PNG files are currently supported. SVG or other vector formats are not accepted.
+Only PNG and JPEG files are currently supported. SVG or other vector formats are not accepted.
 
 **Can I submit a logo larger than 512×512 pixels?**
-For the swiyu app, no. The maximum supported size for logos/icons is 512×512 pixels. If the logo exceeds this size, it will be automatically resized.
+For the swiyu Wallet, no. The maximum supported size for logos/icons is 512×512 pixels. If the logo exceeds this size, it will be automatically resized.
 
 **Can I use different background and logo colors for different languages?**
 Yes. The system supports localization. You can define a background color and a logo/icon for each language.
