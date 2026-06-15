@@ -1002,5 +1002,5 @@ No. To ensure contrast and legibility, images are not supported.
 
 ## Further assistance
 
-Thank you for following these guidelines. By doing so, you help to ensure that your credentials are displayed correctly in the swiyu Wallet and are easily recognisable to users. If you have any questions or require further assistance, please feel free to open an issue in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io).
+Thank you for following these guidelines. By doing so, you help to ensure that your credentials are displayed correctly in the swiyu Wallet and are easily recognisable to users. If you have any questions or require further assistance, please feel free to open an issue in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/issues).
 
