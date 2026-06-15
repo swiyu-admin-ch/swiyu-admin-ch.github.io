@@ -253,7 +253,7 @@ An expression follows the pattern `refs:<digest>:<attribute_name>`, whereas
 - `<attribute_name>` is the attribute name in the Capture Base.
 - `<attribute_name>[<index>]` is the element at index of the attribute with type `Array`. Index `null` selects all elements of the attribute.
 
-Assuming a Capture Base with `"digest":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"` and Branding Overlay with `"capture_base":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"`, the expressions {% raw %}`{{refs:IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG:firstname}}`{% endraw %} and {% raw %}`{{firstname}`}{% endraw %} are equal.
+Assuming a Capture Base with `"digest":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"` and Branding Overlay with `"capture_base":"IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG"`, the expressions {% raw %}`{{refs:IEsMrJ1buvWSv-Lh_yooVZ22PY6fUKnDt19u6-Y8vKwG:firstname}}`{% endraw %} and {% raw %}`{{firstname}}`{% endraw %} are equal.
 
 For `<attribute_name>` referencing an attribute of type `Array`, joining of the elements can be defined by appending `.join('<separator>')`, whereas
 - `<separator>` is the string used to join each element when visualising the attribute.
