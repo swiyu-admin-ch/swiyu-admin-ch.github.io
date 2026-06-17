@@ -146,6 +146,8 @@ Transaction Data is **NOT SUPPORTED** and **SHOULD NOT** be used in this swiss-p
 - `vp_formats_not_supported` is **NOT SUPPORTED**
 - `wallet_unavailable` is **NOT SUPPORTED**
 
+Authorization Error Responses **SHOULD** never be encrypted, even if a valid Authorization Response would have been.
+
 ## 9. Wallet Invocation
 URL scheme `openid4vp://` and `swiyu-verify://` **MUST** be supported.
 
