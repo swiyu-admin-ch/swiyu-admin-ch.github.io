@@ -18,7 +18,7 @@ Please be advised that the current system and its operations are provided on a b
   {{ notice-text | markdownify }}
 </div>
 
-This software is a web server implementing the technical standards as specified in the ["Swiss Profile Issuance"](https://swiyu-admin-ch.github.io/specifications/swiss-profile-issuance/). Together with the other generic components provided, this software forms a collection of APIs allowing issuance and verification of verifiable credentials without the need of reimplementing the standards.
+The swiyu Generic Issuer is a web server implementing the technical standards as specified in the ["Swiss Profile Issuance"](https://swiyu-admin-ch.github.io/specifications/swiss-profile-issuance/). Together with the other generic components provided, this software forms a collection of APIs allowing issuance and verification of verifiable credentials without the need of reimplementing the standards. You'll find additional documentation in this [GitHub repository](https://github.com/swiyu-admin-ch/swiyu-issuer).
 
 [![ecosystem components](../../assets/images/components.png)](../../assets/images/components.png)
 
@@ -239,6 +239,10 @@ To create an image you to run the following command in the repository to create 
 ```bash
 ./mvnw install:install-file -Dfile=lib/primusX-java11-2.4.4.jar -DgroupId=com.securosys.primus -DartifactId=jce -Dversion=2.4.4 -Dpackaging=jar spring-boot:build-image
 ```
+
+# Testing your instance
+
+We provide a [test application](https://github.com/swiyu-admin-ch/swiyu-generic-application-test) for running end-to-end tests and a [test wallet](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet) to validate your instance of the generic components. 
 
 # Your Feedback?
 
