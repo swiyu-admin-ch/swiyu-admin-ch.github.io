@@ -62,7 +62,7 @@ In addition to the already specified claims the JWT Claims Set **MUST** contain:
 - `exp`: **REQUIRED**. As generally defined in [RFC7519](https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-14.html#RFC7519). The `exp` (expiration time) **MUST** be set and can be any time in the future.
 
 The JWT header of the Status List Token **MUST** contain: 
-- `kid`: **REQUIRED**. Must be an absolute `kid` as specified in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).
+- `kid`: **REQUIRED**. Must be an absolute `kid` as specified in [swiss-profile-anchor](../swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).
 
 The Status List Token **MUST** be signed by the same entity as the Referenced Token inside the SD-JWT VC but can use a different key.<br>
 
@@ -113,7 +113,7 @@ X.509 Certificate Extended Key Usage Extension is **NOT SUPPORTED**.
 ## 11. Security Considerations
 
 11.3. Key Resolution and Trust Management<br>
-As specified above, the Status List Token **MUST** be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers **MAY** use a different key for the signature. See [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
+As specified above, the Status List Token **MUST** be signed by the same entity as the Referenced Token inside the SD-JWT VC. Issuers **MAY** use a different key for the signature. See [swiss-profile-anchor](/specifications/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs) for more detail.<br>
 
 ## 12. Privacy Considerations
 
@@ -141,7 +141,7 @@ Additional checks to the content of the Status List Token are performed:
 | Claim |	Requirement Type |	Validation Logic |
 |-----|-----|-----|
 | `kid` (Key Identifier) |	Initial Upload |	**MUST** match a Decentralized Identifier (DID) currently authorized and assigned to the submitting swiyu business partner. |
-| `kid` (Key Identifier) | Subsequent Updates |	**MUST** be identical to the iss value of the previously recorded version of the Status List. See [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs). |
+| `kid` (Key Identifier) | Subsequent Updates |	**MUST** be identical to the iss value of the previously recorded version of the Status List. See [swiss-profile-anchor](/specifications/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs). |
 | `iat` (Issued At) |	Freshness Check |	**MUST** be greater than T - 24 hours (where T represents the current system time). Documents older than 24 hours cannot be uploaded. |
 | `exp` (Expiration) |	Validity Window |	**MUST** be present and **MUST** be greater than the current system time (T). |
 
@@ -200,7 +200,7 @@ JWS JSON Serialization is **NOT SUPPORTED**.
 As specified in [chapter 3.1](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-13.html#name-media-type) of the SD-JWT-VC standard, the media type **MUST** be `application/dc+sd-jwt`.
 
 ### Validation of aud claim in Key Binding JWT
-The wallet **MUST** verify that the client_id belongs to the verifier to prevent identity fraud attacks. This **SHOULD** be done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](/swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).<br> 
+The wallet **MUST** verify that the client_id belongs to the verifier to prevent identity fraud attacks. This **SHOULD** be done by checking that the client_id refers to the same entity that signed the JWT Secured Authorization Requests (JAR) as outlined in [swiss-profile-anchor](../swiss-profile-anchor/#JWTValidationwithcryptographickeysfromDIDs).<br> 
 Only after a successful verification **SHOULD** the wallet include this client_id into the aud claim of the Key Binding JWT. <br>
 
 The verifier **MUST** ensure that the Key Binding JWT received during a presentation is intended for this verifier by checking the aud claim specified by the wallet.<br>
@@ -264,7 +264,7 @@ The only binary data claims supported are:
 An SD-JWT VC **MUST** only have selectively disclosable claims, apart form the claims listed in [3.2.2.2 Registered JWT Claims](#3222--registered-jwt-claims). Other non-selectively dislosable claims **MUST NOT** be supported and **MUST** be rejected.
 
 ### 3.5. Issuer Signature Mechanisms
-The Issuer Signature mechanism is described in [swiss-profile-anchor](/swiss-profile-anchor/).
+The Issuer Signature mechanism is described in [swiss-profile-anchor](../swiss-profile-anchor/).
 
 ## 4. JWT VC Issuer Metadata
 
@@ -382,7 +382,7 @@ Wallets **MUST** support the following methods to visualise credential on their 
 2. Credential Issuer Metadata in [OID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata)
 
 
-Supported requirements for OID4VCI Credential Issuer Metadata can be found in [swiss-profile-issuance](/swiss-profile-issuance/).
+Supported requirements for OID4VCI Credential Issuer Metadata can be found in [swiss-profile-issuance](../swiss-profile-issuance/).
 
 Any invalid OCA object (Capture Base or Overlay) will invalidate the entire OCA Bundle. If no valid OCA Bundle is available, the Wallet will visualise the credential based on default values. If usage of OCA is indicated by the Issuer providing an OCA Bundle in VC Type Metadata, no fallback to Credential Issuer Metadata is made for unavailable visualisation metadata (e.g. an Overlay in the OCA Bundle is invalid). Credential Issuer Metadata is only considered in the case no OCA Bundle at all is provided.
 
@@ -442,4 +442,4 @@ Code Tables in Entry & Entry Code Overlay 1.0 **MUST NOT** be supported.
 
 Wallets **SHOULD** use the Branding Overlay 1.1 with attribute `theme` set to `"dark"` to display branding information when running in dark mode.
 
-We provide a [cookbook](../cookbooks/vc-visual-presentation-oca/) which provides more details about how to implement OCA according to the Swiss Profiles.
+We provide a [cookbook](/cookbooks/vc-visual-presentation-oca/) which provides more details about how to implement OCA according to the Swiss Profiles.
