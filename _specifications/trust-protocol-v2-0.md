@@ -286,7 +286,7 @@ A trust registry **MUST** provide the following HTTP REST endpoints:
                 <td>identifier</td>
                 <td>Path</td>
                 <td>No default</td>
-                <td>URL encoded identifier of the actor in a format defined in the <a href="/swiss-profile-anchor/">swiss-profile-anchor 1.0</a></td>
+                <td>URL encoded identifier of the actor in a format defined in the <a href="../swiss-profile-anchor/">swiss-profile-anchor 1.0</a></td>
             </tr>
            </table> </td>
   </tr>         
