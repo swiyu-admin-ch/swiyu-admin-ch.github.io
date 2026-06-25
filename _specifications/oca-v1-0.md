@@ -9,7 +9,8 @@ header:
 
 <div class="notice--info">
   Version 1.0 <br>
-  Status: draft - parts of the specification are under revision
+  Status: draft - parts of the specification are under revision <br>
+  Last edited: 2026-06-15
 </div>
 
 # Visualisation of Verifiable Credential with OCA 1.0
