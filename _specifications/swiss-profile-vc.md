@@ -9,7 +9,8 @@ header:
 
 <div class="notice--info">
   Version 1.0 <br>
-  Status: draft - technically complete, but might to be reformulated
+  Status: draft - technically complete, but might to be reformulated <br>
+  Last edited: 2026-06-22
 </div>
 
 # Introduction
