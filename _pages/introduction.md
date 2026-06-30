@@ -174,7 +174,7 @@ The swiyu Trust Infrastructure supports the development of trust between interac
 
 ## Overview
 
-[![introduction_ecosystem](../assets/images/introduction-ecosystem.png)](../assets/images/trust-in-swiyu.png) 
+[![introduction_ecosystem](../assets/images/trust-in-swiyu.png)](../assets/images/trust-in-swiyu.png) 
 
 ## Trust Artefacts in swiyu
 
