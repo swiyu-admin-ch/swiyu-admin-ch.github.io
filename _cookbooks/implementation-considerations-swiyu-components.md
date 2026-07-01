@@ -80,6 +80,7 @@ Additional checks to the content of the Status List Token are performed
 | kid (Key Identifier) |	Initial Upload	| MUST match a Decentralized Identifier (DID) currently authorized and assigned to the submitting swiyu business partner.
 | kid (Key Identifier) | Subsequent Updates |	MUST be signed by the same entity as the previously recorded version of the Status list. See: swiss-profile-anchor 1.0#JWTValidationwithcryptographickeysfromDIDs
 | iat (Issued At) |	Freshness Check |	MUST be greater than T - 24 hours (where T represents the current system time). Documents older than 24 hours cannot be uploaded.
+| iat (Issued At) |	Freshness Check |	MUST be greater than the iat of the last version of the status list.
 | exp (Expiration) |	Validity Window |	MUST be present and MUST be greater than the current system time (T).
 
 
