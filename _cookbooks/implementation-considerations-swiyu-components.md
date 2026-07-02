@@ -57,6 +57,8 @@ The swiyu wallet handles the different status of VCs as follows:
 
 # swyiu Generic Verifier
 
+--> ggf. Status handling Generic Verifier abbilden
+
 # swiyu Check
 
 ## Attestations
