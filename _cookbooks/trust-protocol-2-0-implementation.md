@@ -14,7 +14,7 @@ For a general introduction please refer to [Trust Artefacts in swiyu](https://sw
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Sandbox</h4>
   {{ notice-text | markdownify }}
 </div>
 
