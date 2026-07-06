@@ -11,7 +11,7 @@ header:
 <div class="notice--info">
   Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-06-17
+  Last edited: 2026-07-06
 </div>
 
 
@@ -137,6 +137,18 @@ ISO mdoc-based credentials are **NOT SUPPORTED**.
 Response type **MUST** be `vp_token`.<br>
 Response mode **MUST** be `direct_post.jwt`.<br>
 The usage of encryption **MUST** be enforced.
+
+### 8.2 Response Mode "direct_post"
+
+The returned JSON Object of the Response URI is changed in following way
+
+- Usage of `redirect_uri` remains **OPTIONAL**. When `redirect_uri` is used, a `response_code` **MUST** be used to mitigate session fixation attacks. For this Verifiers add the URL paramter `response_code` to the `redirect_uri`. The `response_code` is similar to a nonce as it **MUST** be fresh and cryptographic random. After receiving the redirected wallet the verifier **MUST** validate that the generated and received URL parameter `response_code` are equal.
+
+```
+{
+	"redirect_uri": "https://www.example.com/redirect?response_code=cf4e8ecc-bf5f-4af1-8676-c6f97d795b8e
+}
+```
 
 ### 8.4 Transaction Data
 Transaction Data is **NOT SUPPORTED** and **SHOULD NOT** be used in this swiss-profile-verification version.
