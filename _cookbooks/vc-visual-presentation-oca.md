@@ -10,7 +10,8 @@ header:
 {% capture notice-text %}
 
 The underlying specification and the new Swiss Profiles are currently under revision and are subject to change. <br>
-The outdated version of this cookbook has been [archived](/archive/vc-visual-presentation/).
+The outdated version of this cookbook has been [archived](/archive/vc-visual-presentation/). <br>
+Last edited: 2026-07-06 
 
 {% endcapture %}
 
