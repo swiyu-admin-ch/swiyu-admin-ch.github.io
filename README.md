@@ -1,11 +1,11 @@
 ![github-banner](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/blob/main/assets/images/github-banner.jpg)
 
 # swiyu-admin-ch.github.io
-Technical documentation repository for the swiyu Public Beta Trust Infrastructure
+Technical documentation repository for the swiyu Sandbox Trust Infrastructure
 
 ## Overview
 
-The aim of this repository is to provide a technical overview, deeper insights on standards and protocols as well as cookbooks for the onboarding to the different components of the swiyu Public Beta Trust Infrastructure. The content in this repository will be automatically published on the [swiyu documentation website](https://swiyu-admin-ch.github.io/). The website offers better user guidance and additional features compared to the Git Hub repository. 
+The aim of this repository is to provide a technical overview, deeper insights on standards and protocols as well as cookbooks for the onboarding to the different components of the swiyu Sandbox Trust Infrastructure. The content in this repository will be automatically published on the [swiyu documentation website](https://swiyu-admin-ch.github.io/). The website offers better user guidance and additional features compared to the Git Hub repository. 
 
 The structure of the documentation website covers the following topics: 
 - Overview of the Swiss Trust Infrastructure
@@ -14,12 +14,12 @@ The structure of the documentation website covers the following topics:
 - Cookbooks for onboarding the different stakeholders
 - Specifications of the "Swiss Profiles", Trust Protocol, and other standards
 - Threat Model of the swiyu Trust Infrastructure
-- Roadmap with the current stage and gaps of Public Beta
+- Roadmap with the current stage and gaps of Sandbox
 - Footer with links to release announcements and our community repository
 
-## Public Beta
+## Sandbox
 
-All documentation is related to the Public Beta environment and is not complete. The content reflects the current state of implementation and will evolve in the future to fullfil the requirements of the swiyu Trust Infrastructure. As soon as we'll have different versions e.g. for Public Beta and the Pre-release environment, the versions will be marked. Please note that operation and support of the Public Beta environment are run on a best effort basis.
+All documentation is related to the Sandbox environment and is not complete. The content reflects the current state of implementation and will evolve in the future to fullfil the requirements of the swiyu Trust Infrastructure. As soon as we'll have different versions e.g. for Sandbox and the productive environment, the versions will be marked. Please note that operation and support of the Sandbox environment are run on a best effort basis.
 
 ## Basic repository structure 
 
@@ -29,7 +29,7 @@ The structure of the repository is different from the website.
 - **_data**: In this folder you'll find the basic navigation as well as all translations for the user interface
 - **_pages**: Most of the webpages are markdown files in the _pages folder.
 - **_posts**: All posts for the release announcements are markdown files in the _posts folder.
-- **_specifications**: Specific specifications and implementations for the swiyu Public Beta Trust Infrastructure
+- **_specifications**: Specific specifications and implementations for the swiyu Sandbox Trust Infrastructure
 - **assets**: All relevant assets for the website, e.g. images for the general appearance and cookbooks, are placed in sub-folders
 
 
