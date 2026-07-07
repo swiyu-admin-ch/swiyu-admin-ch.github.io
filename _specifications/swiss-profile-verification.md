@@ -11,7 +11,7 @@ header:
 <div class="notice--info">
   Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-07-06
+  Last edited: 2026-07-07
 </div>
 
 
@@ -149,6 +149,11 @@ The returned JSON Object of the Response URI is changed in following way
 	"redirect_uri": "https://www.example.com/redirect?response_code=cf4e8ecc-bf5f-4af1-8676-c6f97d795b8e
 }
 ```
+
+**Security Consideration** 
+
+In a response, the `redirect_uri` enables the Verifier to redirect the Wallet to any URI of their choice, including potentially malicious URIs. As long as we require all verifiers to be trusted and registered, this risk has been deemed acceptable.
+Should we expand our ecosystem, we need look into ways to restrict the potential redirect URI targets. Potential options are using verifier attestations with the `redirect_uris` claim listing valid targets (similar to traditional OAuth IdPs) or restricting to the exact FQDN of the verifier.
 
 ### 8.4 Transaction Data
 Transaction Data is **NOT SUPPORTED** and **SHOULD NOT** be used in this swiss-profile-verification version.
