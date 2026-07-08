@@ -102,6 +102,8 @@ footer:
       url: https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io
     - label: "Release Announcements"
       url: /release-announcements/
+    - label: "Change Dossiers"
+      url: /change-dossiers/
     - label: "Community"
       icon: "fab fa-fw fa-github"
       url: https://github.com/swiyu-admin-ch/community
@@ -114,6 +116,7 @@ include:
   - _pages
   - _cookbooks
   - _specifications
+  - _change-dossiers
   - _archive
 exclude:
   - vendor
@@ -225,6 +228,9 @@ collections:
       - trust-protocol-v2.0.md
     output: true
     permalink: /:collection/:path/
+  change-dossiers:
+    output: true
+    permalink: /:collection/:path/  
   archive:
     output: true
     permalink: /:collection/:path/
@@ -325,3 +331,11 @@ defaults:
       sidebar:
         nav: "specifications_sidebarmenu"
       
+    #  _change-dossiers
+  - scope:
+      path: ""
+      type: change-dossiers
+    values:
+      layout: single
+      author_profile: false
+      share: false  
