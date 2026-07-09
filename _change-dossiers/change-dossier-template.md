@@ -1,6 +1,6 @@
 ---
 title: Template for a Change Dossier
-excerpt: All changes related to the Trust Protocol 2.0
+excerpt: This text will be shown on the overview page 
 header:
   teaser: ../assets/images/none.jpg
 ---
@@ -19,12 +19,17 @@ Affected Components: <br>
   {{ notice-text | markdownify }}
 </div>
 
-The entire Trust Protocol changes. Registries, Issuer, Verifier and Wallet must support it. It introduces protected issuance and verification, AHV-number restriction, verifier-query registration and non-compliance handling. During a transition period, components support both the old and the new protocol; afterwards TP 1.0 is no longer supported and old Issuers and Verifiers can no longer interact.
+Description of the Change Dossier eg. The entire Trust Protocol changes. Registries, Issuer, Verifier and Wallet must support it. It introduces protected issuance and verification, AHV-number restriction, verifier-query registration and non-compliance handling. During a transition period, components support both the old and the new protocol; afterwards TP 1.0 is no longer supported and old Issuers and Verifiers can no longer interact.
 
 ## Action required
 
 ### Component 1
 
+Tag ⚠️ Required soon
+Tag 🚨 Breaking
+Tag 🆕 Optional
+Tag ✅ Improvement
+Tag 🐞 Fix
 
 ### Component 2
 
