@@ -119,6 +119,7 @@ include:
   - _change-dossiers
   - _archive
 exclude:
+  - _change-dossiers/change-dossier-template
   - vendor
   - .asset-cache
   - .bundle
