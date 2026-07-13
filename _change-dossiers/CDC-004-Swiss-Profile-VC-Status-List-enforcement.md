@@ -20,11 +20,11 @@ Internal Reference: EIDARTFE-1726 <br>
   {{ notice-text | markdownify }}
 </div>
 
-Description of the Change Dossier eg. The entire Trust Protocol changes. Registries, Issuer, Verifier and Wallet must support it. It introduces protected issuance and verification, AHV-number restriction, verifier-query registration and non-compliance handling. During a transition period, components support both the old and the new protocol; afterwards TP 1.0 is no longer supported and old Issuers and Verifiers can no longer interact.
+This change closes all remaining Status List gaps against the current swiss-profile VC required for the swiyu 1.0 go-live. It introduces ttl/exp handling for Status List Tokens, mandatory validation rules on the Status Registry (JWT header typ, profile_version enforcement, expiry, and size constraints), configurable verifier tolerance for status-check failures, and caching of Status List Tokens according to their ttl/exp claims. Together these changes make the Status List implementation in the ecosystem ready for the swiyu 1.0 go-live.
+
 
 ## Action required
-
-### DID Resolver
+Update the componets like follows.
 
 Tag ⚠️ Required soon
 Tag 🚨 Breaking
@@ -32,16 +32,35 @@ Tag 🆕 Optional
 Tag ✅ Improvement
 Tag 🐞 Fix
 
+### DID Resolver
+Version ?
+
 ### Generic Issuer
+Version ?
+⚠️ Add support for ttl and exp claims when issuing Status List Tokens, so that consumers can determine cache validity and expiry per the OAuth Status List draft, Status List Update Interval.
 
 ### Generic Verifier
+Version?
+🆕 Allow configuration of the degree to which a status verification may fail while still accepting a VC.
+⚠️ Implement caching of the Status List Token according to its ttl/exp claims, instead of re-fetching on every check.
+🚨 Apply Validation Rules: if any status check fails, the Referenced Token SHOULD in most cases be rejected; verifiers configured to tolerate unknown state MAY deviate from this default.
 
 ### Wallet
+Version ?
+### Check App
+Version ?
 
 ### Status Registry
+🚨 Reject Status List Token uploads where exp is missing or already expired; exp MUST be set on upload.
+🚨 Enforce that the JWT header typ is statuslist+jwt
+🚨 Enforce that the JWT header profile_version matches an allowed value. Implement this as a list of allowed profile versions (e.g. allowed_profile_versions.includes(JWTheader["profile_version"])) rather than a single hardcoded value, to support future EMC cases. For this dossier, the enforced value is swiss-profile-vc:1.0.0.
+🚨 Reject Status Lists whose bit size is not evenly divisible into bytes (size-in-bits % 8 == 0) 
+🚨 Reject Status Lists whose decompressed size exceeds 200 KB
 
 ## Migration steps
-
+1. Update Generic Issuer and Generic Verifier
+2. Make sure the exp and statuslist+jwt ist correctly configured.
 
 
 ## Timeline
+??
