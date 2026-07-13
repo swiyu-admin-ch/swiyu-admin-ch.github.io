@@ -1,6 +1,6 @@
 ---
-title: CDC-006 - OID4VCI Security Enforcement
-excerpt: Required steps and timeline for Enforcement of the OID4VCI Security Requirements 
+title: CDC-006 - Template
+excerpt: Template
 header:
   teaser: ../assets/images/none.jpg
 ---
