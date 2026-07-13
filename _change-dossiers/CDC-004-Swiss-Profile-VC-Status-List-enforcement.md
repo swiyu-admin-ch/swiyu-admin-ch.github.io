@@ -11,7 +11,7 @@ Status: Draft <br>
 Published: <br>
 Effective: <br>
 Affected Components: <br>
-Internal Reference: EIDARTFE-1726 <br>
+Internal Reference: EIDARTFE-1526, EIDARTFE-1726 <br>
 
 {% endcapture %}
 
@@ -32,11 +32,8 @@ Tag 🆕 Optional
 Tag ✅ Improvement
 Tag 🐞 Fix
 
-### DID Resolver
-Version ?<br>
-
 ### Generic Issuer
-Version ?<br>
+Version 3.<br>
 ⚠️ Add support for ttl and exp claims when issuing Status List Tokens, so that consumers can determine cache validity and expiry per the OAuth Status List draft, Status List Update Interval. <br>
 
 ### Generic Verifier

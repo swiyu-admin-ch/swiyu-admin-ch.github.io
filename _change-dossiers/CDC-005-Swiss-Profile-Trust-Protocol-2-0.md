@@ -1,6 +1,6 @@
 ---
-title: CDC-005 - Swiss Profile Trust Protocol 2.0
-excerpt: Required steps and timeline for the migration to Trust Protocol 2.0 
+title: CDC-005 - Template
+excerpt: Template
 header:
   teaser: ../assets/images/none.jpg
 ---

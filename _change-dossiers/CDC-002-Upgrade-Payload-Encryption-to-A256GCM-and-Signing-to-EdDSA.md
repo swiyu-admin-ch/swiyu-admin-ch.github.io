@@ -1,6 +1,6 @@
 ---
-title: CDC-002 - Upgrade Payload Encryption to A256GCM and Signing to EdDSA
-excerpt: Required steps for Payload Encryption and Signing for Swiss Profiles V.10 
+title: CDC-002 - Trust Protocol 2.0 and Security Enforcements for Generic Issuer
+excerpt: blabla
 header:
   teaser: ../assets/images/none.jpg
 ---
@@ -11,6 +11,7 @@ Status: Draft <br>
 Published: <br>
 Effective: <br>
 Affected Components: <br>
+Internal Reference: EIDARTFE-1717, EIDARTFE-1726, EIDARTFE-1526<br>
 
 {% endcapture %}
 
@@ -19,7 +20,7 @@ Affected Components: <br>
   {{ notice-text | markdownify }}
 </div>
 
-Description of the Change Dossier eg. The entire Trust Protocol changes. Registries, Issuer, Verifier and Wallet must support it. It introduces protected issuance and verification, AHV-number restriction, verifier-query registration and non-compliance handling. During a transition period, components support both the old and the new protocol; afterwards TP 1.0 is no longer supported and old Issuers and Verifiers can no longer interact.
+Upgrade Payload Encryption to A256GCM and Signing to EdDSA, Required steps for Payload Encryption and Signing for Swiss Profiles V.10 
 
 ## Action required
 
