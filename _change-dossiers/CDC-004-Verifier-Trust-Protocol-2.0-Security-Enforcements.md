@@ -1,9 +1,10 @@
 ---
-title: CDC-004 - Swiss Profile VC 1.0 - Status List enforcement
-excerpt: Required steps and timeline of the Status List enforcement related to Swiss Profile VC 1.0 
+title: CDC-004 - Issuer Trust Protocol 2.0, Security Enforcements and Updates
+excerpt: blabla
 header:
   teaser: ../assets/images/none.jpg
 ---
+
 
 {% capture notice-text %}
 

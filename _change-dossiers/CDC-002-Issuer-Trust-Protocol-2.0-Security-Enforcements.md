@@ -1,5 +1,5 @@
 ---
-title: CDC-002 - Trust Protocol 2.0 and Security Enforcements for Generic Issuer
+title: CDC-002 - Issuer Trust Protocol 2.0, Security Enforcements and Updates
 excerpt: blabla
 header:
   teaser: ../assets/images/none.jpg
