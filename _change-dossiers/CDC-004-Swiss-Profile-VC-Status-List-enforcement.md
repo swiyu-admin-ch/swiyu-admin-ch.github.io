@@ -33,22 +33,23 @@ Tag ✅ Improvement
 Tag 🐞 Fix
 
 ### DID Resolver
-Version ?
+Version ?<br>
 
 ### Generic Issuer
-Version ?
+Version ?<br>
 ⚠️ Add support for ttl and exp claims when issuing Status List Tokens, so that consumers can determine cache validity and expiry per the OAuth Status List draft, Status List Update Interval.
 
 ### Generic Verifier
-Version?
+Version?<br>
 🆕 Allow configuration of the degree to which a status verification may fail while still accepting a VC.
 ⚠️ Implement caching of the Status List Token according to its ttl/exp claims, instead of re-fetching on every check.
 🚨 Apply Validation Rules: if any status check fails, the Referenced Token SHOULD in most cases be rejected; verifiers configured to tolerate unknown state MAY deviate from this default.
 
 ### Wallet
-Version ?
+Version ?<br>
+
 ### Check App
-Version ?
+Version ?<br>
 
 ### Status Registry
 🚨 Reject Status List Token uploads where exp is missing or already expired; exp MUST be set on upload.
