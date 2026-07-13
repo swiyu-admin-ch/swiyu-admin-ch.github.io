@@ -11,6 +11,7 @@ Status: Draft <br>
 Published: <br>
 Effective: <br>
 Affected Components: <br>
+Internal Reference: EIDARTFE-1526 <br>
 
 {% endcapture %}
 
@@ -19,7 +20,7 @@ Affected Components: <br>
   {{ notice-text | markdownify }}
 </div>
 
-Description of the Change Dossier eg. The entire Trust Protocol changes. Registries, Issuer, Verifier and Wallet must support it. It introduces protected issuance and verification, AHV-number restriction, verifier-query registration and non-compliance handling. During a transition period, components support both the old and the new protocol; afterwards TP 1.0 is no longer supported and old Issuers and Verifiers can no longer interact.
+Payload Encryption, Signed Metadata, and DPoP were previously introduced as optional security features and are now moving from "migrate" to "enforce". These features only provide their intended security benefit once they are actually enforced across the ecosystem rather than merely supported. This change closes the remaining security enforcement gaps against swiss-profile-issuance 1.0: the Credential Issuer will require DPoP, encrypted credential requests/responses (including deferred flows), and signed, trusted Metadata; Wallets must correspondingly establish trust in Metadata signers and reject non-compliant responses.
 
 ## Action required
 
@@ -32,15 +33,36 @@ Tag ✅ Improvement
 Tag 🐞 Fix
 
 ### Generic Issuer
+🚨 Nonce Response: the response MUST be made uncacheable by including a Cache-Control: no-store header. <br>
+🚨 Credential Request: enforce the DPoP header (planned to take effect once Wallets have implemented DPoP support). <br>
+🚨 Enforce credential_response_encryption on Credential Responses. <br>
+🚨 Enforce credential_request_encryption on Credential Requests (planned to take effect once Wallets have implemented request encryption). <br>
+🚨 Enforce correct usage of credential_configuration_id. <br>
+🚨 Deferred Credential Endpoint: enforce the DPoP header (planned to take effect once Wallets have implemented DPoP support). <br>
+🚨 Enforce Payload Encryption on Deferred Credential Requests, and require that Deferred Credential Responses are encrypted as well. <br>
+🚨 Reject any message that is unencrypted when encryption was required (applies to both requests and responses). <br>
+🚨 Enforce Signed Metadata for the Credential Issuer Metadata. <br>
+🚨 Enforce presence of the following Credential Issuer Metadata parameters: $.nonce_endpoint, $.credential_request_encryption, $.credential_response_encryption. <br>
 
 ### Generic Verifier
+-- <br>
 
 ### Wallet
+🚨 When requesting signed Metadata, establish trust in the signer of that Metadata (via the applicable trust protocol); reject the signed Metadata if trust cannot be established. <br>
+🚨 Enforce presence of the required Credential Issuer Metadata parameters ($.nonce_endpoint, $.credential_request_encryption, $.credential_response_encryption) when reading issuer Metadata. <br>
+⚠️ Implement DPoP support, Credential Request encryption, and Deferred Credential Request/Response encryption ahead of the corresponding enforcement taking effect at the Issuer. <br>
 
 ### Status Registry
+-- <br>
 
 ## Migration steps
-
+1. Wallets implement DPoP, Credential Request encryption, and Deferred Credential Request/Response encryption.
+2. Wallets implement Metadata signature verification and trust establishment for the Metadata signer.
+3. Issuers enforce Signed Metadata, required Metadata parameters, and correct credential_configuration_id usage.
+4. Issuers enforce DPoP and Payload Encryption (Credential Request/Response and Deferred Credential Request/Response), rejecting unencrypted messages where encryption is required.
+5. Issuers make Nonce Endpoint responses uncacheable (Cache-Control: no-store).
 
 
 ## Timeline
+{DATE} {Wallet-side support (DPoP, encryption, Metadata trust) complete} <br>
+{DATE} {Issuer-side enforcement effective} <br>
