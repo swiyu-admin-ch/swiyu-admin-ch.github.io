@@ -37,13 +37,13 @@ Version ?<br>
 
 ### Generic Issuer
 Version ?<br>
-⚠️ Add support for ttl and exp claims when issuing Status List Tokens, so that consumers can determine cache validity and expiry per the OAuth Status List draft, Status List Update Interval.
+⚠️ Add support for ttl and exp claims when issuing Status List Tokens, so that consumers can determine cache validity and expiry per the OAuth Status List draft, Status List Update Interval. <br>
 
 ### Generic Verifier
 Version?<br>
-🆕 Allow configuration of the degree to which a status verification may fail while still accepting a VC.
-⚠️ Implement caching of the Status List Token according to its ttl/exp claims, instead of re-fetching on every check.
-🚨 Apply Validation Rules: if any status check fails, the Referenced Token SHOULD in most cases be rejected; verifiers configured to tolerate unknown state MAY deviate from this default.
+🆕 Allow configuration of the degree to which a status verification may fail while still accepting a VC. <br>
+⚠️ Implement caching of the Status List Token according to its ttl/exp claims, instead of re-fetching on every check. <br>
+🚨 Apply Validation Rules: if any status check fails, the Referenced Token SHOULD in most cases be rejected; verifiers configured to tolerate unknown state MAY deviate from this default. <br>
 
 ### Wallet
 Version ?<br>
@@ -52,11 +52,11 @@ Version ?<br>
 Version ?<br>
 
 ### Status Registry
-🚨 Reject Status List Token uploads where exp is missing or already expired; exp MUST be set on upload.
-🚨 Enforce that the JWT header typ is statuslist+jwt
-🚨 Enforce that the JWT header profile_version matches an allowed value. Implement this as a list of allowed profile versions (e.g. allowed_profile_versions.includes(JWTheader["profile_version"])) rather than a single hardcoded value, to support future EMC cases. For this dossier, the enforced value is swiss-profile-vc:1.0.0.
-🚨 Reject Status Lists whose bit size is not evenly divisible into bytes (size-in-bits % 8 == 0) 
-🚨 Reject Status Lists whose decompressed size exceeds 200 KB
+🚨 Reject Status List Token uploads where exp is missing or already expired; exp MUST be set on upload. <br>
+🚨 Enforce that the JWT header typ is statuslist+jwt <br>
+🚨 Enforce that the JWT header profile_version matches an allowed value. Implement this as a list of allowed profile versions (e.g. allowed_profile_versions.includes(JWTheader["profile_version"])) rather than a single hardcoded value, to support future EMC cases. For this dossier, the enforced value is swiss-profile-vc:1.0.0. <br>
+🚨 Reject Status Lists whose bit size is not evenly divisible into bytes (size-in-bits % 8 == 0) <br>
+🚨 Reject Status Lists whose decompressed size exceeds 200 KB <br>
 
 ## Migration steps
 1. Update Generic Issuer and Generic Verifier
