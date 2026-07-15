@@ -73,6 +73,6 @@ Version: <br>
 4. Contract phase: DPoP and Payload Encryption enforcement become mandatory at the Issuer; non-conforming Issuers can no longer issue credentials.
 
 ## Timeline
-xx.xx.2026 Wallet-side support available (DPoP, encryption, AES256, Signed Metadata trust)
-xx.xx.2026 Generic Issuer enforcement enabled (Enable/Migrate phase)
-xx.xx.2026 Contract phase, enforcement mandatory, AES128-GCM support removed
+xx.xx.2026 Wallet-side support available (DPoP, encryption, AES256, Signed Metadata trust) <br>
+xx.xx.2026 Generic Issuer enforcement enabled (Enable/Migrate phase) <br>
+xx.xx.2026 Contract phase, enforcement mandatory, AES128-GCM support removed <br>
