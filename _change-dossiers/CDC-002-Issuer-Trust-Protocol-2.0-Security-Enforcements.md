@@ -24,47 +24,23 @@ This dossier bundles four related Issuer-side changes into a single migration wa
 
 ## Action required
 
-Tag ⚠️ Required soon
-Tag 🚨 Breaking
-Tag 🆕 Optional
-Tag ✅ Improvement
-Tag 🐞 Fix
+⚠️ Required soon
+🚨 Breaking
+🆕 Optional
+✅ Improvement
+🐞 Fix
 
 ### Generic Issuer
-Version: <br>
+Version: 4.0.0 <br>
 ⚠️ Add ttl/exp support when issuing Status List Tokens (JWT format). <br>
 ⚠️ Enforce correct usage of credential_configuration_id. <br>
-⚠️ Enforce presence of the nonce_endpoint, credential_request_encryption, and credential_response_encryption metadata parameters. <br>
-🚨 Enforce the DPoP header on the Credential Endpoint and the Deferred Credential Endpoint (Contract phase, after Wallet implementation). <br>
-🚨 Enforce credential_request_encryption and credential_response_encryption, reject unencrypted requests/responses where encryption is required, including for the Deferred Credential Request and Response. <br>
-🚨 Enforce Signed Metadata on the Credential Issuer Metadata endpoint. <br>
-🆕 Accept both AES128-GCM and AES256-GCM during the migration phase; specify the encryption algorithm used for credential_request_encryption and credential_response_encryption in Issuer Metadata. <br>
-✅ Make the Nonce Response uncacheable by adding a Cache-Control: no-store header. <br>
-✅ Provide Trust Statements in Issuer Metadata (Trust Protocol 2.0), refreshed automatically. <br>
+⚠️ Enforce presence of the nonce_endpoint, credential_request_encryption, and credential_response_encryption metadata parameters.  <br>
+🚨 Enforce the DPoP header on the Credential Endpoint and the Deferred Credential Endpoint. Swiyu wallet will enforce this with a future release. <br>
+🚨 Enforce credential_request_encryption and credential_response_encryption, reject unencrypted requests/responses where encryption is required, including for the Deferred Credential Request and Response. Swiyu wallet will enforce this with a future release. <br>
+🚨 Enforce Signed Metadata on the Credential Issuer Metadata endpoint. Swiyu wallet will enforce this with a future release. <br>
 
-
-### Wallet
-Version: <br>
-🚨 Must support DPoP ahead of Issuer enforcement (Wallet-first, per EMC order of operations). <br>
-🚨 Must correctly send and process encrypted credential requests/responses, including in the deferred flow. <br>
-🆕 Maintains a hardcoded Protected Claims list (currently: personal_administrative_number). <br>
-✅ Must be the first component to support AES256-GCM (include the algorithm in credential_response_encryption metadata), ahead of Issuer/Verifier support. <br>
-✅ When requesting Signed Metadata, must establish trust in the signer and reject the metadata if trust cannot be established. <br>
-✅ Creates Trust Marks for the Issuance flow using Issuer Metadata Trust Statements, Trust List Statements, and fetched Status Lists. <br>
-✅ Implements redesigned trust labels and bottom sheets, and removes deprecated labels (Legitimate Issuer, Non-Legitimate Issuer, In Base Registry, Not in System, Unknown) <br>
-
-### Status Registry
-⚠️ Reject Status List uploads where exp is missing or already expired. <br>
-⚠️ Enforce the Status List JWT header: typ must be statuslist+jwt, and profile_version must be in an extensible allow-list of supported values (e.g. allowed_profile_versions), currently swiss-profile-vc:1.0.0. <br>
-⚠️ Validate Status List size: bit-length must be divisible by 8, and decompressed size must be under 200KB. <br>
-
-### Trust Registry
-🆕 Trust Management Service creates all Trust Protocol 2.0 elements and manages Status Lists. <br>
-🆕 Trust Registry provides Trust Statements for trust-onboarded DIDs in the new format, and provides Trust List Statements. <br>
-
-### Check App
-Version: <br>
-✅ Loads piTLS as the Trust Source for protected issuance, automatically fetching and interpreting the relevant piaTS. <br>
+Supported after and should be deployed after the wallet version 1.17.0.  <br>
+Must be in use until end of Q3 2026. <br>
 
 ## Migration steps
 1. Wallet adds support for DPoP, encrypted requests/responses, Signed Metadata trust validation, and AES256-GCM (dual algorithm support).
@@ -75,4 +51,4 @@ Version: <br>
 ## Timeline
 xx.xx.2026 Wallet-side support available (DPoP, encryption, AES256, Signed Metadata trust) <br>
 xx.xx.2026 Generic Issuer enforcement enabled (Enable/Migrate phase) <br>
-xx.xx.2026 Contract phase, enforcement mandatory, AES128-GCM support removed <br>
+30.09.2026 Contract phase on wallet and requires the generic issuer 4.0.0. <br>
