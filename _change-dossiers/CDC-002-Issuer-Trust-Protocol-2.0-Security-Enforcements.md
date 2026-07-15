@@ -10,7 +10,7 @@ header:
 Status: Draft <br>
 Published: <br>
 Effective: <br>
-Affected Components: <br>
+Affected Components: Generic Issuer, swiyu Wallet <br>
 Internal Reference: EIDARTFE-1526, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <br>
 
 {% endcapture %}
