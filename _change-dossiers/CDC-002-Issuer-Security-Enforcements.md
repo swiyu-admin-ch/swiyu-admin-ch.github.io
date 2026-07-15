@@ -1,5 +1,5 @@
 ---
-title: CDC-002 - Generic Issuer - Security Enforcement, AES256 Migration, Trust Protocol 2.0 & Status List Gap Closure
+title: CDC-002 - Generic Issuer - Security Enforcement, AES256 Migration & Status List Gap Closure
 excerpt: Affected Components Generic Issuer, swiyu Wallet
 header:
   teaser: ../assets/images/none.jpg
@@ -16,7 +16,7 @@ Internal Reference: EIDARTFE-1526, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Security Enforcement, AES256 Migration, Trust Protocol 2.0 & Status List Gap Closure</h4>
+  <h4 class="no_toc">Security Enforcement, AES256 Migration & Status List Gap Closure</h4>
   {{ notice-text | markdownify }}
 </div>
 

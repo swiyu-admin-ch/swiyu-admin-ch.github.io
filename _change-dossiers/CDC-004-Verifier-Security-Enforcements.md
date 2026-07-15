@@ -17,7 +17,7 @@ Internal Reference: EIDARTFE-1531, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Swiss Profile VC V1.0</h4>
+  <h4 class="no_toc">Security Enforcement, AES256 Migration & Status List Gap Closure</h4>
   {{ notice-text | markdownify }}
 </div>
 
