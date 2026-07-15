@@ -44,9 +44,8 @@ Must be in use until end of Q3 2026. <br>
 
 ## Migration steps
 1. Wallet adds support for DPoP, encrypted requests/responses, Signed Metadata trust validation, and AES256-GCM (dual algorithm support).
-2. Generic Issuer starts providing Trust Statements in Issuer Metadata and enforcing metadata parameter presence, Signed Metadata, and AES128/AES256 dual support.
-3. Status Registry enforces Status List validation rules (ttl/exp, header fields, size limits).
-4. Contract phase: DPoP and Payload Encryption enforcement become mandatory at the Issuer; non-conforming Issuers can no longer issue credentials.
+2. Status Registry enforces Status List validation rules (ttl/exp, header fields, size limits).
+3. Contract phase: DPoP, Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
 
 ## Timeline
 xx.xx.2026 Wallet-side support available (DPoP, encryption, AES256, Signed Metadata trust) <br>
