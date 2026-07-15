@@ -1,6 +1,6 @@
 ---
 title: CDC-002 - Generic Issuer - Security Enforcement, AES256 Migration, Trust Protocol 2.0 & Status List Gap Closure
-excerpt: Affected Components Generic Issuer, Wallet, Status Registry, Trust Management Service, Trust Registry, Check App
+excerpt: Affected Components Generic Issuer, swiyu Wallet
 header:
   teaser: ../assets/images/none.jpg
 ---
