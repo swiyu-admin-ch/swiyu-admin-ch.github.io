@@ -27,14 +27,14 @@ This dossier bundles four related Verifier-side changes into a single migration 
 ## Action required
 Update the componets like follows.
 
-Tag ⚠️ Required soon
-Tag 🚨 Breaking
-Tag 🆕 Optional
-Tag ✅ Improvement
-Tag 🐞 Fix
+⚠️ Required soon
+🚨 Breaking
+🆕 Optional
+✅ Improvement
+🐞 Fix
 
 ### Generic Verifier
-Version? <br>
+Version 4.0.0 <br>
 ⚠️ Allow the Business Verifier to configure to what degree a failed status verification is accepted before rejecting a VC. <br>
 ⚠️ Cache Status List Tokens according to their ttl/exp claims. <br>
 ⚠️ Reject the Referenced Token if Status List validation fails, except where explicitly configured to accept an unknown status (e.g. age verification). <br>
@@ -42,42 +42,12 @@ Version? <br>
 🚨 Send DCQL only in the Presentation Request, dropping DIF Presentation Exchange support (Contract phase, after Wallet enforcement). <br>
 🚨 Remove support for unencrypted (direct_post) Authorization Responses entirely (EMC Contract step). <br>
 🚨 Reject unsigned Presentation Requests the aud claim must reference a signed Request Object (Signed Presentation Requests enforced). <br>
-🆕 Accept both AES128-GCM and AES256-GCM during the migration phase. <br>
-🆕 Allow Business Verifiers to elect to use piTLS as a Trust Source instead of a defined DID list, automatically fetching the relevant piaTS. <br>
-✅ Specify the supported algorithm in the Authorization Response via encrypted_response_enc_values_supported. <br>
-✅ Provide Trust Statements in the Request Object's verifier_info. <br>
-✅ Provide an easy way for Business Verifiers to register a vqPS. <br>
-✅ Support the scope parameter in the Request Object, linking to the vqPS in verifier_info (to allow expansion, provide both a DCQL query and scope). <br>
-
-### Wallet
-Version ?<br>
-🚨 Refuse any Authorization Response using a response_mode other than direct_post.jwt. <br>
-🚨 Only accept DCQL presentation queries from the Verifier, dropping support for DIF Presentation Exchange (Contract phase). <br>
-🚨 Remove support for unencrypted (direct_post) Authorization Responses entirely (EMC Contract step). <br>
-✅ Must be the first component to support AES256-GCM, ahead of Issuer/Verifier support. <br>
-✅ Creates Trust Marks for the Verification flow using Trust Statements provided in the Request Object and the Protected Claims list. <br>
-✅ Supports Request Objects that use the scope parameter. <br>
-✅ Implements governance restrictions in the verification UI/UX (e.g. AHV blocking for unauthorized Verifiers, warning for unregistered verification requests) <br>
-✅ Implements redesigned trust labels and bottom sheets, and removes deprecated labels (Legitimate Verifier, Non-Legitimate Verifier, In Base Registry, Not in System, Unknown) <br>
-
-### Status Registry
-⚠️ Reject Status List uploads where exp is missing or already expired. <br>
-⚠️ Enforce the Status List JWT header: typ must be statuslist+jwt, and profile_version must be in an extensible allow-list of supported values (e.g. allowed_profile_versions), currently swiss-profile-vc:1.0.0. <br>
-⚠️ Validate Status List size: bit-length must be divisible by 8, and decompressed size must be under 200KB. <br>
-
-### Trust Registry 
-🆕 Trust Management Service creates all Trust Protocol 2.0 elements and manages Status Lists. <br>
-🆕 Trust Registry provides Trust Statements for trust-onboarded DIDs in the new format, and provides Trust List Statements. <br>
-🆕 Provides an interface to manage vqPS, usable by Verifiers. <br>
 
 ## Migration steps
-1. Wallet adds support for AES256-GCM (dual algorithm support), Trust Marks for the verification flow, and the redesigned trust-label UI.
-2. Generic Verifier starts enforcing direct_post.jwt, providing Trust Statements in verifier_info, supporting vqPS registration and the scope parameter, and dual AES128/AES256 support.
-3. Status Registry enforces Status List validation rules (ttl/exp, header fields, size limits); Verifier applies configurable status-verification failure handling and caching.4. Component operators confirm interoperability via the swiyu conformance test suite.
-5. Contract phase: DCQL-only presentation queries, encrypted Authorization Responses, and Signed Presentation Requests become mandatory; non-conforming Verifiers can no longer participate.
+1. Generic Verifier starts enforcing direct_post.jwt and the scope parameter.
+2. Status Registry enforces Status List validation rules (ttl/exp, header fields, size limits); Verifier applies configurable status-verification failure handling and caching.4. Component operators confirm interoperability via the swiyu conformance test suite.
+3. Contract phase: DCQL-only presentation queries, encrypted Authorization Responses, and Signed Presentation Requests become mandatory; non-conforming Verifiers can no longer participate.
 
 
 ## Timeline
-xx.xx.2026 Wallet-side support available (DCQL-only, encryption, AES256, Trust Marks) <br>
-xx.xx.2026 Generic Verifier enforcement enabled (Enable/Migrate phase) <br>
-xx.xx.2026 Contract phase, enforcement mandatory, DIF Presentation Exchange and AES128-GCM support removed <br>
+17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic issuer 4.0.0.
