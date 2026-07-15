@@ -1,5 +1,5 @@
 ---
-title: CDC-004 - Generic Verifier - Security Enforcement, AES256 Migration, Trust Protocol 2.0 & Status List Gap Closure
+title: CDC-004 - Generic Verifier - Security Enforcement, AES256 Migration & Status List Gap Closure
 excerpt: Affected Components Generic Verifier, Wallet, Status Registry, Trust Management Service, Trust Registry 
 header:
   teaser: ../assets/images/none.jpg
@@ -12,7 +12,7 @@ Status: Draft <br>
 Published: <br>
 Effective: <br>
 Affected Components: <br>
-Internal Reference: EIDARTFE-1526, EIDARTFE-1726 <br>
+Internal Reference: EIDARTFE-1531, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <br>
 
 {% endcapture %}
 
