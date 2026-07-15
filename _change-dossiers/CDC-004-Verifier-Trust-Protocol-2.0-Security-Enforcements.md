@@ -78,6 +78,6 @@ Version ?<br>
 
 
 ## Timeline
-xx.xx.2026 Wallet-side support available (DCQL-only, encryption, AES256, Trust Marks)
-xx.xx.2026 Generic Verifier enforcement enabled (Enable/Migrate phase)
-xx.xx.2026 Contract phase, enforcement mandatory, DIF Presentation Exchange and AES128-GCM support removed
+xx.xx.2026 Wallet-side support available (DCQL-only, encryption, AES256, Trust Marks) <br>
+xx.xx.2026 Generic Verifier enforcement enabled (Enable/Migrate phase) <br>
+xx.xx.2026 Contract phase, enforcement mandatory, DIF Presentation Exchange and AES128-GCM support removed <br>
