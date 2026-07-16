@@ -44,10 +44,8 @@ Version 4.0.0 <br>
 🚨 Reject unsigned Presentation Requests the aud claim must reference a signed Request Object (Signed Presentation Requests enforced). <br>
 
 ## Migration steps
-1. Generic Verifier starts enforcing direct_post.jwt and the scope parameter.
-2. Status Registry enforces Status List validation rules (ttl/exp, header fields, size limits); Verifier applies configurable status-verification failure handling and caching.4. Component operators confirm interoperability via the swiyu conformance test suite.
-3. Contract phase: DCQL-only presentation queries, encrypted Authorization Responses, and Signed Presentation Requests become mandatory; non-conforming Verifiers can no longer participate.
-
+1. Issuer can migrate to generic issuer 4.0.0.
+2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
 
 ## Timeline
 17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic issuer 4.0.0.
