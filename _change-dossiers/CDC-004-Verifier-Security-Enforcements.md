@@ -45,7 +45,7 @@ Version 4.0.0 <br>
 
 ## Migration steps
 1. Issuer can migrate to generic issuer 4.0.0.
-2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
+2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
 17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic issuer 4.0.0.
