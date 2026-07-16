@@ -44,7 +44,7 @@ Version 4.0.0 <br>
 🚨 Reject unsigned Presentation Requests the aud claim must reference a signed Request Object (Signed Presentation Requests enforced). <br>
 
 ## Migration steps
-1. Issuer can migrate to generic issuer 4.0.0.
+1. Issuer can migrate to generic Verifier 4.0.0.
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
