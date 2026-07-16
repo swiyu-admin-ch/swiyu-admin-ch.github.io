@@ -48,4 +48,4 @@ Version 4.0.0 <br>
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
-17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic issuer 4.0.0.
+17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic Verifier 4.0.0.
