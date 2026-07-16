@@ -5,11 +5,11 @@ toc: true
 toc_sticky: true
 ---
 
-## Public Beta
+## Sandbox
 
-Following the preliminary implementation roadmap (dependent on the legal process), the swiyu Trust Infrastructure is planned to go live with a full production roll out in 2026. To allowing future participants from the public and private sector to prepare themselves for the final go live, a Public Beta environment has been published. 
+Following the preliminary implementation roadmap (dependent on the legal process), the swiyu Trust Infrastructure is planned to go live with a full production roll out in 2027. To allowing future participants from the public and private sector to prepare themselves for the final go live, a Public Beta environment has been published. This environment has been renamed to "Sandbox" as it should serve as a test environment even after the productive launch.
 
-The Public Beta environment aims to function as a basis for integration and experimentation efforts conducted by the ecosystem participants from both the public sector and the private sector. It provides the same technology that will be used by the productive environment in 2026. It's operation and support are run on a best effort basis and is planned to be available beyond the full production roll-out in 2026 as an integration environment. 
+The Sandbox environment aims to function as a basis for integration and experimentation efforts conducted by the ecosystem participants from both the public sector and the private sector. It provides the same technology that will be used by the productive environment in 2027. It's operation and support are run on a best effort basis.
 
 This participatory process is also helpful for testing and refining the infrastructure components, technological choices, and operation procedures under real world conditions. 
 
@@ -23,7 +23,7 @@ The source code of the swiyu Trust Infrastructure is publicly available under th
 
 - **Internal Development**: Specific apps, registries, and components are developed privately and released publicly after each sprint. The published code can therefore only be a snapshot of the current development and not a thoroughly tested version.
 
-The following components are available for Public Beta:
+The following components are available in the swiyu Sandbox Trust Infrastructure:
 
 ### swiyu Base Registry
 
@@ -62,7 +62,7 @@ The source code is available in the following repository:
 
 ### swiyu Android & iOS App
 
-Users will be able to download the swiyu Public Beta Wallet, request Beta-ID credentials for testing purpose, manage their VCs and interact with the ecosystem.
+Users will be able to download the swiyu Sandbox Wallet, request Beta-ID credentials for testing purpose, manage their VCs and interact with the ecosystem.
 
 The source code is available for iOS and Android:
 
@@ -77,7 +77,7 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 - [DID Resolver](https://github.com/swiyu-admin-ch/didresolver)
 
 
-## How to use the swiyu Public Beta Trust Infrastructure
+## How to use the swiyu Sandbox Trust Infrastructure
 
 ### Onboarding
 

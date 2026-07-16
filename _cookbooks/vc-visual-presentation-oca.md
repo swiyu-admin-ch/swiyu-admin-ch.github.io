@@ -16,7 +16,7 @@ Last edited: 2026-07-06
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Sandbox</h4>
   {{ notice-text | markdownify }}
 </div>
 

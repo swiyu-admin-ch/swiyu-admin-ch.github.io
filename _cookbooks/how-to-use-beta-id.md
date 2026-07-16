@@ -14,7 +14,7 @@ Please be advised that the current system and its operations are provided on a b
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Sandbox</h4>
   {{ notice-text | markdownify }}
 </div>
 
@@ -22,7 +22,7 @@ Please be advised that the current system and its operations are provided on a b
 
 **What is the Beta-ID?**
 
-The Beta-ID is a pseudo-identity credential that was created for test purposes within the Public Beta environment, holding the same identity attributes as the coming e-ID. 
+The Beta-ID is a pseudo-identity credential that was created for test purposes within the Sandbox environment, holding the same identity attributes as the coming e-ID. 
 
 **Is the Beta-ID an official proof of identification?**
 

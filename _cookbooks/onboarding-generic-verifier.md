@@ -14,7 +14,7 @@ Please be advised that the current system and its operations are provided on a b
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Sandbox</h4>
   {{ notice-text | markdownify }}
 </div>
 
@@ -123,7 +123,7 @@ curl -X 'POST' 'http://localhost:8083/management/api/verifications' \
 </div>
 
 <div class="notice--info">
-  <strong>About <code>accepted_issuer_dids</code>:</strong> This field contains a list of DIDs from credential issuers whose credentials your verifier will accept. Replace the <code>${ISSUER_DID}</code> placeholder with the actual DID of your issuer. For quick testing with the Beta Credential Service (BCS) Public Beta, you can use: <code>did:tdw:QmPEZPhDFR4nEYSFK5bMnvECqdpf1tPTPJuWs9QrMjCumw:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:9a5559f0-b81c-4368-a170-e7b4ae424527</code>. Then issue a credential using <a href="https://www.bcs.admin.ch/bcs-web/#/">BCS Public Beta-ID</a> and verify it with your own verifier.
+  <strong>About <code>accepted_issuer_dids</code>:</strong> This field contains a list of DIDs from credential issuers whose credentials your verifier will accept. Replace the <code>${ISSUER_DID}</code> placeholder with the actual DID of your issuer. For quick testing with the Beta Credential Service (BCS) Sandbox, you can use: <code>did:tdw:QmPEZPhDFR4nEYSFK5bMnvECqdpf1tPTPJuWs9QrMjCumw:identifier-reg.trust-infra.swiyu-int.admin.ch:api:v1:did:9a5559f0-b81c-4368-a170-e7b4ae424527</code>. Then issue a credential using <a href="https://www.bcs.admin.ch/bcs-web/#/">BCS Beta-ID</a> and verify it with your own verifier.
 </div>
 
 **Response**
@@ -255,4 +255,4 @@ We provide a [test application](https://github.com/swiyu-admin-ch/swiyu-generic-
 
 # Your Feedback?
 
-We would be pleased if you spend about 3 additional minutes and give us feedback on the swiyu Public Beta Trust Infrastructure and your onboarding process! With Public Beta, we want to give ecosystem stakeholders the opportunity to gain initial experience and build their own use cases on the trust infrastructure of the future e-ID. Your [feedback](https://findmind.ch/c/feedback_publicbeta_infr_en) will help us to further develop and improve the touchpoints, and we greatly appreciate your support.
+We would be pleased if you spend about 3 additional minutes and give us feedback on the swiyu Sandbox Trust Infrastructure and your onboarding process! With the Sandbox, we want to give ecosystem stakeholders the opportunity to gain initial experience and build their own use cases on the trust infrastructure of the future e-ID. Your [feedback](https://findmind.ch/c/feedback_publicbeta_infr_en) will help us to further develop and improve the touchpoints, and we greatly appreciate your support.
