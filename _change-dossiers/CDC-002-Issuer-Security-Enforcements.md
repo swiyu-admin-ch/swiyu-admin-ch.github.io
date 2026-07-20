@@ -35,7 +35,7 @@ This dossier bundles three related Issuer-side changes into a single migration w
 
 ### Generic Issuer
 Version: 4.0.x <br>
-1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
+1. See: [Release notes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
 
 The generic Issuer 4.0.x should be deployed as soon wallet 1.17.x is published. <br>
 Must be in use until end of Q3 2026. <br>
