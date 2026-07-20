@@ -20,7 +20,7 @@ Internal Reference: EIDARTFE-1526, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <
   {{ notice-text | markdownify }}
 </div>
 
-This dossier bundles four related Issuer-side changes into a single migration wave. First, it enforces the security changes from swiss-profile-issuance 1.0 by enforcing Payload Encryption, and Signed Metadata, all of which are already implemented since version 3.0.0 and set as default. Second, it migrates encryption from AES128-GCM to AES256-GCM; following EMC, all components first accept both algorithms, with the Wallet required to support this ahead of the Issuer and Verifier. Third, it introduces the Issuer's role in Trust Protocol 2.0, including providing Trust Statements in Issuer Metadata. Fourth, it closes the remaining Status List gaps required for the swiyu 1.0 go-live, including ttl/exp handling and Status List validation. During the transition period, non-enforcing behavior continues to be accepted where noted; afterwards, non-compliant Issuers can no longer participate in the ecosystem. 
+This dossier bundles four related Issuer-side changes into a single migration wave. First, it enforces the security changes from swiss-profile-issuance 1.0 by enforcing Payload Encryption, and Signed Metadata, all of which are already implemented since version 3.0.0 and set as default. Second, it migrates encryption from AES128-GCM to AES256-GCM; following EMC, all components first accept both algorithms, with the Wallet required to support this ahead of the Issuer and Verifier. Third, it closes the remaining Status List gaps required for the swiyu 1.0 go-live, including ttl/exp handling and Status List validation. During the transition period, non-enforcing behavior continues to be accepted where noted; afterwards, non-compliant Issuers can no longer participate in the ecosystem. 
 
 ## Action required
 
@@ -39,7 +39,7 @@ Version: 4.0.0 <br>
 🚨 Enforce credential_request_encryption and credential_response_encryption, reject unencrypted requests/responses where encryption is required, including for the Deferred Credential Request and Response. Swiyu wallet will enforce this with a future release. <br>
 🚨 Enforce Signed Metadata on the Credential Issuer Metadata endpoint. Swiyu wallet will enforce this with a future release. <br>
 
-Supported after and should be deployed after the wallet version 1.17.0.  <br>
+The generic Iussuer 4.0.0 should be deployed as soon wallet 1.17 is published. <br>
 Must be in use until end of Q3 2026. <br>
 
 ## Migration steps
