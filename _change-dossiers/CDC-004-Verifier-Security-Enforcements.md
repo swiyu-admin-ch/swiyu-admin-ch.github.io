@@ -37,15 +37,10 @@ This dossier bundles four related Verifier-side changes into a single migration 
 
 ### Generic Verifier
 Version 4.0.x <br>
-⚠️ Allow the Business Verifier to configure to what degree a failed status verification is accepted before rejecting a VC. <br>
-⚠️ Cache Status List Tokens according to their ttl/exp claims. <br>
-⚠️ Reject the Referenced Token if Status List validation fails, except where explicitly configured to accept an unknown status (e.g. age verification). <br>
-🚨 Always send response_mode=direct_post.jwt so Authorization Responses are encrypted. <br>
-🚨 Remove support for unencrypted (direct_post) Authorization Responses entirely (EMC Contract step). <br>
-🚨 Reject unsigned Presentation Requests the aud claim must reference a signed Request Object (Signed Presentation Requests enforced). <br>
+1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
 
 ## Migration steps
-1. Migrate to generic Verifier 4.0.x.
+1. Migrate to generic Verifier 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/migration-guides/guide-3.2.x-to-4.0.x.md)
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
