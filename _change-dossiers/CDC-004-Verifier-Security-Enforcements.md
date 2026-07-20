@@ -37,7 +37,7 @@ This dossier bundles three related Verifier-side changes into a single migration
 
 ### Generic Verifier
 Version 4.0.x <br>
-1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-verifier/releases)
+1. See: [Release notes](https://github.com/swiyu-admin-ch/swiyu-verifier/releases)
 
 ## Migration steps
 1. Migrate to generic Verifier 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/migration-guides/v3.0.x-to-v4.0.x.md)
