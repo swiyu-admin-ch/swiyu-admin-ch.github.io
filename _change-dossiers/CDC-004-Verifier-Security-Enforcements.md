@@ -21,7 +21,10 @@ Internal Reference: EIDARTFE-1531, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <
   {{ notice-text | markdownify }}
 </div>
 
-This dossier bundles four related Verifier-side changes into a single migration wave. First, it closes the remaining security-enforcement gaps in OpenID for Verifiable Presentations (OID4VP) by enforcing encrypted Authorization Responses (direct_post.jwt), DCQL-only presentation queries, and Signed Presentation Requests, all of which are already implemented but currently only optionally supported under the EMC (Expand-Migrate-Contract) pattern. Second, it migrates encryption from AES128-GCM to AES256-GCM; following EMC, all components first accept both algorithms, with the Wallet required to support this ahead of the Issuer and Verifier. Third, it closes the remaining Status List gaps required for the swiyu 1.0 go-live, including status-verification configurability and caching. During the transition period, non-enforcing behavior continues to be accepted where noted; afterwards, non-compliant Verifiers can no longer participate in the ecosystem.
+This dossier bundles four related Verifier-side changes into a single migration wave. 
+1. It closes the remaining security-enforcement gaps in OpenID for Verifiable Presentations (OID4VP) by enforcing encrypted Authorization Responses (direct_post.jwt), DCQL-only presentation queries, and Signed Presentation Requests, all of which are already implemented but currently only optionally supported under the EMC (Expand-Migrate-Contract) pattern.
+2. It migrates encryption from AES128-GCM to AES256-GCM; following EMC, all components first accept both algorithms, with the Wallet required to support this ahead of the Issuer and Verifier.
+3. It closes the remaining Status List gaps required for the swiyu 1.0 go-live, including status-verification configurability and caching. During the transition period, non-enforcing behavior continues to be accepted where noted; afterwards, non-compliant Verifiers can no longer participate in the ecosystem.
 
 
 ## Action required
@@ -33,7 +36,7 @@ This dossier bundles four related Verifier-side changes into a single migration 
 🐞 Fix
 
 ### Generic Verifier
-Version 4.0.0 <br>
+Version 4.0.x <br>
 ⚠️ Allow the Business Verifier to configure to what degree a failed status verification is accepted before rejecting a VC. <br>
 ⚠️ Cache Status List Tokens according to their ttl/exp claims. <br>
 ⚠️ Reject the Referenced Token if Status List validation fails, except where explicitly configured to accept an unknown status (e.g. age verification). <br>
@@ -42,8 +45,8 @@ Version 4.0.0 <br>
 🚨 Reject unsigned Presentation Requests the aud claim must reference a signed Request Object (Signed Presentation Requests enforced). <br>
 
 ## Migration steps
-1. Migrate to generic Verifier 4.0.0.
+1. Migrate to generic Verifier 4.0.x.
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
-17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic Verifier 4.0.0.
+17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic Verifier 4.0.x.
