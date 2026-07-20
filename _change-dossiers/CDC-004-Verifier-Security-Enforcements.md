@@ -37,11 +37,11 @@ This dossier bundles four related Verifier-side changes into a single migration 
 
 ### Generic Verifier
 Version 4.0.x <br>
-1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
+1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-verifier/releases)
 
 ## Migration steps
-1. Migrate to generic Verifier 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/migration-guides/guide-3.2.x-to-4.0.x.md)
+1. Migrate to generic Verifier 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/migration-guides/v3.0.x-to-v4.0.x.md)
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
-17.08.2026 Wallet-side 1.17 security enforced (payload encryption) requires the generic Verifier 4.0.x.
+17.08.2026 Wallet-side 1.17.x security enforced (payload encryption) requires the generic Verifier 4.0.x.
