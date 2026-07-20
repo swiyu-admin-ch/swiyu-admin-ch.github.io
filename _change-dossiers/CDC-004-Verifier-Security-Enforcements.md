@@ -21,7 +21,7 @@ Internal Reference: EIDARTFE-1531, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <
   {{ notice-text | markdownify }}
 </div>
 
-This dossier bundles four related Verifier-side changes into a single migration wave. 
+This dossier bundles three related Verifier-side changes into a single migration wave. 
 1. It closes the remaining security-enforcement gaps in OpenID for Verifiable Presentations (OID4VP) by enforcing encrypted Authorization Responses (direct_post.jwt), DCQL-only presentation queries, and Signed Presentation Requests, all of which are already implemented but currently only optionally supported under the EMC (Expand-Migrate-Contract) pattern.
 2. It migrates encryption from AES128-GCM to AES256-GCM; following EMC, all components first accept both algorithms, with the Wallet required to support this ahead of the Issuer and Verifier.
 3. It closes the remaining Status List gaps required for the swiyu 1.0 go-live, including status-verification configurability and caching. During the transition period, non-enforcing behavior continues to be accepted where noted; afterwards, non-compliant Verifiers can no longer participate in the ecosystem.
