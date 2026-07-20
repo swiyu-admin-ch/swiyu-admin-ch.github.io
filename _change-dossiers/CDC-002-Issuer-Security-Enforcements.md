@@ -20,7 +20,7 @@ Internal Reference: EIDARTFE-1526, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <
   {{ notice-text | markdownify }}
 </div>
 
-This dossier bundles four related Issuer-side changes into a single migration wave. 
+This dossier bundles three related Issuer-side changes into a single migration wave. 
 1. It enforces the security changes from swiss-profile-issuance 1.0 by enforcing Payload Encryption, and Signed Metadata, all of which are already implemented since version 3.0.0 and set as default.
 2. It migrates encryption from AES128-GCM to AES256-GCM; following EMC, all components first accept both algorithms, with the Wallet required to support this ahead of the Issuer and Verifier.
 3. It closes the remaining Status List gaps required for the swiyu 1.0 go-live, including ttl/exp handling and Status List validation. During the transition period, non-enforcing behavior continues to be accepted where noted; afterwards, non-compliant Issuers can no longer participate in the ecosystem. 
