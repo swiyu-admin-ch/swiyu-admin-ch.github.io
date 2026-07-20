@@ -39,12 +39,11 @@ Version 4.0.0 <br>
 ⚠️ Cache Status List Tokens according to their ttl/exp claims. <br>
 ⚠️ Reject the Referenced Token if Status List validation fails, except where explicitly configured to accept an unknown status (e.g. age verification). <br>
 🚨 Always send response_mode=direct_post.jwt so Authorization Responses are encrypted. <br>
-🚨 Send DCQL only in the Presentation Request, dropping DIF Presentation Exchange support (Contract phase, after Wallet enforcement). <br>
 🚨 Remove support for unencrypted (direct_post) Authorization Responses entirely (EMC Contract step). <br>
 🚨 Reject unsigned Presentation Requests the aud claim must reference a signed Request Object (Signed Presentation Requests enforced). <br>
 
 ## Migration steps
-1. Issuer can migrate to generic Verifier 4.0.0.
+1. Migrate to generic Verifier 4.0.0.
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
