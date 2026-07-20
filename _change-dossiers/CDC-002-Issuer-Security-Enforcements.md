@@ -35,18 +35,13 @@ This dossier bundles four related Issuer-side changes into a single migration wa
 
 ### Generic Issuer
 Version: 4.0.x <br>
-⚠️ Add ttl/exp support when issuing Status List Tokens (JWT format). <br>
-⚠️ Enforce correct usage of credential_configuration_id. <br>
-⚠️ Enforce presence of the nonce_endpoint, credential_request_encryption, and credential_response_encryption metadata parameters.  <br>
-🚨 Enforce Credential Endpoint and the Deferred Credential Endpoint. Swiyu wallet will enforce this with a future release. <br>
-🚨 Enforce credential_request_encryption and credential_response_encryption, reject unencrypted requests/responses where encryption is required, including for the Deferred Credential Request and Response. Swiyu wallet will enforce this with a future release. <br>
-🚨 Enforce Signed Metadata on the Credential Issuer Metadata endpoint. Swiyu wallet will enforce this with a future release. <br>
+1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
 
 The generic Issuer 4.0.x should be deployed as soon wallet 1.17 is published. <br>
 Must be in use until end of Q3 2026. <br>
 
 ## Migration steps
-1. Migrate to generic Issuer 4.0.x.
+1. Migrate to generic Issuer 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/migration-guides/guide-3.2.x-to-4.0.x.md)
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
 
 ## Timeline
