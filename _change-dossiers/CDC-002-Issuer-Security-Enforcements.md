@@ -37,7 +37,7 @@ This dossier bundles four related Issuer-side changes into a single migration wa
 Version: 4.0.x <br>
 1. See: [Releasenotes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
 
-The generic Issuer 4.0.x should be deployed as soon wallet 1.17 is published. <br>
+The generic Issuer 4.0.x should be deployed as soon wallet 1.17.x is published. <br>
 Must be in use until end of Q3 2026. <br>
 
 ## Migration steps
@@ -45,4 +45,4 @@ Must be in use until end of Q3 2026. <br>
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
 
 ## Timeline
-17.08.2026:  Wallet-side 1.17 security enforced (payload encryption, Signed Metadata trust) requires the generic issuer 4.0.x. <br>
+17.08.2026:  Wallet-side 1.17.x security enforced (payload encryption, Signed Metadata trust) requires the generic issuer 4.0.x. <br>
