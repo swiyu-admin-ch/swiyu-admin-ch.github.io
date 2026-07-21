@@ -15,11 +15,11 @@ Affected Components: <br>
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Swiss Profile Issuance V1.0</h4>
+  <h4 class="no_toc">OID4VCI credential format media type</h4>
   {{ notice-text | markdownify }}
 </div>
 
-Description of the Change Dossier eg. The entire Trust Protocol changes. Registries, Issuer, Verifier and Wallet must support it. It introduces protected issuance and verification, AHV-number restriction, verifier-query registration and non-compliance handling. During a transition period, components support both the old and the new protocol; afterwards TP 1.0 is no longer supported and old Issuers and Verifiers can no longer interact.
+This dossier completes the migration of the OID4VCI credential format media type from vc+sd-jwt to dc+sd-jwt, following the IETF renaming of the SD-JWT VC media type. The Expand and Migrate phases of this change have already been completed, meaning both the generic Issuer and the swiyu Wallet have accepted and processed both media types in parallel. This dossier executes the Contract phase: on the effective date, support for the legacy vc+sd-jwt media type is removed entirely, and only dc+sd-jwt is accepted.
 
 ## Action required
 
@@ -32,15 +32,15 @@ Tag ✅ Improvement
 Tag 🐞 Fix
 
 ### Generic Issuer
-
-### Generic Verifier
+🚨 Generic Issuer 4.0.x must be deployed before 17.08.2026. From this date, the Generic Issuer no longer issues credentials using the vc+sd-jwt media type; only dc+sd-jwt is emitted.
 
 ### Wallet
-
-### Status Registry
+🚨 swiyu Wallet 1.17.x must be deployed before 17.08.2026. From this date, the Wallet no longer accepts or processes credentials using the vc+sd-jwt media type; only dc+sd-jwt is supported.
 
 ## Migration steps
-
-
+1. Deploy swiyu Wallet 1.17.x (dual-format support already in place from Expand/Migrate phases).
+2. Deploy generic Issuer 4.0.x (dual-format support already in place from Expand/Migrate phases).
+3. Contract phase: on 17.08.2026, support for vc+sd-jwt is removed; only dc+sd-jwt remains valid.
 
 ## Timeline
+17.08.2026	Hard cutover vc+sd-jwt support removed across Generic Issuer and swiyu Wallet; dc+sd-jwt only.
