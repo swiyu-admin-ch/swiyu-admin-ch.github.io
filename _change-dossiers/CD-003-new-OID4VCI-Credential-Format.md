@@ -11,6 +11,7 @@ Status: Draft <br>
 Published: <br>
 Effective: <br>
 Affected Components: Generic Issuer, swiyu Wallet <br>
+Internal Reference: EIDARTFE-1581 <br>
 
 {% endcapture %}
 
