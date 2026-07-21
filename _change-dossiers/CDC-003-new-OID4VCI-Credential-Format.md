@@ -1,5 +1,5 @@
 ---
-title: CDC-003 - New OID4VCI Credential Format dc+sd-jwt
+title: CD-003 - New OID4VCI Credential Format dc+sd-jwt
 excerpt: Required steps and timeline for the migration from vc+sd-jwt to dc+sd-jwt 
 header:
   teaser: ../assets/images/none.jpg
