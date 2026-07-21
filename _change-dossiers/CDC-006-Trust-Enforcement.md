@@ -1,5 +1,5 @@
 ---
-title: CDC-006 - Template
+title: CD-006 - Template
 excerpt: Template
 header:
   teaser: ../assets/images/none.jpg
