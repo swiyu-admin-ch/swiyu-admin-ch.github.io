@@ -1,5 +1,5 @@
 ---
-title: CDC-004 - Generic Verifier - Security Enforcement, AES256 Migration & Status List Gap Closure
+title: CD-004 - Generic Verifier - Security Enforcement, AES256 Migration & Status List Gap Closure
 excerpt: Affected Components Generic Verifier, swiyu Wallet
 header:
   teaser: ../assets/images/none.jpg
