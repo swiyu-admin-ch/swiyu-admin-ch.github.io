@@ -1,5 +1,5 @@
 ---
-title: CDC-001 - Swiss Profile Anchor Version 1.0
+title: CD-001 - Swiss Profile Anchor Version 1.0
 excerpt: Required steps and timeline for the migration to Swiss Profile Anchor 1.0 
 header:
   teaser: ../assets/images/none.jpg
