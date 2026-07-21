@@ -10,7 +10,7 @@ header:
 Status: Draft <br>
 Published: <br>
 Effective: <br>
-Affected Components: <br>
+Affected Components: Generic Issuer, swiyu Wallet <br>
 
 {% endcapture %}
 
