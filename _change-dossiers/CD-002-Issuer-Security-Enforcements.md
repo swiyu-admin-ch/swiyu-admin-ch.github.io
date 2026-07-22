@@ -5,7 +5,7 @@ header:
   teaser: ../assets/images/none.jpg
 ---
 
-{% capture notice-text %}
+{% capture notice-text %} 
 
 Status: Released <br>
 Published: 22.07.2026 <br>
