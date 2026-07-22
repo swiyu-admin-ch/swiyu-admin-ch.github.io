@@ -8,9 +8,9 @@ header:
 
 {% capture notice-text %}
 
-Status: Draft <br>
-Published: <br>
-Effective: <br>
+Status: Released <br>
+Published: 22.07.2026 <br>
+Effective: 17.08.2026 <br>
 Affected Components: Generic Verifier, swiyu Wallet <br>
 Internal Reference: EIDARTFE-1531, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <br>
 
