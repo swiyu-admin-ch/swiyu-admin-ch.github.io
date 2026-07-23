@@ -43,7 +43,7 @@ We don't take this exception lightly, and we'll continue to give as much notice 
 
 # What this means for you
 
-Watch for **Change Dossiers** on this site, each one will tell you exactly what's changing, whether it affects your component(s), and what to do about it.
+Watch for **Change Dossiers** on [this site](https://swiyu-admin-ch.github.io/change-dossiers/), each one will tell you exactly what's changing, whether it affects your component(s), and what to do about it.
 For standard (non-security) breaking changes, you can expect a minimum three-month runway from publication to the change taking effect.
 For critical security fixes, please treat **Change Dossiers** as high priority and act promptly, even if the usual migration timeline doesn't apply.
 
