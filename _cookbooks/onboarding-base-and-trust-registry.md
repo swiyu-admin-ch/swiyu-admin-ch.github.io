@@ -309,7 +309,8 @@ curl -X PUT \
 
 # 5. Create Proof of Possession for initial did
 
-After uploading your DID log ([step 4.3.](#43-upload-the-did-log)), you must prove to the trust registry that you control the private key corresponding to your DID's assertion method. A proof of possession (PoP) is a [JSON Web Token (JWT)](https://www.jwt.io/introduction#what-is-json-web-token) signed with a private key from your DID document. It can be created with the [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/latest).
+After uploading your DID log ([step 4.3.](#43-upload-the-did-log)), you can now start your trust onboarding process in the [swiyu Service Portal](https://portal.trust-infra.swiyu-int.admin.ch).
+During that process you must prove to the trust registry that you control the private key corresponding to your DID's assertion method. A proof of possession (PoP) is a [JSON Web Token (JWT)](https://www.jwt.io/introduction#what-is-json-web-token) signed with a private key from your DID document. It can be created with the [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/latest).
 
 Prerequisites:
 
