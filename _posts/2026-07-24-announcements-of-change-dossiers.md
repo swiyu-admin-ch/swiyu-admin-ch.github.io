@@ -29,7 +29,7 @@ This pattern lets us evolve the Trust Infrastructure without forcing integrators
 
 # Timelines: three months, by default
 
-For changes of meaningful scope, anything that requires integrators to adapt their implementation, our standard commitment is to give the swiyu ecosystem **at least three months** between the publication of a **C*hange Dossier** and the point at which the old behavior is contracted (retired). This is intended to give teams enough time to plan, implement, test, and roll out their migration in a controlled way, rather than reacting under time pressure.
+For changes of meaningful scope, anything that requires integrators to adapt their implementation, our standard commitment is to give the swiyu ecosystem **at least three months** between the publication of a **Change Dossier** and the point at which the old behavior is contracted (retired). This is intended to give teams enough time to plan, implement, test, and roll out their migration in a controlled way, rather than reacting under time pressure.
 
 # The exception: critical security vulnerabilities
 
