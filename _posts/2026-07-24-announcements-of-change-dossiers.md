@@ -1,11 +1,11 @@
 ---
-title: "Announcement of the change dossiers"
+title: "Introduction of Change Dossiers"
 categories:
   - PublicBeta
 ---
 # Why we're introducing Change Dossiers
 
-The swiyu Trust Infrastructure is a living ecosystem. As we continue to harden the protocol, close security gaps, and evolve the trust model, we will from time to time need to make changes that affect how generic Issuers, generic Verifiers, Wallet providers, and other integrators interact with the infrastructure. Some of these changes will be additive and safe. Others, by necessity, will be breaking.
+The swiyu Trust Infrastructure is a living ecosystem. As we continue to harden the protocol, close security gaps, and evolve the trust model, we will from time to time need to make changes that affect how generic Issuers, generic Verifiers, Wallet providers, and other integrators interact with the infrastructure. Some of these changes will be additive and non-breaking. Others, by necessity, will be breaking.
 
 To make these changes transparent, predictable, and manageable for everyone building on swiyu, we are introducing [Change Dossiers (CD)](https://swiyu-admin-ch.github.io/change-dossiers/): standardized announcements published to the ecosystem whenever a change to the Trust Infrastructure requires action on the part of integrators.
 
@@ -25,7 +25,7 @@ Wherever technically possible, changes to the Trust Infrastructure will follow t
 2. **Migrate** the ecosystem is given a defined window to adopt the new behavior. This is the phase **Change Dossiers** are published for, and where we provide guidance, migration steps, and support.
 3. **Contract** once the migration window has passed, the old behavior is retired.
 
-This pattern lets us evolve the Trust Infrastructure without forcing integrators into rushed, unplanned rework, and lets us run our own contracting work without breaking the ecosystem out from under anyone.
+This pattern allows us evolve the Trust Infrastructure without forcing integrators into rushed, unplanned rework. It allows us manage our own contracting work in a predicatble manner and avoids breaking the ecosystem.
 
 # Timelines: three months, by default
 
@@ -45,7 +45,7 @@ We don't take this exception lightly, and we'll continue to give as much notice 
 
 Watch for **Change Dossiers** on [this site](https://swiyu-admin-ch.github.io/change-dossiers/), each one will tell you exactly what's changing, whether it affects your component(s), and what to do about it.
 For standard (non-security) breaking changes, you can expect a minimum three-month runway from publication to the change taking effect.
-For critical security fixes, please treat **Change Dossiers** as high priority and act promptly, even if the usual migration timeline doesn't apply.
+For critical security fixes, please treat **Change Dossiers** as high priority and act promptly.
 
-We believe this approach gives the swiyu ecosystem the transparency and predictability it needs, while still allowing us to keep the Trust Infrastructure secure and moving forward.
+We believe this approach gives the swiyu ecosystem the transparency and predictability it needs, while allowing us to keep the Trust Infrastructure secure and moving forward.
 
