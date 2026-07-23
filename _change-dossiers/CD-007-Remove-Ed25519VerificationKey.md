@@ -10,7 +10,7 @@ header:
 Status: Draft <br>
 Published: <br>
 Effective: <br>
-Affected Components: Generic Issuer, Generic Verifier <br>
+Affected Components: DID Resolver, Wallet, Generic Issuer, Generic Verifier <br>
 Internal Reference: EIDARTFE-1951 <br>
 
 {% endcapture %}
