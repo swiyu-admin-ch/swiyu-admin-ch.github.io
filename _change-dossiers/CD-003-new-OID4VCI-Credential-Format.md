@@ -33,15 +33,15 @@ Tag ✅ Improvement
 Tag 🐞 Fix
 
 ### Generic Issuer
-🚨 Generic Issuer 4.0.x must be deployed before 17.08.2026. From this date, the Generic Issuer no longer issues credentials using the vc+sd-jwt media type; only dc+sd-jwt is emitted.
+🚨 Generic Issuer 4.x.x must be deployed before xx.xx.2026. From this date, the Generic Issuer no longer issues credentials using the vc+sd-jwt media type; only dc+sd-jwt is emitted.
 
 ### Wallet
-🚨 swiyu Wallet 1.17.x must be deployed before 17.08.2026. From this date, the Wallet no longer accepts or processes credentials using the vc+sd-jwt media type; only dc+sd-jwt is supported.
+🚨 swiyu Wallet 1.x.x must be deployed before xx.xx.2026. From this date, the Wallet no longer accepts or processes credentials using the vc+sd-jwt media type; only dc+sd-jwt is supported.
 
 ## Migration steps
-1. Deploy swiyu Wallet 1.17.x (dual-format support already in place from Expand/Migrate phases).
-2. Deploy generic Issuer 4.0.x (dual-format support already in place from Expand/Migrate phases).
-3. Contract phase: on 17.08.2026, support for vc+sd-jwt is removed; only dc+sd-jwt remains valid.
+1. Deploy swiyu Wallet 1.x.x (dual-format support already in place from Expand/Migrate phases).
+2. Deploy generic Issuer 4.x.x (dual-format support already in place from Expand/Migrate phases).
+3. Contract phase: on xx.xx.2026, support for vc+sd-jwt is removed; only dc+sd-jwt remains valid.
 
 ## Timeline
 17.08.2026	Hard cutover vc+sd-jwt support removed across Generic Issuer and swiyu Wallet; dc+sd-jwt only.
