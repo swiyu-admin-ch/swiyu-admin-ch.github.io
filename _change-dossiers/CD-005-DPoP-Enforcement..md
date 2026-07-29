@@ -35,7 +35,7 @@ Tag 🐞 Fix
 1.17.0 DPoP enablement for iOS and Android
 
 ### Generic Issuer
-Generic Issuer [Version 3.2.0. or higher](https://github.com/swiyu-admin-ch/swiyu-issuer/releases) can enforce the DPoP through configuration
+Generic Issuer from [version 3.2.0.](https://github.com/swiyu-admin-ch/swiyu-issuer/releases) supports enforcing DPoP via configuration. However, newest version 4.x.x. is strongly recommended for security improvements.
 
 ## Migration steps
 1. Ensure Generic Issuer 3.2.x or higher is deployed.
