@@ -1,5 +1,5 @@
 ---
-title: "New swiyu Generic Issuer and Verifier"
+title: "New swiyu Generic Verifier"
 categories:
   - PublicBeta
 ---
