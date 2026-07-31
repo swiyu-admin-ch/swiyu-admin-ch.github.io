@@ -1,10 +1,10 @@
 ---
-title: "New swiyu Generic Issuer and Verifier"
+title: "New swiyu Generic Verifier"
 categories:
   - PublicBeta
 ---
 
-We released a new versions of our generic verifier due to a security vulnarabilty. 
+We released a new version of our Generic Verifier due to a security vulnerability.
 
 ## Generic Verifier [Version 4.1.2](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/4.1.2)
 * 🚨 **Critical vulnerability fix** VC Authorization Bypass, upgrade ASAP
