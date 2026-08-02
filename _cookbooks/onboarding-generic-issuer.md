@@ -14,7 +14,7 @@ Please be advised that the current system and its operations are provided on a b
 {% endcapture %}
 
 <div class="notice--danger">
-  <h4 class="no_toc">Public Beta</h4>
+  <h4 class="no_toc">Sandbox</h4>
   {{ notice-text | markdownify }}
 </div>
 
@@ -84,7 +84,7 @@ Once the swiyu-issuer is up and running you need to initialize the status list o
 It's recommended to store the value of `"statusRegistryUrl"` response field, as it is needed in later steps and will be referenced as `${STATUS_REGISTRY_URL}`.
 
 <div class="notice--warning">
-  The maximum file size of the status list is currently 200kB. (Subject to evaluation and might change after public beta).
+  The maximum file size of the status list is currently 200kB. (Subject to evaluation and might change for go-live).
 </div>
 
 ```bash
@@ -246,4 +246,4 @@ We provide a [test application](https://github.com/swiyu-admin-ch/swiyu-generic-
 
 # Your Feedback?
 
-We would be pleased if you spend about 3 additional minutes and give us feedback on the swiyu Public Beta Trust Infrastructure and your onboarding process! With Public Beta, we want to give ecosystem stakeholders the opportunity to gain initial experience and build their own use cases on the trust infrastructure of the future e-ID. Your [feedback](https://findmind.ch/c/feedback_publicbeta_infr_en) will help us to further develop and improve the touchpoints, and we greatly appreciate your support.
+We would be pleased if you spend about 3 additional minutes and give us feedback on the swiyu Sandbox Trust Infrastructure and your onboarding process! With the Sandbox, we want to give ecosystem stakeholders the opportunity to gain initial experience and build their own use cases on the trust infrastructure of the future e-ID. Your [feedback](https://findmind.ch/c/feedback_publicbeta_infr_en) will help us to further develop and improve the touchpoints, and we greatly appreciate your support.
