@@ -8,9 +8,9 @@ header:
 
 {% capture notice-text %}
 
-Status: Draft <br>
-Published: <br>
-Effective: <br>
+Status: Released <br>
+Published: 22.07.2026 <br>
+Effective: 17.08.2026 <br>
 Affected Components: Generic Verifier, swiyu Wallet <br>
 Internal Reference: EIDARTFE-1531, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <br>
 
@@ -40,7 +40,7 @@ Version 4.0.x <br>
 1. See: [Release notes](https://github.com/swiyu-admin-ch/swiyu-verifier/releases)
 
 ## Migration steps
-1. Migrate to generic Verifier 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/migration-guides/v3.0.x-to-v4.0.x.md)
+1. Migrate to generic Verifier 4.0.x. See [migrations guides](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/migration-guides/v3.x-to-v4.x.md)
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Verifier can no longer verify credentials from a swiyu Wallet.
 
 ## Timeline
