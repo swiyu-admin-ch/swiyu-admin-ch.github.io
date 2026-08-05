@@ -111,30 +111,9 @@ The wallet reads this structure, generates its own ephemeral key pair, and respo
 Afterwards both parties derive session keys and start encrypted communication.
 
 In the Swiss Profile Proximity, the **reverse QR engagement** slightly modifies the ISO-18013-5 flow.
+
+[![reader-engagement](../assets/images/proximity-reader-engagement.png)](../assets/images/proximity-reader-engagement.png)
  
-```mermaid
-sequenceDiagram
-participant Wallet
-participant Reader
-
-Reader ->> Reader : Generate ephemeral key pair (reader key)
-Reader ->> Wallet : ReaderEngagement <<QR Code>>
-Wallet ->> Wallet : Generate ephemeral key pair (device key)
-Wallet ->> Reader : DeviceEngagement <<BLE>>
-
-Wallet ->> Wallet : Derive shared secret
-Reader ->> Reader : Derive shared secret
-Wallet ->> Wallet : Derive session transcript (Device Engagement + reader key)
-Reader ->> Reader : Derive session transcript (Device Engagement + reader key)
-Wallet ->> Wallet : Derive session keys
-Reader ->> Reader : Derive session keys
-
-Reader ->> Wallet : SessionData (encrypted)
-Wallet ->> Reader : SessionData (encrypted)
-
-```
-
-
 ## Device Engagement
 
 In the **Device Engagement flow**, the interaction is initiated by the **Wallet** (Device).
@@ -143,28 +122,7 @@ The wallet publishes a QR code containing the **DeviceEngagement** information.
 
 The reader reads the structure, generates its own ephemeral key pair and initiates the communication with a **SessionEstablishement** package. After the key agreement and key derivation steps, the encrypted communication channel is established.
 
-```mermaid
-sequenceDiagram
-participant Wallet
-participant Reader
-
-Wallet ->> Wallet: Generate ephemeral key pair (device key)
-Wallet ->> Reader: DeviceEngagement <<QR Code>>
-Reader ->> Reader: Scan DeviceEngagement
-Reader ->> Reader: Generate ephemeral key pair (reader key)
-Reader ->> Reader: Derive shared secret
-Reader ->> Reader: Derive session transcript (Device Engagement + reader key)
-Reader ->> Reader: Derive session keys (SKReader, SKDevice)
-Reader ->> Reader: Encrypt (AuthorizationRequest)
-Reader ->> Wallet: SessionEstablishment [Encrytped(data), public key]
-Wallet ->> Wallet: Derive shared secret
-Wallet ->> Wallet: Derive session transcript (Device Engagement + reader key)
-Wallet ->> Wallet: Derive session keys (SKReader, SKDevice)
-
-Wallet ->> Wallet: Encrypt (Response)
-Wallet ->> Reader: SessionData [Encrypted(Response)]
-
-```
+[![device-engagement](../assets/images/proximity-device-engagement.png)](../assets/images/proximity-device-engagement.png)
 
 ## Digital Credentials API (and OpenID4VP)
 
