@@ -1,6 +1,6 @@
 ---
 title: CD-002 - Generic Issuer - Security Enforcement, AES256 Migration & Status List Gap Closure
-excerpt: Affected Components Generic Issuer, swiyu Wallet
+excerpt: Affected Components Generic Issuer, swiyu Wallet.
 header:
   teaser: ../assets/images/none.jpg
 ---
