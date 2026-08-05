@@ -1,6 +1,6 @@
 ---
 title: CD-005 - DPoP Enforcement
-excerpt: Template
+excerpt: We are introducing DPoP to strengthen the OpenID4VCI flow.
 header:
   teaser: ../assets/images/none.jpg
 ---
