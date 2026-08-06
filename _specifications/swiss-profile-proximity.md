@@ -112,7 +112,7 @@ Afterwards both parties derive session keys and start encrypted communication.
 
 In the Swiss Profile Proximity, the **reverse QR engagement** slightly modifies the ISO-18013-5 flow.
 
-[![reader-engagement](../assets/images/proximity-reader-engagement.png)](../assets/images/proximity-reader-engagement.png)
+[![reader-engagement](/assets/images/proximity-reader-engagement.png)](../assets/images/proximity-reader-engagement.png)
  
 ## Device Engagement
 
@@ -122,7 +122,7 @@ The wallet publishes a QR code containing the **DeviceEngagement** information.
 
 The reader reads the structure, generates its own ephemeral key pair and initiates the communication with a **SessionEstablishement** package. After the key agreement and key derivation steps, the encrypted communication channel is established.
 
-[![device-engagement](../assets/images/proximity-device-engagement.png)](../assets/images/proximity-device-engagement.png)
+[![device-engagement](/assets/images/proximity-device-engagement.png)](../assets/images/proximity-device-engagement.png)
 
 ## Digital Credentials API (and OpenID4VP)
 
