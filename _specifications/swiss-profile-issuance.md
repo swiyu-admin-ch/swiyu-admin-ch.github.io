@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version: 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-06-22
+  Last edited: 2026-08-07
 </div>
 
 
@@ -196,8 +196,9 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
   - `logo` remains **OPTIONAL**.
     - `uri` **MUST** be a Data-URL (data URI schema) with MIME type `image/jpeg` or `image/png` and be base64 encoded.
       This means the `uri` MUST begin with `data:image/png;base64` or `data:image/jpeg;base64`. 
-- `credential_configurations_supported` remaind **REQUIRED**.
-  - `scope` is NOT **SUPPORTED**.
+- `credential_configurations_supported` remains **REQUIRED**.
+  - `scope` is **NOT SUPPORTED**.
+  - `credential_refresh_disabled` **OPTIONAL** boolean flag to indicate to wallets if this credential can be refreshed by calling again the `credential_endpoint` with appropriate authorization.
   - `cryptographic_binding_methods_supported` **MUST** be `jwk` as only JWK format for holder bindings are supported.
   - `proof_types_supported` **MUST** be `jwt` as only JWT format is supported.
     - `key_attestations_required` **MUST** be supported by Wallets, and **MAY** be used by Issuers.
