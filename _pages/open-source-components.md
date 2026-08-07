@@ -78,19 +78,34 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 
 ## Component Versions
 
-| Component | Sunrise | Current | Deprecated | Sunset | End of Life |
+### Versioning Lifecycle
+
+| Icon | Name | Description |
+|--- |--- |--- |
+| 🌄 | Sunrise | This will be the future version. |
+| <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/47c7b801-6d48-476e-831e-765c8a192f73" /> | Current | This is the current and newest supported version. | 
+| <img width="16" height="16" alt="twitterEmojiRedirector" src="https://github.com/user-attachments/assets/a514b5fa-1c05-41af-a231-90aedf9ddc29" /> | Deprecated | This version still works but an upgrade is advised. |
+| <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/883c6faf-32c0-427c-99bc-8b5365dc4f29" /> | Sunset | There is an end date set for this version (but before that end date it is still supported). |
+| <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/43dd7f7f-a7d4-4398-9718-848877938e4d" /> | End of Life | This version has been removed and no longer works. |
+
+
+### Version Overview
+
+| Component | 🌄 Sunrise | <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/47c7b801-6d48-476e-831e-765c8a192f73" /> Current | <img width="16" height="16" alt="twitterEmojiRedirector" src="https://github.com/user-attachments/assets/a514b5fa-1c05-41af-a231-90aedf9ddc29" /> Deprecated | <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/883c6faf-32c0-427c-99bc-8b5365dc4f29" /> Sunset | <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/43dd7f7f-a7d4-4398-9718-848877938e4d" /> End of Life |
 |--- |--- |--- |--- |--- |--- |
-| Prod iOS | 1.16.1 | 1.16.0 |  | 1.15.1 </br> 1.14.0 | |
-| Prod Android | 1.17.0 | 1.16.3 |  | 1.14.0 | |
-| Sandbox iOS | 1.16.1 | 1.16.0 |  | | |
-| Sandbox Android | 1.17.0 | 1.16.3 |  | | |
-| Generic Issuer | 5.0 (TP 2.0 enforcement) | 4.1.0 | < 3.1 (before TP 2.0)  | 21.07.2026 (pre-1.0 issuance) | |
-| Generic Verifier | 5.0 (TP 2.0 enforcement) | 4.1.1 | < 3.1 (before TP 2.0)  | tbd | |
+| [Prod iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) | 1.17.0 | 1.16.1 |  | 1.15.1 <br> 1.14.0 | |
+| [Prod Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) | 1.17.0 | 1.16.3 |  | 1.14.0 | |
+| [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 1.16.1 | 1.16.1 |  | | |
+| [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 1.17.0 | [1.16.3](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) |  | | |
+| [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.0 (TP 2.0 enforcement) | [4.1.0](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/4.1.0) | < 3.1 (before TP 2.0)  | 21.07.2026 (pre-1.0 issuance) | |
+| [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.0 (TP 2.0 enforcement) | [4.1.2](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/4.1.2) | < 3.1 (before TP 2.0)  | tbd | |
 | Check App iOS | 1.0 | |  |  | |
 | Check App Android | 1.0 | |  |  | |
-| DID Toolbox | 2.3 (expand EdDSA) | 2.2.1 | < 2.1 (did:webvh not Swiss Profile conform) |  | |
-| DID Resolver | 2.9 (expand EdDSA) | 2.8.3 | < 2.8 |  | |
-
+| [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java) | 2.4 | 2.3 (expand EdDSA) | < 2.1 (did:webvh not Swiss Profile conform) |  | |
+| [DID Resolver](https://github.com/swiyu-admin-ch/didresolver) | 2.10 | 2.9  (expand EdDSA) | < 2.8 |  | |
+| [DID Resolver Kotlin/Android](https://github.com/swiyu-admin-ch/didresolver-kotlin-android) | 2.10 | 2.9  (expand EdDSA) | < 2.8 |  | |
+| [DID Resolver Kotlin](https://github.com/swiyu-admin-ch/didresolver-kotlin) | 2.10 | 2.9 (expand EdDSA) | < 2.8 |  | |
+| [DID Resolver Swift](https://github.com/swiyu-admin-ch/didresolver-swift) | 2.10 | 2.9 (expand EdDSA) | < 2.8 |  | |
 
 ## How to use the swiyu Public Beta Trust Infrastructure
 
