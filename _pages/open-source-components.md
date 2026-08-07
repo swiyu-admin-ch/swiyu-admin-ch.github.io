@@ -76,6 +76,21 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 - [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java)
 - [DID Resolver](https://github.com/swiyu-admin-ch/didresolver)
 
+## Component Versions
+
+| Component | Sunrise | Current | Deprecated | Sunset | End of Life |
+|--- |--- |--- |--- |--- |--- |
+| Prod iOS | 1.16.1 | 1.16.0 |  | 1.15.1 </br> 1.14.0 | |
+| Prod Android | 1.17.0 | 1.16.3 |  | 1.14.0 | |
+| Sandbox iOS | 1.16.1 | 1.16.0 |  | | |
+| Sandbox Android | 1.17.0 | 1.16.3 |  | | |
+| Generic Issuer | 5.0 (TP 2.0 enforcement) | 4.1.0 | < 3.1 (before TP 2.0)  | 21.07.2026 (pre-1.0 issuance) | |
+| Generic Verifier | 5.0 (TP 2.0 enforcement) | 4.1.1 | < 3.1 (before TP 2.0)  | tbd | |
+| Check App iOS | 1.0 | |  |  | |
+| Check App Android | 1.0 | |  |  | |
+| DID Toolbox | 2.3 (expand EdDSA) | 2.2.1 | < 2.1 (did:webvh not Swiss Profile conform) |  | |
+| DID Resolver | 2.9 (expand EdDSA) | 2.8.3 | < 2.8 |  | |
+
 
 ## How to use the swiyu Public Beta Trust Infrastructure
 
