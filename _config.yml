@@ -113,6 +113,7 @@ footer:
 # Reading Files
 include:
   - .htaccess
+  - .well-known
   - _pages
   - _cookbooks
   - _specifications
