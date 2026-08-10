@@ -9,7 +9,7 @@ header:
 
 Status: Released <br>
 Published: 05.08.2026 <br>
-Effective: 17.98.2026 <br>
+Effective: 17.08.2026 <br>
 Affected Components: Generic Issuer, swiyu Wallet <br>
 
 {% endcapture %}
