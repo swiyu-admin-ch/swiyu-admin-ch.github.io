@@ -19,3 +19,7 @@ Internal Reference: <br>
   <h4 class="no_toc">Swiss Profile Issuance V1.0</h4>
   {{ notice-text | markdownify }}
 </div>
+
+
+[![trust-protocol-2-0-roadmap](/assets/images/trust-protocol-2-0-roadmap.png)](/assets/images/trust-protocol-2-0-roadmap.png)
+
