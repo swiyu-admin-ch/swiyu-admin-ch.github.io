@@ -45,4 +45,4 @@ Must be in use until end of Q3 2026. <br>
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
 
 ## Timeline
-17.08.2026:  Wallet-side 1.17.x security enforced (payload encryption, Signed Metadata trust) requires the generic issuer 4.0.x. <br>
+19.08.2026:  Wallet-side 1.17.x security enforced (payload encryption, Signed Metadata trust) requires the generic issuer 4.0.x. <br>
