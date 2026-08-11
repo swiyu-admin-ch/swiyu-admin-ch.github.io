@@ -43,4 +43,4 @@ Generic Issuer from [version 3.2.0.](https://github.com/swiyu-admin-ch/swiyu-iss
 3. Issuer enforces DPoP via configuration.
 
 ## Timeline
-17.08.2026 - swiyu Wallet enables DPoP with release 1.17.0 on iOS and Android.
+19.08.2026 - swiyu Wallet enables DPoP with release 1.17.0 on iOS and Android.
