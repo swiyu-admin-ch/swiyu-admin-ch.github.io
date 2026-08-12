@@ -9,7 +9,7 @@ header:
 
 Status: Released <br>
 Published: 22.07.2026 <br>
-Effective: 17.08.2026 <br>
+Effective: 19.08.2026 <br>
 Affected Components: Generic Issuer, swiyu Wallet <br>
 Internal Reference: EIDARTFE-1526, EIDARTFE-1564, EIDARTFE-1717, EIDARTFE-1726 <br>
 
@@ -34,10 +34,10 @@ This dossier bundles three related Issuer-side changes into a single migration w
 🐞 Fix
 
 ### Generic Issuer
-Version: 4.0.x <br>
+Version: 4.x.x <br>
 1. See: [Release notes](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
 
-The generic Issuer 4.0.x should be deployed as soon wallet 1.17.x is published. <br>
+The generic Issuer 4.x.x should be deployed as soon wallet 1.17.x is published. <br>
 Must be in use until end of Q3 2026. <br>
 
 ## Migration steps
@@ -45,4 +45,4 @@ Must be in use until end of Q3 2026. <br>
 2. Contract phase: Payload Encryption and signed meta data become mandatory at the swiyu Wallet; non-conforming Issuers can no longer issue credentials to the swiyu Wallet.
 
 ## Timeline
-17.08.2026:  Wallet-side 1.17.x security enforced (payload encryption, Signed Metadata trust) requires the generic issuer 4.0.x. <br>
+19.08.2026:  Wallet-side 1.17.x security enforced (payload encryption, Signed Metadata trust) requires the generic issuer 4.0.x. <br>
