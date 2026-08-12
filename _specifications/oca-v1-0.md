@@ -158,7 +158,7 @@ And in the context of OCA Bundle, it adds the following constraints:
     "theme":"light",
     "logo":"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==",
     "primary_background_color":"#003366",
-    "primary_field":"Fullname: {{firstname}} {{lastname}}",
+    "primary_field":"Fullname: {% raw %}{{firstname}}{% endraw %} {% raw %}{{lastname}}{% endraw %}",
     "secondary_field":""
 }
 ```
@@ -288,7 +288,7 @@ Capture Base
 template
 
 ```
-"Fullname: {{firstname}} {{lastname}} from {{nationalities.join('/')}}"
+"Fullname: {% raw %}{{firstname}}{% endraw %} {% raw %}{{lastname}}{% endraw %} from {% raw %}{{nationalities.join('/')}}{% endraw %}"
 ```
 
 resolved template value
@@ -678,7 +678,7 @@ OCA Bundle
             "theme": "light",
             "logo": "data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAGbSURBVHgBvVaBUcMwDFQ4BjAbmA06QjYgGzQbkA1aJmg3yHWCwgSGCVImcJkg3UDYjVMUI6VxW/g7X+701kuWZTsAI0DEwo0GO9RuKMKpYGvdsH4uXALnqPE3DOFrhs8hFc5pizxyN2YCZyS9+5FYuWCfgYzZJYFUon2UuwMZ+xG7xO3gXKBQ95xwGyHIuxuvbhwY/oPo+WbSQAyKtDCGVtWM3aMifmXENcGnb3uqp6Q2NZHgEpnWDQl5rsJwxgS9NTBZ98ghEdgdcA6t3yOpJQtGSIUVekHN+DwJWsfSWSGLmsm2xWHti2iOEbQav6I3IYtPIqDdZwvDc3K0OY5W5EvQ2vUb2jJZaBLIogxL5pUcf9LC7gzZQPigJXFe4HmsyPw1sRvk9jKsjj4Fc5yOOfFTyDcLcEGfMR0VpACnlUvC4j+C9FjFulkURLuPhdvgIcuy08UbPxMabofBjRMHOsAfIS6db21fOgXXYe/K9kgNgxWFmr7A9dhMmoXD001h8OcvSPpLWkIKsLu3THC2yBxG7B48S5IoJb1vHubbPPxs2qsAAAAASUVORK5CYII=",
             "primary_background_color": "#2C75E3",
-            "primary_field": "{{firstname}} {{lastname}}"
+            "primary_field": {% raw %}"{{firstname}}{% endraw %} {% raw %}{{lastname}}{% endraw %}"
         },
         {
             "type": "spec/overlays/meta/1.0",
@@ -730,7 +730,7 @@ OCA Bundle
                 "firstname": "Firstname",
                 "lastname": "Lastname",
                 "address": "Address",
-                "pets": "Pet {{refs:IKLvtGx1NU0007DUTTmI_6Zw-hnGRFicZ5R4vAxg4j2j:name}}"
+                "pets": "Pet {% raw %}{{refs:IKLvtGx1NU0007DUTTmI_6Zw-hnGRFicZ5R4vAxg4j2j:name}}{% endraw %}"
             }
         },
         {
