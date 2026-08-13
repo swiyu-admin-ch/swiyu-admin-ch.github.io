@@ -11,7 +11,7 @@ Status: Released <br>
 Published: 13.08.2026 <br>
 Effective: 19.08.2026 <br>
 Affected Components: Generic Issuer, Generic Verifier swiyu Wallet <br>
-Internal Reference: EIDARTFE-1562 <br>
+Internal Reference: EIDARTFE-1562, EIDARTFE-1975 <br>
 
 {% endcapture %}
 
