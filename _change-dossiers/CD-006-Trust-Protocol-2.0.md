@@ -33,23 +33,23 @@ Tag 🐞 Fix
 
 
 ### Wallet
-⚠️ From 17.08.2026 (Wallet 1.17.x, enforced): TP2.0 support is introduced alongside TP1.0; TP1.0 continues to work as a fallback during the Migrate phase, no action required yet beyond updating to 1.17.x.
-🚨 From the Contract phase (Wallet 2.x.x, ~November 2026, exact date TBD): the Wallet will no longer accept TP1.0 trust artefacts. All DIDs consumed by the Wallet must be trust-onboarded with TP2.0 before this date, or they will be rejected.
-🚨 From the same milestone pinning environments to PROD for PROD apps and allowing only trusted issuers/verifiers on PROD. As a consequence, a Prod Wallet will no longer work against Sandbox environments.
+* ⚠️ From 17.08.2026 (Wallet 1.17.x, enforced): TP2.0 support is introduced alongside TP1.0; TP1.0 continues to work as a fallback during the Migrate phase, no action required yet beyond updating to 1.17.x.
+* 🚨 From the Contract phase (Wallet 2.x.x, ~November 2026, exact date TBD): the Wallet will no longer accept TP1.0 trust artefacts. All DIDs consumed by the Wallet must be trust-onboarded with TP2.0 before this date, or they will be rejected.
+* 🚨 From the same milestone pinning environments to PROD for PROD apps and allowing only trusted issuers/verifiers on PROD. As a consequence, a Prod Wallet will no longer work against Sandbox environments.
 
 ### Generic Issuer
-⚠️ Ecosystem participants must be running Generic Issuer 4.0.0 during the Expand phase (already required as a consequence of [CD-002](https://swiyu-admin-ch.github.io/change-dossiers/CD-002-Issuer-Security-Enforcements/) and [CD-004](https://swiyu-admin-ch.github.io/change-dossiers/CD-004-Verifier-Security-Enforcements/)).
-🚨 Upgrade to Generic Issuer 5.0.0 (Migrate phase, ~September 2026, exact date TBD): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
+* ⚠️ Ecosystem participants must be running Generic Issuer 4.0.0 during the Expand phase (already required as a consequence of [CD-002](https://swiyu-admin-ch.github.io/change-dossiers/CD-002-Issuer-Security-Enforcements/) and [CD-004](https://swiyu-admin-ch.github.io/change-dossiers/CD-004-Verifier-Security-Enforcements/)).
+* 🚨 Upgrade to Generic Issuer 5.0.0 (Migrate phase, ~September 2026, exact date TBD): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
 
 ### Generic Verifier
-⚠️ Ecosystem participants must be running Generic Verifier 4.0.0 during the Expand phase (already required as a consequence of [CD-002](https://swiyu-admin-ch.github.io/change-dossiers/CD-002-Issuer-Security-Enforcements/) and [CD-004](https://swiyu-admin-ch.github.io/change-dossiers/CD-004-Verifier-Security-Enforcements/)).
-🚨 Upgrade to Generic Verifier 5.0.0 (Migrate phase, ~September 2026, exact date TBD): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
+* ⚠️ Ecosystem participants must be running Generic Verifier 4.0.0 during the Expand phase (already required as a consequence of [CD-002](https://swiyu-admin-ch.github.io/change-dossiers/CD-002-Issuer-Security-Enforcements/) and [CD-004](https://swiyu-admin-ch.github.io/change-dossiers/CD-004-Verifier-Security-Enforcements/)).
+* 🚨 Upgrade to Generic Verifier 5.0.0 (Migrate phase, ~September 2026, exact date TBD): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
 
 ### Ecosystem / Integrators
 
-⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date TBD). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet.
-⚠️ Onboard with a new did:webvh if not already done. Where possible, retire the old DID method entirely; alternatively, re-issue VCs based on the old DID.
-🆕 Shift usage and issuance to the Sandbox wallet if not already done, to validate the TP2.0 migration ahead of the Contract phase.
+* ⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date TBD). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet.
+* ⚠️ Onboard with a new did:webvh if not already done. Where possible, retire the old DID method entirely; alternatively, re-issue VCs based on the old DID.
+* 🆕 Shift usage and issuance to the Sandbox wallet if not already done, to validate the TP2.0 migration ahead of the Contract phase.
 
 ## Migration steps
 1. Upgrade to Generic Issuer & Verifier 4.0.0 (Expand phase, already required via CD-002/CD-004).
