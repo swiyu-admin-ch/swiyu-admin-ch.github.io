@@ -61,11 +61,11 @@ Tag 🐞 Fix
 8. From the Contract phase: remove all TP1.0 support and old endpoints (Wallet, Registries); TP1.0 trust artefacts are no longer accepted.
 
 ## Timeline
-2026-08-17	Wallet 1.17 (enforced), TP2.0 support introduced alongside TP1.0; TP1.0 as fallback. Expand phase begins.
-2026-09 (TBD)	Generic Issuer & Verifier 5.0.0 available, TP1.0 and old endpoints removed, TP2.0 only. Migrate phase begins.
-2026-09 to 2026-10 (TBD)	Ecosystem migrates to Generic Issuer & Verifier 5.0.0; DIDs re-onboarded with TP2.0 trust statements.
-2026-10 (TBD)	Deadline for ecosystem migration, all DIDs must be TP2.0 trust-onboarded.
-2026-11 (TBD)	Contract phase begins: Wallet 2.0? removes TP1.0 support. Wallet no longer accepts TP1.0 trust artefacts; Prod Wallet no longer works against Sandbox.
+* 2026-08-17	Wallet 1.17 (enforced), TP2.0 support introduced alongside TP1.0; TP1.0 as fallback. Expand phase begins.
+* 2026-09 (TBD)	Generic Issuer & Verifier 5.0.0 available, TP1.0 and old endpoints removed, TP2.0 only. Migrate phase begins.
+* 2026-09 to 2026-10 (TBD)	Ecosystem migrates to Generic Issuer & Verifier 5.0.0; DIDs re-onboarded with TP2.0 trust statements.
+* 2026-10 (TBD)	Deadline for ecosystem migration, all DIDs must be TP2.0 trust-onboarded.
+* 2026-11 (TBD)	Contract phase begins: Wallet 2.0? removes TP1.0 support. Wallet no longer accepts TP1.0 trust artefacts; Prod Wallet no longer works against Sandbox.
 
 
 [![trust-protocol-2-0-roadmap](/assets/images/trust-protocol-2-0-roadmap.png)](/assets/images/trust-protocol-2-0-roadmap.png)
