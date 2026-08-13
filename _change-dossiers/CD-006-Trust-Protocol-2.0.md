@@ -20,7 +20,7 @@ Internal Reference: EIDARTFE-1562 <br>
   {{ notice-text | markdownify }}
 </div>
 
-The swiyu ecosystem is migrating from Trust Protocol 1.0 (TP1.0) to Trust Protocol 2.0 (TP2.0), following an Expand-Migrate-Contract (EMC) approach. During Expand, TP2.0 is introduced alongside TP1.0 (TP1.0 remains as fallback). During Migrate, all ecosystem participants (Issuers and Verifiers) must switch to TP2.0 only and ensure all DIDs intended for continued use are re-onboarded with TP2.0 trust statements. During Contract, TP1.0 support is removed entirely: the swiyu Wallet will no longer accept TP1.0 trust artefacts, and DIDs that have not been trust-onboarded with TP2.0 will be rejected. Integrators who take no action risk their DIDs, VCs, and endpoints being rejected once the Contract phase begins.
+The swiyu ecosystem is migrating from Trust Protocol 1.0 (TP1.0) to Trust Protocol 2.0 (TP2.0), following an Expand-Migrate-Contract (EMC) approach. During Expand, TP2.0 is introduced alongside TP1.0 (TP1.0 remains as fallback). During Migrate, all ecosystem participants (Issuers and Verifiers) must switch to TP2.0 only and ensure all DIDs intended for continued use are re-onboarded with TP2.0 trust statements. During Contract, TP1.0 support is removed entirely: the swiyu Wallet will no longer accept TP1.0 trust artefacts, and DIDs that have not been change to did:webvh during onboarding will be rejected. Integrators who take no action risk their DIDs, VCs, and endpoints being rejected once the Contract phase begins.
 
 
 ## Action required
