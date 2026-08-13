@@ -9,7 +9,7 @@ header:
 
 Status: Released <br>
 Published: 13.08.2026 <br>
-Effective: 17.08.2026 <br>
+Effective: 19.08.2026 <br>
 Affected Components: Generic Issuer, Generic Verifier swiyu Wallet <br>
 Internal Reference: EIDARTFE-1562 <br>
 
@@ -69,4 +69,4 @@ Tag 🐞 Fix
 * 2026-11 (TBD)	Contract phase begins: Wallet 2.0? removes TP1.0 support. Wallet no longer accepts TP1.0 trust artefacts; Prod Wallet no longer works against Sandbox.
 
 
-[![trust-protocol-2-0-roadmap](/assets/images/trust-protocol-2-0-roadmap.png)](/assets/images/trust-protocol-2-0-roadmap.png)
+[![trust-protocol-2-0-roadmap](/assets/images/trust-protocol-2-0-roadmap_v2.png)](/assets/images/trust-protocol-2-0-roadmap_v2.png)
