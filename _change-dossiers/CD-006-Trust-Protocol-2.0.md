@@ -33,7 +33,7 @@ Tag 🐞 Fix
 
 
 ### Wallet
-* ⚠️ From 19.08.2026 (Wallet 1.17.x, enforced): TP2.0 support is introduced alongside TP1.0; TP1.0 continues to work as a fallback during the Migrate phase, no action required yet beyond updating to 1.17.x.
+* ⚠️ From 19.08.2026 (subject to app store reviews, Wallet 1.17.x, enforced): TP2.0 support is introduced alongside TP1.0; TP1.0 continues to work as a fallback during the Migrate phase, no action required yet beyond updating to 1.17.x.
 * 🚨 From the Contract phase (Wallet 2.x.x, ~November 2026, exact date TBD): the Wallet will no longer accept TP1.0 trust artefacts. All DIDs consumed by the Wallet must be trust-onboarded with TP2.0 before this date, or they will be rejected.
 * 🚨 From the same milestone pinning environments to PROD for PROD apps and allowing only trusted issuers/verifiers on PROD. As a consequence, a Prod Wallet will no longer work against Sandbox environments.
 
@@ -62,7 +62,7 @@ Tag 🐞 Fix
 8. From the Contract phase: remove all TP1.0 support and old endpoints (Wallet, Registries); TP1.0 trust artefacts are no longer accepted.
 
 ## Timeline
-* 2026-08-19	Wallet 1.17.x (enforced), TP2.0 support introduced alongside TP1.0; TP1.0 as fallback. Expand phase begins.
+* 2026-08-19 (subject to app store reviews)	Wallet 1.17.x (enforced), TP2.0 support introduced alongside TP1.0; TP1.0 as fallback. Expand phase begins.
 * 2026-09 (TBD)	Generic Issuer & Verifier 5.x.x available, TP1.0 and old endpoints removed, TP2.0 only. Migrate phase begins.
 * 2026-09 to 2026-10 (TBD)	Ecosystem migrates to Generic Issuer & Verifier 5.x.x; DIDs re-onboarded with TP2.0 trust statements.
 * 2026-10 (TBD)	Deadline for ecosystem migration, all DIDs must be TP2.0 trust-onboarded.
