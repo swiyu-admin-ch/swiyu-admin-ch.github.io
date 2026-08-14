@@ -49,7 +49,7 @@ Tag 🐞 Fix
 
 * ⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date TBD). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet.
 * ⚠️ Onboard with a new `did:webvh` if not already done. Where possible, retire the old DID method entirely; alternatively, re-issue VCs based on the old DID.
-* 🆕 Shift usage and issuance to the Sandbox wallet [Android see assets](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) and [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) if not already done, to validate the TP2.0 migration ahead of the Contract phase. Link to CD-009! 
+* 🆕 Shift usage and issuance to the Sandbox wallet [Android see assets](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) and [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) if not already done, to validate the TP2.0 migration ahead of the Contract phase. Link to CD-001! 
 
 ## Migration steps
 1. Upgrade to Generic Issuer & Verifier 4.x.x (Expand phase, already required via CD-002/CD-004).
