@@ -13,11 +13,11 @@ VC migration refers to the process of transitioning a Verifiable Credential (VC)
 
 ## Conventions and Terminology
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [BCP 14] [RFC 2119] [RFC 8174] when, and only when, they appear in all capitals, as shown here.
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in the [introduction of the Swiss Profiles](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words) when, and only when, they appear in all capitals, as shown here.
 
 ## Why VC Migration Matters
 
-Every Verifiable Credential is built on a specific technical stack, typically defined by a version of the swiss-profile-vc. As a result, wallets and verifiers must support the corresponding version to process the credential correctly.
+Every Verifiable Credential is built on a specific technical stack, typically defined by a version of the [swiss-profile-vc](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/). As a result, wallets and verifiers must support the corresponding version to process the credential correctly.
 
 As these components evolve – e.g., by adopting newer versions of the swiss-profile-vc – older credentials may lose compatibility. This can lead to degraded functionality or, in the worst case, render credentials unusable.
 
@@ -34,7 +34,16 @@ The responsibility lies entirely with the issuer. This includes:
 - Identifying credentials that require migration
 - Contacting holders and re-issuing updated VCs
 
-(Glühbirne) Note: Active re-issuance could also be used by issuers to re-issue VCs for business reasons.
+{% capture notice-text %}
+
+Active re-issuance could also be used by issuers to re-issue VCs for business reasons.
+
+{% endcapture %}
+
+<div class="notice--info">
+  <h4 class="no_toc">Note</h4>
+  {{ notice-text | markdownify }}
+</div>
 
 ### Automated VC Migration
 In this approach, the issuer provides a renewal endpoint that enables automated re-issuance of credentials.
@@ -43,7 +52,7 @@ Wallets take on a more active role by:
 - Monitoring the compatibility of stored VCs (e.g., comparing their swiss-profile-vc version with currently supported versions)
 - Anticipating upcoming compatibility changes
 
-When a VC is nearing or has reached its technical end-of-life, the wallet can automatically trigger re-issuance via the issuer’s renewal endpoint. This typically follows a flow similar to Batch Issuance with renewal key - Renewal .
+When a VC is nearing or has reached its technical end-of-life, the wallet can automatically trigger re-issuance via the issuer’s renewal endpoint. This typically follows a flow similar to Batch Issuance with renewal key.
 
 ## Absence or Failure of VC Migration
 It is important to note that successful VC migration cannot be guaranteed. There are many scenarios in which a VC might not be migrated, ever. This can be a deliberate decision, or it can be a symptom of organisational or technical failings - see the examples below:
@@ -64,7 +73,16 @@ It is important to note that successful VC migration cannot be guaranteed. There
 
 As a result, systems relying on VCs should account for potential migration failures and handle such cases appropriately.
 
+{% capture notice-text %}
+
 → VC migration is a best-effort process and cannot be guaranteed.
+
+{% endcapture %}
+
+<div class="notice--danger">
+   {{ notice-text | markdownify }}
+</div>
+
 
 ## VC Versioning
 In order to enable VC migration the issued VCs MUST be issued with a technical version. This version points to the corresponding Swiss Profiles, with which the VC was issued, in case of SD-JWT swiss-profile-vc.
@@ -75,7 +93,7 @@ Example:
 
 This version denotes a purely technical version and is completely independent from the business validity of a credential.
 
-See [Versioning Indications in Swiss Profile - VC](todo) for more details.
+See [Versioning Indications in Swiss Profile - VC](https://swiyu-admin-ch.github.io/specifications/introduction/#versioning-indications) for more details.
 
 
 # Ecosystem Policies
@@ -107,8 +125,6 @@ This section defines the behaviour when actors encounter unsupported VCs, i.e. V
 
 # Migration Strategies
 This section the VC migration strategies which are currently planned in the swiyu ecosystem.
-
-An expanded set of possible but currently unsupported VC migration strategies can be found in the following ADR: PARENT-ADR-033 - VC Migration Strategies
 
 ## Mitigations for Missing Re-Issuance
 It must be acknowledged that some VCs may never be migrated (see Absence or Failure of VC Migration above for possible reasons).
@@ -161,7 +177,7 @@ If the wallet's call to the credential_endpoint fails with a 400 Bad Request wit
 | **Responsibility for initiating migration** |	Wallet |
 | **On-demand migrations for issuers** |	No |
 | **Requires renewal endpoint?** |	Yes (same as credential_endpoint) |
-| **Notes** | Setting an exp date is not guaranteed (currently it is not mandatory as per swiss-profile-vc 1.0). If exp date is given it could be well into the future. |
+| **Notes** | Setting an `exp` date is not guaranteed (currently it is not mandatory as per swiss-profile-vc 1.0). If `exp` date is given it could be well into the future. |
 
 
 
