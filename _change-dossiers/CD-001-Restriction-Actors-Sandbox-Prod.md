@@ -1,6 +1,6 @@
 ---
 title: CD-001 - Actors Restriction in Prod and Sandbox environment
-excerpt: Affected Components: swiyu Wallet, swiyu Sandbox Wallet, Registry.
+excerpt: Sandbox Actors need to re-onboard and re-issue their VC's
 header:
   teaser: ../assets/images/none.jpg
 ---
