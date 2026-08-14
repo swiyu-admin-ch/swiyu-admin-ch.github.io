@@ -1,6 +1,6 @@
 ---
 title: CD-007 - Remove Ed25519VerificationKey
-excerpt: Contract phase of the DID verification method key type migration - Ed25519VerificationKey support is removed from the DID Resolver and DID Toolbox; only JsonWebKey remains valid.
+excerpt: Contract phase of the DID verification method key type migration Ed25519VerificationKey support is removed.
 header:
   teaser: ../assets/images/none.jpg
 ---
