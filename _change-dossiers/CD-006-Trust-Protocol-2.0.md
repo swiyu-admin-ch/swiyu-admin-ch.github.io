@@ -20,7 +20,7 @@ Internal Reference: EIDARTFE-1562, EIDARTFE-1975 <br>
   {{ notice-text | markdownify }}
 </div>
 
-The swiyu ecosystem is migrating from Trust Protocol 1.0 (TP1.0) to Trust Protocol 2.0 (TP2.0), following an Expand-Migrate-Contract (EMC) approach. During Expand, TP2.0 is introduced alongside TP1.0 (TP1.0 remains as fallback). During Migrate, all ecosystem participants (Issuers and Verifiers) must switch to TP2.0 only and ensure all DIDs intended for continued use are re-onboarded with TP2.0 trust statements. During Contract, TP1.0 support is removed entirely: the swiyu Wallet will no longer accept TP1.0 trust artefacts, and DIDs that have not been change to `did:webvh` during onboarding will be rejected. Integrators who take no action risk their DIDs, VCs, and endpoints being rejected once the Contract phase begins.
+The swiyu ecosystem is migrating from Trust Protocol 1.0 (TP1.0) to [Trust Protocol 2.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-trust/#trust-protocol-20) (TP2.0), following an Expand-Migrate-Contract (EMC) approach. During Expand, TP2.0 is introduced alongside TP1.0 (TP1.0 remains as fallback). During Migrate, all ecosystem participants (Issuers and Verifiers) must switch to TP2.0 only and ensure all DIDs intended for continued use are re-onboarded with TP2.0 trust statements. During Contract, TP1.0 support is removed entirely: the swiyu Wallet will no longer accept TP1.0 trust artefacts, and DIDs that have not been change to `did:webvh` during onboarding will be rejected. Integrators who take no action risk their DIDs, VCs, and endpoints being rejected once the Contract phase begins.
 
 
 ## Action required
@@ -47,15 +47,15 @@ Tag 🐞 Fix
 
 ### Ecosystem / Integrators
 
-* ⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date TBD). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet.
-* ⚠️ Onboard with a new `did:webvh` if not already done. Where possible, retire the old DID method entirely; alternatively, re-issue VCs based on the old DID.
+* ⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date TBD). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet. If parallel use of old and new VCs is needed, please contact us via github. 
+* ⚠️ Onboard with a new `did:webvh` if not already done. (Check your DIDLog). Where possible, re-issue old VCs (old VCs can not be used anymore).
 * 🆕 Shift usage and issuance to the Sandbox wallet [Android see assets](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) and [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) if not already done, to validate the TP2.0 migration ahead of the Contract phase. Link to CD-001! 
 
 ## Migration steps
 1. Upgrade to Generic Issuer & Verifier 4.x.x (Expand phase, already required via CD-002/CD-004).
-2. Update Wallet to 1.17.x (enforced from 19.08.2026), introduces TP2.0 support alongside TP1.0.
+2. Update Wallet to 1.17.x (expected from 19.08.2026), introduces TP2.0 support alongside TP1.0.
 3. Onboard all DIDs intended for continued use with new TP2.0 trust statements.
-4. Onboard with a new `did:webvh` if not already done; retire or re-issue VCs from the old DID where possible.
+4. Onboard with a new `did:webvh` if not already done; Where possible, re-issue old VCs (old VCs can not be used anymore).
 5. Upgrade to Generic Issuer & Verifier 5.x.x (Migrate phase): remove all TP1.0 usage and old endpoints, switch to TP2.0 only.
 6. Shift usage/issuance to the Sandbox wallet if not already done, to validate readiness.
 7. Complete all TP2.0 onboarding before the deadline for ecosystem migration.
