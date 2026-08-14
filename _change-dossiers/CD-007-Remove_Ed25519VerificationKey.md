@@ -20,7 +20,7 @@ Internal Reference: EIDARTFE-1951 <br>
   {{ notice-text | markdownify }}
 </div>
 
-This dossier announces the Contract phase of the verification method key type. As of the effective date, support for `Ed25519VerificationKey` as a verification method type is removed from the DID Resolver and DID Toolbox across all implementations (Java, Kotlin/Android, Swift). This step is only executed once the Migrate phase has fully completed, i.e. once no DID Document in active use across the ecosystem still relies solely on `Ed25519VerificationKey` for authentication. After the effective date, DID Documents that still rely only on `Ed25519VerificationKey` for authentication will no longer resolve or verify.
+This dossier announces the Contract phase of the verification method key type. As of the effective date, support for `Ed25519VerificationKey` as a verification method format is removed from the DID Resolver and DID Toolbox across all implementations (Java, Kotlin/Android, Swift). This step is only executed once the Migrate phase has fully completed, i.e. once no DID Document in active use across the ecosystem still relies solely on `Ed25519VerificationKey` for authentication. After the effective date, DID Documents that still rely only on `Ed25519VerificationKey` for authentication will no longer resolve or verify. Note that Ed25519 keys as verification method in the JWK format is still supported and was introduced with [DID Toolbox 2.3.0](https://github.com/swiyu-admin-ch/didtoolbox-java/blob/main/CHANGELOG.md#230---2026-07-31).
 
 
 ## Action required
