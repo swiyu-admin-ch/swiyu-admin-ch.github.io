@@ -34,22 +34,22 @@ Tag 🐞 Fix
 
 ### Wallet
 * ⚠️ From 19.08.2026 (subject to app store reviews, Wallet 1.17.x, enforced): TP2.0 support is introduced alongside TP1.0; TP1.0 continues to work as a fallback during the Migrate phase, no action required yet beyond updating to 1.17.x.
-* 🚨 From the Contract phase (Wallet 2.x.x, ~November 2026, exact date TBD): the Wallet will no longer accept TP1.0 trust artefacts. All DIDs consumed by the Wallet must be trust-onboarded with TP2.0 before this date, or they will be rejected.
+* 🚨 From the Contract phase (Wallet 2.x.x, ~November 2026, exact date tba): the Wallet will no longer accept TP1.0 trust artefacts. All DIDs consumed by the Wallet must be trust-onboarded with TP2.0 before this date, or they will be rejected.
 * 🚨 From the same milestone pinning environments to PROD for PROD apps and allowing only trusted issuers/verifiers on PROD. As a consequence, a Prod Wallet will no longer work against Sandbox environments.
 
 ### Generic Issuer
 * ⚠️ Ecosystem participants must be running Generic Issuer 4.x.x during the Expand phase (already required as a consequence of [CD-002](https://swiyu-admin-ch.github.io/change-dossiers/CD-002-Issuer-Security-Enforcements/) and [CD-004](https://swiyu-admin-ch.github.io/change-dossiers/CD-004-Verifier-Security-Enforcements/)).
-* 🚨 Upgrade to Generic Issuer 5.x.x (Migrate phase, ~September 2026, exact date TBD): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
+* 🚨 Upgrade to Generic Issuer 5.x.x (Migrate phase, ~September 2026, exact date tba): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
 
 ### Generic Verifier
 * ⚠️ Ecosystem participants must be running Generic Verifier 4.x.x during the Expand phase (already required as a consequence of [CD-002](https://swiyu-admin-ch.github.io/change-dossiers/CD-002-Issuer-Security-Enforcements/) and [CD-004](https://swiyu-admin-ch.github.io/change-dossiers/CD-004-Verifier-Security-Enforcements/)).
-* 🚨 Upgrade to Generic Verifier 5.x.x (Migrate phase, ~September 2026, exact date TBD): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
+* 🚨 Upgrade to Generic Verifier 5.x.x (Migrate phase, ~September 2026, exact date tba): remove all usage of TP1.0 and old endpoints; switch to TP2.0 only.
 
 ### Ecosystem / Integrators
 
-* ⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date TBD). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet. If parallel use of old and new VCs is needed, please contact us via github. 
+* ⚠️ Ensure all DIDs that shall continue to be used obtain new TP2.0 trust statements / onboarding before the deadline for ecosystem migration (~end of October 2026, exact date tba). DIDs that are not trust-onboarded with TP2.0 will no longer be accepted by the swiyu Wallet. If parallel use of old and new VCs is needed, please create an issue via [GitHub](https://github.com/swiyu-admin-ch/swiyu-issuer/issues). 
 * ⚠️ Onboard with a new `did:webvh` if not already done. (Check your DIDLog). Where possible, re-issue old VCs (old VCs can not be used anymore).
-* 🆕 Shift usage and issuance to the Sandbox wallet [Android see assets](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) and [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) if not already done, to validate the TP2.0 migration ahead of the Contract phase. Link to CD-001! 
+* 🆕 Shift usage and issuance to the swiyu Sandbox wallet [Android see assets](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) and [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) if not already done, to validate the TP2.0 migration ahead of the Contract phase (see [CD-001](https://swiyu-admin-ch.github.io/change-dossiers/CD-001-Restriction-Actors-Sandbox-Prod/)). 
 
 ## Migration steps
 1. Upgrade to Generic Issuer & Verifier 4.x.x (Expand phase, already required via CD-002/CD-004).
@@ -63,10 +63,10 @@ Tag 🐞 Fix
 
 ## Timeline
 * 2026-08-19 (subject to app store reviews)	Wallet 1.17.x (enforced), TP2.0 support introduced alongside TP1.0; TP1.0 as fallback. Expand phase begins.
-* 2026-09 (TBD)	Generic Issuer & Verifier 5.x.x available, TP1.0 and old endpoints removed, TP2.0 only. Migrate phase begins.
-* 2026-09 to 2026-10 (TBD)	Ecosystem migrates to Generic Issuer & Verifier 5.x.x; DIDs re-onboarded with TP2.0 trust statements.
-* 2026-10 (TBD)	Deadline for ecosystem migration, all DIDs must be TP2.0 trust-onboarded.
-* 2026-11 (TBD)	Contract phase begins: Wallet 2.0? removes TP1.0 support. Wallet no longer accepts TP1.0 trust artefacts; Prod Wallet no longer works against Sandbox.
+* 2026-09 (tba)	Generic Issuer & Verifier 5.x.x available, TP1.0 and old endpoints removed, TP2.0 only. Migrate phase begins.
+* 2026-09 to 2026-10 (tba)	Ecosystem migrates to Generic Issuer & Verifier 5.x.x; DIDs re-onboarded with TP2.0 trust statements.
+* 2026-10 (tba)	Deadline for ecosystem migration, all DIDs must be TP2.0 trust-onboarded.
+* 2026-11 (tba)	Contract phase begins: Wallet 2.0? removes TP1.0 support. Wallet no longer accepts TP1.0 trust artefacts; Prod Wallet no longer works against Sandbox.
 
 
 [![trust-protocol-2-0-roadmap](/assets/images/trust-protocol-2-0-roadmap_v2.png)](/assets/images/trust-protocol-2-0-roadmap_v2.png)
