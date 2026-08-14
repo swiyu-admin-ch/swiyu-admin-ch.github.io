@@ -157,6 +157,10 @@ If the reader encounters an audience in the key-binding JWT of the presentation 
 
 The device **MUST** ensure that the reader device is trusted. The device **MUST** ensure that openid4vp-v1-signed is being used in the DC-API request. The device **MUST** support verifier_attestation JWTs and **SHOULD** support decentralized_identifier to verify the signature of the presentation.
 
-**Verifier Attestation JWT**: The client ID prefix **MUST** be verifier_attestation. The device **MUST** check if the presentation contains a jwt header field and **MUST** reject the presentation otherwise. If the header contains jwt the device **MUST** ignore kid, and **SHOULD** reject the presentation if it contains a kid. The device **MUST** ensure that the JWT in the jwt header is valid according to [Swiss Profile Anchor](https://swiyu-admin-ch.github.io/specifications/swiss-profile-anchor/). The wallet **MUST** ensure that the jwt conforms to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-attestation-jwt). 
+### Verifier Attestation JWT
 
-**Decentralized Identifier**: The client ID prefix **MUST** be decentralized_identifier. The device **MUST** verify the trust according to [Swiss Profile Trust](https://swiyu-admin-ch.github.io/specifications/swiss-profile-trust/).
+The client ID prefix **MUST** be verifier_attestation. The device **MUST** check if the presentation contains a jwt header field and **MUST** reject the presentation otherwise. If the header contains jwt the device **MUST** ignore kid, and **SHOULD** reject the presentation if it contains a kid. The device **MUST** ensure that the JWT in the jwt header is valid according to [Swiss Profile Anchor](https://swiyu-admin-ch.github.io/specifications/swiss-profile-anchor/). The wallet **MUST** ensure that the jwt conforms to [OpenID for Verifiable Presentations 1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#name-verifier-attestation-jwt). 
+
+### Decentralized Identifier
+
+The client ID prefix **MUST** be decentralized_identifier. The device **MUST** verify the trust according to [Swiss Profile Trust](https://swiyu-admin-ch.github.io/specifications/swiss-profile-trust/).
