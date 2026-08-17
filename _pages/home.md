@@ -52,7 +52,7 @@ feature_row:
     btn_label: "Learn more"
   - image_path: /assets/images/docs_change-dossier.jpg
     #title: "Change Dossiers"
-    excerpt: "Summaries of major changes to th swiyu Trust Infrastructure"
+    excerpt: "Summaries of major changes to the swiyu Trust Infrastructure"
     url: "/change-dossiers/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
