@@ -11,7 +11,7 @@ header:
 
 The underlying specification and the new Swiss Profiles are currently under revision and are subject to change. <br>
 The outdated version of this cookbook has been [archived](/archive/vc-visual-presentation/). <br>
-Last edited: 2026-07-06 
+Last edited: 2026-08-12 
 
 {% endcapture %}
 
@@ -139,7 +139,7 @@ oca_bundle.json: |
       "theme": "light",
       "logo": "data:image/png;base64,<...base64code....>",
       "primary_background_color": "#FF5733",
-      "primary_field": "Demo purpose for {{given_name}} {{family_name}}"
+      "primary_field": "Demo purpose for {% raw %}{{given_name}}{% endraw %} {% raw %}{{family_name}}{% endraw %}"
     }
   ]
 }
@@ -539,7 +539,7 @@ oca_bundle.json: |
     },
     {
       "type": "aries/overlays/branding/1.1",
-      "primary_field": "Demo purpose for {{given_name}} {{family_name}}"
+      "primary_field": "Demo purpose for {% raw %}{{given_name}}{% endraw %} {% raw %}{{family_name}}{% endraw %}"
     }
   ]
 }
@@ -769,7 +769,7 @@ oca_bundle.json: |
       "attribute_labels": {
         "given_name": "Firstname",
         "family_name": "Lastname",
-        "nationalities": "{{refs:nat:country}}"
+        "nationalities": "{% raw %}{{refs:nat:country}}{% endraw %}"
       }
     },
     {

@@ -44,6 +44,18 @@ feature_row:
     url: "/roadmap/"
     btn_class: "btn--primary"
     btn_label: "Learn more"
+  - image_path: /assets/images/docs_release-announcements.jpg
+    #title: "Release Announcements"
+    excerpt: "Announcements for upcoming releases"
+    url: "/release-announcements/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"
+  - image_path: /assets/images/docs_change-dossier.jpg
+    #title: "Change Dossiers"
+    excerpt: "Summaries of major changes to the swiyu Trust Infrastructure"
+    url: "/change-dossiers/"
+    btn_class: "btn--primary"
+    btn_label: "Learn more"
   - image_path: /assets/images/docs_threat-model.jpg
     #title: "Threat Model"
     excerpt: "Learn about our threat model and the identified attack trees for the swiyu Trust Infrastructure"

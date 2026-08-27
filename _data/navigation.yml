@@ -12,6 +12,10 @@ main:
     url: /specifications/
   - title: "Roadmap"
     url: /roadmap
+  - title: "Release Announcements"
+    url: /release-announcements
+  - title: "Change Dossiers"
+    url: /change-dossiers
   - title: "Threat Model"
     url: /threat-model
 

@@ -29,8 +29,10 @@ As of now there are 7 Swiss Profiles with the following specifications contained
 | [swiss-profile-vc](../swiss-profile-vc/)           | Token Status List  <br> SD-JWT <br>  SD-JWT-VC <br>  OCA                     |
 | [swiss-profile-issuance](../swiss-profile-issuance/)     | OAuth 2.0 DPoP  <br> OpenID4VCI              |
 | [swiss-profile-verification](../swiss-profile-verification/) | OpenID4VP      <br> JAR                 |
-| swiss-profile-proximity   | mDL ISO-18013-5 BLE     |
+| [swiss-profile-proximity](../swiss-profile-proximity/)   | mDL ISO-18013-5 BLE     |
 | swiss-profile-portability  | Wallet Backup Container |
+
+The current implementation gaps in the swiyu Sandbox Trust Infrastructure are summarized [here](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/issues/63). 
 
 # Scope
 
@@ -113,14 +115,14 @@ The following diagram shows an overview of the various versioned entities in the
 |Trust Protocol | JWT Statement | [Trust Statement version](../trust-protocol-v2-0/#statements) |
 |DID:webvh | DID Log | [DID Log Entry version](../swiss-profile-anchor/#did-log-entry-version) |
 |Token Status List | Status List Token | [Status List Token JWT version](../swiss-profile-vc/#5-status-list-token)  |
-| SD-JWT/SD-JWT-VC | VC | [SD-JWT VC version](../specifications/swiss-profile-vc/#321-jose-header)     |
-| SD-JWT/SD-JWT-VC | VCT | [VCT version](../specifications/swiss-profile-vc/#5-sd-jwt-vc-type-metadata)     |
-| OCA | OCA | [OCA Bundle JSON version](../specifications/swiss-profile-vc/#oca-bundle-as-json-file) |
+| SD-JWT/SD-JWT-VC | VC | [SD-JWT VC version](../swiss-profile-vc/#321-jose-header)     |
+| SD-JWT/SD-JWT-VC | VCT | [VCT version](../swiss-profile-vc/#5-sd-jwt-vc-type-metadata)     |
+| OCA | OCA | [OCA Bundle JSON version](../swiss-profile-vc/#oca-bundle-as-json-file) |
 | OAuth 2.0 DPoP | DPoP | [DPoP JWT version](../swiss-profile-issuance/#42-dpop-proof-jwt-syntax) |
 | OID4VCI | Issuer Meta Data | In case of _signed_ meta data: [Credential Issuer Metadata JWT version](../swiss-profile-issuance/#1223-signed-metadata) <br> In case of _unsigned_ meta data: [Credential Issuer Metadata](../swiss-profile-issuance/#1224-credential-issuer-metadata-parameters) |
 | Key Attestation | Key Attestation | [Key Attestation JWT version](../swiss-profile-issuance/#d1-key-attestation-in-jwt-format) |
 | OID4VP | Verification Request Object | [JAR version](../swiss-profile-verification/#5-authorization-request) |
-| mDL ISO-18013-5 BLE | Verifier Attestation | [Verifier Attestation JWT] |
+| mDL ISO-18013-5 BLE | Verifier Attestation | [Verifier Attestation JWT](../swiss-profile-proximity/#verifier-attestation-jwt) |
 
 
 # Key Words
