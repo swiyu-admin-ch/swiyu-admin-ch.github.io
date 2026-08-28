@@ -104,7 +104,7 @@ The two supported engagement variants differ in which party initiates the intera
 
 ## Reader Engagement (Reverse "ISO-mDL-Flow")
 
-In the **Reader Engagement flow*, the **Reader** (CheckApp) initiates the interaction.
+In the **Reader Engagement flow**, the **Reader** (CheckApp) initiates the interaction.
 
 The reader publishes a **ReaderEngagement** structure via QR code.
 The wallet reads this structure, generates its own ephemeral key pair, and responds with a **DeviceEngagement**.
