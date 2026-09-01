@@ -95,8 +95,8 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 |--- |--- |--- |--- |--- |--- |
 | [Prod iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) | 1.18.0 | 1.17.1 |  | 1.16.1 <br>  1.15.1 <br> 1.14.0 | |
 | [Prod Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) | 1.18.0 | 1.17.0 |  | 1.16.3 <br> 1.14.0 | |
-| [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 1.16.1 | 1.16.1 |  | | |
-| [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 1.17.0 | [1.16.3](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) |  | | |
+| [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 1.18.0 | 1.17.1 | 1.16.1 | | |
+| [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 1.18.0 | [1.17.0](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) | 1.16.3  | | |
 | [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.0 (TP 2.0 enforcement) | [4.1.0](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/4.1.0) | < 3.1 (before TP 2.0)  | 21.07.2026 (pre-1.0 issuance) | |
 | [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.0 (TP 2.0 enforcement) | [4.1.2](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/4.1.2) | < 3.1 (before TP 2.0)  | tbd | |
 | Check App iOS | 1.0 | |  |  | |
