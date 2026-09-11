@@ -24,11 +24,12 @@ We are introducing DPoP (Demonstrating Proof-of-Possession) to strengthen the Op
 
 ## Action required
 
-Tag ⚠️ Required soon
-Tag 🚨 Breaking
-Tag 🆕 Optional
-Tag ✅ Improvement
-Tag 🐞 Fix
+| ⚠️ Required soon | Will become mandatory soon |
+| 🚨 Breaking | Action required, something stops working |
+| 🆕 Optional | New feature, opt-in |
+| ✅ Improvement | Enhancement, no action needed  |
+| 🐞 Fix | Bug fix |
+| 💡 Informational | Additional background information, no action needed |
 
 
 ### Wallet
