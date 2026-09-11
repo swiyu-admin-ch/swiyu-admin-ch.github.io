@@ -8,8 +8,11 @@ categories:
 With the upcoming release of the swiyu Generic Issuer & Verifier we'll proceed the contract steps towards the Swiss Profiles 1.0, including Trust Protocol 2.0 implementation.
 
 ## swiyu Generic Issuer - Overview of Changes
+- Contract: "Check cryptographic_binding_methods_supported matches the method provided by wallet"
+- Contract: Remove support for vc+sd-jwt format
 
 ## swiyu Generic Verifier - Overview of Changes
+- Contract
 
 ## Action required
 
