@@ -27,11 +27,12 @@ This dossier bundles three related Issuer-side changes into a single migration w
 
 ## Action required
 
-⚠️ Required soon
-🚨 Breaking
-🆕 Optional
-✅ Improvement
-🐞 Fix
+| ⚠️ Required soon | Will become mandatory soon |
+| 🚨 Breaking | Action required, something stops working |
+| 🆕 Optional | New feature, opt-in |
+| ✅ Improvement | Enhancement, no action needed  |
+| 🐞 Fix | Bug fix |
+| 💡 Informational | Additional background information, no action needed |
 
 ### Generic Issuer
 Version: 4.x.x <br>
