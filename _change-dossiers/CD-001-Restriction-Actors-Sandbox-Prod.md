@@ -24,19 +24,22 @@ When the swiyu Public Beta was launched, the swiyu Wallet could be used with bot
 
 ## Action required
 
-⚠️ Required soon
-🚨 Breaking
-🆕 Optional
-✅ Improvement
-🐞 Fix
+| ⚠️ Required soon | Will become mandatory soon |
+| 🚨 Breaking | Action required, something stops working |
+| 🆕 Optional | New feature, opt-in |
+| ✅ Improvement | Enhancement, no action needed  |
+| 🐞 Fix | Bug fix |
+| 💡 Informational | Additional background information, no action needed |
+
+### New Sandbox Onboarding
 
 Actors, who want to continue their existing use cases in the Sandbox environment must take the following steps: 
 
-- New onboarding with new DID standard to registries (see [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/))
-  - We recommend to also migrate to [Trust Protocol 2.0](https://swiyu-admin-ch.github.io/change-dossiers/CD-006-Trust-Protocol-2.0/) in this step
-- Installation of swiyu Sandbox Wallet for [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) and [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases)
-- Re-issuance of VC's into swiyu Sandbox Wallet
-- All existing Public Beta VC's in the swiyu Wallet will be deleted from our side!
+- 🚨 New onboarding with new DID standard to registries (see [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/))
+  - ⚠️ We recommend to also migrate to [Trust Protocol 2.0](https://swiyu-admin-ch.github.io/change-dossiers/CD-006-Trust-Protocol-2.0/) in this step
+- 🆕 Installation of swiyu Sandbox Wallet for [iOS](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) and [Android](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases)
+- 🆕 Re-issuance of VC's into swiyu Sandbox Wallet
+- 🚨 All existing Public Beta VC's in the swiyu Wallet will be deleted from our side!
 
 ### swiyu Wallet 
 
@@ -51,11 +54,11 @@ Actors, who want to continue their existing use cases in the Sandbox environment
 
 ### DID Toolbox and DID Resolver
 
-- To be conform with Swiss Profiles Version 1.0 new DIDs must use DID::webvh as standard
-- Use the DID Toolbox Version 2.1.0 or higher
-- Use the DID Resolver Version 2.8.0 or higher
+- ⚠️ To be conform with Swiss Profiles Version 1.0 new DIDs must use DID::webvh as standard
+- ⚠️ Use the DID Toolbox Version 2.1.0 or higher
+- ⚠️ Use the DID Resolver Version 2.8.0 or higher
 
-## Migration steps
+## Migration steps
 
 There is no migration path. A new onboarding and re-issuance of VC's is necessary.
 
@@ -68,7 +71,4 @@ There is no migration path. A new onboarding and re-issuance of VC's is necessar
 - 27.05.2026 DID Tools are available
 - End-October (tba): existing credentials in swiyu Wallet will be deleted
 - End-October (tba): swiyu Wallet will be restricted to prod environment
-
-
-
 
