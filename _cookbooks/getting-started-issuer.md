@@ -45,7 +45,7 @@ The swiyu Generic Issuer is not operated centrally. Every organisation acting as
 - Registration in the Base Registry and Trust Registry, and creation of the status list resource on the Status Registry. The onboarding has to be completed before deployment.
 - Multi-tenancy (one instance serves one Issuer).
 
-# Delimitation from the Business Issuer
+## Delimitation from the Business Issuer
 
 The swiyu Generic Issuer implements the issuance standards. The Business Issuer Application owns the business decision to issue, the identification of the person, user management, and the delivery of the credential offer to the Holder. The swiyu Generic Issuer is therefore closer to a library than to a stand-alone service and is deployed so that its management interface is reachable only from within the issuing organisation. 
 
@@ -107,14 +107,20 @@ The use cases are grouped by the interface plane on which they occur.
 |UCI_EX_1|	Display QR Code to get Credential Offer|	The Issuer displays a QR code containing the deeplink that allows the Holder to initiate the credential offer retrieval process. Performed by the Business Issuer Application.|
 |UCI_EX_2|	Scan QR Code and fetch deeplink|	The Holder scans the QR code and uses the deeplink to fetch the credential offer from the issuer service. Performed by the wallet.|
 
+# Business Rules
+
+# Setup your instance
 
 # Showcases and Testing
 
-link auf discussion
+link auf discussion https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell
 
 links auf testapplikationen
 
-bei Problemen: GitHub Issues
+https://github.com/swiyu-admin-ch/swiyu-generic-application-test
+https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet
+
+bei Problemen: GitHub Issues https://github.com/swiyu-admin-ch/swiyu-issuer
 
 
 
