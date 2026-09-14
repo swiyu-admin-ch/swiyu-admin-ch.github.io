@@ -172,19 +172,21 @@ How the QR code or link reaches the Holder – on a website, at a counter, in an
 |	Alternative to the e-ID|	Whoever accepts the e-ID or parts of it as a credential must also accept a physical identity document where the person appears in person (Art. 25 BGEID).|
 
 
-# Setup your instance
+# Setup your Instance
 
-https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/
-
-complete architecture documentation and detailed issuance flows https://github.com/swiyu-admin-ch/swiyu-verifier/tree/main/docs
+We provide a [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/) with step-by-step instructions for the deployment of the swiyu Generic Verifier. The complete architecture documentation and detailed verification flow can be found on [GitHub](https://github.com/swiyu-admin-ch/swiyu-verifier/tree/main/docs).
 
 # Showcases and Testing
 
-link auf discussion https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell
+We provide a [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/) with step-by-step instructions for the deployment of the swiyu Generic Issuer. The complete architecture documentation and detailed issuance flows can be found on [GitHub](https://github.com/swiyu-admin-ch/swiyu-issuer/tree/main/docs).
 
-links auf testapplikationen
+# Showcases, Testing and Technical Issues
 
-https://github.com/swiyu-admin-ch/swiyu-generic-application-test
-https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet
+You'll find existing showcases in our [GitHub discussion forum](https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell). You are also welcome to present your use case there.
 
-bei Problemen: GitHub Issues https://github.com/swiyu-admin-ch/swiyu-verifier
+We provide two test applications: 
+- [A very simplistic wallet implementation, usable in end 2 end tests or testing of deployments](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
+- [A wallet simulation to test credential issuance and verifcation](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
+
+Should any problems arise whilst integrating the generic components, you can report them as a [GitHub issue](https://github.com/swiyu-admin-ch/swiyu-verifier/issues).
+
