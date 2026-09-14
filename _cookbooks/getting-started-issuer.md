@@ -108,6 +108,29 @@ The use cases are grouped by the interface plane on which they occur.
 |UCI_EX_2|	Scan QR Code and fetch deeplink|	The Holder scans the QR code and uses the deeplink to fetch the credential offer from the issuer service. Performed by the wallet.|
 
 # Business Rules
+## Protocol and Format
+
+| Name | Rule |
+|--- |--- |
+|Mandated issuance flow	|Credentials are issued using the Pre-Authorized Code Flow. The Swiss Profile requires implementers to support this flow, and the Authorization Code Flow is not implemented by swiyu components.|
+|Mandated credential format|	Credentials are issued in the SD-JWT VC format. The current format identifier is dc+sd-jwt; vc+sd-jwt is deprecated and supported for compatibility with earlier drafts.|
+|Issuer identification by DID|	The Issuer identifies itself by a Decentralized Identifier. The public keys used to verify issued credentials and signed metadata are published in the corresponding DID document on the Base Registry.|
+|Signing algorithm	|Issuers, wallets and verifiers must support the key type P-256 with the ES256 algorithm for signing and signature validation. The configured signing algorithm must match the configured signing key.|
+
+## Credential Offer and Issuance
+
+| Name | Rule |
+|--- |--- |
+|Offer must reference a supported configuration	|A credential offer must reference a credential configuration that exists in the published issuer metadata. If it does not, the credential request will fail later in the process.|
+|Cancellation window|	A credential offer can be cancelled at any time as long as the credential has not been issued.|
+|	Offer expiry|	A credential offer expires if it is not collected within its validity period. Validity is controlled per offer.|
+|	Release of deferred offers|	In the deferred flow, the credential is only released once the Business Issuer Application has set the offer to READY. A deferred offer expires if it is not released within the deferred offer validity period.|
+|	Validity rounding for unlinkability|	The validity dates of a credential are rounded — the start date down and the end date up to the day — so that the exact issuance time cannot be used to distinguish Holders.|
+|	Renewal keeps the management entity|	Renewing a credential creates a new credential offer that remains linked to the management entity of the previous credential.|
+
+## Status and Revocation
+
+
 
 # Setup your instance
 
