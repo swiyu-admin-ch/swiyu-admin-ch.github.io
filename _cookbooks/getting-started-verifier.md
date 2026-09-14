@@ -86,7 +86,7 @@ How the QR code or link reaches the Holder – on a website, at a counter, in an
 
 ## Management Use Cases
 
- UC | Name | Description |
+| UC | Name | Description |
 |--- |--- |--- |
 |UCV_M1|	Initiate Verification Process|	The Business Verifier initiates a new verification process, defining the data it wishes to obtain from the Holder.|
 |UCV_M1a|	Create Verification Management Entry|	An entry is created in the verification management to track the verification process and its state.|
@@ -97,7 +97,7 @@ How the QR code or link reaches the Holder – on a website, at a counter, in an
 
 ## Verification Use Cases
 
- UC | Name | Description |
+| UC | Name | Description |
 |--- |--- |--- |
 |UCV_O1|	Request Verification Object|	The wallet fetches the request object from the Generic Verifier in order to obtain the Business Verifier's query and the information on how the response is to be transmitted.|
 |UCV_O1a|	Create Signed Request Object|	The Generic Verifier creates a signed request object, ensuring the integrity and authenticity of the verification request data.|
@@ -111,8 +111,72 @@ How the QR code or link reaches the Holder – on a website, at a counter, in an
 |UCV_O2e|	Trigger Webhook Callback|	After the verification, the Generic Verifier notifies the Business Verifier Application that a result is available.|
 
 # Business Rules
+## Segregation of two Interface Planes
+
+| Name | Rule |
+|--- |--- |
+|Separated counterparties|	The Business Verifier Application communicates exclusively with the management interface. The Holder communicates exclusively with the OID4VP interface. Neither party reaches the interface of the other.|
+|No direct interaction between components|	The verification management and the verification validation exchange no data directly. All information between them passes through the database.|
+|	Management interface not publicly reachable|	The management interface is intended for use within the verifying organisation only and must not be reachable from outside it. The OID4VP interface must be publicly reachable so that wallets can retrieve the request object and submit the presentation.|
+
+## Trust and Declared Purpose
+
+| Name | Rule |
+|--- |--- |
+|Purpose declared before disclosure	|The signed Verification Query Public Statement is embedded in the authorization request, so that the Holder can establish the declared purpose of the verification before any data is shared.|
+|Registration of the query|	A verification query that is unknown or whose statement is expiring is registered with the Trust Management System when the verification request is created.|
+|	Issuer validated before acceptance|	The identity and the authorisation of the Issuer of a presented credential are established from the trust statements in the Trust Registry and evaluated as trust markers before the presented data is accepted.|
+|	Trust decisions only on the credential type|	Only the vct carries trust in the ecosystem. The values of vct_version, vct_subtype and vct_subtype_version are set at the discretion of the Issuer and must not be used as the basis of a trust decision.|
+|	Credential type stability|	The credential type does not change when an attribute is added to or removed from it, nor when its metadata or styling changes. A verification configuration therefore remains valid across such changes, and only a genuine business change to the type requires the Verifier to reconfigure.|
+
+## Data Protection and Retention
+
+| Name | Rule |
+|--- |--- |
+|	Minimal disclosure|	Only the claims named in the verification query are included in the presentation. Nothing is disclosed about claims that were not requested, including their nature or existence.|
+|Retention limited to the process	|Data is stored only for as long as the verification process is in progress.|
+|Deletion after retrieval|	A verification entry is deleted directly after the Business Verifier has requested and received the verification result, where the result is not in progress.|
+|	Deletion of unfinished processes|	Where a verification process does not complete, for whatever reason, the data is deleted after 15 minutes.|
+|One encryption key per verification|	Encryption keys are mapped to an individual verification request and distributed in the request object, so that an ephemeral key is used in exactly one verification.|
+|	Issuer remains unaware|	Presentation and verification take place without the Issuer of the credential gaining knowledge of them.|
+
+## Verification
+
+| Name | Rule |
+|--- |--- |
+|Request delivered by reference|	The authorization request is delivered using the request_uri parameter.|
+|	Direct response	|The response is returned by the wallet directly to a defined response URI over HTTPS POST, which also covers the case in which wallet and Verifier are on different devices.|
+|	Replay protection	|A nonce is included in the request where cryptographic device binding is requested, and is validated against the presentation on receipt.|
+|	Device binding|	A Key Binding JWT is required when an SD-JWT credential is presented, proving that the presenting party holds the private key the credential is bound to.|
+|	Credential format|	The SD-JWT VC format is supported for verifiable credentials.|
+|	Identifier scheme|	Issuers, wallets and Verifiers use decentralised identifiers of the methods defined by the Swiss Profile. Where the client identifier of the Verifier is a decentralised identifier, this is declared in the request.|
+|	Status check|	The status list mechanism is supported, and the status of the presented credential is checked against the Status Registry.|
+|	Graceful handling of unfulfilled queries|	There is no technical guarantee that a presentation fulfils a verification query. Where the presented credential does not contain the requested claims, the Verifier handles the situation rather than treating it as an error of the ecosystem.|
+
+## Integration with the Business Verifier Application
+
+| Name | Rule |
+|--- |--- |
+|Two ways to obtain the result|	The verification result is either pushed to the Business Verifier Application by webhook or retrieved by it through the management interface. The retrieval path remains available where no webhook is used.|
+|	No fire and forget|	Notifications are not sent and forgotten. The database is used as a queue in a producer and consumer pattern, and delivery is at least once.|
+|	Dead letters at the business component|	Retries beyond the delivery guarantee and the handling of undeliverable notifications are the responsibility of the Business Verifier Application.|
+|	Static listener configuration	|Callback listeners are known at startup from configuration. The configuration is not dynamic.|
+
+## Legal Duties for the Verifying Organisation
+
+| Name | Rule |
+|--- |--- |
+|Lawful request of personal data|	Personal data contained in the e-ID may only be requested where the verification of the identity, or of an aspect of it, is provided for in legislation, or where it is strictly necessary for the reliability of the transaction, in particular to prevent misuse and identity theft (Art. 23 Abs. 1 BGEID).|
+|Consequence of a breach|	Where these conditions are breached, the BIT records this in the Trust Registry so that it is visible to the Holder during a transaction, and may exclude the Verifier from the Trust Registry (Art. 23 Abs. 2 BGEID).|
+|	Reporting of cyberattacks|	The verifying organisation reports every cyberattack on its systems to the Bundesamt für Cybersicherheit (Art. 11 BGEID).|
+|	Alternative to the e-ID|	Whoever accepts the e-ID or parts of it as a credential must also accept a physical identity document where the person appears in person (Art. 25 BGEID).|
+
 
 # Setup your instance
+
+https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-verifier/
+
+complete architecture documentation and detailed issuance flows https://github.com/swiyu-admin-ch/swiyu-verifier/tree/main/docs
 
 # Showcases and Testing
 
