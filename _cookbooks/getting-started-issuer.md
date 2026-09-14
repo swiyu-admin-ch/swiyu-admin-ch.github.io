@@ -2,7 +2,7 @@
 title: Getting Started as Issuer in the swiyu Ecosystem
 toc: true
 toc_sticky: true
-excerpt: Find relevant information about the VC issuance in the swiyu ecosystem
+excerpt: Find relevant information for Issuers who want to use the generic components
 header:
   teaser: ../assets/images/cookbook_generic_issuer.jpg
 ---
