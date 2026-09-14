@@ -2,7 +2,7 @@
 title: Getting Started as Verifier in the swiyu Ecosystem
 toc: true
 toc_sticky: true
-excerpt: Find relevant information about the VC verification in the swiyu ecosystem
+excerpt: Relevant information for Verifiers who want to use the generic components
 header:
   teaser: ../assets/images/cookbook_generic_verifier.jpg
 ---
