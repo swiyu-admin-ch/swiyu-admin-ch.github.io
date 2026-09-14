@@ -113,7 +113,7 @@ The use cases are grouped by the interface plane on which they occur.
 | Name | Rule |
 |--- |--- |
 |Mandated issuance flow	|Credentials are issued using the Pre-Authorized Code Flow. The Swiss Profile requires implementers to support this flow, and the Authorization Code Flow is not implemented by swiyu components.|
-|Mandated credential format|	Credentials are issued in the SD-JWT VC format. The current format identifier is dc+sd-jwt; vc+sd-jwt is deprecated and supported for compatibility with earlier drafts.|
+|Mandated credential format|	Credentials are issued in the SD-JWT VC format. The current format identifier is `dc+sd-jwt`. `vc+sd-jwt` is deprecated and supported temporarily for compatibility with earlier drafts.|
 |Issuer identification by DID|	The Issuer identifies itself by a Decentralized Identifier. The public keys used to verify issued credentials and signed metadata are published in the corresponding DID document on the Base Registry.|
 |Signing algorithm	|Issuers, wallets and verifiers must support the key type P-256 with the ES256 algorithm for signing and signature validation. The configured signing algorithm must match the configured signing key.|
 
@@ -130,9 +130,46 @@ The use cases are grouped by the interface plane on which they occur.
 
 ## Status and Revocation
 
+| Name | Rule |
+|--- |--- |
+|Status list precedes issuance|	The status list resource must exist on the Status Registry before it is registered on the Generic Issuer, and it must be registered before credentials with a status can be issued.|
+|	Credentials without status cannot be revoked|	It is possible to issue credentials without a status. Such credentials can never be revoked or suspended.|
+|Status transitions	|An issued credential can be suspended and reactivated any number of times. Revocation is permanent and terminal.|
+|	Whole-batch revocation|	Where a credential was issued as part of a batch, revoking any one credential of that batch revokes the entire batch.|
+|	No partial batches|	If the status list no longer has the number of free slots required for a full batch, an error is returned and no partial batch is created.|
 
+## Credential Type
+
+| Name | Rule |
+|--- |--- |
+|Stability of the credential type	|The `vct` identifies the credential type from a business point of view and remains stable. Adding or removing an attribute, or changing metadata or styling, does not lead to a new `vct`. Only a complete business change does.|
+|Trust is bound to the credential type only|	Only the `vct` carries trust in the ecosystem. The values of `vct_version`, `vct_subtype` and `vct_subtype_version` are set at the discretion of the Issuer, and no component may base a trust decision on them.|
+|Disclosure of type claims	|The `vct` claim must not be selectively disclosable. The `vct_version`, `vct_subtype` and `vct_subtype_version` claims must be selective disclosures, so that the Holder decides whether to share them.|
+|	Freedom of the Issuer	|Every Issuer is free to choose the value it places in the `vct`, whether or not it matches a published schema. Verifiers must therefore know which credential type they require, which claims to request, and which Issuers they trust.|
+
+## Security and Trust
+
+| Name | Rule |
+|--- |--- |
+|Management interface is internal	|The management interface is intended exclusively for the Business Issuer Application and must be deployed so that it is not reachable from outside the issuing organisation.|
+|Key attestation is optional but always validated	|The Issuer may require the wallet to prove that its keys are held in secure hardware at a given security level. Where a list of trusted attestation providers is configured, only those providers are accepted; where no list is configured, attestations are accepted from any provider. The integrity and signature of an attestation are validated in every case.|
+|Consequence of the highest key storage level|	Credentials issued with a key storage requirement of `iso_18045_high` are bound to the device's secure element and cannot be restored from a backup.|
+|	One instance, one Issuer|	Multi-tenancy is not supported. Each Issuer operates its own instance of the Generic Issuer.|
+
+## Notification and Data
+
+| Name | Rule |
+|--- |--- |
+|At-least-once delivery of notifications	|Delivery of webhook events is retried until successful, guaranteeing at-least-once delivery. Failed deliveries create error logs and are retried in the next interval.|
+|	Handling of undeliverable notifications	|Handling of events that cannot ultimately be delivered is the responsibility of the Business Issuer Application.|
+|	Offer data is retained only for the duration of the process	|Offer data is kept only while the issuance process is in progress. It is removed once the result has been fetched by the Business Issuer Application, or once the offer expiration timestamp has been reached.|
 
 # Setup your instance
+
+https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/
+
+complete architecture documentation and detailed issuance flows https://github.com/swiyu-admin-ch/swiyu-issuer/tree/main/docs
+
 
 # Showcases and Testing
 
