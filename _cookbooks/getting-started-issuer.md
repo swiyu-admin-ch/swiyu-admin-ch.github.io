@@ -166,21 +166,17 @@ The use cases are grouped by the interface plane on which they occur.
 
 # Setup your instance
 
-https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/
+We provide a [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-generic-issuer/) with step-by-step instructions for the deployment of the swiyu Generic Issuer. The complete architecture documentation and detailed issuance flows can be found on [GitHub](https://github.com/swiyu-admin-ch/swiyu-issuer/tree/main/docs).
 
-complete architecture documentation and detailed issuance flows https://github.com/swiyu-admin-ch/swiyu-issuer/tree/main/docs
+# Showcases, Testing and Technical Issues
 
+You'll find existing showcases in our [GitHub discussion forum](https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell). You are also welcome to present your use case there.
 
-# Showcases and Testing
+We provide two test applications 
+- [A very simplistic wallet implementation, usable in end 2 end tests or testing of deployments](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
+- [A wallet simulation to test credential issuance and verifcation](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
 
-link auf discussion https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell
-
-links auf testapplikationen
-
-https://github.com/swiyu-admin-ch/swiyu-generic-application-test
-https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet
-
-bei Problemen: GitHub Issues https://github.com/swiyu-admin-ch/swiyu-issuer
+Should any problems arise whilst integrating the generic components, you can report them as a [GitHub issue](https://github.com/swiyu-admin-ch/swiyu-issuer/issues).
 
 
 
