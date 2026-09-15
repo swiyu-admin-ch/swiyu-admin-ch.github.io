@@ -308,7 +308,7 @@ curl -X PUT \
 ```
 
 # 5. Start trust onboarding process in swiyu portal
-After uploading your DID log ([step 4.3.](#43-upload-the-did-log)), you can now start your trust onboarding process in the [swiyu Service Portal](https://portal.trust-infra.swiyu-int.admin.ch) via the "Start profile verification" button. Please follow the on screen directions till you need to provide the proof of posession.
+After uploading your DID log ([step 4.3.](#43-upload-the-did-log)), you can now start your trust onboarding process in the [swiyu Service Portal](https://portal.trust-infra.swiyu-int.admin.ch) via the "Start profile verification" button. Please follow the on screen directions until you need to provide the proof of possession.
 
 [![Buisness partner detail view with "Start profile verification" button](../../assets/images/cookbook_start_trust_onboarding.png)](../../assets/images/cookbook_start_trust_onboarding.png)
 
@@ -632,7 +632,7 @@ The `status` field reflects the current state of the submission:
 | `PUBLICATION_SUCCEEDED` | The vqPS has been published in the Trust Registry; the signed JWT is available in `publicationResult.jwt` |
 | `PUBLICATION_FAILED` | Publication failed; the reason is available in `publicationFailureReason` |
 
-## 8.3. List All vqPS Submissions
+## 9.3. List All vqPS Submissions
 
 To retrieve all vqPS submissions for your business partner, use the paginated list endpoint.
 
