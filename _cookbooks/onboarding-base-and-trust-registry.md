@@ -307,9 +307,13 @@ curl -X PUT \
   --data-binary @did-updated.jsonl
 ```
 
-# 5. Create Proof of Possession for initial did
+# 5. Start trust onboarding process in swiyu portal
+After uploading your DID log ([step 4.3.](#43-upload-the-did-log)), you can now start your trust onboarding process in the [swiyu Service Portal](https://portal.trust-infra.swiyu-int.admin.ch) via the "Start profile verification" button. Please follow the on screen directions till you need to provide the proof of posession.
 
-After uploading your DID log ([step 4.3.](#43-upload-the-did-log)), you can now start your trust onboarding process in the [swiyu Service Portal](https://portal.trust-infra.swiyu-int.admin.ch).
+[![Buisness partner detail view with "Start profile verification" button](../../assets/images/cookbook_start_trust_onboarding.png)](../../assets/images/cookbook_start_trust_onboarding.png)
+
+
+# 6. Create Proof of Possession for initial did
 During that process you must prove to the trust registry that you control the private key corresponding to your DID's assertion method. A proof of possession (PoP) is a [JSON Web Token (JWT)](https://www.jwt.io/introduction#what-is-json-web-token) signed with a private key from your DID document. It can be created with the [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java/releases/latest).
 
 Prerequisites:
@@ -322,7 +326,7 @@ Prerequisites:
   The generated PoP is only valid for 24 hours.
 </div>
 
-## 5.1. Fetch the Challenge
+## 6.1. Fetch the Challenge
 
 Call the **swiyucorebusiness_trust** API to retrieve the pending trust onboarding submission for your business partner. The response provides the DID and a one-time `nonce`.
 
@@ -343,7 +347,7 @@ curl -X GET \
 
 Save the `did` and `nonce` values — they are referenced below as `DID` and `NONCE`.
 
-## 5.2. Create the Proof of Possession
+## 6.2. Create the Proof of Possession
 
 Use the DID Toolbox to sign the nonce with your assertion private key.
 
@@ -365,7 +369,7 @@ java -jar didtoolbox.jar create-pop \
 
 Save the output JWT as `POP_JWT`.
 
-## 5.3. Submit the Proof of Possession
+## 6.3. Submit the Proof of Possession
 
 Upload the signed JWT to complete the trust onboarding submission.
 
@@ -387,11 +391,11 @@ curl -X POST \
 
 A `200 OK` response confirms your trust onboarding submission has been accepted and your DID is now registered in the trust registry.
 
-# 6. Adding Additional DIDs
+# 7. Adding Additional DIDs
 
 Once your first DID is onboarded in the trust registry, you can register additional DIDs under the same business partner. Each new DID must be accompanied by a **trust-add-dids submission** containing proofs of possession from **both** your existing (permission) DID and every new DID being added.
 
-## 6.1. Create a New Identifier Entry
+## 7.1. Create a New Identifier Entry
 
 Request a new DID space for your business partner via the **swiyucorebusiness_identifier** API.
 
@@ -412,11 +416,11 @@ curl -X POST \
 
 Save the `id` as `IDENTIFIER_REGISTRY_ENTRY_ID_2` and `identifierRegistryUrl` as `IDENTIFIER_REGISTRY_URL_2`.
 
-## 6.2. Generate and Upload the DID Log
+## 7.2. Generate and Upload the DID Log
 
 Repeat [step 4.2.](#42-generate-the-did-log) and [step 4.3.](#43-upload-the-did-log) for the new identifier entry, using `IDENTIFIER_REGISTRY_URL_2` as the `--identifier-registry-url` argument and `IDENTIFIER_REGISTRY_ENTRY_ID_2` in the `PUT` request path. Store the resulting key files in a separate working directory (e.g. `did2/`) to keep them distinct from your first DID's keys.
 
-## 6.3. Create the Trust Add DIDs Submission
+## 7.3. Create the Trust Add DIDs Submission
 
 Submit a request to add the new DID to the trust registry. Provide your existing **permission DID** (the DID already registered in the trust registry) and the list of new DID(s) to add. The response contains a shared `nonce` that must be signed by all DIDs involved.
 
@@ -437,7 +441,7 @@ curl -X POST \
 
 Save the `id` as `TRUST_ADD_SUBMISSION_ID` and the `nonce` as `NONCE_2`.
 
-## 6.4. Create Proof of Possession JWTs
+## 7.4. Create Proof of Possession JWTs
 
 Create one PoP JWT for **each DID** involved — your existing permission DID and every new DID being added. All PoPs use the same `NONCE_2`.
 
@@ -459,7 +463,7 @@ java -jar didtoolbox.jar create-pop \
 
 Save the outputs as `POP_JWT_1` (permission DID) and `POP_JWT_2` (new DID).
 
-## 6.5. Submit All Proofs of Possession
+## 7.5. Submit All Proofs of Possession
 
 Upload all PoP JWTs in a single call to the trust-add-dids submission endpoint.
 
@@ -481,7 +485,7 @@ curl -X POST \
 
 A `200 OK` response confirms the new DID(s) have been added to the trust registry.
 
-# 7. Updating an existing DID
+# 8. Updating an existing DID
 
 To update an existing DID — for example to rotate keys — generate a new DID log using the `update` command of the DID Toolbox (see [step 4.4.](#44-update-an-existing-did-log)) and upload it to the Base Registry using the `PUT` endpoint. The new log replaces the existing one for that identifier entry.
 
@@ -503,17 +507,22 @@ curl -X PUT \
 
 A `200 OK` response confirms the updated DID log is published and the DID document is resolved from the new log.
 
-# 8. Create a Verification Query Public Statement (vqPS)
+# 9. Create a Verification Query Public Statement (vqPS)
 
 A **Verification Query Public Statement (vqPS)** is a signed JWT published to the Trust Registry that declares the purpose and credential query a verifier intends to use. It is the technical mechanism by which verifiers transparently communicate what data they request from holders, as required by the swiyu Trust Protocol.
 
 Prerequisites:
 
 * Your business partner is subscribed to the **swiyucorebusiness_trust** API (see [step 3](#3-subscribe-to-swiyu-trust-infrastructure-apis)).
-* Your verifier DID is registered in the Trust Registry (see [step 5](#5-create-proof-of-possession-for-initial-did)).
+* Your verifier DID is registered in the Trust Registry (see [step 6](#6-create-proof-of-possession-for-initial-did)).
 * You have a valid `SWIYU_TRUST_REGISTRY_ACCESS_TOKEN`.
 
-## 8.1. Submit the vqPS
+<div class="notice--warning">
+The generic verifier can manage the vqPS independently. To do this, you need to provide the appropriate API credentials, but you do not need to follow the manual steps below.<br/>
+
+[For more information please see the generic verifier documentation.](https://github.com/swiyu-admin-ch/swiyu-verifier#environment-variables)</div>
+
+## 9.1. Submit the vqPS
 
 Call the **swiyucorebusiness_trust** API to create a new vqPS submission. The system will sign and publish the statement to the Trust Registry on your behalf.
 
@@ -521,13 +530,14 @@ The request body contains:
 
 | Field | Type | Required | Description |
 |---|---|---|---|
+| `waitForPublication` | boolean | x | If you want to wait for the vqPS token or want to fetch it asynchronus. |
 | `sub` | string | ✓ | Your verifier DID — the subject the vqPS is issued for |
 | `purpose_name` | localized map | ✓ | Human-readable name of the verification purpose, max 40 chars per locale |
 | `purpose_description` | localized map | ✓ | Human-readable description of the verification purpose, max 1000 chars per locale |
 | `scope` | string | ✓ | OpenID4VP scope string identifying this verification query |
 | `query` | JSON object | ✓ | DCQL query describing the credential(s) and claims being requested |
 
-Localized maps must include a `"default"` key and may include BCP 47 language tags (e.g. `"de"`, `"fr"`, `"it"`, `"en"`).
+Localized maps must include a `"default"` key and may include BCP 47 language tags (e.g. `"de-CH"`, `"fr-CH"`, `"it-CH"`, `"en"`).
 
 ```sh
 # Parameter
@@ -536,9 +546,10 @@ curl -X POST \
   -H "Authorization: Bearer $SWIYU_TRUST_REGISTRY_ACCESS_TOKEN" \
   -H "Content-Type: application/json" \
   -d '{
-    "sub": "did:tdw:DEADBEEF0000000000000000000000000000000000000000000000000000000000000000000000000000000000000:identifier-data-service-d.bit.admin.ch:api:v1:did:00000000-0000-0000-0000-000000000000",
-    "purpose_name": {"default": "Purpose name", "de": "Zweckname", "fr": "Nom de l'\''objectif"},
-    "purpose_description": {"default": "This purpose allows verification of identity", "de": "Dieser Zweck ermöglicht die Identitätsprüfung", "fr": "Cet objectif permet la vérification d'\''identité"},
+   "waitForPublication": true,
+   "sub": "did:tdw:DEADBEEF0000000000000000000000000000000000000000000000000000000000000000000000000000000000000:identifier-data-service-d.bit.admin.ch:api:v1:did:00000000-0000-0000-0000-000000000000",
+    "purpose_name": {"default": "Purpose name", "de-CH": "Zweckname", "fr-CH": "Nom de l'\''objectif"},
+    "purpose_description": {"default": "This purpose allows verification of identity", "de-CH": "Dieser Zweck ermöglicht die Identitätsprüfung", "fr-CH": "Cet objectif permet la vérification d'\''identité"},
     "scope": "com.example.identityCardCredential_presentation",
     "query": {
       "credentials": [
@@ -577,7 +588,7 @@ Save the `id` field as `VQPS_SUBMISSION_ID`.
 
 {% capture vqps-hint %}
 
-<p> ⚙️ The POST request waits synchronously for publication. If the Trust Registry does not confirm publication within the expected time frame, a <code>504 Gateway Timeout</code> is returned. In that case, use <a href="#82-check-submission-status">step 8.2.</a> to poll the submission status until it reaches <code>PUBLICATION_SUCCEEDED</code> or <code>PUBLICATION_FAILED</code>.</p>
+<p> ⚙️ The POST request waits synchronously for publication if  `waitForPublication` is set to `true`. If the Trust Registry does not confirm publication within the expected time frame, a <code>504 Gateway Timeout</code> is returned. In that case, use <a href="#92-check-submission-status">step 9.2.</a> to poll the submission status until it reaches <code>PUBLICATION_SUCCEEDED</code> or <code>PUBLICATION_FAILED</code>.</p>
 <p> ⚙️ Each unique verification query requires its own vqPS. If your verification purpose or the requested claims change, submit a new vqPS.</p>
 
 {% endcapture %}
@@ -587,7 +598,7 @@ Save the `id` field as `VQPS_SUBMISSION_ID`.
   {{ vqps-hint | markdownify }}
 </div>
 
-## 8.2. Check Submission Status
+## 9.2. Check Submission Status
 
 If the initial POST request timed out, or if you need to inspect an existing submission, retrieve its current status by ID.
 
