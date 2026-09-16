@@ -1,5 +1,5 @@
 ---
-title: Getting Started as Issuer in the swiyu Ecosystem
+title: Getting Started as an Issuer in the swiyu Ecosystem
 toc: true
 toc_sticky: true
 excerpt: Find relevant information for Issuers who want to use the generic components
@@ -51,7 +51,9 @@ The swiyu Generic Issuer implements the issuance standards. The Business Issuer 
 
 # Key Features
 
-- **Standards-based issuance:** Credentials are issued over OID4VCI in the SD-JWT VC format, following the [Swiss Profile Issuance](https://swiyu-admin-ch.github.io/specifications/swiss-profile-issuance/).
+The features are set mostly by the [Swiss Profile Issuance](https://swiyu-admin-ch.github.io/specifications/swiss-profile-issuance/) and the [Swiss Profile VC](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/)
+
+- **Standards-based issuance:** Credentials are issued over OID4VCI in the SD-JWT VC format.
 - **Two separated interfaces:** A management interface for the Business Issuer Application and a public OID4VCI interface for the wallet.
 - **Credential lifecycle management:** Credential offers and issued credentials can be suspended, reactivated and revoked through status lists.
 - **Deferred issuance:** Issuance can be postponed where the business process requires further processing before the credential can be released.
@@ -75,7 +77,7 @@ The use cases are grouped by the interface plane on which they occur.
 
 | UC | Name | Description |
 |--- |--- |--- |
-| UCI_S1 |	Create Status List |	Allows the Business Issuer to initialise a new status list resource, which is used to track the revocation or validity status of verifiable credentials issued by the system. Typically performed once per issuer or credential type.|
+| UCI_S1 |	Create Status List |	Allows the Business Issuer to initialize a new status list resource, which is used to track the revocation or validity status of verifiable credentials issued by the system. Typically performed once per issuer or credential type.|
 |UCI_S2 |	Retrieve Status List |	Enables the Business Issuer to fetch the current status list resource containing the up-to-date status of all verifiable credentials managed by the issuer. Essential for monitoring, auditing and verifying the validity of issued credentials. |
 |UCI_C1 |	Create a generic credential offer|	Enables the Business Issuer to generate a new credential offer with custom content and properties. The offer serves as the basis for issuing a verifiable credential to a Holder and includes all information necessary for the issuance process.|
 |UCI_C1a |	Create a deeplink for Credential Offer |	Generates a unique deeplink that points to the created credential offer, enabling the Holder to retrieve the offer directly. Included in UCI_C1.|
@@ -172,9 +174,9 @@ We provide a [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-ge
 
 You'll find existing showcases in our [GitHub discussion forum](https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell). You are also welcome to present your use case there.
 
-We provide two test applications 
+We provide two test applications to validate the behaviour of your instances during development and integration phases:
 - [A very simplistic wallet implementation, usable in end 2 end tests or testing of deployments](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
-- [A wallet simulation to test credential issuance and verifcation](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
+- [A wallet simulation to test credential issuance and verification](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
 
 Should any problems arise whilst integrating the generic components, you can report them as a [GitHub issue](https://github.com/swiyu-admin-ch/swiyu-issuer/issues).
 
