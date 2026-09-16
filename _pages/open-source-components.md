@@ -121,3 +121,5 @@ The source code is available in the following repositories:
 
 - [swiyu Generic Application Test](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
 - [swiyu Generic Test Wallet](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
+
+All the testing tools are provided as is and are excluded from the Bug Bounty program. There may be security issues, because these tools are not pentested.
