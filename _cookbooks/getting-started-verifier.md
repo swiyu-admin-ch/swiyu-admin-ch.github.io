@@ -184,7 +184,7 @@ We provide a [cookbook](https://swiyu-admin-ch.github.io/cookbooks/onboarding-ge
 
 You'll find existing showcases in our [GitHub discussion forum](https://github.com/orgs/swiyu-admin-ch/discussions/categories/show-and-tell). You are also welcome to present your use case there.
 
-We provide two test applications: 
+We provide two test applications to validate the behaviour of your instances during development and integration phases:
 - [A very simplistic wallet implementation, usable in end 2 end tests or testing of deployments](https://github.com/swiyu-admin-ch/swiyu-generic-application-test)
 - [A wallet simulation to test credential issuance and verifcation](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet)
 
