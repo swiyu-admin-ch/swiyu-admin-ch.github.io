@@ -97,8 +97,8 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 | [Prod Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) | 1.19.0 | 1.18.0 |  |  | 1.17.0 <br> 1.16.3 <br> 1.14.0 |
 | [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 1.19.0 | 1.18.0 | |  | 1.17.1 <br> 1.16.1 |
 | [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 1.19.0 | [1.18.0](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) | |   | 1.17.0 <br> 1.16.3 |
-| [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.0 (TP 2.0 enforcement) | [4.1.0](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/4.1.0) | < 3.2 (before TP 2.0)  | Mid November | |
-| [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.0 (TP 2.0 enforcement) | [4.1.2](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/4.1.2) | < 3.2 (before TP 2.0)  | Mid November | |
+| [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.0 (TP 2.0 enforcement) | [4.2.0](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/4.2.0) | < 3.2 (before TP 2.0)  | Mid November | |
+| [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.0 (TP 2.0 enforcement) | [4.2.0](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/4.2.0) | < 3.2 (before TP 2.0)  | Mid November | |
 | Check App iOS | 1.0 | |  |  | |
 | Check App Android | 1.0 | |  |  | |
 | [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java) | 2.4 | 2.3 (expand EdDSA) | < 2.1 (did:webvh not Swiss Profile conform) |  | |
