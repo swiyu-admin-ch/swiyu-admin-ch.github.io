@@ -6,14 +6,15 @@ categories:
 
 With the release of the swiyu Generic Issuer & Verifier version 5.x we'll proceed the contract steps towards the Swiss Profiles 1.0, including Trust Protocol 2.0 implementation with a strict separation of the Sandbox and Production environment.
 
-Ecosystem Actors need to migrate until Mid-November. At this date, the separation will take place and non-prod credentials will be deleted in the productive swiyu wallet.
+Ecosystem Actors from Public Beta/Sandbox need to migrate until Mid-November. At this date, the separation will take place and non-prod credentials will be deleted in the productive swiyu wallet.
 
 ## swiyu Generic Issuer - Overview of Changes
 
-- Contract: "Check cryptographic_binding_methods_supported matches the method provided by wallet"
 - Contract: Remove support for old vc+sd-jwt format
 - Contract: Remove support for old DID Method DID:tdw
 - Contract: Remove support for Trust Protocol 1.0
+- Contract: "[Check cryptographic_binding_methods_supported matches the method provided by wallet](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/50
+)"
 
 You can find further relevant changes and new features in the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md).
   
@@ -34,10 +35,12 @@ You can find further relevant changes and new features in the [changelog](https:
 
 - Restriction to Prod environment: Existing VC's from the Public Beta/Sandbox environment will be deleted
 - Strict separation of Sandbox and Prod environment and respective Wallets
-- Contract Json Path
-- Contract Data Source Mapping Overlay 1.0
+- Contract JSON Path
+- Contract [Data Source Mapping Overlay 1.0](https://github.com/swiyu-admin-ch/eidch-android-wallet/issues/61)
 
-## Change Dossiers 
+## Timeline and Change Dossiers
+
+[![actors-restriction-roadmap](/assets/images/2026_09_Roadmap.png)](/assets/images/2026_09_Roadmap.png)
 
 You'll find additional information in the respective Change Dossiers:
  
