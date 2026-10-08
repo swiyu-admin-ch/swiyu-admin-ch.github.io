@@ -121,6 +121,7 @@ include:
   - _archive
 exclude:
   - _change-dossiers/change-dossier-template
+  - _specifications/_normative-standards
   - vendor
   - .asset-cache
   - .bundle
