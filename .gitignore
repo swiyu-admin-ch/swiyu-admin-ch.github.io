@@ -6,3 +6,5 @@ vendor
 Gemfile.lock
 .bundle
 .idea
+/_specifications/_normative-standards/w3c/:memory:.ses
+/_specifications/_normative-standards/w3c/.venv/
