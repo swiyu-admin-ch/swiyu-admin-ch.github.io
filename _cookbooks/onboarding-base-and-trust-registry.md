@@ -45,7 +45,7 @@ The swiyu Trust Infrastructure consists of three APIs. Subscribe your business p
 
 **swiyucorebusiness_identifier:** Use this API to manage your public key material on the Base Registry.
 
-**swiyucorebusiness_status:** Use this API to manage your [credential status lists](https://swiyu-admin-ch.github.io/specifications/interoperability-profile/#credential-status).
+**swiyucorebusiness_status:** Use this API to manage your [credential status lists](https://swiyu-admin-ch.github.io/specifications/swiss-profile-vc/#4-status-list).
 
 **swiyucorebusiness_trust:** Use this API to manage your organisation's trust verification submissions.
 
@@ -524,7 +524,7 @@ Save the `id` field as `VQPS_SUBMISSION_ID`.
 
 {% capture vqps-hint %}
 
-<p> ⚙️ The POST request waits synchronously for publication if  `waitForPublication` is set to `true`. If the Trust Registry does not confirm publication within the expected time frame, a <code>504 Gateway Timeout</code> is returned. In that case, use <a href="#92-check-submission-status">step 9.2.</a> to poll the submission status until it reaches <code>PUBLICATION_SUCCEEDED</code> or <code>PUBLICATION_FAILED</code>.</p>
+<p> ⚙️ The POST request waits synchronously for publication if  `waitForPublication` is set to `true`. If the Trust Registry does not confirm publication within the expected time frame, a <code>504 Gateway Timeout</code> is returned. In that case, use <a href="#82-check-submission-status">step 8.2.</a> to poll the submission status until it reaches <code>PUBLICATION_SUCCEEDED</code> or <code>PUBLICATION_FAILED</code>.</p>
 <p> ⚙️ Each unique verification query requires its own vqPS. If your verification purpose or the requested claims change, submit a new vqPS.</p>
 
 {% endcapture %}
