@@ -4,11 +4,9 @@
   "excludeFolders": ["_archive", "_data", "_includes", "_layouts", "_sass"],
   "excludeFiles": [],
   "rules": [
-    "When answering questions, retrieving documentation, or analyzing code related to underlying normative specifications (e.g., OID4VCI, OID4VP, RFC 9449 DPoP, RFC 9101 JAR, W3C DID Core, SD-JWT VC):"
-    "MANDATORY SWISS PROFILE LOOKUP",
-    "- You MUST always cross-reference queries against the corresponding Swiss Profile (`swiss-profile-anchor`, `swiss-profile-issuance`, `swiss-profile-verification`, `swiss-profile-vc`, or `trust-protocol-2-0`).",
-    "SPECIFICATION OVERRIDE & RESTRICTION EVALUATION",
-    "- Always check if the Swiss Profile restricts, overrides, or disables optional/standard features of the base RFC or specification.",
-    "- Precedence Rule: In the swiyu E-ID ecosystem, Swiss Profile restrictions ALWAYS take precedence over generic base standards."
+    "When answering questions, retrieving documentation, or analyzing code related to underlying normative specifications (e.g., OID4VCI, OID4VP, RFC 9449 DPoP, RFC 9101 JAR, W3C DID Core, SD-JWT VC):",
+    "You MUST always cross-reference queries against the corresponding Swiss Profile (`swiss-profile-anchor`, `swiss-profile-issuance`, `swiss-profile-verification`, `swiss-profile-vc`, or `trust-protocol-2-0`).",
+    "Always check if the Swiss Profile restricts, overrides, or disables optional/standard features of the base RFC or specification.",
+    "Precedence Rule: In the swiyu E-ID ecosystem, Swiss Profile restrictions ALWAYS take precedence over generic base standards."
   ]
 }
