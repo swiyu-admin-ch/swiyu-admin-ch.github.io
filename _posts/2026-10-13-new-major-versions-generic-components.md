@@ -8,20 +8,17 @@ With the release of the swiyu Generic Issuer & Verifier version 5.x we'll procee
 
 Ecosystem Actors from Public Beta/Sandbox need to migrate until Mid-November. At this date, the separation will take place and non-prod credentials will be deleted in the productive swiyu wallet.
 
-## swiyu Generic Issuer - Overview of Changes
+## swiyu Generic Issuer - Most relevant Changes
 
 - Contract: Remove support for old vc+sd-jwt format
-- Contract: Remove support for old DID Method DID:tdw
 - Contract: Remove support for Trust Protocol 1.0
 - Contract: "[Check cryptographic_binding_methods_supported matches the method provided by wallet](https://github.com/swiyu-admin-ch/swiyu-issuer/issues/50
 )"
 
 You can find further relevant changes and new features in the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md).
   
-## swiyu Generic Verifier - Overview of Changes
+## swiyu Generic Verifier - Most relevant Changes
 
-- Contract: Remove support for old vc+sd-jwt format
-- Contract: Remove support for old DID Method DID:tdw
 - Contract: Remove support for Trust Protocol 1.0
 
 You can find further relevant changes and new features in the [changelog](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/CHANGELOG.md).
