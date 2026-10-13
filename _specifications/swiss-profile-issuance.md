@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version: 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-08-07
+  Last edited: 2026-09-30
 </div>
 
 
@@ -96,6 +96,9 @@ authorization_details are **NOT SUPPORTED**<br>
 
 ### 6.2. Successful Token Response
 Authorization server **MUST NOT** return authorization_details<br>
+
+### 6.3 Token Error Response
+Issuers **SHOULD** indicate the wallet to reattempt entering a correct tx_code using the `error` code in the Token Response `invalid_tx_code` instead of `invalid_grant`.
 
 ## 7. Nonce Endpoint
 It is **RECOMMENDED** that the nonce is a a self contained nonce, which the issuer can decern to be not valid without registering every nonce which has been requested from this public endpoint.<br>

@@ -9,7 +9,7 @@ header:
 
 Status: Draft <br>
 Published: 14.08.2026 <br>
-Effective: xx.12.2026 (December 2026, exact date TBD <br>
+Effective: Q1/2027, exact date TBD <br>
 Affected Components: DID Resolver, Wallet, Generic Issuer, Generic Verifier, Base Registry, Trust Registry <br>
 Internal Reference: EIDARTFE-1951 <br>
 
@@ -25,11 +25,12 @@ This dossier announces the Contract phase of the verification method key format.
 
 ## Action required
 
-Tag ⚠️ Required soon
-Tag 🚨 Breaking
-Tag 🆕 Optional
-Tag ✅ Improvement
-Tag 🐞 Fix
+| ⚠️ Required soon | Will become mandatory soon |
+| 🚨 Breaking | Action required, something stops working |
+| 🆕 Optional | New feature, opt-in |
+| ✅ Improvement | Enhancement, no action needed  |
+| 🐞 Fix | Bug fix |
+| 💡 Informational | Additional background information, no action needed |
 
 
 ### DID Resolver
@@ -58,4 +59,4 @@ Tag 🐞 Fix
 5. Contract phase becomes effective: `Ed25519VerificationKey` is no longer resolved or accepted as a valid authentication verification method.
 
 ## Timeline
-xx.12.2026 - Contract phase effective, `Ed25519VerificationKey` support removed (exact December date to be confirmed).
+The migration phase and the contract step will be announced as soon as this steps are planned; we will inform the community via our [release announcements](https://swiyu-admin-ch.github.io/release-announcements/).
