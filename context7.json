@@ -5,8 +5,13 @@
   "excludeFiles": [],
   "rules": [
     "When answering questions, retrieving documentation, or analyzing code related to underlying normative specifications (e.g., OID4VCI, OID4VP, RFC 9449 DPoP, RFC 9101 JAR, W3C DID Core, SD-JWT VC):",
-    "You MUST always cross-reference queries against the corresponding Swiss Profile (`swiss-profile-anchor`, `swiss-profile-issuance`, `swiss-profile-verification`, `swiss-profile-vc`, or `trust-protocol-2-0`).",
-    "Always check if the Swiss Profile restricts, overrides, or disables optional/standard features of the base RFC or specification.",
-    "Precedence Rule: In the swiyu E-ID ecosystem, Swiss Profile restrictions ALWAYS take precedence over generic base standards."
+    "PRECEDENCE: In the swiyu E-ID ecosystem, Swiss Profile specifications (swiss-profile-anchor, swiss-profile-issuance, swiss-profile-verification, swiss-profile-vc, trust-protocol-2-0) ALWAYS take precedence over generic base standards, including where the profile contradicts, restricts, or prohibits base specification behavior.",
+    "CROSS-REFERENCE: Cross-reference every queried feature, parameter, or flow against the relevant Swiss Profile before confirming support or design patterns.",
+    "EXACT & ALIAS LOOKUP: Search by exact parameter/feature name as well as common casing variants (e.g., snake_case, camelCase) or structural aliases used in the profile tables.",
+    "NORMATIVE CLASSIFICATION: Classify the profile's treatment into one of: MANDATE (MUST/SHALL), ALLOW (MAY/SHOULD), RESTRICT, OVERRIDE, or EXPLICITLY PROHIBIT ('NOT SUPPORTED').",
+    "SILENCE & RETRIEVAL GAPS: If the Swiss Profile does not explicitly mention the feature, do NOT infer support from the base specification. Clearly flag it as 'Not explicitly mentioned in retrieved Swiss Profile (Base spec optionality applies with unverified Swiss support)' and verify whether relevant profile sections were missing from the retrieval context.",
+    "VERBATIT CITATIONS: Quote the decisive normative statement VERBATIM with its document identifier and section number (e.g., 'Swiss Profile Issuance § 4.1'). Paraphrasing of normative clauses is strictly prohibited.",
+    "SPEC CONFLICT WARNING: Explicitly highlight any discrepancy where a generic base standard allows or recommends a behavior that the Swiss Profile restricts or disables.",
+    "AI DISCLAIMER FOOTER: Append a short disclaimer at the very end of EVERY response, translated into the language of the output (e.g., German: 'Hinweis: Diese Antwort wurde durch eine KI generiert und kann Fehler enthalten. Bitte konsultieren Sie im Zweifel die massgeblichen Originalspezifikationen.', English: 'Note: This response is AI-generated and may contain errors. Please consult the authoritative specifications when in doubt.')."
   ]
 }
