@@ -55,10 +55,8 @@ A sample compose file for an entire setup of both components and a database can 
 | `SDJWT_KEY`                                     | EC Private key can be taken from [onboarding process](https://swiyu-admin-ch.github.io/cookbooks/onboarding-base-and-trust-registry/#create-a-did-or-create-the-did-log-you-need-to-continue) you can use any generated key but it must match the `DID_SDJWT_VERIFICATION_METHOD` | |
 
 Please note that the default configuration of the issuer service is geared towards easily gaining experience with the
-verification process and is NOT intended for production use.
-verification process, not intended for production use. For additional information on how to securely deploy the
-swiyu-issuer check out
-the [Deployment considerations](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/README.md#deployment-considerations)
+verification process and is NOT intended for production use. For additional information on how to securely deploy the
+swiyu-issuer check out the [deployment considerations](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/README.md#deployment-considerations)
 in the readme.
 
 The provided images can be used with ARM based processors, but they are not optimized.
@@ -67,14 +65,14 @@ The latest image is available here:
 
 - [swiyu-issuer](https://github.com/swiyu-admin-ch/swiyu-issuer/releases)
 
-Once the service is deployed you can create your first verifiable credential (vc).
+Once the service is deployed you can create your first verifiable credential (VC).
 
 ## Creating a verifiable credential
 
 > 💡 For a detailed understanding of the issuance process please consult the [Issuance Process](issuance.md) or
 > the [documentation](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/docs/Architecture_generic_issuer.pdf).
 
-Below you find an example for with the interactions needed with the issuer to issue a verifiable credential. The
+Below you find an example with the interactions needed with the issuer to issue a verifiable credential. The
 following request can be performed by using the [swagger endpoint](http://localhost:8080/swagger-ui/index.html) for the
 sample environment.
 
