@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-05-22
+  Last edited: 2026-10-19
 </div>
 
 
@@ -87,7 +87,7 @@ Field `controller` **MUST** point to the DID itself.
 It is **RECOMMENDED** to have at least one key in the "`authentication`" [verification relationship](https://www.w3.org/TR/did-1.0/#dfn-verification-relationship).
 
 #### 5.3.3 Key Agreement
-Setting the verification relationship `keyAgreement` in the DIDDoc is **NOT SUPPORTED** by the Base Registry.
+Setting the verification relationship `keyAgreement` in the DIDDoc is **NOT SUPPORTED** by the Base Registry (Registry allows to set `keyAgreement`, but other components will [treat all keys the same regardless of specified context/usage](https://github.com/swiyu-admin-ch/didtoolbox-java/issues/147)).
 
 #### 5.3.4 Capability Invocation
 Setting the verification relationship `capabilityInvocation` in the DIDDoc is **NOT SUPPORTED** by the Base Registry. 
