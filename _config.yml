@@ -213,11 +213,14 @@ collections:
     output: true
     permalink: /:collection/:path/
     order:
+      - getting-started-issuer.md
+      - getting-started-verifier.md
       - onboarding-base-and-trust-registry.md
       - onboarding-generic-verifier.md
       - onboarding-generic-issuer.md
       - how-to-use-beta-id.md
-      - vc-visual-presentation.md
+      - vc-visual-presentation-oca.md
+      - trust-protocol-2-0-implementation.md
   specifications:
     order:
       - introduction.md
