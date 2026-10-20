@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-06-08
+  Last edited: 2026-10-20
 </div>
 
 
@@ -74,11 +74,15 @@ Note: While it is still possible to issue credentials with such fields in arbitr
 ## Trust requirements
 
 An actor of the ecosystem **MUST** validate the trust relationship, and therefore the actor knows the trust markers of the actors in the interaction.<br>
+
 An actor of the ecosystem **MUST** decline any trust relationships which do have the [Governed use case Trust Marker](../trust-protocol-v2-0/#governed-use-case-trust-marker-guctm/) but not the [Governed use case authorization Trust Marker](../trust-protocol-v2-0/#governed-use-case-authorization-trust-marker-gucatm/).<br>
+
 An actor of the ecosystem **SHOULD** decline any trust relationships which do not have the [Verified Identity Trust Marker](../trust-protocol-v2-0/#verified-identity-trust-marker-vitm/).<br>
 
-The wallet **MAY** decline any trust relationships during the verification process which do not have the [Compliant actor Trust Marker](/trust-protocol-v2-0/#compliant-actor-trust-marker-catm/).<br>
-The wallet **MAY** decline any trust relationships during the verification process which do not have the [Transparent verification Trust Marker](trust-protocol-v2-0/#transparent-verification-trust-marker-tvtm/).<br>
+The wallet **MAY** decline any trust relationships during the verification process which do not have the [Compliant actor Trust Marker](/trust-protocol-v2-0/#compliant-actor-trust-marker-catm/). If the wallet does allow a trust relationship without a valid [Compliant actor Trust Marker](/trust-protocol-v2-0/#compliant-actor-trust-marker-catm/), a warning **SHOULD** be shown to the user. <br>
+
+The wallet **MAY** decline any trust relationships during the verification process which do not have the [Transparent verification Trust Marker](trust-protocol-v2-0/#transparent-verification-trust-marker-tvtm/). If the wallet does allow a trust relationship without a valid [Transparent verification Trust Marker](trust-protocol-v2-0/#transparent-verification-trust-marker-tvtm/), a warning **SHOULD** be shown to the wallet user. <br>
+
 Note: A good reason to not require the Transparent verification Trust Mark would be a holder consented overwrite of the required Transparent verification Trust Mark.
 
 
