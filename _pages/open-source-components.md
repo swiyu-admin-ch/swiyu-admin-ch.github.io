@@ -102,10 +102,10 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 | Check App iOS | 1.0 | |  |  | |
 | Check App Android | 1.0 | |  |  | |
 | [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java) | 2.4 | 2.3 (expand EdDSA) | < 2.1 (did:webvh not Swiss Profile conform) |  | |
-| [DID Resolver](https://github.com/swiyu-admin-ch/didresolver) | 2.10 | 2.9  (expand EdDSA) | < 2.8 |  | |
-| [DID Resolver Kotlin/Android](https://github.com/swiyu-admin-ch/didresolver-kotlin-android) | 2.10 | 2.9  (expand EdDSA) | < 2.8 |  | |
-| [DID Resolver Kotlin](https://github.com/swiyu-admin-ch/didresolver-kotlin) | 2.10 | 2.9 (expand EdDSA) | < 2.8 |  | |
-| [DID Resolver Swift](https://github.com/swiyu-admin-ch/didresolver-swift) | 2.10 | 2.9 (expand EdDSA) | < 2.8 |  | |
+| [DID Resolver](https://github.com/swiyu-admin-ch/didresolver) | 2.11 | 2.10 | < 2.8 |  | |
+| [DID Resolver Kotlin/Android](https://github.com/swiyu-admin-ch/didresolver-kotlin-android) | 2.11 | 2.10 | < 2.8 |  | |
+| [DID Resolver Kotlin](https://github.com/swiyu-admin-ch/didresolver-kotlin) | 2.11 | 2.10 | < 2.8 |  | |
+| [DID Resolver Swift](https://github.com/swiyu-admin-ch/didresolver-swift) | 2.11 | 2.10 | < 2.8 |  | |
 
 ## How to use the swiyu Sandbox Trust Infrastructure
 
