@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-10-20
+  Last edited: 2026-10-26
 </div>
 
 
@@ -85,7 +85,12 @@ The wallet **MAY** decline any trust relationships during the verification proce
 
 Note: A good reason to not require the Transparent verification Trust Mark would be a holder consented overwrite of the required Transparent verification Trust Mark.
 
+## Implementation Considerations
+### Statement validity
 
+The swyiu Trust Registry may provide statements with a limited technical validity period (e.g., six months), indicated by the `exp` claim. Before a statement expires, the Trust Registry automatically renews it and makes the renewed statement available. Issuers and Verifiers are responsible for retrieving renewed statements ahead of the current statement's expiration.
+
+Note that: Automatic renewal of a trust statement can be terminated, in case an Issuer or Verifier is no longer elegible to receive this statement. 
 
 
 
