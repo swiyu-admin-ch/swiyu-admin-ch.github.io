@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version: 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-09-30
+  Last edited: 2026-10-26
 </div>
 
 
@@ -242,6 +242,12 @@ Wallets can refresh Credentials by re-requesting them at the Credential Endpoint
 Issuers can always refuse the refresh.<br>
 If refused because a refresh is already in progress, Issuer **MUST** respond with error code 429 (Too Many Requests).<br>
 
+Authorization servers **MUST** utilize one of these methods to detect refresh token replay by malicious actors:
+- Sender-constrained refresh tokens: bind the refresh token to a DPoP key.
+- Refresh token rotation: issue a new refresh token with every access token refresh response.
+
+Refresh token rotation IS **NOT RECOMMENDED** for credentials where portability is desired. A refresh token that has been exported might be kept for a long time next to the original token, and it might be used up by the time it is utilised to refresh the access token (see [swiss-profile-portability 1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-portability)).
+
 ### 14.6. Batch Issuing Credentials
 The Wallet **MUST** send at maximum the amount of proofs defined in the issuer metadata `batch_size`.<br>
 The Issuer **MUST** send exactly as many credentials as proofs received.<br>
@@ -252,6 +258,22 @@ There is no guarantee that any Wallet uses a credential of a batch only once. Is
 ### 14.A Batch Issuance - Batch Size
 The batch size **MUST** be at least 10, to ensure Holder privacy. If holder were to refresh credentials often due to a small batch size, Issuers could easily gather telemetry data.<br>
 Wallets **SHOULD** define a limit how many credentials can be issued in one batch, to prevent being overloaded by exceedingly large batch sizes. This can be done by limiting the amount of proof of possessions being created.<br>
+
+{% capture notice-text %}
+
+A limit of max. 100 credentials is set in the swiyu wallet.
+
+{% endcapture %}
+
+<div class="notice--info">
+  <h3 class="no_toc">Implementation Note</h3>
+  {{ notice-text | markdownify }}
+</div>
+
+## 15. Privacy Considerations
+### 15.4. Correlation
+#### 15.4.1. Unique Values Encoded in the Credential
+Claims containing time-related information, such as `nbf` (not before), `exp` (expiration time) and `iat` (issued at) **MUST** be the same within a Credential Dataset of a batch. The dates **SHOULD** be rounded (e.g., to the start of the day), to avoid unintended correlation factors. Individual date randomization within an appropriate time window (e.g., within the last 24 hours) is **NOT SUPPORTED**.
 
 ## Appendix A. Credential Format Profiles
 Only supported Credential Format Profile is IETF SD-JWT VC<br>
