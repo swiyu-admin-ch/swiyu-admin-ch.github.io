@@ -42,7 +42,7 @@ Entities can prove and maintain their status as verified issuers or verifiers, e
 The source code is divided in different services:
 
 - [swiyu Registry Trust Data Service](https://github.com/swiyu-admin-ch/swiyu-registry-trust-data-service)
-- swiyu Trust Management Service (not yet published)
+- [swiyu Trust Management Service](https://github.com/swiyu-admin-ch/swiyu-trust-management-scs)
 
 ### swiyu Generic Issuer 
 Entities can issue, revoke, suspend, and reactivate Verifiable Credentials (VCs), using the generic reference issuer implementation provided by the federal government. 
@@ -59,6 +59,9 @@ Entities can integrate the reference verifier implementation to verify VCs, ensu
 The source code is available in the following repository:
 
 - [swiyu Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier)
+
+In the repository, you will also find a [detailed documentation](https://github.com/swiyu-admin-ch/swiyu-verifier/blob/main/docs/architecture_generic_verifier.pdf) of the use cases, architecture and interfaces of this generic component.
+
 
 ### swiyu Android & iOS App
 
