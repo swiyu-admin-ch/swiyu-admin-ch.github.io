@@ -134,7 +134,7 @@ The decision whether use of the supported Status Type "SUSPENDED" is at the disc
 
 In addition to conformity checks documented in the standard, the registry performs additional checks on upload of a Status List:
 
-- **Size Limits**: The Status List Token size **MUST** be greater than **200 bytes** and **MUST NOT** exceed **200 KB**. The decompressed Byte Array also **MUST NOT** exceed **200KB** (~100'000 entries when using 2 bits per status). This ensures the registry remains performant while preventing the upload of empty or malformed headers.
+- **Size Limits**: The Status List Token size **MUST** be greater than **200 bytes** and **MUST NOT** exceed **200 KB**. The decompressed Byte Array also **MUST NOT** exceed **200KB** (~800'000 entries when using 2 bits per status). This ensures the registry remains performant while preventing the upload of empty or malformed headers.
 - **Cryptographic Integrity**: The document **MUST** include a **valid digital signature**. Submissions with invalid, expired, or unsupported signature formats **MUST** be rejected.<br>
 
 Additional checks to the content of the Status List Token are performed:
