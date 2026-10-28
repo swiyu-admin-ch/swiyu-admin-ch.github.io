@@ -246,7 +246,7 @@ Authorization servers **MUST** utilize one of these methods to detect refresh to
 - Sender-constrained refresh tokens: bind the refresh token to a DPoP key.
 - Refresh token rotation: issue a new refresh token with every access token refresh response.
 
-Refresh token rotation IS **NOT RECOMMENDED** for credentials where portability is desired. A refresh token that has been exported might be kept for a long time next to the original token, and it might be used up by the time it is utilised to refresh the access token (see [swiss-profile-portability 1.0](https://swiyu-admin-ch.github.io/specifications/swiss-profile-portability)).
+Refresh token rotation IS **NOT RECOMMENDED** for credentials where portability is desired. A refresh token that has been exported might be kept for a long time next to the original token, and it might be used up by the time it is utilised to refresh the access token (see swiss-profile-portability 1.0).
 
 ### 14.6. Batch Issuing Credentials
 The Wallet **MUST** send at maximum the amount of proofs defined in the issuer metadata `batch_size`.<br>
