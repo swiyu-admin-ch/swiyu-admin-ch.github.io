@@ -120,6 +120,7 @@ include:
   - _change-dossiers
   - _archive
 exclude:
+  - _specifications/swiss-profile-portability.md
   - _change-dossiers/change-dossier-template
   - _specifications/_normative-standards
   - vendor
