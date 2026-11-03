@@ -12,8 +12,11 @@ toc_sticky: true
 The current implementation gaps in the swiyu Sandbox Trust Infrastructure are summarized [here](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/issues/63). 
 
 {% endcapture %}
-Implementation Gaps
-{{ notice-text | markdownify }} 
+
+<div class="notice--danger">
+  <h4 class="no_toc">Implementation Gaps</h4>
+  {{ notice-text | markdownify }}
+</div>
 
 Swiss Profiles provide a stable abstraction layer for managing versioning across our ecosystem of interdependent, versioned artefacts. Instead of dealing with each specification and its versions individually, a Swiss Profile groups them into a coherent, well-defined bundle.
 
