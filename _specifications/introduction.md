@@ -7,6 +7,13 @@ toc: true
 toc_sticky: true
 ---
 
+{% capture notice-text %}
+
+The current implementation gaps in the swiyu Sandbox Trust Infrastructure are summarized [here](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/issues/63). 
+
+{% endcapture %}
+Implementation Gaps
+{{ notice-text | markdownify }} 
 
 Swiss Profiles provide a stable abstraction layer for managing versioning across our ecosystem of interdependent, versioned artefacts. Instead of dealing with each specification and its versions individually, a Swiss Profile groups them into a coherent, well-defined bundle.
 
@@ -32,7 +39,6 @@ As of now there are 7 Swiss Profiles with the following specifications contained
 | [swiss-profile-proximity](../swiss-profile-proximity/)   | mDL ISO-18013-5 BLE     |
 | swiss-profile-portability  | Wallet Backup Container |
 
-The current implementation gaps in the swiyu Sandbox Trust Infrastructure are summarized [here](https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io/issues/63). 
 
 # Scope
 
