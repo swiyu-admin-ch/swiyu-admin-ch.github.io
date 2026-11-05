@@ -8,7 +8,7 @@ header:
 Status: Planned <br>
 Published: tbd <br>
 Effective: tbd <br>
-Affected Components: Generic Issuer (VZC), Trust Registry, Base Registry <br>
+Affected Components: Generic Issuer<br>
 {% endcapture %}
 <div class="notice--danger">
   <h4 class="no_toc">Enforcement did:webvh over did:tdw</h4>
@@ -19,10 +19,9 @@ Registries no longer accept `did:tdw` as issuer DID. All issuers must migrate to
 
 ## Action required
 
-### Generic Issuer (VZC)
+### Generic Issuer
 Tag ⚠️ Required soon  
-Tag 🚨 Breaking  
-Tag ✅ Improvement
+Tag 🚨 Breaking
 
 ## Migration steps
 
@@ -32,6 +31,6 @@ Tag ✅ Improvement
 
 ## Timeline
 
-- **tbd** – Generic Issuer release with `did:webvh` support available
-- **tbd** – Transition period starts (Registries accept both `did:tdw` and `did:webvh`)
+- **tbd** – Generic Issuer release X.X.X with `did:webvh` support available
+- **tbd** – Transition period started (Registries accept both `did:tdw` and `did:webvh`)
 - **Effective Date + 3 months** – `did:tdw` no longer supported; Registries reject `did:tdw` issuer DIDs
