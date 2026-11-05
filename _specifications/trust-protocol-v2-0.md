@@ -9,7 +9,7 @@ header:
 <div class="notice--info">
   Version 2.0 <br>
   Status: draft - content is under review and may still change <br>
-  Last edited: 2026-06-24
+  Last edited: 2026-10-30
 </div>
 
 
@@ -199,7 +199,7 @@ Issuer and verifier **SHOULD** make sure the provided data is up to date.
 
 The issuer metadata are provided as signed metadata as defined in the [swiss-profile-issuance 1.0](../swiss-profile-issuance/). The trust statements are included in the signed metadata. The trust statements included in the signed metadata provide a cryptographic chain of trust, with which proves that the metadata was created by the issuer without outside call beyond the trust statement revocation status list.
 
-The issuer **MUST** provide the Identity Trust Statement in the issuer metadata in the claim "credential_issuer_identity_trust_statement".
+The issuer **MUST** provide the serialized Identity Trust Statement in the issuer metadata in the claim "credential_issuer_identity_trust_statement".
 
 The issuer **MUST** provide, for each protected VC Type to be issued, a "protected_issuance_authorization_trust_statement" claim below the respective credential key in the "credential_configurations_supported" claim, as defined in 12.2.4. of [OpenID4VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#name-credential-issuer-metadata-p) containing the serialized Protected Issuance Authorization Trust Statement.
 
