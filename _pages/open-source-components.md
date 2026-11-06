@@ -96,10 +96,10 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 
 | Component | 🌄 Sunrise | <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/47c7b801-6d48-476e-831e-765c8a192f73" /> Current | <img width="16" height="16" alt="twitterEmojiRedirector" src="https://github.com/user-attachments/assets/a514b5fa-1c05-41af-a231-90aedf9ddc29" /> Deprecated | <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/883c6faf-32c0-427c-99bc-8b5365dc4f29" /> Sunset | <img width="16" height="16" alt="image" src="https://github.com/user-attachments/assets/43dd7f7f-a7d4-4398-9718-848877938e4d" /> End of Life |
 |--- |--- |--- |--- |--- |--- |
-| [Prod iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) | 2.0 | 1.19.0 | 1.18.0 |  | <1.17.1 |
-| [Prod Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) | 2.0 | 1.19.0 | 1.18.0 | | <1.17.0 |
-| [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 2.0 | [1.19.0](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) | 1.18.0 | | <1.17.1 |
-| [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 2.0 | [1.19.0](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) | 1.18.0 | | <1.17.0 |
+| [Prod iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet) | 2.0 | 1.19.1 | 1.18 |  | <1.18 |
+| [Prod Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) | 2.0 | 1.19.0 | 1.18 | | <1.18 |
+| [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 2.0 | [1.19.1](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) | 1.18 | | <1.18 |
+| [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 2.0 | [1.19.0](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) | 1.18 | | <1.18 |
 | [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.1 | [5.0.1](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/5.0.1) | 4.2  | | <3.2 |
 | [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.1 | [5.0.1](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/5.0.1) | 4.2 |  | <3.2 |
 | [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java) | 2.4 | 2.3 | <2.1 |  | |
