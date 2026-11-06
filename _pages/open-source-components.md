@@ -104,9 +104,9 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 | [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.1 | [5.0.1](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/5.0.1) | 4.2 |  | <3.2 |
 | [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java) | 2.4 | 2.3 | <2.1 |  | |
 | [DID Resolver](https://github.com/swiyu-admin-ch/didresolver) | 2.11 | 2.10 | <2.8 |  | |
-| [DID Resolver Kotlin/Android](https://github.com/swiyu-admin-ch/didresolver-kotlin-android) | 2.11 | 2.10 | <2.8 |  | |
-| [DID Resolver Kotlin](https://github.com/swiyu-admin-ch/didresolver-kotlin) | 2.11 | 2.10 | <2.8 |  | |
-| [DID Resolver Swift](https://github.com/swiyu-admin-ch/didresolver-swift) | 2.11 | 2.10 | <2.8 |  | |
+| [DID Resolver Kotlin/Android](https://github.com/swiyu-admin-ch/didresolver-kotlin-android) | 2.11 | 2.10.1 | <2.8 |  | |
+| [DID Resolver Kotlin](https://github.com/swiyu-admin-ch/didresolver-kotlin) | 2.11 | 2.10.1 | <2.8 |  | |
+| [DID Resolver Swift](https://github.com/swiyu-admin-ch/didresolver-swift) | 2.11 | 2.10.1 | <2.8 |  | |
 
 ## How to use the swiyu Sandbox Trust Infrastructure
 
