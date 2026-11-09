@@ -142,6 +142,10 @@ curl -X GET \
 
 We provide a [test application](https://github.com/swiyu-admin-ch/swiyu-generic-application-test) for running end-to-end tests and a [test wallet](https://github.com/swiyu-admin-ch/swiyu-generic-test-wallet) to validate your instance of the generic components.
 
+# Keep up to date
+
+As the Sandbox environment is constantly being developed, we recommend that you subscribe to our release announcements on [GitHub](https://github.com/orgs/swiyu-admin-ch/discussions/11?sort=new) or on the [technical documentation website](https://swiyu-admin-ch.github.io/release-announcements/) so that you stay informed about new versions. 
+
 # Your Feedback?
 
 We would be pleased if you spend about 3 additional minutes and give us feedback on the swiyu Sandbox Trust Infrastructure and your onboarding process! With the Sandbox, we want to give ecosystem stakeholders the opportunity to gain initial experience and build their own use cases on the trust infrastructure of the future e-ID. Your [feedback](https://findmind.ch/c/feedback_publicbeta_infr_en) will help us to further develop and improve the touchpoints, and we greatly appreciate your support.
