@@ -52,7 +52,7 @@ Wallets take on a more active role by:
 - Monitoring the compatibility of stored VCs (e.g., comparing their swiss-profile-vc version with currently supported versions)
 - Anticipating upcoming compatibility changes
 
-When a VC is nearing or has reached its technical end-of-life, the wallet can automatically trigger re-issuance via the issuer’s renewal endpoint. This typically follows a flow similar to Batch Issuance with renewal key.
+When a VC is nearing or has reached its technical end-of-life, the wallet can automatically trigger re-issuance via the issuer’s renewal endpoint. This typically follows a flow similar to Batch Issuance with renewal key (see [Issuer Architecture Documentation](https://github.com/swiyu-admin-ch/swiyu-issuer/blob/main/docs/Architecture_generic_issuer.pdf).
 
 ## Absence or Failure of VC Migration
 It is important to note that successful VC migration cannot be guaranteed. There are many scenarios in which a VC might not be migrated, ever. This can be a deliberate decision, or it can be a symptom of organisational or technical failings - see the examples below:
