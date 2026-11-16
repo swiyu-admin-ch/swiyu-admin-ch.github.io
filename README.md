@@ -15,7 +15,7 @@ The structure of the documentation website covers the following topics:
 - Specifications of the "Swiss Profiles", Trust Protocol, and other standards
 - Threat Model of the swiyu Trust Infrastructure
 - Roadmap with the current stage and gaps of Sandbox
-- Footer with links to release announcements and our community repository
+- Footer with links to release announcements, Change Dossier and our community repository
 
 ## Sandbox
 
@@ -25,6 +25,7 @@ All documentation is related to the Sandbox environment and is not complete. The
 
 The structure of the repository is different from the website.  
 
+- **_change-dossiers**: Summary and affected components of changes following the [EMC pattern](https://github.com/swiyu-admin-ch/community/blob/main/tech-concepts/expand-migrate-contract-pattern.md).
 - **_cookbooks**: The cookbooks are a collection of markdown files you'll find in this folder.
 - **_data**: In this folder you'll find the basic navigation as well as all translations for the user interface
 - **_pages**: Most of the webpages are markdown files in the _pages folder.
