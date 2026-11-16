@@ -100,8 +100,8 @@ We developed different helpers to create and resolve DIDs. Creating DIDs involve
 | [Prod Android](https://github.com/swiyu-admin-ch/eidch-android-wallet) | 2.0 | 1.19.0 | 1.18 | | <1.18 |
 | [Sandbox iOS](https://github.com/swiyu-admin-ch/eidch-ios-wallet#swiyu-sandbox-wallet) | 2.0 | [1.19.1](https://apps.apple.com/us/app/swiyu-sandbox-wallet/id6771296857) | 1.18 | | <1.18 |
 | [Sandbox Android](https://github.com/swiyu-admin-ch/eidch-android-wallet#swiyu-sandbox-wallet) | 2.0 | [1.19.0](https://github.com/swiyu-admin-ch/eidch-android-wallet/releases) | 1.18 | | <1.18 |
-| [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.1 | [5.0.1](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/5.0.1) | 4.2  | | <3.2 |
-| [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.1 | [5.0.1](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/5.0.1) | 4.2 |  | <3.2 |
+| [Generic Issuer](https://github.com/swiyu-admin-ch/swiyu-issuer) | 5.2 | [5.1.0](https://github.com/swiyu-admin-ch/swiyu-issuer/releases/tag/5.1.0) | 4.2  | | <3.2 |
+| [Generic Verifier](https://github.com/swiyu-admin-ch/swiyu-verifier/) | 5.2 | [5.1.0](https://github.com/swiyu-admin-ch/swiyu-verifier/releases/tag/5.1.0) | 4.2 |  | <3.2 |
 | [DID Toolbox](https://github.com/swiyu-admin-ch/didtoolbox-java) | 2.4 | 2.3 | <2.1 |  | |
 | [DID Resolver](https://github.com/swiyu-admin-ch/didresolver) | 2.11 | 2.10.1 | <2.8 |  | |
 | [DID Resolver Kotlin/Android](https://github.com/swiyu-admin-ch/didresolver-kotlin-android) | 2.11 | 2.10.1 | <2.8 |  | |
