@@ -38,7 +38,7 @@ The specifications are fully supported by this profile (and components adhering 
 | OpenID4VP | 1.0 | [OpenID for Verifiable Credential Presentation (OID4VP) v1.0](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html) |
 | JAR | RFC-9101 | [RFC9101 - The OAuth Authorization Framework: JWT-Secured Authorization Request (JAR)](https://www.rfc-editor.org/rfc/rfc9101) |
 
-**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+**KEY WORDS** for this Swiss Profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
 
 # OpenID for Verifiable Presentations 1.0
@@ -53,10 +53,10 @@ The below sub-sections rely on the numbering from the original reference specifi
 
 Verifiers **MUST** send Verification Requests as a JWT-Secured Authorization Request (JAR).
 - `client_id` **MUST** be the key id (`kid`) JAR without suffix fragment. If the `client_id` contains the prefix "`decentralized_identifier:`" it **MUST** be removed before the comparison.
-- `client_id` **MUST** be the verifier's identifier as defined in [swiss-profile-anchor](/specifications/swiss-profile-anchor/) And **MAY** be prefixed with the Client Identifier Prefix.
+- `client_id` **MUST** be the verifier's identifier as defined in [Swiss Profile Anchor](/specifications/swiss-profile-anchor/) And **MAY** be prefixed with the Client Identifier Prefix.
 - The client ID values in the `client_id` request parameter and in the Request Object `client_id` claim **MUST** be identical, as defined in RFC 9101
 
-For Online Verification only passing a request object by reference is supported.
+For online verification only passing a request object by reference is supported.
 
 Swiss Profile version indication with parameter profile_version in JWT-Secured Authorization Request header is **REQUIRED**.
 
@@ -100,7 +100,7 @@ The `aud` claim of the signed Request Object **MUST** be "https://self-issued.me
 
 ### 5.9. Client Identifier Prefix and Verifier Metadata Management
 #### 5.9.2. Fallback
-Fallback when no / an unknown Client Identifier Prefix is present **MUST** be intepreted as `decentralized_identifier`.
+Fallback when no / an unknown Client Identifier Prefix is present **MUST** be interpreted as `decentralized_identifier`.
 
 #### 5.9.3. Defined Client Identifier Prefixes
 Client Identifier Prefix `decentralized_identifier` **MUST** be supported and **SHOULD** be used.<br>
@@ -156,7 +156,7 @@ In a response, the `redirect_uri` enables the Verifier to redirect the Wallet to
 Should we expand our ecosystem, we need look into ways to restrict the potential redirect URI targets. Potential options are using verifier attestations with the `redirect_uris` claim listing valid targets (similar to traditional OAuth IdPs) or restricting to the exact FQDN of the verifier.
 
 ### 8.4 Transaction Data
-Transaction Data is **NOT SUPPORTED** and **SHOULD NOT** be used in this swiss-profile-verification version.
+Transaction Data is **NOT SUPPORTED** and **SHOULD NOT** be used in this Swiss Profile Verification version.
 
 ### 8.5 Error Response
 - `invalid_request_uri_method` is **NOT SUPPORTED**
@@ -171,7 +171,7 @@ URL scheme `openid4vp://` and `swiyu-verify://` **MUST** be supported.
 
 ## 10 Wallet Metadata
 ### 10.2 Obtaining Wallet's Metadata
-Verifier has pre-obtained a static set of the Wallet's metadata as defined by this swiss profile verification.<br>
+Verifier has pre-obtained a static set of the Wallet's metadata as defined by this Swiss Profile Verification.<br>
 Dynamic fetching of the wallet's metadata is **NOT SUPPORTED**.<br>
 The vp_formats_supported of the static metadata is: <br>
 
@@ -204,7 +204,7 @@ Generally verifiers are recommended to tailor the size of accepted presentations
 
 The recommended supported authorization response (aka presentation) size is the current [max payload limit](/specifications/swiss-profile-issuance/#83-credential-response) of accepted VCs plus one MB.
 
-In order to be guaranteed to work with VCs presented by the swiyu Wallet a verifier needs to support an <b>authorization response size of 21MB</b>.
+In order to be guaranteed to work with VCs presented by the swiyu Wallet a Verifier needs to support an <b>authorization response size of 21MB</b>.
 
 {% endcapture %}
 
