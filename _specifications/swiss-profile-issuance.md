@@ -10,7 +10,7 @@ header:
 <div class="notice--info">
   Version: 1.0 <br>
   Status: draft - technically complete, but might to be reformulated <br>
-  Last edited: 2026-10-26
+  Last edited: 2026-11-17
 </div>
 
 
@@ -20,10 +20,10 @@ This profile defines the capabilities required to issue **Verifiable Credentials
 
 ## Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
-- JWS algorithm MUST be ES256.
-- Encryption MUST use only ECDH-ES with P-256 Keys with A256GCM algorithm.
-- If zipping is possible, Deflate (DEF) MUST be used.
-- If using encryption is possible, it MUST be used.
+- JWS algorithm **MUST** be ES256.
+- Encryption **MUST** use only ECDH-ES with P-256 Keys with A256GCM algorithm.
+- If zipping is possible, Deflate (DEF) **MUST** be used.
+- If using encryption is possible, it **MUST** be used.
 
 ## Specifications
 
@@ -34,7 +34,7 @@ All underlying specifications referenced by the included standards are considere
 | OpenID4VCI | 1.0 | [OpenID for Verifiable Credential Issuance (OID4VCI) v1.0](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html) |
 | OAuth 2.0 DPoP | RFC-9449 | [RFC9449 - Demonstrating Proof of Possession (DPoP)](https://datatracker.ietf.org/doc/html/rfc9449) |
 
-**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+**KEY WORDS** for this Swiss Profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
   
 # OpenID for Verifiable Credential Issuance (OID4VCI) v1.0
@@ -202,9 +202,9 @@ Swiss Profile version indication with parameter `profile_version` in Credential 
 - `credential_configurations_supported` remains **REQUIRED**.
   - `scope` is **NOT SUPPORTED**.
   - `credential_refresh_disabled` **OPTIONAL** boolean flag to indicate to wallets if this credential can be refreshed by calling again the `credential_endpoint` with appropriate authorization.
-  - `cryptographic_binding_methods_supported` **MUST** be `jwk` as only JWK format for holder bindings are supported.
-  - `proof_types_supported` **MUST** be `jwt` as only JWT format is supported.
-    - `key_attestations_required` **MUST** be supported by Wallets, and **MAY** be used by Issuers.
+  - `cryptographic_binding_methods_supported` **OPTIONAL** - if absent, no Holder Binding is created for issued credentials. If present, it **MUST** be `jwk` as only JWK format for Holder Bindings are supported.
+  - `proof_types_supported` **OPTIONAL** - if present, **MUST** be `jwt` as only JWT format is supported. Note that it **MUST** be present, if `cryptographic_binding_methods_supported` is presented, and omitted otherwise.
+    - `key_attestations_required` **OPTIONAL** - **MUST** be supported by Wallets, and **MAY** be used by Issuers.
   - `credential_metadata` remains **OPTIONAL**.
     - `display` **MAY** be used as visualisation fallback to OCA Bundle.
       - `logo` remains **OPTIONAL**.
@@ -230,7 +230,7 @@ If used, `pre-authorized_grant_anonymous_access_supported` and any other additio
 ## 13. Security Considerations
 ### 13.6. Pre-Authorized Code Flow
 Issuer **SHOULD** accept pre-authorized codes only once.<br>
-When providing the Pre-Authorized Code for example as QR, Issuers **SHOULD** use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
+When providing the pre-authorized code for example as QR, Issuers **SHOULD** use the transaction code (`tx_code`) and provide it though a secondary channel (text message or email).<br>
 
 ### 13.11. Application-Layer Encryption
 Application-Layer encryption **MUST** be used for request and response.<br>
@@ -326,7 +326,7 @@ Swiss Profile version indication with parameter `profile_version` in DPoP JWT he
 
 ## 5. DPoP Access Token Request
 ### 5.1. Authorization Server Metadata
-If `dpop_signing_alg_values_supported` is missing it **MUST** be assumed that the list of supported JWS alg values are the ones listed in this profile under Cryptography.<br>
+If `dpop_signing_alg_values_supported` is missing it **MUST** be assumed that the list of supported JWS alg values are the ones listed in this profile under [Cryptography](#Cryptography). <br>
 
 ### 5.2. Client Registration Metadata
 Client Registration Metadata is **NOT SUPPORTED**. dpop_bound_access_tokens are always presumed to be true.<br>
