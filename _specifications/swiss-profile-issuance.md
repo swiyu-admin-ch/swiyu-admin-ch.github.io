@@ -166,8 +166,8 @@ GET https://example.com/.well-known/openid-configuration/issuer1
 Issuers **MUST** also provide Signed Metadata.<br>
 The Wallet **MUST** request and use Signed Metadata.<br>
 Signed Metadata **MUST** be used.<br>
-The Signed Metadata **MUST** be verified according to [swiss-profile-anchor](/specifications/swiss-profile-anchor/). <br>
-The `kid` header claim is **REQUIRED** and **MUST** be an absolute fragment containing a DID as described in [swiss-profile-anchor](/specifications/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
+The Signed Metadata **MUST** be verified according to [Swiss Profile Anchor](/specifications/swiss-profile-anchor/). <br>
+The `kid` header claim is **REQUIRED** and **MUST** be an absolute fragment containing a DID as described in [Swiss Profile Anchor](/specifications/swiss-profile-anchor//#jwt-validation-with-cryptographic-keys-from-dids).<br>
 
 Swiss Profile version indication with parameter `profile_version` in Credential Issuer Metadata JWT header is **REQUIRED**.
 
@@ -284,7 +284,7 @@ The following additional Credential Issuer Metadata parameters are defined for t
 - `vct_metadata_uri` **OPTIONAL** - If used in the Credential being issued **RECOMMENDED**
 - `vct_metadata_uri#integrity` **OPTIONAL**
 
-See usage of this additional parameters in [swiss-profile-vc](../swiss-profile-vc).
+See usage of this additional parameters in [Swiss Profile VC](../swiss-profile-vc).
 
 ## Appendix D. Key Attestations
 Wallets **MUST** support key attestations.<br>
@@ -326,7 +326,7 @@ Swiss Profile version indication with parameter `profile_version` in DPoP JWT he
 
 ## 5. DPoP Access Token Request
 ### 5.1. Authorization Server Metadata
-If `dpop_signing_alg_values_supported` is missing it **MUST** be assumed that the list of supported JWS alg values are the ones listed in this profile under [Cryptography](#Cryptography). <br>
+If `dpop_signing_alg_values_supported` is missing it **MUST** be assumed that the list of supported JWS alg values are the ones listed in this profile under [Cryptography](#cryptography). <br>
 
 ### 5.2. Client Registration Metadata
 Client Registration Metadata is **NOT SUPPORTED**. dpop_bound_access_tokens are always presumed to be true.<br>
