@@ -40,8 +40,8 @@ This section details the implementation notes and gaps pertaining to the support
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
 | ISO/IEC 18013-5:2021 | N/A | [https://www.iso.org/standard/69084.html](https://www.iso.org/standard/69084.html) |
-| ISO 23220-4:2026 | N/A | [https://www.iso.org/standard/86785.html)](https://www.iso.org/standard/86785.html) |
-| Digital Credentials API | N/A | [https://www.w3.org/TR/digital-credentials/)](https://www.w3.org/TR/digital-credentials/) |
+| ISO 23220-4:2026 | N/A | [https://www.iso.org/standard/86785.html](https://www.iso.org/standard/86785.html) |
+| Digital Credentials API | N/A | [https://www.w3.org/TR/digital-credentials/](https://www.w3.org/TR/digital-credentials/) |
 
 **KEY WORDS** for this Swiss Profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
