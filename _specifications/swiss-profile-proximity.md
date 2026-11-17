@@ -31,11 +31,11 @@ This profile specifies the protocol and algorithms used, to enable peer-to-peer 
 ## Cryptography
 - A reader **MUST** support ECDH-ES using Curve-25519 and P-256 for the Diffie-Hellman key exchange, and **MUST** support AES-256-GCM for symmetric encryption. 
 - A device **MUST** support ECDH-ES using Curve-25519 for the Diffie-Hellman key exchange, and **MUST** support AES-256-GCM for symmetric encryption.
-- The reader and the device **MUST* follow the ISO-18013-5 specification in establishing an encrypted channel. The following sections restate the process for convenience.
+- The reader and the device **MUST** follow the ISO-18013-5 specification in establishing an encrypted channel. The following sections restate the process for convenience.
 
 ## Specifications
 
-This section details the implementation notes and gaps pertaining to the supported specifications. The device MUST follow the "DC-API over ISO-18013-5" specification in the case of proximity verification cases.
+This section details the implementation notes and gaps pertaining to the supported specifications. The device **MUST** follow the "DC-API over ISO-18013-5" specification in the case of proximity verification cases.
 
 | Contained Specifications | Version | Link to referenced Specification |
 | ---- | ---- | ---- |
@@ -43,7 +43,7 @@ This section details the implementation notes and gaps pertaining to the support
 | ISO 23220-4:2026 | N/A | [https://www.iso.org/standard/86785.html)](https://www.iso.org/standard/86785.html) |
 | Digital Credentials API | N/A | [https://www.w3.org/TR/digital-credentials/)](https://www.w3.org/TR/digital-credentials/) |
 
-**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+**KEY WORDS** for this Swiss Profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
 # DC-API over ISO-18013-5 Specification
 
@@ -79,7 +79,7 @@ The following capability is added to signal the use of DC-API over ISO-18013-5. 
 ```
 Reader and Device MUST support "dcApiSelected" in SessionEstablishment and SessionData.
 
-To signal the use of the DC-API within the ISO-18013-5 protocol the Session-Establishment and Session-Data structures MUST set "dcApiSelected" to true.
+To signal the use of the DC-API within the ISO-18013-5 protocol the Session-Establishment and Session-Data structures **MUST** set "dcApiSelected" to true.
 
 ```
 ? "dcApiSelected" : boolean ; If available and true, data contains dcApi request
