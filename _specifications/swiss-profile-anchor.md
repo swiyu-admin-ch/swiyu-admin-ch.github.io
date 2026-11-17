@@ -21,7 +21,7 @@ This profile concerns itself with how a public ecosystem actor can be identified
 ## Cryptography
 To decrease complexity, initially the cryptographic options are limited to following algorithms.
 
-- JWS algorithm MUST be ES256.
+- JWS algorithm **MUST** be ES256.
 
 As per did:webvh:1.0 specification:
 
@@ -37,7 +37,7 @@ All underlying specifications referenced by the included standards are considere
 | DID Core | 1.0 | [Decentralized Identifiers (DIDs) v1.0](https://www.w3.org/TR/did-1.0/) |
 | did:webvh DID Method | 1.0 | [did:web + Verifiable History v1.0](https://identity.foundation/didwebvh/v1.0/) |
 
-**KEY WORDS** for this swiss profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
+**KEY WORDS** for this Swiss Profile expand on RFC 2119 "Key words for use in RFCs to Indicate Requirement Levels". They are explained in the [general introduction for the specifications](https://swiyu-admin-ch.github.io/specifications/introduction/#key-words). They are to be interpreted as such when, and only when, they appear **bold** and CAPITALIZED.
 
   
 # Decentralized Identifiers (DIDs) v1.0
@@ -158,11 +158,11 @@ Instead the [Trust Protocol](../trust-protocol-v2-0/) mechanisms **SHOULD** be u
 ### 3.7 DID Method Processes
 #### 3.7.1 did:webvh DID Method Parameters
 DID Portability is **NOT SUPPORTED** in the Base Registry. .<br>
-- The parameter `portable` MUST be set to false.<br>
+- The parameter `portable` **MUST** be set to false.<br>
 Witnesses is **NOT SUPPORTED** in the Base Registry.<br>
-- The parameter `witness` MUST be set to {}.<br>
+- The parameter `witness` **MUST** be set to {}.<br>
 Watchers is **NOT SUPPORTED** in the Base Registry.<br>
-- The parameter `watchers` MUST be set to []<br>
+- The parameter `watchers` **MUST** be set to []<br>
 
 #### 3.7.5 Authorized Keys
 Use of Pre-rotation of keys is **RECOMMENDED**.
@@ -180,7 +180,7 @@ Watchers is **NOT SUPPORTED** in the Base Registry.
 publishing a parallel did:web is **NOT SUPPORTED** in the Base Registry.
 
 ### 3.8 DID URL Resolution
-The did:web fallback is **NOT SUPPORTED** by the DIDResolver and the Base Registry.<br>
+The did:web fallback is **NOT SUPPORTED** by the DID Resolver and the Base Registry.<br>
 A did:web fallback **SHOULD NOT** be utilized.
 
 ### 3.9 DID URL Path Resolution
@@ -188,7 +188,7 @@ DID URL Path Resolution is **NOT SUPPORTED**.
 
 ### 3.10 WHOIS Resolution
 WHOIS resolution is **NOT SUPPORTED** by the Base Registry and the swiyu wallet.<br>
-Instead, use the mechanisms defined in the [swiss-profile-trust](../swiss-profile-trust/) to validate trustworthiness of the DID.
+Instead, use the mechanisms defined in the [Swiss Profile Trust](../swiss-profile-trust/) to validate trustworthiness of the DID.
 
 ## JWT Validation with cryptographic keys from DIDs
 
