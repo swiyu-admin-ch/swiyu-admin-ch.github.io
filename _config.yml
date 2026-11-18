@@ -100,10 +100,9 @@ footer:
     - label: "Feedback and Contributions"
       icon: "fab fa-fw fa-github"
       url: https://github.com/swiyu-admin-ch/swiyu-admin-ch.github.io
-    - label: "Release Announcements"
-      url: /release-announcements/
-    - label: "Change Dossiers"
-      url: /change-dossiers/
+    - label: "System Status"
+      icon: "fab fa-fw fa-github"
+      url: https://github.com/orgs/swiyu-admin-ch/discussions/12?sort=new
     - label: "Community"
       icon: "fab fa-fw fa-github"
       url: https://github.com/swiyu-admin-ch/community
